@@ -5,4 +5,4 @@ import { Button } from '../src';
 
 storiesOf('Button', module)
   .add('Default', () => <Button>Default</Button>)
-  // .add('Disabled', () => <Button disabled>Default</Button>);
+  .add('Disabled', () => <Button disabled>Default Disabled</Button>);

@@ -12,7 +12,7 @@ storiesOf('Input', module)
         name="hubly"
         placeholder="hubly..."
         value={inputValue}
-        setValue={setInputValue}
+        onChange={e => setInputValue(e.target.value)}
       />
     );
   })
@@ -22,10 +22,9 @@ storiesOf('Input', module)
     return (
       <Input
         name="hubly"
-        icon="alert"
         placeholder="hubly..."
         value={inputValue}
-        setValue={setInputValue}
+        onChange={e => setInputValue(e.target.value)}
       />
     );
   });
