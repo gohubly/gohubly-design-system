@@ -11,6 +11,12 @@ const BACKGROUND_ON_COLOR_BY_HIERARCHY = {
 export const Button = styled.button<iButton>`
   // button
 
+  // for width -> check
+  //  if props.fluid 
+  //      ? 100%
+  //      : auto
+
+
   // for background -> check
   //  if props.onColor 
   //      ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy]
