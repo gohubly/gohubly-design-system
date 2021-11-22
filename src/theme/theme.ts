@@ -62,8 +62,8 @@ export const theme = {
     primaryDark: '#142159',
 
     neutralLow: '#333333', // default
-    neutralLowLight: '#55555',
-    neutralLowMedium: '#999999',
+    neutralLowLight: '#999999',
+    neutralLowMedium: '#555555',
     neutralLowDark: '#000000',
 
     neutralHigh: '#FFFFFF', // default
