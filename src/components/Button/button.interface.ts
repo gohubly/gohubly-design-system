@@ -1,4 +1,4 @@
-export type iButtonHierarchy ='primary' | 'secondary'
+export type iButtonHierarchy ='primary' | 'secondary' | 'ghost'
 
 export interface iButton {
   hierarchy?: iButtonHierarchy,
