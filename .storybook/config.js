@@ -5,7 +5,7 @@ import centered from '@storybook/addon-centered/react';
 
 import defaultTheme from './defaultTheme'
 
-import storybookTheme from './storybookstorybookTheme';
+import storybookTheme from './storybookTheme';
 
 import './reset.css';
 
