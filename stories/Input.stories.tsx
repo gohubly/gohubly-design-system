@@ -134,8 +134,7 @@ export default {
   component: Input,
   argTypes: {
     variant: {
-      options: ['primary', 'secondary'],
-      control: { type: 'radio' }
+      onColor: ['true', 'false'],
     }
   }
 };
