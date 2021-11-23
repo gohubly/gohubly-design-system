@@ -7,7 +7,6 @@ interface iInputDropdownItem {
   active: boolean
 }
 interface iStyledCommonProps {
-  error?: boolean
   onColor?: boolean
   contentLeft?: boolean
   contentRight?: boolean
@@ -24,12 +23,14 @@ export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${({ theme, error, onColor }) => 
-    error 
-      ? theme.colors.helper
-      : onColor
-        ? theme.colors.primaryLight
-        : theme.colors.neutralLowMedium};
+  color: ${({ theme, onColor }) => 
+    onColor
+      ? theme.colors.primaryLight
+      : theme.colors.neutralLowMedium};
+
+  &[data-has-error=true] {
+    color: ${({ theme }) => theme.colors.helper};
+  }
 `
 
 export const Input = styled.input<iStyledCommonProps>`
@@ -68,13 +69,13 @@ export const Input = styled.input<iStyledCommonProps>`
     background: ${({ theme }) => theme.colors.neutralHighLight};
   }
 
-  ${({ error }) => error && css`
+  &[data-has-error=true] {
     border: 1px solid ${({ theme }) => theme.colors.helper};
     
     &:hover, &:focus {
       border: 1px solid ${({ theme }) => theme.colors.helper};
     }
-  `}
+  }
   
   /* transition: all 0.1s linear; */
 `
@@ -127,11 +128,12 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
 
   letter-spacing: -0.005em;
 
-  background: ${({ theme, error, onColor }) => 
-    error 
-      ? theme.colors.helperLight 
-      : theme.colors.primaryLightest};
+  background: ${({ theme }) => theme.colors.primaryLightest};
   color: ${({ theme }) => theme.colors.neutralLowDark};
+
+  &[data-has-error=true] {
+    background: ${({ theme }) => theme.colors.helperLight};
+  }
 `
 
 export const SuffixText = styled.div`
@@ -149,6 +151,7 @@ export const PrefixText = styled.div`
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
 `
+
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   position: absolute;
   top: calc(100% + 8px);

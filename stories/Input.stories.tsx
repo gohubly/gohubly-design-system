@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Input } from '../src';
@@ -127,3 +127,15 @@ storiesOf('Input', module)
       />
     );
   })
+
+  
+export default {
+  title: 'Input',
+  component: Input,
+  argTypes: {
+    variant: {
+      options: ['primary', 'secondary'],
+      control: { type: 'radio' }
+    }
+  }
+};

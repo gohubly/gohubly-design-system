@@ -34,7 +34,7 @@ export const Input: React.FC<iInput> = (props) => {
   }
 
   return (
-    <Label htmlFor={props?.name} error={props?.error}>
+    <Label htmlFor={props?.name} data-has-error={props?.error}>
       {/* Label */}
       {props?.label && 
         <LabelText onColor={props.onColor}>{props.label}</LabelText>
@@ -44,17 +44,17 @@ export const Input: React.FC<iInput> = (props) => {
         {/* Icone Esquerda */}
         {props.iconLeft && <LeftIcon src="http://piq.codeus.net/static/media/userpics/piq_45983_400x400.png" width="20px" />}
        
-        {/* Icone Esquerda */}
-        {props.prefix && !props.iconLeft && <PrefixText error={props?.error}>{props.prefix}</PrefixText>}
+        {/* Prefixo */}
+        {props.prefix && !props.iconLeft && <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>}
 
         {/* Input */}
         <StyledInput
           {...props}
           value={inputValue}
+          data-has-error={!!props?.error}
           onChange={onInputChange}
           onFocus={onFocusInput}
           autoComplete={props.autoComplete || props.dropdown && 'off'}
-          error={!!props?.error}
           contentLeft={!!props.iconLeft || !!props.prefix}
           contentRight={!!props.iconRight || !!props.suffix}
         />
@@ -62,8 +62,8 @@ export const Input: React.FC<iInput> = (props) => {
         {/* Icone Direita */}
         {props.iconRight && <RightIcon src="http://piq.codeus.net/static/media/userpics/piq_45983_400x400.png" width="20px" />}
 
-        {/* Icone Direita */}
-        {props.suffix && !props.iconRight && <SuffixText error={props?.error}>{props.suffix}</SuffixText>}
+        {/* Sufixo */}
+        {props.suffix && !props.iconRight && <SuffixText data-has-error={!!props?.error}>{props.suffix}</SuffixText>}
 
         {props.dropdown?.length && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
@@ -82,7 +82,7 @@ export const Input: React.FC<iInput> = (props) => {
 
       {/* Helper text */}
       {props?.helperText && 
-        <HelperText error={props?.error} onColor={props.onColor}>{props.helperText}</HelperText>
+        <HelperText data-has-error={props?.error} onColor={props.onColor}>{props.helperText}</HelperText>
       }
     </Label>
   );
