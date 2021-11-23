@@ -5,6 +5,7 @@ export const hexToRgb = (hex: string, options: {
   const { alpha = -1, asCSS } = options
   const regex = /[0-9A-Fa-f]{6}/g
 
+  if (hex === 'transparent') return hex
   if (alpha < 0) throw new Error('alpha should be between 0 and 1')
     
   const hexWithoutPound = hex.startsWith('#') ? hex.slice(1) : hex
