@@ -17,6 +17,7 @@ export const Button: React.FC<iButton> = ({
       disabled={disabled}
       hierarchy={hierarchy}
       data-has-error={error}
+      radius={radius}
       {...props}
       >
       {icon && <Icon src="https://icon-library.com/images/20x20-icon/20x20-icon-27.jpg" width="20px" height="20px"/>}
