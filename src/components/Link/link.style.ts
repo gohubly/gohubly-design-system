@@ -9,6 +9,18 @@ export const Link = styled.a<iLink>`
   }
 `
 
+const LINK_COLOR = {
+  default: 'primary',
+  hover: 'neutralLowDark',
+  disabled: 'neutralLowLight',
+}
+
+const LINK_ON_COLOR = {
+  default: 'neutralHigh',
+  hover: 'warningMedium',
+  disabled: 'neutralLowLight',
+}
+
 export const Wrapper = styled.div<iLink>`
   display: flex;
   align-items: center;
@@ -20,27 +32,27 @@ export const Wrapper = styled.div<iLink>`
   cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
 
   ${Link} {
-    color: ${({ theme, onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.primary};
+    color: ${({ theme, onColor }) => theme.colors[onColor ? LINK_ON_COLOR.default : LINK_COLOR.default]};
     cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
   }
 
-  &:hover, &:hover {
+  &:hover {
     ${Link} {
-      color: ${({ theme, onColor }) => onColor ? theme.colors.warningMedium : theme.colors.neutralLowDark};
+      color: ${({ theme, onColor }) => theme.colors[onColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
 
     svg {
-      fill: ${({ theme, onColor }) => onColor ? theme.colors.warningMedium : theme.colors.neutralLowDark};
+      fill: ${({ theme, onColor }) => theme.colors[onColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
   }
 
   &[data-disabled=true] {
     ${Link} {
-      color: ${({ theme, onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
+      color: ${({ theme, onColor }) => theme.colors[onColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
 
     svg {
-      fill: ${({ theme, onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
+      fill: ${({ theme, onColor }) => theme.colors[onColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
   }
 `

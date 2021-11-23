@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "polished": "^3.5.1",
+    "storybook-addon-react-docgen": "^1.2.42",
     "styled-components": "^5.1.0",
     "themeprovider-storybook": "^1.8.0"
   },
   "devDependencies": {
     "@storybook/addon-centered": "^5.3.18",
+    "@storybook/addon-docs": "^6.3.12",
     "@storybook/addon-info": "^5.3.18",
     "@storybook/react": "^5.3.18",
     "@types/react": "^16.9.34",
