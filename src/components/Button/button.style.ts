@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
 import { hexToRgb } from '../../helpers/colors';
 import theme from '../../theme/theme';
@@ -140,6 +140,16 @@ export const Button = styled.button<iButton>`
 
   &:focus:not(:disabled) {
     border-color: ${({ theme }) => theme.colors.helper};
+    animation: ${({ theme, onColor, hierarchy }) => keyframes`
+      100% {
+        border: ${hierarchy && `1.5px solid ${theme.colors[onColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+      }
+    `} 0.8s linear;
+    
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-fill-mode: forwards;
+    -o-animation-fill-mode: forwards;
   }
 
   &[data-has-error=true] {
@@ -149,8 +159,8 @@ export const Button = styled.button<iButton>`
 
     &:hover:not(:disabled) {
       background-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
-    border-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
-    color: ${({ hierarchy, theme, onColor }) => hierarchy && theme.colors[onColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
+      border-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
+      color: ${({ hierarchy, theme, onColor }) => hierarchy && theme.colors[onColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
     }
 
     & > ${Icon} {
@@ -169,4 +179,4 @@ export const Button = styled.button<iButton>`
     )};
     color: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
   }
-`;;
+`;

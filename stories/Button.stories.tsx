@@ -25,3 +25,12 @@ storiesOf('Button', module)
   .add('Secondary On Color With Icon', () => <Button hierarchy="secondary" icon="ico" onColor>Secondary On Color With Icon</Button>)
   .add('Default Disabled On Color', () => <Button hierarchy="primary" onColor disabled>Default Disabled</Button>)
   .add('Secondary Disabled On Color', () => <Button hierarchy="secondary" onColor disabled>Secondary Disabled</Button>);
+
+  
+export default {
+  title: 'Example/Button',
+  component: Button,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+};
