@@ -1,9 +1,22 @@
-import React from "react";
+import { InputHTMLAttributes } from "react";
 
-export interface iInput {
-  name?: string
-  value?: string
-  onChange?: (evt: React.ChangeEvent<HTMLInputElement>) => void
-  type?: 'text' | 'password'
-  placeholder?: string
+export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
+  onColor?: boolean
+  
+  label?: string
+  helperText?: string
+  error?: boolean
+
+  iconLeft?: string
+  iconRight?: string
+  prefix?: string
+  suffix?: string
+
+  dropdown?: {
+    value: string
+    tag?: {
+      background: string
+      label: string
+    }
+  }[]
 }
