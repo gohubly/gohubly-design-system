@@ -1,7 +1,8 @@
-export const hexToRgb = (hex: string, options: {
+interface iHextToRgbOptions {
   alpha?: number,
   asCSS?: boolean
-}): string | number[] => {
+}
+export const hexToRgb = (hex: string, options: iHextToRgbOptions): string | number[] => {
   const { alpha = -1, asCSS } = options
   const regex = /[0-9A-Fa-f]{6}/g
 

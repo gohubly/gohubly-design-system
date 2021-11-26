@@ -1,5 +1,5 @@
 {
-  "name": "ds-hubly",
+  "name": "web-design-system",
   "version": "1.0.0",
   "private": false,
   "dependencies": {
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006 -s public",
-    "build": "mkdir --p public && yarn build-storybook -s public"
+    "build": "mkdir public --p && yarn build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [

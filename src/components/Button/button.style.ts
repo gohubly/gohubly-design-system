@@ -1,6 +1,5 @@
 import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
-import { hexToRgb } from '../../helpers/colors';
 import theme from '../../theme/theme';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
@@ -106,10 +105,11 @@ export const Icon = styled.img<Pick<iButton, 'hierarchy' | 'OnColor'>>`
   margin-right: 10px;
   fill: ${({ theme, hierarchy, OnColor }) => {
     if (hierarchy === 'primary') {
-      return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
-        alpha: 0.12,
-        asCSS: true
-      })
+      return theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
+      // return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
+      //   alpha: 0.12,
+      //   asCSS: true
+      // })
     }
 
     return OnColor ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]] : theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]]
@@ -171,12 +171,13 @@ export const Button = styled.button<iButton>`
   &:disabled {
     cursor: not-allowed;
     border-color: transparent;
-    background-color: ${({ hierarchy, OnColor, theme }) => hierarchy && hexToRgb(
-      theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]], {
-        alpha: OnColor ? 0.48 : 1,
-        asCSS: true
-      }
-    )};
+    background-color: ${({ hierarchy, OnColor, theme }) => hierarchy && theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]
+      // hexToRgb(
+      //   theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]], {
+      //     alpha: OnColor ? 0.48 : 1,
+      //     asCSS: true
+      //   })
+    };
     color: ${({ OnColor }) => OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
   }
 `;
