@@ -1310,7 +1310,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.14.5"
 
-"@babel/plugin-transform-typescript@^7.12.1", "@babel/plugin-transform-typescript@^7.16.0":
+"@babel/plugin-transform-typescript@^7.12.1", "@babel/plugin-transform-typescript@^7.16.0", "@babel/plugin-transform-typescript@^7.3.2":
   version "7.16.1"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.16.1.tgz#cc0670b2822b0338355bc1b3d2246a42b8166409"
   integrity sha512-NO4XoryBng06jjw/qWEU2LhcLJr1tWkhpMam/H4eas/CDKMX/b2/Ylb6EI256Y7+FVPCawwSM1rrJNOpDiz+Lg==
@@ -1539,7 +1539,7 @@
     "@babel/helper-plugin-utils" "^7.10.4"
     "@babel/plugin-transform-typescript" "^7.12.1"
 
-"@babel/preset-typescript@^7.12.7":
+"@babel/preset-typescript@^7.12.7", "@babel/preset-typescript@^7.3.3", "@babel/preset-typescript@^7.8.3":
   version "7.16.0"
   resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.16.0.tgz#b0b4f105b855fb3d631ec036cdc9d1ffd1fa5eac"
   integrity sha512-txegdrZYgO9DlPbv+9QOVpMnKbOtezsLHWsnsRF4AjbSIsVaujrq1qg8HK0mxQpWv0jnejt0yEoW1uWpvbrDTg==
@@ -2794,6 +2794,18 @@
     npmlog "^4.1.2"
     pretty-hrtime "^1.0.3"
 
+"@storybook/node-logger@^5.3.17":
+  version "5.3.21"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/@storybook/node-logger/-/node-logger-5.3.21.tgz#f11d45042bd57dc69e9037d8f374d9fd0aad8071"
+  integrity sha1-8R1FBCvVfcaekDfY83TZ/QqtgHE=
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^3.0.0"
+    core-js "^3.0.1"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
+    regenerator-runtime "^0.13.3"
+
 "@storybook/postinstall@6.3.12":
   version "6.3.12"
   resolved "https://registry.yarnpkg.com/@storybook/postinstall/-/postinstall-6.3.12.tgz#ed98caff76d8c1a1733ec630565ef4162b274614"
@@ -2813,6 +2825,17 @@
     pnp-webpack-plugin "^1.6.4"
     react-docgen-typescript-plugin "^1.0.0"
     semver "^7.3.5"
+
+"@storybook/preset-typescript@^3.0.0":
+  version "3.0.0"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/@storybook/preset-typescript/-/preset-typescript-3.0.0.tgz#e157baf6f2c4982c3da3328f5e1a640b3d7db9e4"
+  integrity sha1-4Ve69vLEmCw9ozKPXhpkCz19ueQ=
+  dependencies:
+    "@babel/preset-typescript" "^7.8.3"
+    "@storybook/node-logger" "^5.3.17"
+    "@types/babel__core" "^7.1.6"
+    babel-preset-typescript-vue "^1.0.3"
+    fork-ts-checker-webpack-plugin "^4.1.0"
 
 "@storybook/react-docgen-typescript-plugin@1.0.2-canary.253f8c1.0":
   version "1.0.2-canary.253f8c1.0"
@@ -3119,7 +3142,7 @@
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-4.2.2.tgz#ed4e0ad92306a704f9fb132a0cfcf77486dbe2bc"
   integrity sha512-HnYpAE1Y6kRyKM/XkEuiRQhTHvkzMBurTHnpFLYLBGPIylZNPs9jJcuOOYWxPLJCSEtmZT0Y8rHDokKN7rRTig==
 
-"@types/babel__core@^7.0.0":
+"@types/babel__core@^7.0.0", "@types/babel__core@^7.1.6":
   version "7.1.16"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.16.tgz#bc12c74b7d65e82d29876b5d0baf5c625ac58702"
   integrity sha512-EAEHtisTMM+KaKwfWdC3oyllIqswlznXCIVCt7/oRNrh+DhgT4UEBNC/jlADNjvw7UnfbcdkGQcPVZ1xYiLcrQ==
@@ -4318,7 +4341,7 @@ babel-loader@8.1.0:
     pify "^4.0.1"
     schema-utils "^2.6.5"
 
-babel-loader@^8.2.2:
+babel-loader@^8.2.2, babel-loader@^8.2.3:
   version "8.2.3"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.2.3.tgz#8986b40f1a64cacfcb4b8429320085ef68b1342d"
   integrity sha512-n4Zeta8NC3QAsuyiizu0GkmRcQ6clkV9WFUnUf1iXP//IeSKbWjofW3UHyZVwlOB4y039YQKefawyTn64Zwbuw==
@@ -4535,6 +4558,16 @@ babel-preset-react-app@^10.0.0:
     "@babel/runtime" "7.12.1"
     babel-plugin-macros "2.8.0"
     babel-plugin-transform-react-remove-prop-types "0.4.24"
+
+babel-preset-typescript-vue@^1.0.3:
+  version "1.1.1"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/babel-preset-typescript-vue/-/babel-preset-typescript-vue-1.1.1.tgz#6a617dcb0ee26f911735d5f2bbe530286b2c7c02"
+  integrity sha1-amF9yw7ib5EXNdXyu+UwKGssfAI=
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-transform-typescript" "^7.3.2"
+    "@babel/preset-typescript" "^7.3.3"
+    vue-template-compiler "^2.6.11"
 
 babel-runtime@^6.26.0:
   version "6.26.0"
@@ -5576,7 +5609,7 @@ core-js@^2.4.0:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.0.4, core-js@^3.8.2:
+core-js@^3.0.1, core-js@^3.0.4, core-js@^3.8.2:
   version "3.19.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.1.tgz#f6f173cae23e73a7d88fa23b6e9da329276c6641"
   integrity sha512-Tnc7E9iKd/b/ff7GFbhwPVzJzPztGrChB8X8GLqoYGdEOG8IpLnK1xPyo3ZoO3HsK6TodJS58VGPOxA+hLHQMg==
@@ -6018,6 +6051,11 @@ data-urls@^2.0.0:
     abab "^2.0.3"
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
+
+de-indent@^1.0.2:
+  version "1.0.2"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
+  integrity sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -7417,7 +7455,7 @@ foreground-child@^2.0.0:
     cross-spawn "^7.0.0"
     signal-exit "^3.0.2"
 
-fork-ts-checker-webpack-plugin@4.1.6, fork-ts-checker-webpack-plugin@^4.1.6:
+fork-ts-checker-webpack-plugin@4.1.6, fork-ts-checker-webpack-plugin@^4.1.0, fork-ts-checker-webpack-plugin@^4.1.6:
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/fork-ts-checker-webpack-plugin/-/fork-ts-checker-webpack-plugin-4.1.6.tgz#5055c703febcf37fa06405d400c122b905167fc5"
   integrity sha512-DUxuQaKoqfNne8iikd14SAkh5uw4+8vNifp6gmA73yYNS6ywLIWSLD/n/mBzHQRpW3J7rbATEakmiA8JvkTyZw==
@@ -8042,7 +8080,7 @@ hastscript@^6.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
-he@^1.2.0:
+he@^1.1.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
@@ -12682,6 +12720,11 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
+regenerator-runtime@^0.13.3:
+  version "0.13.9"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
+  integrity sha1-iSV0Kpj/2QgUmI11Zq0wyjsmO1I=
+
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.7"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
@@ -14825,6 +14868,14 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+vue-template-compiler@^2.6.11:
+  version "2.6.14"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/vue-template-compiler/-/vue-template-compiler-2.6.14.tgz#a2f0e7d985670d42c9c9ee0d044fed7690f4f763"
+  integrity sha1-ovDn2YVnDULJye4NBE/tdpD092M=
+  dependencies:
+    de-indent "^1.0.2"
+    he "^1.1.0"
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
