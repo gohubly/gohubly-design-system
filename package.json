@@ -1,6 +1,6 @@
 {
   "name": "web-design-system",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "start-storybook -p 6006 -s public",
-    "build": "mkdir public || yarn build-storybook -s public"
+    "build": "mkdir public & yarn build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
