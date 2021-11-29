@@ -85,6 +85,13 @@ export const theme = {
     helperLight: '#FFD8E0',
     helperMedium: '#EB0045',
     helperDark: '#91003E',
+
+    themeDark: '#16161A',
+    themeLightDark: '#E6E6E6',
+    themeLowDark: '#1b1a1f',
+    themeHighDark: '#0b0a0d',
+    
+    themeHightLigth: '#f6f9fc',
   }
 }
 
