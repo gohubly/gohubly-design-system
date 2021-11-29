@@ -1,6 +1,6 @@
 {
   "name": "web-design-system",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": false,
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
@@ -54,12 +54,12 @@
     "@storybook/addon-actions": "^6.3.12",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
-    "url-loader": "^4.1.1",
     "@storybook/node-logger": "^6.3.12",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
     "@types/styled-components": "^5.1.15",
     "storybook-addon-styled-component-theme": "^2.0.0",
-    "ttf-loader": "^1.0.2"
+    "ttf-loader": "^1.0.2",
+    "url-loader": "^4.1.1"
   }
 }
