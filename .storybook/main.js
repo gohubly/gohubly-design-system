@@ -12,11 +12,12 @@ module.exports = {
     "@storybook/preset-create-react-app",
     "@storybook/preset-typescript"
   ],
+  staticDirs: ['../src/assets/fonts/'],
   webpackFinal: async (config) => {
 
     config.module.rules.push({
-      test: /\.(woff|woff2|ttf|eot)$/,
-      use: 'file?name=fonts/[name].[ext]!static'
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000'
     })
 
     return config;
