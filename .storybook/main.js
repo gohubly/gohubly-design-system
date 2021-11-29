@@ -14,6 +14,7 @@ module.exports = {
     "@storybook/addon-centered",
     "storybook-dark-mode"
   ],
+  staticDirs: ['public', '../src/assets/fonts/'],
   webpackFinal: async (config) => {
 
     config.module.rules.push({
