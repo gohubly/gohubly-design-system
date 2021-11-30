@@ -4,6 +4,7 @@ import { iIcon } from '.';
 export const IconWrapper = styled.div<iIcon>`
   svg {
     fill: ${({ theme, fill }) => fill || theme.colors.transparent};
+    width: 24px;
 
     ${({ fluid }) => fluid && css`
       width: 100%;

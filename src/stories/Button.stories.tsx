@@ -41,7 +41,7 @@ WithError.args = {
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
-  icon: '',
+  icon: 'information',
   children: 'With icon'
 };
 
@@ -49,4 +49,9 @@ export const PrimaryOnColor = Template.bind({});
 PrimaryOnColor.args = {
   OnColor: true,
   children: 'On Color'
+};
+PrimaryOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
 };

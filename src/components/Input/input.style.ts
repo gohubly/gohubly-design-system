@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { iInput } from '.';
- 
+import { Icon } from '../Icon';
+
 interface iInputDropdownWrapper {
   opened: boolean
 }
@@ -23,7 +24,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${({ theme, OnColor }) => 
+  color: ${({ theme, OnColor }) =>
     OnColor
       ? theme.colors.primaryLight
       : theme.colors.neutralLowMedium};
@@ -46,7 +47,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   padding: 12px 16px;
   padding-left: ${({ contentLeft }) => contentLeft ? '46px' : '16px'};
-  padding-right: ${({ contentRight  }) => contentRight ? '46px' : '16px'};
+  padding-right: ${({ contentRight }) => contentRight ? '46px' : '16px'};
 
   ${({ OnColor }) => OnColor && css`
     border-width: 0px;
@@ -93,17 +94,19 @@ const IconCss = css`
   top: 50%;
   transform: translateY(-50%);
 
-  fill: ${({ theme }) => theme.colors.primaryDark};
+  path {
+    stroke: ${({ theme }) => theme.colors.primaryDark};
+  }
 `
 
-export const LeftIcon = styled.img`
+export const LeftIcon = styled(Icon)`
   ${IconCss};
-  left: 14px; 
+  left: 7px; 
 `
 
-export const RightIcon = styled.img`
+export const RightIcon = styled(Icon)`
   ${IconCss};
-  right: 14px; 
+  right: 7px; 
 `
 
 export const RelativeContainer = styled.div`

@@ -1,14 +1,15 @@
 import React from 'react'
 
 import { iLink } from '.'
+import { Icon } from '../Icon'
 import { Link as StyledLink, Wrapper } from './link.style'
 
-export const Link: React.FC<iLink> = ({ children, onClick, OnColor, disabled }) => {
+export const Link: React.FC<iLink> = ({ children, onClick, OnColor, disabled, icon }) => {
   const handleClick = () => {
-    if (disabled) return    
+    if (disabled) return
     onClick && onClick()
   }
-  
+
   return (
     <Wrapper
       onClick={handleClick}
@@ -19,7 +20,7 @@ export const Link: React.FC<iLink> = ({ children, onClick, OnColor, disabled }) 
         {children}
       </StyledLink>
 
-      <img src="http://piq.codeus.net/static/media/userpics/piq_45983_400x400.png" width="20px" />
+      <Icon iconId={icon} OnColor={OnColor} />
     </Wrapper>
   )
 }

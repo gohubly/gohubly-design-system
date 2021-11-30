@@ -34,29 +34,49 @@ Success.args = {
 }
 
 export const PrimaryOnColor = Template.bind({});
-Primary.args = {
+PrimaryOnColor.args = {
   hierarchy: 'primary',
   children: 'Tag',
   OnColor: true,
 };
+PrimaryOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const WarningOnColor = Template.bind({});
-Warning.args = {
+WarningOnColor.args = {
   hierarchy: 'warning',
   children: 'Tag',
   OnColor: true,
 }
+WarningOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const AlertOnColor = Template.bind({});
-Alert.args = {
+AlertOnColor.args = {
   hierarchy: 'alert',
   children: 'Tag',
   OnColor: true,
 }
+AlertOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const SuccessOnColor = Template.bind({});
-Success.args = {
+SuccessOnColor.args = {
   hierarchy: 'success',
   children: 'Tag',
   OnColor: true,
 }
+SuccessOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};

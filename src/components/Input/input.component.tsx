@@ -36,14 +36,14 @@ export const Input: React.FC<iInput> = (props) => {
   return (
     <Label htmlFor={props?.name} data-has-error={props?.error}>
       {/* Label */}
-      {props?.label && 
+      {props?.label &&
         <LabelText OnColor={props.OnColor}>{props.label}</LabelText>
       }
 
       <RelativeContainer>
         {/* Icone Esquerda */}
-        {props.iconLeft && <LeftIcon src="http://piq.codeus.net/static/media/userpics/piq_45983_400x400.png" width="20px" />}
-       
+        {props.iconLeft && <LeftIcon iconId={props.iconLeft} />}
+
         {/* Prefixo */}
         {props.prefix && !props.iconLeft && <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>}
 
@@ -58,9 +58,9 @@ export const Input: React.FC<iInput> = (props) => {
           contentLeft={!!props.iconLeft || !!props.prefix}
           contentRight={!!props.iconRight || !!props.suffix}
         />
-        
+
         {/* Icone Direita */}
-        {props.iconRight && <RightIcon src="http://piq.codeus.net/static/media/userpics/piq_45983_400x400.png" width="20px" />}
+        {props.iconRight && <RightIcon iconId={props.iconRight} />}
 
         {/* Sufixo */}
         {props.suffix && !props.iconRight && <SuffixText data-has-error={!!props?.error}>{props.suffix}</SuffixText>}
@@ -81,7 +81,7 @@ export const Input: React.FC<iInput> = (props) => {
       </RelativeContainer>
 
       {/* Helper text */}
-      {props?.helperText && 
+      {props?.helperText &&
         <HelperText data-has-error={props?.error} OnColor={props.OnColor}>{props.helperText}</HelperText>
       }
     </Label>

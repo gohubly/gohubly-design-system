@@ -25,6 +25,11 @@ OnColor.args = {
   OnColor: true,
   name: "On Color",
 };
+OnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const LargeWithImage = Template.bind({});
 LargeWithImage.args = {
