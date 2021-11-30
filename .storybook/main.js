@@ -18,8 +18,8 @@ module.exports = {
   webpackFinal: async (config) => {
 
     config.module.rules.push({
-      test: /\.(woff|woff2|ttf|eot)$/,
-      use: 'file?name=fonts/[name].[ext]!static'
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000'
     })
 
     return config;

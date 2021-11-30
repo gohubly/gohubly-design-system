@@ -1,6 +1,6 @@
 {
   "name": "web-design-system",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "private": false,
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
@@ -64,5 +64,6 @@
     "babel-loader": "^8.2.3",
     "storybook-addon-styled-component-theme": "^2.0.0",
     "storybook-dark-mode": "^1.0.8"
+    "url-loader": "^4.1.1"
   }
 }
