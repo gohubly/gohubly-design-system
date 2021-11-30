@@ -19,8 +19,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "start-storybook -p 6006 -s public",
-    "build": "mkdir public & yarn build-storybook -s public"
+    "start": "start-storybook -p 6006",
+    "build": "mkdir public & yarn build-storybook"
   },
   "eslintConfig": {
     "extends": [
@@ -52,14 +52,18 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-centered": "^5.3.21",
+    "@storybook/addon-docs": "^6.4.0",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
+    "@storybook/addons": "^6.4.0",
     "@storybook/node-logger": "^6.3.12",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
     "@types/styled-components": "^5.1.15",
+    "babel-loader": "^8.2.3",
     "storybook-addon-styled-component-theme": "^2.0.0",
-    "ttf-loader": "^1.0.2",
+    "storybook-dark-mode": "^1.0.8"
     "url-loader": "^4.1.1"
   }
 }
