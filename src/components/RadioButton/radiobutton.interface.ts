@@ -1,24 +1,32 @@
-export interface iCheckBox {
+import React from "react";
+
+export interface iRadio {
     label: string;
     name: string;
     value: any;
-    checked?: boolean;
     readOnly?: boolean;
     onChange?: (value: any) => void;
     disabled?: boolean;
     onColor?: boolean;
-  }
-  
-  export interface ILabelCheckBox {
-    disabled?: boolean;
-    onColor?: boolean;
+    options?: iRadioOption[];
   }
 
-  export interface IBoxCheckBox {
+  export interface iRadioOption {
+    title: string,
+    value: string
+  }
+  
+  export interface ILabelRadio {
+    disabled?: boolean;
+    onColor?: boolean;
+    options?: iRadioOption[];
+  }
+  
+  export interface IBoxRadio {
     ref: any;
   }
 
-  export interface IMarkCheckBox {
+  export interface IMarkRadio {
     disabled?: boolean;
     onColor?: boolean;
   }
