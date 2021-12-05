@@ -19,7 +19,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -s ./public -p 6006",
     "build": "mkdir public & yarn build-storybook"
   },
   "eslintConfig": {
