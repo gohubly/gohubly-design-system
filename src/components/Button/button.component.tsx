@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { iButton } from '.';
-import { Button as StyledButton, Icon } from './button.style';
+import { Button as StyledButton, IconStyled } from './button.style';
 
 export const Button: React.FC<iButton> = ({
   children,
@@ -19,8 +19,8 @@ export const Button: React.FC<iButton> = ({
       data-has-error={error}
       radius={radius}
       {...props}
-      >
-      {icon && <Icon src="https://icon-library.com/images/20x20-icon/20x20-icon-27.jpg" width="20px" height="20px"/>}
+    >
+      {icon && <IconStyled size="SM" iconId={icon} hierarchy={hierarchy} OnColor={props.OnColor} />}
       {children}
     </StyledButton>
   );

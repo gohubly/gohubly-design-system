@@ -21,11 +21,17 @@ OnColor.args = {
   OnColor: true,
   children: 'Link OnColor'
 };
+OnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   onClick: () => false,
-  children: 'Link with Icon'
+  children: 'Link with Icon',
+  icon: 'chevronRight'
 };
 
 export const Disabled = Template.bind({});

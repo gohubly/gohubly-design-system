@@ -31,6 +31,11 @@ OnColor.args = {
   placeholder: 'placeholder...',
   OnColor: true,
 };
+OnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = {
@@ -45,7 +50,7 @@ WithIconLeft.args = {
   name: 'input-name',
   label: 'Label',
   placeholder: 'placeholder...',
-  iconLeft: ''
+  iconLeft: 'heart'
 };
 
 export const WithIconRight = Template.bind({});
@@ -53,7 +58,7 @@ WithIconRight.args = {
   name: 'input-name',
   label: 'Label',
   placeholder: 'placeholder...',
-  iconRight: ''
+  iconRight: 'instagram'
 };
 
 export const WithPrefix = Template.bind({});

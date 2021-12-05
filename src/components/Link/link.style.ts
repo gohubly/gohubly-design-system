@@ -41,8 +41,8 @@ export const Wrapper = styled.div<iLink>`
       color: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
 
-    svg {
-      fill: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
+    path {
+      stroke: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
   }
 
@@ -51,8 +51,8 @@ export const Wrapper = styled.div<iLink>`
       color: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
 
-    svg {
-      fill: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
+    path {
+      stroke: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
   }
 `

@@ -19,3 +19,8 @@ OnColor.args = {
   iconId: 'pinLocation',
   OnColor: true
 };
+OnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};

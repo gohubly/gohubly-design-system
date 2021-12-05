@@ -2,6 +2,7 @@ import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
 import { hexToRgb } from '../../helpers';
 import theme from '../../theme/theme';
+import { Icon, iIcon } from '../Icon';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: 'primary',
@@ -102,19 +103,21 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   secondary: 'primaryLight',
 }
 
-export const Icon = styled.img<Pick<iButton, 'hierarchy' | 'OnColor'>>`
+export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: boolean }>`
   margin-right: 10px;
-  fill: ${({ theme, hierarchy, OnColor }) => {
+  path {
+    stroke: ${({ theme, hierarchy, OnColor }) => {
     if (hierarchy === 'primary') {
       // return theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
       return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
-        alpha: 0.12,
+        alpha: 0.8,
         asCSS: true
       })
     }
 
     return OnColor ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]] : theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]]
   }};
+  }
 `
 
 export const Button = styled.button<iButton>`
@@ -164,7 +167,7 @@ export const Button = styled.button<iButton>`
       color: ${({ hierarchy, theme, OnColor }) => hierarchy && theme.colors[OnColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
     }
 
-    & > ${Icon} {
+    & > ${IconStyled} {
       background-color: ${({ theme }) => theme.colors.white};
     }
   }
@@ -176,7 +179,7 @@ export const Button = styled.button<iButton>`
     // theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]
     hexToRgb(
       theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]], {
-      alpha: OnColor ? 0.48 : 1,
+      alpha: OnColor ? 0.8 : 1,
       asCSS: true
     })
   };
