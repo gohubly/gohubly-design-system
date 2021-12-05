@@ -5,6 +5,7 @@ import { CheckBox } from '..';
 export default {
   title: 'Components/CheckBox',
   component: CheckBox,
+  argTypes: { onClick: { action: 'clicked' } },
   parameters: {
     backgrounds: {
       default: 'light',
@@ -17,7 +18,7 @@ const Template: ComponentStory<typeof CheckBox> = (args) => <CheckBox {...args} 
 export const CheckedBox = Template.bind({});
 CheckedBox.args = {
   name: "checked",
-  label: "Checked",
+  label: "CheckBox",
   checked: true,
   readOnly: false,
   disabled: false,
@@ -30,17 +31,33 @@ CheckedBox.parameters = {
   },
 };
 
-export const UncheckedBox = Template.bind({});
-UncheckedBox.args = {
-  name: "uncheckedBox",
-  label: "UncheckedBox",
+export const DisabledCheckedBox = Template.bind({});
+DisabledCheckedBox.args = {
+  name: "disabledBox",
+  label: "Disabled CheckBox",
+  checked: true,
+  readOnly: false,
+  disabled: true,
+  onColor: false,
+  onChange: () => {}
+};
+DisabledCheckedBox.parameters = {
+  backgrounds: {
+    default: 'light',
+  },
+};
+
+export const DisabledUncheckedBox = Template.bind({});
+DisabledUncheckedBox.args = {
+  name: "disabledBox",
+  label: "Disabled CheckBox",
   checked: false,
   readOnly: false,
   disabled: true,
   onColor: false,
   onChange: () => {}
 };
-UncheckedBox.parameters = {
+DisabledUncheckedBox.parameters = {
   backgrounds: {
     default: 'light',
   },
@@ -49,7 +66,7 @@ UncheckedBox.parameters = {
 export const CheckedBoxOnColor = Template.bind({});
 CheckedBoxOnColor.args = {
   name: "checked",
-  label: "Checked",
+  label: "CheckBox onColor",
   checked: true,
   readOnly: false,
   disabled: false,
@@ -62,17 +79,35 @@ CheckedBoxOnColor.parameters = {
   },
 };
 
-export const UncheckedBoxOnColor = Template.bind({});
-UncheckedBoxOnColor.args = {
-  name: "uncheckedBox",
-  label: "UncheckedBox",
+export const disabledCheckedOnColor = Template.bind({});
+disabledCheckedOnColor.args = {
+  name: "disabledCheckedBoxOnColor",
+  label: "Disabled Checked onColor",
+  checked: true,
+  readOnly: false,
+  disabled: true,
+  onColor: true,
+  onChange: () => {}
+};
+
+disabledCheckedOnColor.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};
+
+export const disabledUncheckedOnColor = Template.bind({});
+disabledUncheckedOnColor.args = {
+  name: "disabledUncheckedOnColor",
+  label: "Disabled Unchecked onColor",
   checked: false,
   readOnly: false,
   disabled: true,
   onColor: true,
   onChange: () => {}
 };
-UncheckedBoxOnColor.parameters = {
+
+disabledUncheckedOnColor.parameters = {
   backgrounds: {
     default: 'figma',
   },

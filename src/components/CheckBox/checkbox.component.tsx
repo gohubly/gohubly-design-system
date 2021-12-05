@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { iCheckBox } from './checkbox.interface';
 import { Box, Label, Mark } from './checkbox.style';
 
@@ -6,6 +6,12 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
   const [checkedValue, setCheckedValue] = useState(props.checked)
 
   const ref = useRef();
+
+  const onChange = (evt: any) => {
+    setCheckedValue(!checkedValue);
+    if (props.onChange)
+      props.onChange(evt.target.value);
+  }
 
   return (
     <Label
@@ -21,7 +27,7 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
         ref={ref}
         checked={checkedValue}
         disabled={props.disabled}
-        onChange={() => { setCheckedValue(!checkedValue) }} />
+        onChange={onChange} />
       <Mark
         onColor={props.onColor}
         disabled={props.disabled}

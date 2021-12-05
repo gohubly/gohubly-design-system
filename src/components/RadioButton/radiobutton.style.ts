@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import theme from '../../theme/theme';
 
-import { ILabelCheckBox, IBoxCheckBox, IMarkCheckBox } from './checkbox.interface';
+import { ILabelRadio, IBoxRadio, IMarkRadio } from './radiobutton.interface';
 
-export const Label = styled.label<ILabelCheckBox>`
+export const Label = styled.label<ILabelRadio>`
   display: flex;
   align-items: center;
   position: relative;
@@ -39,18 +39,19 @@ export const Label = styled.label<ILabelCheckBox>`
   &.disabled {
     color: ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
     
-    &:hover span,
-    input:checked ~ span {
-      background-color: ${({ onColor, theme }) =>  onColor ? 'transparent' : theme.colors.white};
-      border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-      cursor: not-allowed;
+    &:hover {
+      span {
+        background-color: ${({ onColor, theme }) =>  onColor ? 'transparent' : theme.colors.white};
+        border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+        cursor: not-allowed;
+      }
     }
   }
 `;
   
 export const Box = styled.input.attrs({
-  type: 'checkbox',
-})<IBoxCheckBox>`
+  type: 'radio',
+})<IBoxRadio>`
   cursor: pointer;
   position: absolute;
   opacity: 0;
@@ -62,14 +63,14 @@ export const Box = styled.input.attrs({
   }
 `;
 
-export const Mark = styled.span<IMarkCheckBox>`
+export const Mark = styled.span<IMarkRadio>`
   position: absolute;
   top: 0;
   left: 0;
   height: 16px;
   width: 16px;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 50%;
   border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
 
   &.disabled {
@@ -78,40 +79,25 @@ export const Mark = styled.span<IMarkCheckBox>`
 
   transition: 180ms ease-in-out;
 
-  &.disabled {
-    &:after {
-      content: '';
-      position: absolute;
-      display: none;
-  
-      left: 5px;
-      top: 2px;
-  
-      width: 4px;
-      height: 8px;
-  
-      border: solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-      border-width: 0 2px 2px 0;
-  
-      transform: rotate(45deg);
-    }
-  }
-
   &:after {
     content: '';
     position: absolute;
     display: none;
 
-    left: 5px;
-    top: 2px;
+    top: 4px;
+    left: 4px;
 
-    width: 4px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: ${({ onColor, theme }) =>  onColor ? theme.colors.primary : theme.colors.white};
 
     border: solid ${({ onColor, theme }) =>  onColor ? theme.colors.primary : theme.colors.white};
     border-width: 0 2px 2px 0;
-
-    transform: rotate(45deg);
   }
 `;
+
+export const Spacer = styled.div`
+margin-bottom: 10px;
+`
 
