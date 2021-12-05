@@ -22,7 +22,7 @@ const BORDER_COLOR_BY_HIERARCHY: Record<iStepperHierarchy, string> = {
 const PROGRESS_BAR_WIDTH_BY_STATE: Record<string, string> = {
   completed: '100%',
   active: '50%',
-  '': '0%'
+  initial: '0%'
 }
 
 export const Container = styled.div`
@@ -52,8 +52,9 @@ export const ProgressBar = styled.div<{ active: boolean, completed: boolean, isN
     top: 0;
 
     height: 100%;
-    width: ${({ completed, active }) => PROGRESS_BAR_WIDTH_BY_STATE[completed ? 'completed' : '' || active ? 'active' : '']};
+    width: ${({ completed, active }) => PROGRESS_BAR_WIDTH_BY_STATE[completed ? 'completed' : active ? 'active' : 'initial']};
 
+    border-radius: 100px;
     background-color: ${({ theme }) => theme.colors.primary};
   }
 `
@@ -66,7 +67,7 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
   height: 40px;
   width: 40px;
   
-  border-radius: 100%;
+  border-radius: 100px;
   border: 1px solid ${({ theme, hierarchy }) => theme.colors[BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
 
   background-color: ${({ theme, hierarchy }) => theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
