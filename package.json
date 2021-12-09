@@ -1,10 +1,12 @@
 {
   "name": "ds-gohubly",
-  "version": "1.1.5",
+  "version": "1.1.7",
   "private": false,
-  "main": "lib/index.js",
+  "main": "dist/lib/index.js",
+  "types": "./dist/types",
   "files": [
-    "./lib"
+    "./dist/lib",
+    "./dist/types"
   ],
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
