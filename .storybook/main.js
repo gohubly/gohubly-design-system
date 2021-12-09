@@ -20,6 +20,11 @@ module.exports = {
       loader: 'url-loader?limit=100000'
     })
 
+    config.module.rules.push({
+      test: /\.(ts|tsx)?$/,
+      loader: 'ts-loader'
+    })
+
     return config;
   },
 }
