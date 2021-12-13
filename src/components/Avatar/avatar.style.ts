@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { iAvatar, iAvatarSizes } from '.'
-import { theme } from '../..'
+import { themeWithouthInterface as theme } from '../..'
 
 const AVATAR_DETAILS_WITH_ON_COLOR: Record<string, string> = {
   textColor: 'primaryLightest',

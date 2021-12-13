@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { iIcon } from '.';
-import { theme } from '../..';
+import { themeWithouthInterface as theme } from '../..'
 
 export const IconWrapper = styled.div<iIcon>`
   svg {

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
 import { hexToRgb } from '../../helpers';
-import theme from '../../theme/theme';
+import { themeWithouthInterface as theme } from '../../theme/theme';
 import { Icon, iIcon } from '../Icon';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {

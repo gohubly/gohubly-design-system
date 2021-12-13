@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { theme } from '../../theme'
+import { themeWithouthInterface as theme } from '../..'
 import { iTypography } from './typography.interface'
 
 const FONT_FAMILY_BASED_ON_WEIGHT: Record<keyof typeof theme.fontWeight, string> = {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { iTag, iTagHierarchy } from '.';
-import { theme } from '../..';
+import { themeWithouthInterface as theme } from '../..';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
   primary: 'primaryLightest',

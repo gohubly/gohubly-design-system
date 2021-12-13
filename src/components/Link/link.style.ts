@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { iLink } from '.'
-import { theme } from '../..'
+import { themeWithouthInterface as theme } from '../..'
 
 export const Link = styled.a<iLink>`
   text-decoration: underline;

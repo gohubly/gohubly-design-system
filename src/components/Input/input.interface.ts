@@ -7,6 +7,7 @@ export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
 
   label?: string
   helperText?: string
+  helperTextOnClick?: () => void
   error?: boolean
 
   iconLeft?: iIconTypes

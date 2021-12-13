@@ -26,14 +26,20 @@ export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${({ OnColor }) =>
-    OnColor
-      ? theme.colors.primaryLight
-      : theme.colors.neutralLowMedium};
+  color: ${({ OnColor , onClick }) =>
+    onClick ?
+      theme.colors.primary
+      : OnColor
+        ? theme.colors.primaryLight
+        : theme.colors.neutralLowMedium};
 
   &[data-has-error=true] {
     color: ${() => theme.colors.helper};
   }
+
+  text-decoration: ${({ onClick }) => onClick ? 'underline' : 'none'};
+
+  cusor: ${({ onClick }) => onClick ? 'cursor' : 'auto'};
 `
 
 export const Input = styled.input<iStyledCommonProps>`
@@ -180,6 +186,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
 
   transition: opacity 0.1s linear;
+  z-index: 9999;
 `
 
 export const DropdownItem = styled.div<iInputDropdownItem>`
