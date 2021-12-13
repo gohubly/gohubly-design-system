@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { iTag, iTagHierarchy } from '.';
+import { theme } from '../..';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
   primary: 'primaryLightest',
@@ -44,16 +45,16 @@ export const Tag = styled.button<iTag>`
   transition: background-color .3s linear;
   padding: 4px 8px;
 
-  color: ${({ theme, hierarchy }) => hierarchy && theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
-  background-color: ${({ theme, hierarchy }) => hierarchy && theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
+  color: ${({ hierarchy }) => hierarchy && theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
+  background-color: ${({ hierarchy }) => hierarchy && theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
   cursor: ${({ onClick }) => onClick ? 'pointer' : 'initial'};
 
   border: 0;
-  border-radius: ${({ theme }) => theme.borderRadius.Pill};
+  border-radius: ${() => theme.borderRadius.Pill};
 
   &:hover:not(:disabled) {
-    color: ${({ theme, hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
-    background-color: ${({ theme, hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
+    color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
+    background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
   }
 `;

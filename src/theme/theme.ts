@@ -1,4 +1,6 @@
-export const theme = {
+type iTheme = Record<string, Record<string, string>>
+
+export const theme: iTheme = {
   fontSize: {
     XXXS: '12px',
     XXS: '14px',

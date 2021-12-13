@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { iLink } from '.'
+import { theme } from '../..'
 
 export const Link = styled.a<iLink>`
   text-decoration: underline;
@@ -32,27 +33,27 @@ export const Wrapper = styled.div<iLink>`
   cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
 
   ${Link} {
-    color: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.default : LINK_COLOR.default]};
+    color: ${({ OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.default : LINK_COLOR.default]};
     cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
   }
 
   &:hover {
     ${Link} {
-      color: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
+      color: ${({ OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
 
     path {
-      stroke: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
+      stroke: ${({ OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.hover : LINK_COLOR.hover]};
     }
   }
 
   &[data-disabled=true] {
     ${Link} {
-      color: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
+      color: ${({ OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
 
     path {
-      stroke: ${({ theme, OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
+      stroke: ${({ OnColor }) => theme.colors[OnColor ? LINK_ON_COLOR.disabled : LINK_COLOR.disabled]};
     }
   }
 `

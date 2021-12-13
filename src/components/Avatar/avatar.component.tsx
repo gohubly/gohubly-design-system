@@ -16,7 +16,6 @@ export const Avatar: React.FC<iAvatar> = ({
     size,
   }
 
-  console.warn({OnColor})
   return (
     <Wrapper {...props}>
       {name && name.charAt(0).toUpperCase()}

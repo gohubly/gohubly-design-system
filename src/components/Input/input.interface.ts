@@ -3,6 +3,7 @@ import { iIconTypes } from "../Icon";
 
 export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
   OnColor?: boolean
+  fluid?: boolean
 
   label?: string
   helperText?: string

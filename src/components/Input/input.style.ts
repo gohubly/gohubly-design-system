@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { iInput } from '.';
 import { Icon } from '../Icon';
 
+import { theme } from '../..';
+
 interface iInputDropdownWrapper {
   opened: boolean
 }
@@ -17,33 +19,33 @@ export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
   font-size: 14px;
 
-  color: ${({ theme, OnColor }) => OnColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ OnColor }) => OnColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
 `
 
 export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${({ theme, OnColor }) =>
+  color: ${({ OnColor }) =>
     OnColor
       ? theme.colors.primaryLight
       : theme.colors.neutralLowMedium};
 
   &[data-has-error=true] {
-    color: ${({ theme }) => theme.colors.helper};
+    color: ${() => theme.colors.helper};
   }
 `
 
 export const Input = styled.input<iStyledCommonProps>`
-  width: 100%;
-  background: ${({ theme }) => theme.colors.neutralHigh};
+  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
+  background: ${() => theme.colors.neutralHigh};
 
-  border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
+  border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
   border-radius: 8px;
   letter-spacing: -0.005em;
   
-  color: ${({ theme }) => theme.colors.neutralLowMedium};
+  color: ${() => theme.colors.neutralLowMedium};
 
   padding: 12px 16px;
   padding-left: ${({ contentLeft }) => contentLeft ? '46px' : '16px'};
@@ -54,11 +56,11 @@ export const Input = styled.input<iStyledCommonProps>`
   `}
   
   &:hover {
-    border: 1px solid ${({ theme, OnColor }) => OnColor ? theme.colors.primaryDark : theme.colors.primary};
+    border: 1px solid ${({ OnColor }) => OnColor ? theme.colors.primaryDark : theme.colors.primary};
   }
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${() => theme.colors.primary};
   }
  
   &::placeholder {
@@ -66,15 +68,15 @@ export const Input = styled.input<iStyledCommonProps>`
   }
 
   &:disabled {
-    border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
-    background: ${({ theme }) => theme.colors.neutralHighLight};
+    border: 1px solid ${() => theme.colors.neutralLowLight};
+    background: ${() => theme.colors.neutralHighLight};
   }
 
   &[data-has-error=true] {
-    border: 1px solid ${({ theme }) => theme.colors.helper};
+    border: 1px solid ${() => theme.colors.helper};
     
     &:hover, &:focus {
-      border: 1px solid ${({ theme }) => theme.colors.helper};
+      border: 1px solid ${() => theme.colors.helper};
     }
   }
   
@@ -87,6 +89,8 @@ export const Label = styled.label<iStyledCommonProps>`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
 `;
 
 const IconCss = css`
@@ -95,7 +99,7 @@ const IconCss = css`
   transform: translateY(-50%);
 
   path {
-    stroke: ${({ theme }) => theme.colors.primaryDark};
+    stroke: ${() => theme.colors.primaryDark};
   }
 `
 
@@ -131,11 +135,11 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
 
   letter-spacing: -0.005em;
 
-  background: ${({ theme }) => theme.colors.primaryLightest};
-  color: ${({ theme }) => theme.colors.neutralLowDark};
+  background: ${() => theme.colors.primaryLightest};
+  color: ${() => theme.colors.neutralLowDark};
 
   &[data-has-error=true] {
-    background: ${({ theme }) => theme.colors.helperLight};
+    background: ${() => theme.colors.helperLight};
   }
 `
 
@@ -167,9 +171,9 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   display: flex;
   flex-direction: column;
   
-  background: ${({ theme }) => theme.colors.neutralHigh};
+  background: ${() => theme.colors.neutralHigh};
 
-  box-shadow: ${({ theme }) => theme.shadow.Level4};
+  box-shadow: ${() => theme.shadow.Level4};
   border-radius: 8px;
 
   opacity: ${({ opened }) => opened ? 1 : 0};
@@ -182,28 +186,28 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
   padding: 12px 16px;
   letter-spacing: -0.005em;
 
-  background: ${({ theme }) => theme.colors.white};
-  border-left: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
-  border-right: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
+  background: ${() => theme.colors.white};
+  border-left: 1px solid ${() => theme.colors.neutralHighMedium};
+  border-right: 1px solid ${() => theme.colors.neutralHighMedium};
 
   &:first-of-type {
-    border-top: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
+    border-top: 1px solid ${() => theme.colors.neutralHighMedium};
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
   }
 
   &:last-of-type {
-    border-bottom: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
+    border-bottom: 1px solid ${() => theme.colors.neutralHighMedium};
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primaryLightest};
+    background: ${() => theme.colors.primaryLightest};
   }
 
   ${({ active }) => active && css`
-    background: ${({ theme }) => theme.colors.primaryLightest};
+    background: ${() => theme.colors.primaryLightest};
   `}
 
   cursor: pointer;

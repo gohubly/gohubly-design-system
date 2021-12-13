@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { iAvatar, iAvatarSizes } from '.'
+import { theme } from '../..'
 
 const AVATAR_DETAILS_WITH_ON_COLOR: Record<string, string> = {
   textColor: 'primaryLightest',
@@ -32,17 +33,17 @@ export const Wrapper = styled.div<iAvatar>`
   height: ${({ size }) => size && AVATAR_SIZE_BASED_ON_SIZE[size]};
 
   color: red;
-  /* color: ${({ theme, OnColor }) => theme.colors[OnColor ? AVATAR_DETAILS_WITH_ON_COLOR.textColor : AVATAR_DETAILS_WITHOUT_ON_COLOR.textColor]}; */
-  /* background-color: ${({ theme, OnColor }) => theme.colors[OnColor ? AVATAR_DETAILS_WITH_ON_COLOR.background : AVATAR_DETAILS_WITHOUT_ON_COLOR.background]}; */
+  color: ${({ OnColor }) => theme.colors[OnColor ? AVATAR_DETAILS_WITH_ON_COLOR.textColor : AVATAR_DETAILS_WITHOUT_ON_COLOR.textColor]};
+  background-color: ${({ OnColor }) => theme.colors[OnColor ? AVATAR_DETAILS_WITH_ON_COLOR.background : AVATAR_DETAILS_WITHOUT_ON_COLOR.background]};
 
-  /* background-image: ${({ image }) => image && `url(${image})`}; */
-  /* background-size: ${({ image }) => image && `cover`}; */
-  /* box-shadow: ${({ theme }) => theme.shadow.Level1}; */
+  background-image: ${({ image }) => image && `url(${image})`};
+  background-size: ${({ image }) => image && `cover`};
+  box-shadow: ${() => theme.shadow.Level1};
 
   font-size: ${({ size }) => size && FONT_SIZE_SIZE_BASED_ON_SIZE[size]};
 
   border-radius: 2px;
-  /* border-radius: ${({ theme }) => theme.borderRadius.Circular}; */
+  border-radius: ${() => theme.borderRadius.Circular};
 
   pointer-events: none;
 `
@@ -54,8 +55,8 @@ export const Badge = styled.div`
 
   width: 8px;
   height: 8px;
-  /* border-radius: ${({ theme }) => theme.borderRadius.Circular}; */
+  border-radius: ${() => theme.borderRadius.Circular};
   
   background: red;
-  /* background: ${({ theme }) => theme.colors.helper}; */
+  background: ${() => theme.colors.helper};
 `
