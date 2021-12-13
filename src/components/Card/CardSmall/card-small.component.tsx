@@ -9,7 +9,7 @@ export const CardSmall: React.FC<iCardSmall> = ({
   children,
   OnColor,
   avatar,
-  component,
+  rightComponent,
   ...props
 }) => {
   return (
@@ -33,9 +33,9 @@ export const CardSmall: React.FC<iCardSmall> = ({
 
       </ContentContainer>
       
-      {component && (
+      {rightComponent && (
         <ContentContainer>
-          { component }
+          { rightComponent }
         </ContentContainer>
       )}
     </StyledCardSmall>

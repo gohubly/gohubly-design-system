@@ -36,5 +36,5 @@ export const WithCustomComponent = Template.bind({});
 WithCustomComponent.args = {
   title: 'Card Title',
   content: 'Secondary Content',
-  component: <CheckBox name='checkbox' value="" />
+  rightComponent: <CheckBox name='checkbox' value="" />
 };

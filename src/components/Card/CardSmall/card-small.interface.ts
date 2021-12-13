@@ -3,5 +3,5 @@ export interface iCardSmall {
   title?: string
   content?: string
   avatar?: string
-  component?: JSX.Element
+  rightComponent?: JSX.Element
 }
