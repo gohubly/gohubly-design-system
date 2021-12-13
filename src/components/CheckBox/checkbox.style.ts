@@ -10,6 +10,7 @@ export const Label = styled.label<ILabelCheckBox>`
   padding-left: 28px;
   line-height: 16px;
   font-size: 14px;
+  height: 20px;
 
   padding-top: 2px;
   padding-bottom: 2px;

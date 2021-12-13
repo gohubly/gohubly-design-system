@@ -1,5 +1,5 @@
 export interface iCheckBox {
-    label: string;
+    label?: string;
     name: string;
     value: any;
     checked?: boolean;

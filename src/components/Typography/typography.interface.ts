@@ -10,3 +10,7 @@ export interface iTypography {
   fontWeight?: keyof typeof theme.fontWeight
   color?: keyof typeof theme.colors
 }
+
+export interface iParagraph extends iTypography {
+  noMargin?: boolean;
+}
