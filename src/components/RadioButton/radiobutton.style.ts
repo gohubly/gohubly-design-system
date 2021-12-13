@@ -17,32 +17,32 @@ export const Label = styled.label<ILabelRadio>`
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   user-select: none;
 
-  color: ${({ onColor, theme }) =>  onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ onColor }) =>  onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
   
   &:hover {
-    color: ${({ theme, onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
   }
 
   &:hover span,
   input:checked ~ span {
-    background-color: ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.primary};
-    border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.primary};
+    background-color: ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.primary};
+    border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.primary};
   }
 
   &:hover {
     span {
-      background-color: ${theme.colors.primaryLightest};
-      border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
+      background-color: ${() => theme.colors.primaryLightest};
+      border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
     }
   }
   
   &.disabled {
-    color: ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+    color: ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
     
     &:hover {
       span {
-        background-color: ${({ onColor, theme }) =>  onColor ? 'transparent' : theme.colors.white};
-        border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+        background-color: ${({ onColor }) =>  onColor ? 'transparent' : theme.colors.white};
+        border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
         cursor: not-allowed;
       }
     }
@@ -71,10 +71,10 @@ export const Mark = styled.span<IMarkRadio>`
   width: 16px;
   background-color: transparent;
   border-radius: 50%;
-  border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
+  border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
 
   &.disabled {
-    border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+    border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
 
   transition: 180ms ease-in-out;
@@ -90,9 +90,9 @@ export const Mark = styled.span<IMarkRadio>`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: ${({ onColor, theme }) =>  onColor ? theme.colors.primary : theme.colors.white};
+    background: ${({ onColor }) =>  onColor ? theme.colors.primary : theme.colors.white};
 
-    border: solid ${({ onColor, theme }) =>  onColor ? theme.colors.primary : theme.colors.white};
+    border: solid ${({ onColor }) =>  onColor ? theme.colors.primary : theme.colors.white};
     border-width: 0 2px 2px 0;
   }
 `;

@@ -1,3 +1,4 @@
+import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from '..';
@@ -12,7 +13,7 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Default',
-  hierarchy: 'primary'
+  hierarchy: 'primary',
 };
 
 export const Secondary = Template.bind({});

@@ -9,10 +9,10 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/preset-typescript",
-    "@storybook/addon-centered",
+    "@storybook/addon-centered/react",
     "storybook-dark-mode"
   ],
-  staticDirs: ['../public', { from: '../src/assets/fonts/', to: '/fonts/' }],
+  staticDirs: ['../public'],
   webpackFinal: async (config) => {
 
     config.module.rules.push({

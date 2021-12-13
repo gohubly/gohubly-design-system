@@ -4,7 +4,13 @@
 - [x] Avatar
 - [x] Input
 - [x] Link
+- [x] Icon
+- [x] CheckBox
+- [x] RadioButton
+- [x] Stepper
 - [x] Tag
+- [x] Tooltip
+- [x] Typography
 
 ## Como usar em seu projeto
 

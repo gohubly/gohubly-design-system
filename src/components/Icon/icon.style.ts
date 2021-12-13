@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { iIcon } from '.';
+import { themeWithouthInterface as theme } from '../..'
 
 export const IconWrapper = styled.div<iIcon>`
   svg {
-    fill: ${({ theme, fill }) => fill || theme.colors.transparent};
+    fill: ${({ fill }) => fill || theme.colors.transparent};
     width: 24px;
 
     ${({ fluid }) => fluid && css`
@@ -13,6 +14,6 @@ export const IconWrapper = styled.div<iIcon>`
   }
 
   path {
-    stroke: ${({ theme, OnColor, stroke }) => stroke || theme.colors[OnColor ? 'neutralHigh' : 'primary']};
+    stroke: ${({ OnColor, stroke }) => stroke || theme.colors[OnColor ? 'neutralHigh' : 'primary']};
   }
 `

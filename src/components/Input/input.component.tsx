@@ -6,6 +6,7 @@ import { Label, LabelText, HelperText, Input as StyledInput, LeftIcon, RelativeC
 
 export const Input: React.FC<iInput> = (props) => {
   const dropdownRef = useRef(null)
+  const inputRef = useRef(null)
   const [dropdownOpened, setDropdownOpened] = useState(false);
   const [inputValue, setInputValue] = useState(props.value || props.defaultValue || '')
 
@@ -25,6 +26,7 @@ export const Input: React.FC<iInput> = (props) => {
   const onClickDropdownItem = (itemValue: string) => {
     setDropdownOpened(false)
     setInputValue(itemValue)
+    props.onChange && inputRef.current && props.onChange(inputRef.current)
   }
 
   const onFocusInput = (evt: React.FocusEvent<HTMLInputElement>) => {
@@ -51,6 +53,7 @@ export const Input: React.FC<iInput> = (props) => {
         <StyledInput
           {...props}
           value={inputValue}
+          ref={inputRef}
           data-has-error={!!props?.error}
           onChange={onInputChange}
           onFocus={onFocusInput}
@@ -82,7 +85,7 @@ export const Input: React.FC<iInput> = (props) => {
 
       {/* Helper text */}
       {props?.helperText &&
-        <HelperText data-has-error={props?.error} OnColor={props.OnColor}>{props.helperText}</HelperText>
+        <HelperText onClick={props.helperTextOnClick} data-has-error={props?.error} OnColor={props.OnColor}>{props.helperText}</HelperText>
       }
     </Label>
   );

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { iStepperHierarchy } from '.'
+import { themeWithouthInterface as theme } from '../..'
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iStepperHierarchy, string> = {
   primary: 'primary',
@@ -42,7 +43,7 @@ export const ProgressBar = styled.div<{ active: boolean, completed: boolean, isN
   flex: 1;
   z-index: 0;
   border-radius: 100px;
-  background: ${({ theme }) => theme.colors.primaryLightest};
+  background: ${() => theme.colors.primaryLightest};
 
   &::before {
     content: '';
@@ -55,7 +56,7 @@ export const ProgressBar = styled.div<{ active: boolean, completed: boolean, isN
     width: ${({ completed, active }) => PROGRESS_BAR_WIDTH_BY_STATE[completed ? 'completed' : active ? 'active' : 'initial']};
 
     border-radius: 100px;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${() => theme.colors.primary};
   }
 `
 
@@ -68,18 +69,18 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
   width: 40px;
   
   border-radius: 100px;
-  border: 1px solid ${({ theme, hierarchy }) => theme.colors[BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
+  border: 1px solid ${({ hierarchy }) => theme.colors[BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
 
-  background-color: ${({ theme, hierarchy }) => theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
+  background-color: ${({ hierarchy }) => theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
   margin: ${({ hasProgressBar }) => `0px ${!hasProgressBar ? '8px' : '0px'}`};
 
   & > span {
-    color: ${({ theme, hierarchy }) => theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
+    color: ${({ hierarchy }) => theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
   }
   
   & path {
-    stroke: ${({ theme, hierarchy }) => theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
+    stroke: ${({ hierarchy }) => theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
   }
   
   z-index: 1;

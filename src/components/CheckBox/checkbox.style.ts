@@ -18,32 +18,32 @@ export const Label = styled.label<ILabelCheckBox>`
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   user-select: none;
 
-  color: ${({ onColor, theme }) =>  onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ onColor }) =>  onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
   
   &:hover {
-    color: ${({ theme, onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
   }
 
   &:hover span,
   input:checked ~ span {
-    background-color: ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.primary};
-    border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.primary};
+    background-color: ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.primary};
+    border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.primary};
   }
 
   &:hover {
     span {
-      background-color: ${theme.colors.primaryLightest};
-      border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
+      background-color: ${() => theme.colors.primaryLightest};
+      border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
     }
   }
   
   &.disabled {
-    color: ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+    color: ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
     
     &:hover span,
     input:checked ~ span {
-      background-color: ${({ onColor, theme }) =>  onColor ? 'transparent' : theme.colors.white};
-      border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+      background-color: ${({ onColor }) =>  onColor ? 'transparent' : theme.colors.white};
+      border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
       cursor: not-allowed;
     }
   }
@@ -71,10 +71,10 @@ export const Mark = styled.span<IMarkCheckBox>`
   width: 16px;
   background-color: transparent;
   border-radius: 4px;
-  border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
+  border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.white : theme.colors.neutralLowDark};
 
   &.disabled {
-    border: 2px solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+    border: 2px solid ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
 
   transition: 180ms ease-in-out;
@@ -91,7 +91,7 @@ export const Mark = styled.span<IMarkCheckBox>`
       width: 4px;
       height: 8px;
   
-      border: solid ${({ onColor, theme }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+      border: solid ${({ onColor }) =>  onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
       border-width: 0 2px 2px 0;
   
       transform: rotate(45deg);
@@ -109,7 +109,7 @@ export const Mark = styled.span<IMarkCheckBox>`
     width: 4px;
     height: 8px;
 
-    border: solid ${({ onColor, theme }) =>  onColor ? theme.colors.primary : theme.colors.white};
+    border: solid ${({ onColor }) =>  onColor ? theme.colors.primary : theme.colors.white};
     border-width: 0 2px 2px 0;
 
     transform: rotate(45deg);

@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
 import { hexToRgb } from '../../helpers';
-import theme from '../../theme/theme';
+import { themeWithouthInterface as theme } from '../../theme/theme';
 import { Icon, iIcon } from '../Icon';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
@@ -106,7 +106,7 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: boolean }>`
   margin-right: 10px;
   path {
-    stroke: ${({ theme, hierarchy, OnColor }) => {
+    stroke: ${({ hierarchy, OnColor }) => {
     if (hierarchy === 'primary') {
       // return theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
       return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
@@ -127,26 +127,26 @@ export const Button = styled.button<iButton>`
 
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
 
-  border: ${({ theme, OnColor, hierarchy }) => hierarchy && `1.5px solid ${theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
-  border-radius: ${({ radius, theme }) => radius && theme.borderRadius[radius]};
+  border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+  border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
 
   cursor: pointer;
   transition: background-color 0.3s;
 
   padding: 12px 24px;
-  color: ${({ hierarchy, OnColor, theme }) => hierarchy && theme.colors[OnColor ? COLOR_ON_HIERARCHY[hierarchy] : COLOR_BY_HIERARCHY[hierarchy]]};
-  background-color: ${({ hierarchy, OnColor, theme }) => hierarchy && theme.colors[OnColor ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
+  color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? COLOR_ON_HIERARCHY[hierarchy] : COLOR_BY_HIERARCHY[hierarchy]]};
+  background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
   &:hover:not(:disabled) {
-    border: ${({ theme, OnColor, hierarchy }) => hierarchy && `1.5px solid ${theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
-    background-color: ${({ hierarchy, OnColor, theme }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
+    border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+    background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
   }
 
   &:focus:not(:disabled) {
-    border-color: ${({ theme }) => theme.colors.helper};
-    animation: ${({ theme, OnColor, hierarchy }) => keyframes`
+    border-color: ${() => theme.colors.helper};
+    animation: ${({ OnColor, hierarchy }) => keyframes`
       100% {
-        border: ${hierarchy && `1.5px solid ${theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+        border: ${hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
       }
     `} 0.8s linear;
     
@@ -157,25 +157,25 @@ export const Button = styled.button<iButton>`
   }
 
   &[data-has-error=true] {
-    background-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
-    border-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
-    color: ${({ hierarchy, theme, OnColor }) => hierarchy && theme.colors[OnColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
+    background-color: ${({ hierarchy }) => hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
+    border-color: ${({ hierarchy }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
+    color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
 
     &:hover:not(:disabled) {
-      background-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
-      border-color: ${({ hierarchy, theme }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
-      color: ${({ hierarchy, theme, OnColor }) => hierarchy && theme.colors[OnColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
+      background-color: ${({ hierarchy }) => hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
+      border-color: ${({ hierarchy }) => hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
+      color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HELPER_COLOR_ON_COLOR_BY_HIERARCHY[hierarchy] : HELPER_COLOR_BY_HIERARCHY[hierarchy]]};
     }
 
     & > ${IconStyled} {
-      background-color: ${({ theme }) => theme.colors.white};
+      background-color: ${() => theme.colors.white};
     }
   }
 
   &:disabled {
     cursor: not-allowed;
     border-color: transparent;
-    background-color: ${({ hierarchy, OnColor, theme }) => hierarchy &&
+    background-color: ${({ hierarchy, OnColor }) => hierarchy &&
     // theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]
     hexToRgb(
       theme.colors[OnColor ? DISABLED_BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : DISABLED_BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]], {

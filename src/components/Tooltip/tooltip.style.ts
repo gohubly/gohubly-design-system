@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { theme } from '../..'
 import { iTooltip, iTooltipWithoutChildren, iTooltipPointerOrientation, iTooltipPointerPosition, iTooltipSizes } from './tooltip.interface'
 
 const PADDING_BY_SIZE: Record<iTooltipSizes, string> = {
@@ -29,7 +30,7 @@ export const Wrapper = styled.div<iTooltip>`
 
   ${({ position }) => WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation]}
 
-  background: ${({ theme }) => theme.colors.neutralLowDark};
+  background: ${() => theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
 
   opacity: 1;
@@ -40,14 +41,14 @@ export const Wrapper = styled.div<iTooltip>`
   }
 
   border-radius: 8px;
-  box-shadow: ${({ theme, shadow }) => shadow ? theme.shadow.Level1 : ''};
+  box-shadow: ${({ shadow }) => shadow ? theme.shadow.Level1 : ''};
 
   span {
     font-weight: 500;
     font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size as iTooltipSizes]};
     line-height: 16px;
     
-    color: ${({ theme }) => theme.colors.neutralHigh};
+    color: ${() => theme.colors.neutralHigh};
   }
 
   transition: opacity 0.1s linear;
@@ -88,7 +89,7 @@ export const Pointer = styled.div<iTooltipWithoutChildren>`
     [pointerPosition as iTooltipPointerPosition]
   };
 
-  background: ${({ theme }) => theme.colors.neutralLowDark};
+  background: ${() => theme.colors.neutralLowDark};
   border-radius: 0px;
 `
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface iRadio {
     label: string;
     name: string;
