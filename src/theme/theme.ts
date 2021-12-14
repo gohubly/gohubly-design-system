@@ -35,16 +35,16 @@ export const theme = {
     Heavy: '8px',
   },
   shadow: {
-    Level1: 'box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.16)',
-    Level2: 'box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12)',
-    Level3: 'box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08)',
-    Level4: 'box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08)', 
+    Level1: '0px 1px 2px rgba(0, 0, 0, 0.16)',
+    Level2: '0px 4px 8px rgba(0, 0, 0, 0.12)',
+    Level3: '0px 8px 16px rgba(0, 0, 0, 0.08)',
+    Level4: '0px 16px 32px rgba(0, 0, 0, 0.08)', 
   },
   shadowOn: { // hover, active ?
-    Level1: 'box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.24);',
-    Level2: 'box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.24);',
-    Level3: 'box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.24);',
-    Level4: 'box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24); ',
+    Level1: '0px 1px 2px rgba(0, 0, 0, 0.24);',
+    Level2: '0px 4px 8px rgba(0, 0, 0, 0.24);',
+    Level3: '0px 8px 16px rgba(0, 0, 0, 0.24);',
+    Level4: '0px 16px 32px rgba(0, 0, 0, 0.24); ',
   },
   fontWeight: {
      semiBold: '600',
@@ -93,7 +93,7 @@ export const theme = {
     themeLowDark: '#1b1a1f',
     themeHighDark: '#0b0a0d',
     
-    themeHightLigth: '#f6f9fc',
+    themeHighLight: '#f6f9fc',
   }
 }
 

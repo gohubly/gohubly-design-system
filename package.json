@@ -1,6 +1,6 @@
 {
   "name": "ds-gohubly",
-  "version": "1.1.29",
+  "version": "1.1.30",
   "private": false,
   "main": "./dist/lib/index.js",
   "types": "./dist/types",
@@ -60,7 +60,6 @@
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-docs": "^6.4.0",
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",

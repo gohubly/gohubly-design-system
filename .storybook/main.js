@@ -9,7 +9,6 @@ module.exports = {
     "@storybook/addon-essentials",
     "@storybook/preset-create-react-app",
     "@storybook/preset-typescript",
-    "@storybook/addon-centered/react",
     "storybook-dark-mode"
   ],
   staticDirs: ['../public'],

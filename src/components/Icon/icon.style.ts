@@ -14,6 +14,6 @@ export const IconWrapper = styled.div<iIcon>`
   }
 
   path {
-    stroke: ${({ OnColor, stroke }) => stroke || theme.colors[OnColor ? 'neutralHigh' : 'primary']};
+    stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
   }
 `

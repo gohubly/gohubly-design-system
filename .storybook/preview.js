@@ -9,6 +9,7 @@ import dsTheme from './designSystemTheme'
 
 const themes = [dsTheme];
 export const parameters = {
+  layout: 'centered',
   controls: {
     matchers: {
       color: /(background|color)$/i,

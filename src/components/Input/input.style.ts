@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { iInput } from '.';
 import { Icon } from '../Icon';
 
-import { theme } from '../..';
+import { themeWithouthInterface as theme } from '../..';
 
 interface iInputDropdownWrapper {
   opened: boolean

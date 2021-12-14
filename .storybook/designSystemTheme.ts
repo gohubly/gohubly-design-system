@@ -1,3 +1,5 @@
+type iDesignSystemTheme = Record<string, Record<string, string>>
+
 export const designSystemTheme = {
   fontSize: {
     XXXS: '12px',
@@ -38,11 +40,11 @@ export const designSystemTheme = {
     Level3: '0px 8px 16px rgba(0, 0, 0, 0.08)',
     Level4: '0px 16px 32px rgba(0, 0, 0, 0.08)', 
   },
-  shadowOn: {
-    Level1: '0px 1px 2px rgba(0, 0, 0, 0.24)',
-    Level2: '0px 4px 8px rgba(0, 0, 0, 0.24)',
-    Level3: '0px 8px 16px rgba(0, 0, 0, 0.24)',
-    Level4: '0px 16px 32px rgba(0, 0, 0, 0.24) ',
+  shadowOn: { // hover, active ?
+    Level1: '0px 1px 2px rgba(0, 0, 0, 0.24);',
+    Level2: '0px 4px 8px rgba(0, 0, 0, 0.24);',
+    Level3: '0px 8px 16px rgba(0, 0, 0, 0.24);',
+    Level4: '0px 16px 32px rgba(0, 0, 0, 0.24); ',
   },
   fontWeight: {
      semiBold: '600',
@@ -85,6 +87,13 @@ export const designSystemTheme = {
     helperLight: '#FFD8E0',
     helperMedium: '#EB0045',
     helperDark: '#91003E',
+
+    themeDark: '#16161A',
+    themeLightDark: '#E6E6E6',
+    themeLowDark: '#1b1a1f',
+    themeHighDark: '#0b0a0d',
+    
+    themeHighLight: '#f6f9fc',
   }
 }
 
