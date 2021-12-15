@@ -99,10 +99,17 @@ export const Label = styled.label<iStyledCommonProps>`
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
 `;
 
-const IconCss = css`
+const IconCss = css<{
+  onClick?: () => void,
+}>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
+
+  // Accessibility to have a bigger space to click
+  padding: 3px;
 
   path {
     stroke: ${() => theme.colors.primaryDark};

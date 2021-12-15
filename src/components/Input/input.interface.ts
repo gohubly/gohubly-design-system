@@ -11,7 +11,9 @@ export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean
 
   iconLeft?: iIconTypes
+  iconLeftOnClick?: () => void
   iconRight?: iIconTypes
+  iconRightOnClick?: () => void
   prefix?: string
   suffix?: string
 

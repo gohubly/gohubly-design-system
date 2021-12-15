@@ -42,7 +42,7 @@ export const Input: React.FC<iInput> = (props) => {
 
       <RelativeContainer>
         {/* Icone Esquerda */}
-        {props.iconLeft && <LeftIcon iconId={props.iconLeft} />}
+        {props.iconLeft && <LeftIcon onClick={props.iconLeftOnClick} iconId={props.iconLeft} />}
 
         {/* Prefixo */}
         {props.prefix && !props.iconLeft && <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>}
@@ -60,7 +60,7 @@ export const Input: React.FC<iInput> = (props) => {
         />
 
         {/* Icone Direita */}
-        {props.iconRight && <RightIcon iconId={props.iconRight} />}
+        {props.iconRight && <RightIcon onClick={props.iconRightOnClick} iconId={props.iconRight} />}
 
         {/* Sufixo */}
         {props.suffix && !props.iconRight && <SuffixText data-has-error={!!props?.error}>{props.suffix}</SuffixText>}
