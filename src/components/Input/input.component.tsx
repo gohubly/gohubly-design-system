@@ -25,6 +25,7 @@ export const Input: React.FC<iInput> = (props) => {
   const onClickDropdownItem = (itemValue: string) => {
     setDropdownOpened(false)
     setInputValue(itemValue)
+    props.onClickDropdownItem && props.onClickDropdownItem(itemValue)
   }
 
   const onFocusInput = (evt: React.FocusEvent<HTMLInputElement>) => {

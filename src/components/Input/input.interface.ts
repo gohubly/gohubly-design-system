@@ -17,6 +17,7 @@ export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
   prefix?: string
   suffix?: string
 
+  onClickDropdownItem: (itemValue: string) => void
   dropdown?: {
     value: string
     tag?: {
