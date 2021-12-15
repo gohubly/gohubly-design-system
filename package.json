@@ -1,6 +1,6 @@
 {
   "name": "ds-gohubly",
-  "version": "1.1.30",
+  "version": "1.1.31",
   "private": false,
   "main": "./dist/lib/index.js",
   "types": "./dist/types",
@@ -68,6 +68,7 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.3.12",
     "@types/styled-components": "^5.1.15",
+    "babel-loader": "8.1.0",
     "copyfiles": "^2.4.1",
     "react-docgen-typescript": "^2.1.1",
     "storybook-addon-styled-component-theme": "^2.0.0",
