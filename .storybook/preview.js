@@ -1,7 +1,6 @@
 import { addDecorator } from "@storybook/react";
 import { withThemesProvider } from "storybook-addon-styled-component-theme";
 import { ThemeProvider } from "styled-components";
-import centered from '@storybook/addon-centered/react';
 
 import { GlobalStyle, theme } from '../src/theme';
 
@@ -9,6 +8,7 @@ import dsTheme from './designSystemTheme'
 
 const themes = [dsTheme];
 export const parameters = {
+  // Add to center components iside the preview in Storybook.
   layout: 'centered',
   controls: {
     matchers: {
@@ -65,9 +65,6 @@ export const parameters = {
 
 // Add styled components and default theme
 addDecorator(withThemesProvider(themes), ThemeProvider);
-
-// Add to center components inside the preview in Storybook.
-addDecorator(centered);
 
 // Add DS Global Style in Storybook
 addDecorator((story) => (

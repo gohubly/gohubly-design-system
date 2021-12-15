@@ -19,4 +19,6 @@ export interface iIcon {
   fill?: keyof typeof theme.colors
   stroke?: keyof typeof theme.colors // Main
   fluid?: boolean
+  width?: string;
+  height?: string;
 }
