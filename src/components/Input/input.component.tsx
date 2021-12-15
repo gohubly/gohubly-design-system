@@ -22,10 +22,10 @@ export const Input: React.FC<iInput> = (props) => {
     else setInputValue(evt.target.value)
   }
 
-  const onClickDropdownItem = (itemValue: string) => {
+  const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
     setDropdownOpened(false)
     setInputValue(itemValue)
-    props.onClickDropdownItem && props.onClickDropdownItem(itemValue)
+    props.onClickDropdownItem && props.onClickDropdownItem(itemValue, itemLabel)
   }
 
   const onFocusInput = (evt: React.FocusEvent<HTMLInputElement>) => {
@@ -70,11 +70,11 @@ export const Input: React.FC<iInput> = (props) => {
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
             {props.dropdown.map((dropdownItem, index) => (
               <DropdownItem
-                onClick={() => onClickDropdownItem(dropdownItem.value)}
+                onClick={() => onClickDropdownItem(dropdownItem.value, dropdownItem.label)}
                 key={`input-dropdown-item-${dropdownItem.value}-${index}`}
                 active={dropdownItem.value === inputValue}
               >
-                {dropdownItem.value}
+                {dropdownItem.label || dropdownItem.value}
               </DropdownItem>
             ))}
           </DropdownWrapper>
