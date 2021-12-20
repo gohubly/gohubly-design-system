@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
+import { iParagraph, iTypography } from './typography.interface'
 import { themeWithouthInterface as theme } from '../..'
-import { iTypography } from './typography.interface'
 
 const FONT_FAMILY_BASED_ON_WEIGHT: Record<keyof typeof theme.fontWeight, string> = {
   medium: 'InterMedium',
@@ -17,8 +17,12 @@ const TextStyled = css<iTypography>`
   font-family: ${({ fontWeight }) => FONT_FAMILY_BASED_ON_WEIGHT[fontWeight || 'medium']};
 `
 
-export const Paragraph = styled.p`
+export const Paragraph = styled.p<iParagraph>`
   ${TextStyled}
+
+  ${({ noMargin }) => noMargin && css`
+    margin: 0px;
+  `}
 `
 
 export const Span = styled.span`
