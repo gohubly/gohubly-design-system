@@ -49,7 +49,7 @@ export const theme = {
   fontWeight: {
      semiBold: '600',
      medium: '500',
-     regular: '400  ',
+     regular: '400',
   },
   spacing: {}, // como funcionaria com responsividade
   spacingInset: {},
