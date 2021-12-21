@@ -17,9 +17,9 @@ export const CardSmall: React.FC<iCardSmall> = ({
       {...props}
       OnColor={OnColor}
     >
-      <Avatar image={avatar} OnColor />
+      {avatar && <Avatar name={avatar} image={avatar} OnColor />}
       <ContentContainer>
-        { props.content && (
+        { props.title && (
           <Typography color='neutralLowDark' size='XS' fontWeight='regular'>
             { props.title }
           </Typography>
