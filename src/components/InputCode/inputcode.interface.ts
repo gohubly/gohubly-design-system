@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from "react";
 
-export interface iInputCode extends InputHTMLAttributes<HTMLInputElement> {
+type iCustomInputHtmlAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
+export interface iInputCode extends iCustomInputHtmlAttributes {
   label?: string
   helperText?: string
   error?: boolean

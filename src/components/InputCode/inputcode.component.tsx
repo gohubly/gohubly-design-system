@@ -5,7 +5,7 @@ import { iInputCode } from './inputcode.interface';
 import { Input, Container, InputsWrapper } from './inputcode.style';
 
 const inputCodeDefaultClass = 'ds-inputcode-rc'
-export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperText, label }) => {
+export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperText, label, ...props }) => {
   const [nodes, setNodes] = useState<NodeListOf<Element>>();
   const [codes, setCodes] = useState<string[]>([]);
 
@@ -62,6 +62,7 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
             className={inputCodeDefaultClass}
             data-has-error={!!error}
             onKeyUp={e => onNext(e, index)}
+            {...props}
           />
         ))}
       </InputsWrapper>
