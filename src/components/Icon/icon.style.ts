@@ -1,8 +1,11 @@
 import styled, { css } from 'styled-components';
 import { iIcon } from '.';
 import { themeWithouthInterface as theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss';
 
 export const IconWrapper = styled.div<iIcon>`
+  ${defaultCss};
+
   svg, img {
     fill: ${({ fill }) => fill || 'auto'};
     stroke: ${({ stroke }) => stroke || theme.colors.primary};

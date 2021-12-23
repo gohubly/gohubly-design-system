@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { iParagraph, iTypography } from './typography.interface'
 import { themeWithouthInterface as theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss'
 
 const FONT_FAMILY_BASED_ON_WEIGHT: Record<keyof typeof theme.fontWeight, string> = {
   medium: 'InterMedium',
@@ -9,6 +10,8 @@ const FONT_FAMILY_BASED_ON_WEIGHT: Record<keyof typeof theme.fontWeight, string>
 }
 
 const TextStyled = css<iTypography>`
+  ${defaultCss};
+
   font-size: ${({ size }) => theme.fontSize[size || 'MD']};
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 

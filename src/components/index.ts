@@ -1,5 +1,3 @@
-import './main.style.css'
-
 export * from './Avatar'
 export * from './Button'
 export * from './Icon'

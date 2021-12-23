@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { iLink } from '.'
 import { themeWithouthInterface as theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss'
 
 export const Link = styled.a<iLink>`
   text-decoration: underline;
@@ -23,6 +24,8 @@ const LINK_ON_COLOR = {
 }
 
 export const Wrapper = styled.div<iLink>`
+  ${defaultCss};
+
   display: flex;
   align-items: center;
   justify-content: space-between;

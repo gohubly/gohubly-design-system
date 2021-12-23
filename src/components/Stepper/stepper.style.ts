@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { iStepperHierarchy } from '.'
 import { themeWithouthInterface as theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss'
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iStepperHierarchy, string> = {
   primary: 'primary',
@@ -27,6 +28,8 @@ const PROGRESS_BAR_WIDTH_BY_STATE: Record<string, string> = {
 }
 
 export const Container = styled.div`
+  ${defaultCss};
+
   position: relative;
   
   display: flex;

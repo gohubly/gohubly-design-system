@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { iCardSmall } from '.';
+import { defaultCss } from '../../../theme/defaultCss';
 
 const BORDER_COLOR = {
   normal: 'neutralHighMedium',
@@ -26,6 +27,8 @@ const ON_COLOR_BACKGROUND = {
 }
 
 export const CardSmall = styled.div<iCardSmall>`
+  ${defaultCss};
+
   display: flex;
   align-items: center;
 

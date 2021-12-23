@@ -1,6 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { iButton, iButtonHierarchy } from '.';
 import { hexToRgb } from '../../helpers';
+import { defaultCss } from '../../theme/defaultCss';
 import { themeWithouthInterface as theme } from '../../theme/theme';
 import { Icon, iIcon } from '../Icon';
 
@@ -121,6 +122,8 @@ export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: b
 `
 
 export const Button = styled.button<iButton>`
+  ${defaultCss};
+
   display: flex;
   align-items: center;
   justify-content: center;

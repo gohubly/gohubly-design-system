@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { theme } from '../..';
+import { defaultCss } from '../../theme/defaultCss';
 
 export const Input = styled.input`
   width: 40px;
@@ -27,6 +28,8 @@ export const InputsWrapper = styled.div`
 `
 
 export const Container = styled.div`
+  ${defaultCss};
+
   display: flex;
   flex-direction: column;
   gap: 8px;

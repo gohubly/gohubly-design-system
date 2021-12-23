@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { iAvatar, iAvatarSizes } from '.'
 import { themeWithouthInterface as theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss'
 
 const AVATAR_DETAILS_WITH_ON_COLOR: Record<string, string> = {
   textColor: 'primaryLightest',
@@ -24,6 +25,8 @@ const FONT_SIZE_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
 }
 
 export const Wrapper = styled.div<iAvatar>`
+  ${defaultCss};
+
   position: relative;
   display: flex;
   align-items: center;

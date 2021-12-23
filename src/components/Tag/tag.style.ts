@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { iTag, iTagHierarchy } from '.';
 import { themeWithouthInterface as theme } from '../..';
+import { defaultCss } from '../../theme/defaultCss';
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
   primary: 'primaryLightest',
@@ -41,6 +42,8 @@ const HOVER_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
 }
 
 export const Tag = styled.button<iTag>`
+  ${defaultCss};
+
   width: ${({ fluid }) => fluid ? '100%' : 'fit-content'};
   transition: background-color .3s linear;
   padding: 4px 8px;

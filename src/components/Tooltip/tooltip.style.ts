@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { theme } from '../..'
+import { defaultCss } from '../../theme/defaultCss'
 import { iTooltip, iTooltipWithoutChildren, iTooltipPointerOrientation, iTooltipPointerPosition, iTooltipSizes } from './tooltip.interface'
 
 const PADDING_BY_SIZE: Record<iTooltipSizes, string> = {
@@ -94,6 +95,8 @@ export const Pointer = styled.div<iTooltipWithoutChildren>`
 `
 
 export const Container = styled.div`
+  ${defaultCss};
+
   position: relative;
 
   &:hover {

@@ -3,6 +3,7 @@ import { iInput } from '.';
 import { Icon } from '../Icon';
 
 import { themeWithouthInterface as theme } from '../..';
+import { defaultCss } from '../../theme/defaultCss';
 
 interface iInputDropdownWrapper {
   opened: boolean
@@ -26,7 +27,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
-  color: ${({ OnColor , onClick }) =>
+  color: ${({ OnColor, onClick }) =>
     onClick ?
       theme.colors.primary
       : OnColor
@@ -90,6 +91,8 @@ export const Input = styled.input<iStyledCommonProps>`
 `
 
 export const Label = styled.label<iStyledCommonProps>`
+  ${defaultCss};
+
   position: relative;
 
   display: flex;
