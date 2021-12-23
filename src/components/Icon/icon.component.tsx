@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { iIcon,iIconSizes,iIconTypes } from "."
+import { iIcon, iIconSizes, iIconTypes } from "."
 import { IconWrapper } from './icon.style'
 
 import Search from './icons/search'
@@ -62,12 +62,12 @@ import CashSign from './icons/cashSign'
 import ChevronDown from './icons/chevronDown'
 import Bag from './icons/bag'
 
-const ICON_SIZE_BY_SIZE: Record<iIconSizes,string> = {
+const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   MD: '32px',
   SM: '24px',
 }
 
-const SVG_COMPONENT: Record<any, any> = {
+const SVG_COMPONENT: Record<iIconTypes, any> = {
   search: Search,
   camera: Camera,
   file1: File1,

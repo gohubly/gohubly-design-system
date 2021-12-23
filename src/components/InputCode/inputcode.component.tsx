@@ -13,12 +13,12 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
     const ipts = document.querySelectorAll(`.${inputCodeDefaultClass}`);
     setNodes(ipts);
   }, [])
-  
+
   const onNext = (evt: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     let { currentTarget, keyCode, charCode, which } = evt;
     const code = charCode || keyCode || which
     const value = currentTarget.value?.trim()
-    
+
     const goToNextInputIfExists = () => nodes && nodes[index + 1] && (nodes[index + 1] as HTMLInputElement).focus();
 
     // When press space, check if exists next block & focus it
@@ -27,27 +27,28 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
       goToNextInputIfExists();
     }
 
-    // Continue only if key is a number
     const isNumberFromKeyboard = code >= 48 && code <= 57;
     const isNumberFromNumpad = code >= 96 && code <= 105;
 
+    // If key is not a number, clear input value
     if (!isNumberFromKeyboard && !isNumberFromNumpad) {
       currentTarget.value = ''
     }
 
+    // Continue only if key is a number
     if (isNumberFromKeyboard || isNumberFromNumpad) {
       const inputValue = value
       let newCode = [...codes]
       newCode[index] = inputValue
       currentTarget.value = inputValue
-  
+
       // Update code on state
       setCodes(newCode);
-  
+
       // Callback on change code
       const newCodeStringfied = newCode.join('')
       onCode && onCode(newCodeStringfied)
-  
+
       goToNextInputIfExists();
     }
   };

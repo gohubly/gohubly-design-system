@@ -29,6 +29,8 @@ export const CardSmall = styled.div<iCardSmall>`
   display: flex;
   align-items: center;
 
+  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
+
   border: ${({ theme, OnColor }) => `2px solid ${theme.colors[OnColor ? ON_COLOR_BORDER['normal'] : BORDER_COLOR['normal']]}`};
   border-radius: ${({ theme }) => theme.borderRadius.SM};
 
