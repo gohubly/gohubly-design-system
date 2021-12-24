@@ -17,6 +17,6 @@ export const defaultCss = css`
   }
 
   * {
-    font-family: 'InterMedium', 'InterRegular', 'Inter', inherit;
+    font-family: 'Inter', 'InterMedium', 'InterRegular', sans-serif;
   }
 `
