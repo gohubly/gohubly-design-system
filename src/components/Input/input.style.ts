@@ -40,7 +40,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
 
   text-decoration: ${({ onClick }) => onClick ? 'underline' : 'none'};
 
-  cusor: ${({ onClick }) => onClick ? 'cursor' : 'auto'};
+  cursor: ${({ onClick }) => onClick ? 'pointer' : 'auto'};
 `
 
 export const Input = styled.input<iStyledCommonProps>`

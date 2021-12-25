@@ -24,7 +24,7 @@ export const Input: React.FC<iInput> = (props) => {
 
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
     setDropdownOpened(false)
-    setInputValue(itemValue)
+    setInputValue(itemLabel ?? itemValue)
     props.onClickDropdownItem && props.onClickDropdownItem(itemValue, itemLabel)
   }
 
