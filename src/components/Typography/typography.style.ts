@@ -3,12 +3,6 @@ import { iParagraph, iTypography } from './typography.interface'
 import { themeWithouthInterface as theme } from '../..'
 import { defaultCss } from '../../theme/defaultCss'
 
-const FONT_FAMILY_BASED_ON_WEIGHT: Record<keyof typeof theme.fontWeight, string> = {
-  medium: 'InterMedium',
-  regular: 'InterRegular',
-  semiBold: 'InterSemiBold'
-}
-
 const TextStyled = css<iTypography>`
   ${defaultCss};
 
@@ -16,8 +10,6 @@ const TextStyled = css<iTypography>`
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 
   color: ${({ color }) => theme.colors[color || 'white']};
-
-  font-family: ${({ fontWeight }) => FONT_FAMILY_BASED_ON_WEIGHT[fontWeight || 'medium']};
 `
 
 export const Paragraph = styled.p<iParagraph>`
