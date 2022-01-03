@@ -66,10 +66,9 @@ export const parameters = {
 // Add styled components and default theme
 addDecorator(withThemesProvider(themes), ThemeProvider);
 
-// Add DS Global Style in Storybook
+// Add font to display
 addDecorator((story) => (
-  <>
-    <GlobalStyle />
+  <div style={{ fontFamily: 'InterMedium' }}>
     {story()}
-  </>
+  </div>
 ));
