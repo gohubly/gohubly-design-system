@@ -23,7 +23,7 @@ export const Stepper: React.FC<iStepper> = ({
           <>
             <StepWrapper key={`step-wrapper-${_step}-${i}`} hierarchy={hierarchy} hasProgressBar={hasProgressBar}>
               {isStepCompleted
-                ? <Icon iconId="check" />
+                ? <Icon iconId="check" size='SM' />
                 : <Typography color="primary" size="MD">
                     {i + 1}
                   </Typography>

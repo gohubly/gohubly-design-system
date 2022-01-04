@@ -72,7 +72,7 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
   width: 40px;
   
   border-radius: 100px;
-  border: 1px solid ${({ hierarchy }) => theme.colors[BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
+  border: 2px solid ${({ hierarchy }) => theme.colors[BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
 
   background-color: ${({ hierarchy }) => theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
