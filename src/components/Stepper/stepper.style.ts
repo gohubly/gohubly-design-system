@@ -21,6 +21,12 @@ const BORDER_COLOR_BY_HIERARCHY: Record<iStepperHierarchy, string> = {
   secondary: 'transparent'
 }
 
+const BORDER_COLOR_MINI_BY_HIERARCHY: Record<iStepperHierarchy, string> = {
+  primary: 'transparent',
+  ghost: 'primary',
+  secondary: 'primary'
+}
+
 const PROGRESS_BAR_WIDTH_BY_STATE: Record<string, string> = {
   completed: '100%',
   active: '50%',
@@ -76,7 +82,7 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
 
   background-color: ${({ hierarchy }) => theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
-  margin: ${({ hasProgressBar }) => `0px ${!hasProgressBar ? '8px' : '0px'}`};
+  margin: 0px ${({ hasProgressBar }) => !hasProgressBar ? '8px' : '0px'};
 
   & > span {
     color: ${({ hierarchy }) => theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
@@ -87,4 +93,17 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
   }
   
   z-index: 1;
+`
+
+export const StepMiniWrapper = styled.div<{ hierarchy: iStepperHierarchy, complete: boolean }>`
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+
+  background-color: ${({ hierarchy, complete }) => complete ? theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
+  border: 1px solid ${({ hierarchy, complete }) => complete ? theme.colors[BORDER_COLOR_MINI_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
 `
