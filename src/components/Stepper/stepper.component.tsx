@@ -14,7 +14,7 @@ export const Stepper: React.FC<iStepper> = ({
   const stepsArray = [...Array(steps)]
   
   return (
-    <Container>
+    <Container className='stepper-container'>
       {stepsArray.map((_step, i) => {
         const isCurrentStep = currentStep === i
         const isNextStepActive = currentStep === i + 1
