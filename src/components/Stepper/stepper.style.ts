@@ -95,13 +95,13 @@ export const StepWrapper = styled.div<{ hierarchy: iStepperHierarchy, hasProgres
   z-index: 1;
 `
 
-export const StepMiniWrapper = styled.div<{ hierarchy: iStepperHierarchy, complete: boolean }>`
-  width: 4px;
-  height: 4px;
+export const StepMiniWrapper = styled.div<{ hierarchy: iStepperHierarchy, isCurrent: boolean }>`
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
 
-  background-color: ${({ hierarchy, complete }) => complete ? theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
-  border: 1px solid ${({ hierarchy, complete }) => complete ? theme.colors[BORDER_COLOR_MINI_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
+  background-color: ${({ hierarchy, isCurrent }) => isCurrent ? theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
+  border: 1px solid ${({ hierarchy, isCurrent }) => isCurrent ? theme.colors[BORDER_COLOR_MINI_BY_HIERARCHY[hierarchy]] : theme.colors.neutralHighDark};
 
   &:not(:last-child) {
     margin-right: 8px;

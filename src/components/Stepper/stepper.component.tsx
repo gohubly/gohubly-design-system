@@ -21,7 +21,7 @@ export const Stepper: React.FC<iStepper> = ({
         const isStepCompleted = currentStep > i
 
         if(mini){
-          return <StepMiniWrapper key={`step-mini-wrapper-${_step}-${i}`} hierarchy={hierarchy} complete={isStepCompleted} />
+          return <StepMiniWrapper key={`step-mini-wrapper-${_step}-${i}`} hierarchy={hierarchy} isCurrent={isCurrentStep} />
         }
 
         return (
