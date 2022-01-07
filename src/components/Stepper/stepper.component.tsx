@@ -9,12 +9,13 @@ export const Stepper: React.FC<iStepper> = ({
   steps = 0,
   hierarchy = 'primary',
   hasProgressBar = true,
-  mini = false
+  mini = false,
+  className
 }) => {
   const stepsArray = [...Array(steps)]
   
   return (
-    <Container className='stepper-container'>
+    <Container className={className}>
       {stepsArray.map((_step, i) => {
         const isCurrentStep = currentStep === i
         const isNextStepActive = currentStep === i + 1
