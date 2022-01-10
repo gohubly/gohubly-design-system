@@ -128,9 +128,12 @@ export const Button = styled.button<iButton>`
   align-items: center;
   justify-content: center;
 
+  
   height: fit-content;
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
-
+  
+  outline: none;
+  border-color: transparent;
   border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
   border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
 
