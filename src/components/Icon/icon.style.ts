@@ -9,7 +9,7 @@ export const IconWrapper = styled.div<iIcon>`
   height: ${({ height }) => height || '24px'};
 
   svg, img {
-    fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : 'auto'};
+    fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : (fill || 'transparent')};
     stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
     width: ${({ width }) => width || '24px'};
     height: ${({ height }) => height || '24px'};

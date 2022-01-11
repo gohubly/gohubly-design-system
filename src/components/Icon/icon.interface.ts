@@ -16,7 +16,7 @@ export interface iIcon {
   OnColor?: boolean
   onClick?: () => void
   size?: iIconSizes
-  fill?: keyof typeof theme.colors
+  fill?: keyof typeof theme.colors & string
   stroke?: keyof typeof theme.colors // Main
   fluid?: boolean
   width?: string;

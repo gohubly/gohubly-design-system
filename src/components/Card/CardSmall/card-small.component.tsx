@@ -20,13 +20,13 @@ export const CardSmall: React.FC<iCardSmall> = ({
       {avatar && <Avatar name={avatar} image={avatar} OnColor />}
       <ContentContainer>
         { props.title && (
-          <Typography color='neutralLowDark' size='XS' fontWeight='regular'>
+          <Typography color='neutralLowDark' size='XS' fontWeight={400}>
             { props.title }
           </Typography>
         ) }
 
         { props.content && (
-          <Paragraph color='neutralLowMedium' size='XXS' as="p" fontWeight='regular' noMargin>
+          <Paragraph color='neutralLowMedium' size='XXS' as="p" fontWeight={400} noMargin>
             { props.content }
           </Paragraph>
           ) }
