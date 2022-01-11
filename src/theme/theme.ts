@@ -47,9 +47,9 @@ export const theme = {
     Level4: '0px 16px 32px rgba(0, 0, 0, 0.24); ',
   },
   fontWeight: {
-     semiBold: '600',
-     medium: '500',
-     regular: '400',
+     600: '600',
+     500: '500',
+     400: '400',
   },
   spacing: {}, // como funcionaria com responsividade
   spacingInset: {},

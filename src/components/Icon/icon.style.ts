@@ -9,8 +9,8 @@ export const IconWrapper = styled.div<iIcon>`
   height: ${({ height }) => height || '24px'};
 
   svg, img {
-    fill: ${({ fill }) => fill || 'auto'};
-    stroke: ${({ stroke }) => stroke || theme.colors.primary};
+    fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : 'auto'};
+    stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
     width: ${({ width }) => width || '24px'};
     height: ${({ height }) => height || '24px'};
 
@@ -21,6 +21,7 @@ export const IconWrapper = styled.div<iIcon>`
   }
 
   path {
+    fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : 'auto'};
     stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
   }
 `

@@ -8,7 +8,7 @@ import dsTheme from './designSystemTheme'
 
 const themes = [dsTheme];
 export const parameters = {
-  // Add to center components iside the preview in Storybook.
+  // Add to center components inside the preview in Storybook.
   layout: 'centered',
   controls: {
     matchers: {

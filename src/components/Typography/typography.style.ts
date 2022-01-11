@@ -7,6 +7,7 @@ const TextStyled = css<iTypography>`
   ${defaultCss};
 
   font-size: ${({ size }) => theme.fontSize[size || 'MD']};
+  font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']};
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 
   color: ${({ color }) => theme.colors[color || 'white']};
