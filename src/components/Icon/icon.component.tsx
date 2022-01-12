@@ -61,6 +61,9 @@ import Shield from './icons/shield'
 import CashSign from './icons/cashSign'
 import ChevronDown from './icons/chevronDown'
 import Bag from './icons/bag'
+import CashSign2 from './icons/cashSign2'
+import AppIcon from './icons/app-icon'
+import Percent from './icons/percent'
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   MD: '32px',
@@ -126,6 +129,9 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   chevronDown: ChevronDown,
   chevronLeft: ChevronLeft,
   bag: Bag,
+  app: AppIcon,
+  cashSign2: CashSign2,
+  percent: Percent,
 }
 
 export const Icon: React.FC<iIcon> = ({

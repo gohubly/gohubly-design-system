@@ -7,7 +7,7 @@ export type iIconTypes =
   'chevronUp' | 'linkedin' | 'starEmpty' | 'starFilled' | 'list' | 'minus' | 'truck' | 'envelope' | 'bag' |
   'moreVertical' | 'twitter' | 'facebook' | 'user1' | 'globe' | 'phone' | 'youtube' | 'grid' | 'pinLocation' |
   'hamburguer' | 'play' | 'chevronRight' | 'heart' | 'plus' | 'instagram' | 'check' | 'shield' | 'cashSign' |
-  'chevronDown' | 'chevronLeft'
+  'chevronDown' | 'chevronLeft' | 'app' | 'cashSign2' | 'percent'
 
 export type iIconSizes = 'SM' | 'MD'
 
