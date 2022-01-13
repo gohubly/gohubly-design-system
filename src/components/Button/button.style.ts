@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { iButton, iButtonHierarchy } from '.';
+import { iButton, iButtonHierarchy, iButtonSizes } from '.';
 import { hexToRgb } from '../../helpers';
 import { defaultCss } from '../../theme/defaultCss';
 import { themeWithouthInterface as theme } from '../../theme/theme';
@@ -104,6 +104,12 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   secondary: 'primaryLight',
 }
 
+const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: '8px 16px',
+  MD: '12px 24px',
+  LG: '16px 32px'
+}
+
 export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: boolean }>`
   margin-right: 10px;
   path {
@@ -140,7 +146,7 @@ export const Button = styled.button<iButton>`
   cursor: pointer;
   transition: background-color 0.3s;
 
-  padding: 12px 24px;
+  padding: ${({ size }) => size && PADDING_BY_SIZE[size]};
   color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? COLOR_ON_HIERARCHY[hierarchy] : COLOR_BY_HIERARCHY[hierarchy]]};
   background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 

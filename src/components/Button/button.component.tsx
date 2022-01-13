@@ -7,6 +7,7 @@ export const Button: React.FC<iButton> = ({
   children,
   disabled,
   hierarchy = 'primary',
+  size = 'MD',
   radius = 'SM',
   error,
   icon,
@@ -17,6 +18,7 @@ export const Button: React.FC<iButton> = ({
       disabled={disabled}
       hierarchy={hierarchy}
       data-has-error={error}
+      size={size}
       radius={radius}
       {...props}
     >
