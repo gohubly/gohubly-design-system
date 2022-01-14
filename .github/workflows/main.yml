@@ -26,9 +26,6 @@ jobs:
       - name: Install npm packages 🔧
         run: yarn
 
-      - name: Package listing 🛎️🛎️🛎️
-        run: ls
-
       - name: Build Storybook 🔧
         run: yarn build:storybook
 
@@ -36,6 +33,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: [setup-and-build]
     steps:
+      - name: Package listing 🛎️🛎️🛎️
+        run: ls
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
