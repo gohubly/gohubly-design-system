@@ -7,7 +7,7 @@ on:
     branches: [main, development]
 
 jobs:
-  setup-and-build:
+  prepare-build-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Setup NodeJS 🔧
@@ -28,13 +28,6 @@ jobs:
 
       - name: Build Storybook 🔧
         run: yarn build:storybook
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [setup-and-build]
-    steps:
-      - name: Package listing 🛎️🛎️🛎️
-        run: ls
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.2
