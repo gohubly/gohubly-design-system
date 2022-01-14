@@ -14224,6 +14224,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vsts-npm-auth@^0.41.0:
+  version "0.41.0"
+  resolved "https://pkgs.dev.azure.com/b8one/Plugone/_packaging/hubly-design-system/npm/registry/vsts-npm-auth/-/vsts-npm-auth-0.41.0.tgz#76f46e2f6068ed517c6c4719fe0d01bcc2cd394e"
+  integrity sha1-dvRuL2Bo7VF8bEcZ/g0BvMLNOU4=
+
 vue-template-compiler@^2.6.11:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.14.tgz#a2f0e7d985670d42c9c9ee0d044fed7690f4f763"

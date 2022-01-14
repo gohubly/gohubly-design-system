@@ -76,6 +76,7 @@
     "storybook-addon-styled-component-theme": "^2.0.0",
     "storybook-dark-mode": "^1.0.8",
     "ts-loader": "^8.2.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "vsts-npm-auth": "^0.41.0"
   }
 }
