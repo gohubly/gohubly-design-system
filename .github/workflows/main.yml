@@ -37,10 +37,7 @@ jobs:
     needs: [setup-and-build]
     steps:
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: development # The branch the action should deploy to.
-          FOLDER: storybook-static # The folder that the build-storybook script generates files.
-          CLEAN: true # Automatically remove deleted files from the deploy branch
-          TARGET_FOLDER: src
+          branch: development # The branch the action should deploy to.
+          folder: storybook-static # The folder the action should deploy.
