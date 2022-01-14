@@ -1,9 +1,27 @@
 import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.div<{ direction: 'horizontal' | 'vertical' }>`
+type iDirectionTypes = 'horizontal' | 'vertical'
+
+export const Wrapper = styled.div<{ direction: iDirectionTypes }>`
+  width: 100%;
   display: flex;
   flex-direction: ${({ direction }) => direction === 'vertical' ? 'column' : 'row'};
   gap: ${({ direction }) => direction === 'vertical' ? '20px' : '24px'};
+  position: relative;
+
+  ${({ direction, theme }) =>
+    direction === 'horizontal' &&
+    css`
+      ::after {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background-color: ${theme.colors.neutralHighMedium};
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+      }
+    `}
 `
 
 export const TabItem = styled.div<{ selected: boolean }>`
