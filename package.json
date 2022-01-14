@@ -5,6 +5,7 @@
   "main": "./dist/lib/index.js",
   "types": "./dist/types",
   "license": "MIT",
+  "website": "http://gohubly.github.io/gohubly-design-system",
   "files": [
     "./dist"
   ],
