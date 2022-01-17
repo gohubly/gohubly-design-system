@@ -1,10 +1,11 @@
 {
   "name": "gohubly-design-system",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "private": false,
   "main": "./dist/lib/index.js",
   "types": "./dist/types",
   "license": "MIT",
+  "website": "http://gohubly.github.io/gohubly-design-system",
   "files": [
     "./dist"
   ],
@@ -28,6 +29,7 @@
     "start": "start-storybook -p 6006",
     "build:lib": "yarn cache clean && yarn tsc -p .",
     "build:storybook": "mkdir public & yarn build-storybook",
+    "deploy:storybook": "gh-pages -d storybook-static",
     "pub": "yarn build:lib && yarn publish"
   },
   "eslintConfig": {
@@ -69,10 +71,12 @@
     "@storybook/react": "^6.3.12",
     "@types/styled-components": "^5.1.15",
     "babel-loader": "8.1.0",
+    "gh-pages": "^3.2.3",
     "react-docgen-typescript": "^2.1.1",
     "storybook-addon-styled-component-theme": "^2.0.0",
     "storybook-dark-mode": "^1.0.8",
     "ts-loader": "^8.2.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "vsts-npm-auth": "^0.41.0"
   }
 }
