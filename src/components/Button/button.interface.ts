@@ -10,6 +10,7 @@ export interface iButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   OnColor?: boolean
   disabled?: boolean
   error?: boolean
+  loading?: boolean
   icon?: iIconTypes
   fluid?: boolean
   size?: iButtonSizes
