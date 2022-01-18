@@ -56,3 +56,9 @@ PrimaryOnColor.parameters = {
     default: 'figma',
   },
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  children:  'Loading',
+  loading: true
+};
