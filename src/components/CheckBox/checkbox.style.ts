@@ -15,9 +15,6 @@ export const Label = styled.label<ILabelCheckBox>`
   font-size: 14px;
   height: 20px;
 
-  padding-top: 2px;
-  padding-bottom: 2px;
-
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   user-select: none;
 
@@ -68,8 +65,10 @@ export const Box = styled.input.attrs({
 
 export const Mark = styled.span<IMarkCheckBox>`
   position: absolute;
-  top: 0;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
   height: 16px;
   width: 16px;
   background-color: transparent;

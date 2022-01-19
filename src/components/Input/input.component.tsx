@@ -4,7 +4,7 @@ import { useClickOutside } from '../../hooks';
 import { iInput } from './input.interface';
 import { Label, LabelText, HelperText, Input as StyledInput, LeftIcon, RelativeContainer, RightIcon, PrefixText, SuffixText, DropdownWrapper, DropdownItem } from './input.style';
 
-export const Input: React.FC<iInput> = (props) => {
+export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
   const dropdownRef = useRef(null)
   const [dropdownOpened, setDropdownOpened] = useState(false);
   const [inputValue, setInputValue] = useState(props.value || props.defaultValue || '')
@@ -24,7 +24,7 @@ export const Input: React.FC<iInput> = (props) => {
 
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
     setDropdownOpened(false)
-    setInputValue(itemLabel ?? itemValue)
+    setInputValue(itemLabel || itemValue)
     props.onClickDropdownItem && props.onClickDropdownItem(itemValue, itemLabel)
   }
 
@@ -51,6 +51,7 @@ export const Input: React.FC<iInput> = (props) => {
         {/* Input */}
         <StyledInput
           {...props}
+          Size={propsSize}
           value={inputValue}
           data-has-error={!!props?.error}
           onChange={onInputChange}

@@ -4,6 +4,7 @@ import { Icon } from '../Icon';
 
 import { themeWithouthInterface as theme } from '../..';
 import { defaultCss } from '../../theme/defaultCss';
+import { iInputSizes } from './input.interface';
 
 interface iInputDropdownWrapper {
   opened: boolean
@@ -14,6 +15,12 @@ interface iInputDropdownItem {
 interface iStyledCommonProps extends Partial<iInput> {
   contentLeft?: boolean
   contentRight?: boolean
+  Size?: iInputSizes
+}
+
+const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  MD: '48px',
+  SM: '40px'
 }
 
 export const LabelText = styled.span<iStyledCommonProps>`
@@ -44,6 +51,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
 `
 
 export const Input = styled.input<iStyledCommonProps>`
+  height: ${({ size }): string => INPUT_HEIGHT_BASED_ON_SIZE[size || 'MD']};
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
   background: ${() => theme.colors.neutralHigh};
 
@@ -101,33 +109,6 @@ export const Label = styled.label<iStyledCommonProps>`
 
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
 `;
-
-const IconCss = css<{
-  onClick?: () => void,
-}>`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-
-  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
-
-  // Accessibility to have a bigger space to click
-  padding: 3px;
-
-  path {
-    stroke: ${() => theme.colors.primaryDark};
-  }
-`
-
-export const LeftIcon = styled(Icon)`
-  ${IconCss};
-  left: 7px; 
-`
-
-export const RightIcon = styled(Icon)`
-  ${IconCss};
-  right: 7px; 
-`
 
 export const RelativeContainer = styled.div`
   position: relative;
@@ -229,4 +210,31 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
 
   cursor: pointer;
   transition: background 0.1s linear;
+`
+
+const IconCss = css<{
+  onClick?: () => void,
+}>`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
+
+  // Accessibility to have a bigger space to click
+  padding: 3px;
+
+  path {
+    stroke: ${() => theme.colors.primaryDark};
+  }
+`
+
+export const LeftIcon = styled(Icon)`
+  ${IconCss};
+  left: 7px; 
+`
+
+export const RightIcon = styled(Icon)`
+  ${IconCss};
+  right: 7px; 
 `
