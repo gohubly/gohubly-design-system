@@ -1,9 +1,14 @@
 import { InputHTMLAttributes } from "react";
 import { iIconTypes } from "../Icon";
 
-export interface iInput extends InputHTMLAttributes<HTMLInputElement> {
+export type iInputSizes = 'SM' | 'MD'
+
+type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> 
+
+export interface iInput extends iInputHTML {
   OnColor?: boolean
   fluid?: boolean
+  size?: iInputSizes
 
   label?: string
   helperText?: string
