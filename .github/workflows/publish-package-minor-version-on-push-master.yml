@@ -1,10 +1,10 @@
-name: DEV CI/CD GoHubly Design-System
+name: Publish library new patch version on push master
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [development]
+    branches: [main]
 
 jobs:
   prepare-build-deploy:
@@ -20,17 +20,14 @@ jobs:
         with:
           persist-credentials: false
 
-      # - name: Azure Artifacts - Feed authentication
-      #   run: npx vsts-npm-auth -config .npmrc
+      - name: Azure Artifacts - Feed authentication 🔧
+        run: npx vsts-npm-auth -config .npmrc
 
       - name: Install npm packages 🔧
         run: yarn
 
-      - name: Build Storybook 🔧
-        run: yarn build:storybook
+      - name: Build lib 🔧
+        run: yarn build:lib
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.2
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: storybook-static # The folder the action should deploy.
+      - name: Publish lib (x.x.x+1) 🚀
+        run: yarn publish --pre --patch
