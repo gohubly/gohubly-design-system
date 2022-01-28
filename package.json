@@ -1,6 +1,6 @@
 {
-  "name": "hubly-design-system",
-  "version": "1.3.1",
+  "name": "gohubly-design-system",
+  "version": "1.2.5",
   "private": false,
   "main": "./dist/lib/index.js",
   "types": "./dist/types",
