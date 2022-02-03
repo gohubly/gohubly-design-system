@@ -141,7 +141,8 @@ export const Button = styled.button<iButton>`
   
   outline: none;
   border-color: transparent;
-  border: ${({ OnColor, hierarchy }) => hierarchy && `1px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+  border: 1px solid;
+  border-color: ${({ OnColor, hierarchy }) => hierarchy && theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
   border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
 
   cursor: pointer;
