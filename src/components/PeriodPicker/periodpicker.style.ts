@@ -13,7 +13,7 @@ export const Container = styled.div`
 const ControlMonthButtonDefault = styled.div`
   position: absolute;
   padding: 2px;
-  top: 24px;
+  top: 18px;
   z-index: 1;
   cursor: pointer;
 `
@@ -46,6 +46,8 @@ export const MonthApresentation = styled.div`
   color: ${({ theme }) => theme.colors.neutralLowDark};
   text-align: center;
   text-transform: capitalize;
+
+  user-select: none;
 `
 
 export const MonthWeeks = styled.div`
@@ -70,6 +72,8 @@ const DayDefault = styled.div`
 
 export const DayName = styled(DayDefault)`
   color: ${({ theme }) => theme.colors.neutralLowLight};
+
+  user-select: none;
 `
 
 export const DayNumber = styled(DayDefault)<{ isBetween: boolean, isSelected: boolean, isInitialDate: boolean, isTotalSelected: boolean}>`
@@ -123,6 +127,8 @@ export const Footer = styled.div`
 
 export const HelperContainer = styled.div`
   margin-right: auto;
+
+  user-select: none;
 `
 
 export const PeriodCallout = styled.div`

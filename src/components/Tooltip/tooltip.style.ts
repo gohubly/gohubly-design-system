@@ -35,7 +35,7 @@ export const Wrapper = styled.div<iTooltip>`
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
 
   opacity: 1;
-  pointer-events: none;
+  user-select: none;
 
   &:hover {
     opacity: 1;

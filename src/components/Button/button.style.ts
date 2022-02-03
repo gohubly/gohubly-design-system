@@ -141,7 +141,7 @@ export const Button = styled.button<iButton>`
   
   outline: none;
   border-color: transparent;
-  border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+  border: ${({ OnColor, hierarchy }) => hierarchy && `1px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
   border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
 
   cursor: pointer;
@@ -152,17 +152,17 @@ export const Button = styled.button<iButton>`
   background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
   &:hover:not(:disabled) {
-    border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+    border: ${({ OnColor, hierarchy }) => hierarchy && `1px solid ${() => theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
     background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
   }
 
   &:focus:not(:disabled) {
     border-color: ${() => theme.colors.helper};
-    animation: ${({ OnColor, hierarchy }) => keyframes`
+    animation: ${({ OnColor, hierarchy, theme }) => keyframes`
       100% {
-        border: ${hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+        border-color: ${hierarchy && theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
       }
-    `} 0.8s linear;
+    `} 0.4s linear;
     
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;

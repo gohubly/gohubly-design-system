@@ -48,7 +48,7 @@ export const Wrapper = styled.div<iAvatar>`
   border-radius: 2px;
   border-radius: ${() => theme.borderRadius.Circular};
 
-  pointer-events: none;
+  user-select: none;
 `
 
 export const Badge = styled.div`

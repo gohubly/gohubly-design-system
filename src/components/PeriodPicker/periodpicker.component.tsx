@@ -85,9 +85,10 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
     }
 
     if (isSelectInitialDate) {
-      if (day.isSameOrAfter(finalDate)) {
-        handleClickReset();
-        setInitialDate(day);
+        if (day.isSameOrAfter(finalDate)) {
+          handleClickReset();
+          setInitialDate(day);
+          setSelectIsInitialDate(false);
       } else {
         setInitialDate(day);
         setSelectIsInitialDate(false);
@@ -107,6 +108,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
     setInitialDate(null);
     setFinalDate(null);
     setSelectIsInitialDate(true);
+    setCentralDate(moment())
   };
 
   const handleClickSubmit = () => {
@@ -137,14 +139,13 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
                 {getCalendarByMomentDate(month).map((week) => (
                   <Week>
                     {week.days.map((day) => {
-                      if (!day.isSame(month, 'month')) {
-                        return <div></div>;
-                      }
+                      if (!day.isSame(month, 'month')) return <div></div>
 
                       const isBetween = day.isBetween(initialDate, finalDate);
                       const isInitialDate = day.isSame(initialDate);
                       const isSelected = day.isSame(initialDate) || day.isSame(finalDate);
                       const isTotalSelected = !!(initialDate && finalDate);
+                      const isTotalSelectedAndDatesAreDifferents = isTotalSelected && !initialDate.isSame(finalDate);
 
                       return (
                         <DayNumber 
@@ -152,7 +153,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
                           isBetween={isBetween} 
                           isSelected={isSelected} 
                           isInitialDate={isInitialDate} 
-                          isTotalSelected={isTotalSelected}
+                          isTotalSelected={isTotalSelectedAndDatesAreDifferents}
                         >
                           <span>{day.format('DD')}</span>
                         </DayNumber>
@@ -168,7 +169,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
 
       <Footer>
         <HelperContainer>
-          Selecione a data {isSelectInitialDate ? 'inicial' : 'final'}
+          {(initialDate === null || finalDate === null) && `Selecione a data ${isSelectInitialDate ? 'inicial' : 'final'}`}
           {initialDate && finalDate && (
             <PeriodCallout>
               Período selecionado: {initialDate.format('DD/MM/YYYY')} a {finalDate.format('DD/MM/YYYY')}
