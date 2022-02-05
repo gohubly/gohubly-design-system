@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components'
+import { defaultCss } from "../../theme/defaultCss";
 
 type iDirectionTypes = 'horizontal' | 'vertical'
 
 export const Wrapper = styled.div<{ direction: iDirectionTypes }>`
+  ${defaultCss};
   width: 100%;
   display: flex;
   flex-direction: ${({ direction }) => direction === 'vertical' ? 'column' : 'row'};

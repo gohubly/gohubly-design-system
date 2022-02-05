@@ -1,7 +1,9 @@
 import styled, {css} from "styled-components";
+import { defaultCss } from "../../theme/defaultCss";
 import { iTableTd, iTableTr } from "./table.interface";
 
 export const TableContainer = styled.div<{ responsive?: boolean }>`
+  ${defaultCss};
   overflow-x: ${({ responsive }): string => responsive ? 'shown' : 'hidden'};
 `
 
