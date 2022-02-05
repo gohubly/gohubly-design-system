@@ -46,12 +46,13 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
 
     let day = startDay.clone().subtract(1, 'day');
 
-    while (day.isBefore(endDay, 'day'))
+    while (day.isBefore(endDay, 'day')) {
       calendar.push({
         days: Array(7)
           .fill(0)
           .map(() => day.add(1, 'day').clone()),
       });
+    }
 
     return calendar;
   };
