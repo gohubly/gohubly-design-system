@@ -55,6 +55,7 @@ export const MonthWeeks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin: 0 auto;
 `
 
 export const Week = styled.div`
