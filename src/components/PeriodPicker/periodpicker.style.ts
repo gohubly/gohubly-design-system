@@ -3,6 +3,7 @@ import { defaultCss } from "../../theme/defaultCss";
 
 export const Container = styled.div`
   ${defaultCss};
+
   height: 401px;
   display: flex;
   flex-direction: column;
