@@ -27,7 +27,7 @@ export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
   font-size: 14px;
 
-  color: ${({ OnColor }) => OnColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ OnColor }) => OnColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
 `
 
 export const HelperText = styled.span<iStyledCommonProps>`
@@ -55,7 +55,7 @@ export const Input = styled.input<iStyledCommonProps>`
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
   background: ${() => theme.colors.neutralHigh};
 
-  border: 1px solid ${() => theme.colors.neutralLowLight};
+  border: 1px solid ${() => theme.colors.neutralLowMedium};
   box-sizing: border-box;
   border-radius: 8px;
   letter-spacing: -0.005em;
@@ -133,7 +133,7 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   letter-spacing: -0.005em;
 
   background: ${() => theme.colors.primaryLightest};
-  color: ${() => theme.colors.neutralLowDark};
+  color: ${() => theme.colors.neutralLow};
 
   &[data-has-error=true] {
     background: ${() => theme.colors.helperLight};
@@ -225,7 +225,7 @@ const IconCss = css<{
   padding: 3px;
 
   path {
-    stroke: ${() => theme.colors.primaryDark};
+    stroke: ${() => theme.colors.primary};
   }
 `
 
