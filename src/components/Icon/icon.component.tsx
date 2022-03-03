@@ -3,135 +3,139 @@ import React from 'react'
 import { iIcon, iIconSizes, iIconTypes } from "."
 import { IconWrapper } from './icon.style'
 
-import Search from './icons/search'
-import Camera from './icons/camera'
-import File1 from './icons/file1'
-import File2 from './icons/file2'
-import HelpCircle from './icons/helpCircle'
-import Lock from './icons/lock'
-import Pen from './icons/pen'
-import Settings from './icons/settings'
-import TikTok from './icons/loading'
+import AppIcon from './icons/app-icon'
+import Bag from './icons/bag'
+import Bell from './icons/bell'
 import Block from './icons/block'
+import Brench1 from './icons/brench1'
 import Brench2 from './icons/brench2'
 import Calendar from './icons/calendar'
+import Camera from './icons/camera'
+import CashSign from './icons/cashSign'
+import CashSign2 from './icons/cashSign2'
+import Check from './icons/check'
+import ChevronDown from './icons/chevronDown'
+import ChevronLeft from './icons/chevronLeft'
+import ChevronRight from './icons/chevronRight'
+import ChevronUp from './icons/chevronUp'
 import Clock from './icons/clock'
+import Close from './icons/close'
 import Drag from './icons/drag'
+import Envelope from './icons/envelope'
 import Eye from './icons/eye'
 import EyeSlash from './icons/eyeSlash'
-import InformationTriangle from './icons/informationTriangle'
-import Link from './icons/link'
-import Loading from './icons/loading'
-import Bell from './icons/bell'
-import Brench1 from './icons/brench1'
+import Facebook from './icons/facebook'
+import File1 from './icons/file1'
+import File2 from './icons/file2'
+import Globe from './icons/globe'
+import Grid from './icons/grid'
+import Hamburguer from './icons/hamburguer'
+import Heart from './icons/heart'
+import HelpCircle from './icons/helpCircle'
 import Home from './icons/home'
 import Image from './icons/image'
 import Information from './icons/information'
-import Login from './icons/login'
-import Trash from './icons/trash'
-import User2 from './icons/user2'
-import X from './icons/X'
-import MoreHorizontal from './icons/moreHorizontal'
-import ChevronUp from './icons/chevronUp'
+import InformationTriangle from './icons/informationTriangle'
+import Instagram from './icons/instagram'
+import Link from './icons/link'
 import Linkedin from './icons/linkedin'
+import List from './icons/list'
+import Loading from './icons/loading'
+import Lock from './icons/lock'
+import Login from './icons/login'
+import Minus from './icons/minus'
+import MoreHorizontal from './icons/moreHorizontal'
+import MoreVertical from './icons/moreVertical'
+import Pen from './icons/pen'
+import Percent from './icons/percent'
+import Phone from './icons/phone'
+import PinLocation from './icons/pinLocation'
+import Play from './icons/play'
+import Plus from './icons/plus'
+import Search from './icons/search'
+import Settings from './icons/settings'
+import Shield from './icons/shield'
 import StarEmpty from './icons/starEmpty'
 import StarFilled from './icons/starFilled'
-import List from './icons/list'
-import Minus from './icons/minus'
+import TikTok from './icons/loading'
+import Trash from './icons/trash'
 import Truck from './icons/truck'
-import Envelope from './icons/envelope'
-import MoreVertical from './icons/moreVertical'
 import Twitter from './icons/twitter'
-import Facebook from './icons/facebook'
 import User1 from './icons/user1'
-import Globe from './icons/globe'
-import Phone from './icons/phone'
+import User2 from './icons/user2'
 import Youtube from './icons/youtube'
-import Grid from './icons/grid'
-import PinLocation from './icons/pinLocation'
-import ChevronLeft from './icons/chevronLeft'
-import Hamburguer from './icons/hamburguer'
-import Play from './icons/play'
-import ChevronRight from './icons/chevronRight'
-import Heart from './icons/heart'
-import Plus from './icons/plus'
-import Instagram from './icons/instagram'
-import Check from './icons/check'
-import Shield from './icons/shield'
-import CashSign from './icons/cashSign'
-import ChevronDown from './icons/chevronDown'
-import Bag from './icons/bag'
-import CashSign2 from './icons/cashSign2'
-import AppIcon from './icons/app-icon'
-import Percent from './icons/percent'
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
-  MD: '32px',
-  SM: '24px',
+  XXXS: '12px',
+  XXS: '14px',
+  XS: '16px',
+  SM: '20px',
+  MD: '24px',
+  LG: '32px',
 }
 
 const SVG_COMPONENT: Record<iIconTypes, any> = {
-  search: Search,
-  camera: Camera,
-  file1: File1,
-  file2: File2,
-  twitter: Twitter,
-  pinLocation: PinLocation,
-  helpCircle: HelpCircle,
-  lock: Lock,
-  pen: Pen,
-  settings: Settings,
-  tiktok: TikTok,
+  app: AppIcon,
+  bag: Bag,
+  bell: Bell,
   block: Block,
+  brench1: Brench1,
   brench2: Brench2,
   calendar: Calendar,
-  clock: Clock,
-  drag: Drag,
-  eye: Eye,
-  eyeSlash: EyeSlash,
-  informationTriangle: InformationTriangle,
-  link: Link,
-  loading: Loading,
-  bell: Bell,
-  brench1: Brench1,
-  home: Home,
-  information: Information,
-  image: Image,
-  login: Login,
-  trash: Trash,
-  user2: User2,
-  X: X,
-  moreHorizontal: MoreHorizontal,
-  chevronUp: ChevronUp,
-  linkedin: Linkedin,
-  starEmpty: StarEmpty,
-  starFilled: StarFilled,
-  list: List,
-  minus: Minus,
-  truck: Truck,
-  envelope: Envelope,
-  moreVertical: MoreVertical,
-  facebook: Facebook,
-  user1: User1,
-  globe: Globe,
-  phone: Phone,
-  youtube: Youtube,
-  grid: Grid,
-  hamburguer: Hamburguer,
-  play: Play,
-  chevronRight: ChevronRight,
-  heart: Heart,
-  plus: Plus,
-  instagram: Instagram,
-  check: Check,
-  shield: Shield,
+  camera: Camera,
   cashSign: CashSign,
+  cashSign2: CashSign2,
+  check: Check,
   chevronDown: ChevronDown,
   chevronLeft: ChevronLeft,
-  bag: Bag,
-  app: AppIcon,
-  cashSign2: CashSign2,
+  chevronRight: ChevronRight,
+  chevronUp: ChevronUp,
+  clock: Clock,
+  close: Close,
+  drag: Drag,
+  envelope: Envelope,
+  eye: Eye,
+  eyeSlash: EyeSlash,
+  facebook: Facebook,
+  file1: File1,
+  file2: File2,
+  globe: Globe,
+  grid: Grid,
+  hamburguer: Hamburguer,
+  heart: Heart,
+  helpCircle: HelpCircle,
+  home: Home,
+  image: Image,
+  information: Information,
+  informationTriangle: InformationTriangle,
+  instagram: Instagram,
+  link: Link,
+  linkedin: Linkedin,
+  list: List,
+  loading: Loading,
+  lock: Lock,
+  login: Login,
+  minus: Minus,
+  moreHorizontal: MoreHorizontal,
+  moreVertical: MoreVertical,
+  pen: Pen,
   percent: Percent,
+  pinLocation: PinLocation,
+  phone: Phone,
+  play: Play,
+  plus: Plus,
+  search: Search,
+  settings: Settings,
+  shield: Shield,
+  starEmpty: StarEmpty,
+  starFilled: StarFilled,
+  tiktok: TikTok,
+  trash: Trash,
+  truck: Truck,
+  twitter: Twitter,
+  user1: User1,
+  user2: User2,
+  youtube: Youtube,
 }
 
 export const Icon: React.FC<iIcon> = ({

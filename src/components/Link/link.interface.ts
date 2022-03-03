@@ -1,4 +1,5 @@
-import { iIconTypes } from "../Icon";
+import { iIconSizes, iIconTypes } from "../Icon";
+import { theme } from "../../theme"
 
 export interface iLink {
   children: any;
@@ -6,4 +7,7 @@ export interface iLink {
   OnColor?: boolean
   disabled?: boolean
   icon?: iIconTypes
+  iconSize?: iIconSizes
+  underline?: boolean
+  size?: keyof typeof theme.fontSize
 }

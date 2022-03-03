@@ -18,7 +18,7 @@ export const Label = styled.label<ILabelCheckBox>`
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   user-select: none;
 
-  color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
   
   &:hover {
     color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
@@ -33,7 +33,7 @@ export const Label = styled.label<ILabelCheckBox>`
   &:hover {
     span {
       background-color: ${() => theme.colors.primaryLightest};
-      border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
+      border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
     }
   }
   
@@ -68,18 +68,17 @@ export const Mark = styled.span<IMarkCheckBox>`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-
-  height: 16px;
-  width: 16px;
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
   background-color: transparent;
   border-radius: 4px;
-  border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
+  border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
+  transition: 180ms ease-in-out;
 
   &.disabled {
     border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
-
-  transition: 180ms ease-in-out;
 
   &.disabled {
     &:after {

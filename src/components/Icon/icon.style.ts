@@ -6,7 +6,7 @@ import { defaultCss } from '../../theme/defaultCss';
 export const IconWrapper = styled.div<iIcon>`
   ${defaultCss};
 
-  height: ${({ height }) => height || '24px'};
+  height: ${({ height }) => height === '12px' ? '18px' : height};
 
   svg, img {
     fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : (fill || 'transparent')};

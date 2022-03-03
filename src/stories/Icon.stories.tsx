@@ -17,7 +17,7 @@ Default.args = {
 
 export const OnColor = Template.bind({});
 OnColor.args = {
-  iconId: 'pinLocation',
+  iconId: 'close',
   OnColor: true
 };
 OnColor.parameters = {
