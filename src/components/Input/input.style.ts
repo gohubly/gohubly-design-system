@@ -221,8 +221,8 @@ const IconCss = css<{
 
   cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
 
-  // Accessibility to have a bigger space to click
-  padding: 3px;
+  // // Accessibility to have a bigger space to click
+  // padding: 3px;
 
   path {
     stroke: ${() => theme.colors.primary};

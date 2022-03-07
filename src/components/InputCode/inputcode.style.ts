@@ -3,13 +3,14 @@ import { theme } from '../..';
 import { defaultCss } from '../../theme/defaultCss';
 
 export const Input = styled.input`
-  width: 40px;
-  height: 48px;
+  width: 52px;
+  height: 56px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  box-sizing: border-box;
 
   border-radius: 8px;
   background: ${() => theme.colors.white};
@@ -25,11 +26,12 @@ export const Input = styled.input`
 export const InputsWrapper = styled.div`
   display: flex;
   gap: 4px;
+  box-sizing: border-box;
 `
 
 export const Container = styled.div`
   ${defaultCss};
-
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 8px;
