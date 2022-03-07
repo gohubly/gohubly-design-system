@@ -64,6 +64,7 @@ import Twitter from './icons/twitter'
 import User1 from './icons/user1'
 import User2 from './icons/user2'
 import Youtube from './icons/youtube'
+import X from './icons/close'
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: '12px',
@@ -136,6 +137,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   user1: User1,
   user2: User2,
   youtube: Youtube,
+  X: X,
 }
 
 export const Icon: React.FC<iIcon> = ({

@@ -119,7 +119,7 @@ export const Mark = styled.span<IMarkCheckBox>`
     content: '';
     background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
     position: absolute;
-    display: nome;
+    display: none;
 
     left: 9px;
     top: 3px;
@@ -136,7 +136,7 @@ export const Mark = styled.span<IMarkCheckBox>`
     content: '';
     background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
     position: absolute;
-    display: nome;
+    display: none;
 
     left: 4.3px;
     top: 6.1px;
