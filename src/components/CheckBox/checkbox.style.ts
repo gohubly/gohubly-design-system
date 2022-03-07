@@ -34,7 +34,17 @@ export const Label = styled.label<ILabelCheckBox>`
     span {
       background-color: ${() => theme.colors.primaryLightest};
       border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
+
+      &:after {
+        background-color: ${() => theme.colors.primaryLightest};
+      }
+
+      &:before {
+        background-color: ${() => theme.colors.primaryLightest};
+      }
     }
+
+
   }
   
   &.disabled {
@@ -52,6 +62,7 @@ export const Label = styled.label<ILabelCheckBox>`
 export const Box = styled.input.attrs({
   type: 'checkbox',
 }) <IBoxCheckBox>`
+  box-sizing: border-box;
   cursor: pointer;
   position: absolute;
   opacity: 0;
@@ -76,6 +87,7 @@ export const Mark = styled.span<IMarkCheckBox>`
   border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
   transition: 180ms ease-in-out;
 
+  
   &.disabled {
     border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
@@ -86,34 +98,57 @@ export const Mark = styled.span<IMarkCheckBox>`
       position: absolute;
       display: none;
   
-      left: 5px;
-      top: 2px;
+      left: 50%;
+      top: 50%;
   
-      width: 4px;
-      height: 8px;
+      width: 6px;
+      height: 11px;
   
       border: solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
       border-width: 0 2px 2px 0;
+
+      
   
-      transform: rotate(45deg);
+      transform: rotate(45deg) translate(-50%, -50%);
     }
   }
 
+  
+
   &:after {
     content: '';
+    background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
     position: absolute;
-    display: none;
+    display: nome;
 
-    left: 5px;
-    top: 2px;
+    left: 9px;
+    top: 3px;
 
-    width: 4px;
-    height: 8px;
+    width: 2px;
+    height: 10px;
 
-    border: solid ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-    border-width: 0 2px 2px 0;
+    border-radius: 16px;
 
     transform: rotate(45deg);
   }
+
+  &:before {
+    content: '';
+    background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
+    position: absolute;
+    display: nome;
+
+    left: 4.3px;
+    top: 6.1px;
+
+    width: 2px;
+    height: 6px;
+
+    border-radius: 16px;
+
+    transform: rotate(135deg);
+  }
+
+
 `;
 
