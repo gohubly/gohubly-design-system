@@ -3,6 +3,6 @@ import React from 'react';
 
 export default function Svg(props: any) {
   return <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20.2502 6.75L8.90649 17.25L3.75024 12.4773" stroke="#425DC7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.2502 6.75L8.90649 17.25L3.75024 12.4773" stroke="#425DC7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 }

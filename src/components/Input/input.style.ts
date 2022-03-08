@@ -231,10 +231,10 @@ const IconCss = css<{
 
 export const LeftIcon = styled(Icon)`
   ${IconCss};
-  left: 7px; 
+  left: 12px; 
 `
 
 export const RightIcon = styled(Icon)`
   ${IconCss};
-  right: 7px; 
+  right: 12px; 
 `
