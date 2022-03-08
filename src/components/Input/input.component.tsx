@@ -62,7 +62,7 @@ export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
         />
 
         {/* Icone Direita */}
-        {props.iconRight && <RightIcon size='LG' onClick={props.iconRightOnClick} iconId={props.iconRight} />}
+        {props.iconRight && <RightIcon onClick={props.iconRightOnClick} iconId={props.iconRight} />}
 
         {/* Sufixo */}
         {props.suffix && !props.iconRight && <SuffixText data-has-error={!!props?.error}>{props.suffix}</SuffixText>}

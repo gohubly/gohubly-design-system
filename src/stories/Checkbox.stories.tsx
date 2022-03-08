@@ -35,7 +35,7 @@ CheckedBox.parameters = {
 export const DisabledCheckedBox = Template.bind({});
 DisabledCheckedBox.args = {
   name: "disabledBox",
-  label: "Disabled CheckBox",
+  label: "Disabled Checked Box",
   checked: true,
   readOnly: false,
   disabled: true,
@@ -51,7 +51,7 @@ DisabledCheckedBox.parameters = {
 export const DisabledUncheckedBox = Template.bind({});
 DisabledUncheckedBox.args = {
   name: "disabledBox",
-  label: "Disabled CheckBox",
+  label: "Disabled Unchecked Box",
   checked: false,
   readOnly: false,
   disabled: true,

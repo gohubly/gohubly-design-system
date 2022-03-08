@@ -21,7 +21,7 @@ export const Label = styled.label<ILabelCheckBox>`
   color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
   
   &:hover {
-    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
   }
 
   &:hover span,
@@ -34,21 +34,15 @@ export const Label = styled.label<ILabelCheckBox>`
     span {
       background-color: ${() => theme.colors.primaryLightest};
       border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
-
-      &:after {
-        background-color: ${() => theme.colors.primaryLightest};
-      }
-
-      &:before {
-        background-color: ${() => theme.colors.primaryLightest};
-      }
     }
-
-
   }
   
   &.disabled {
     color: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+
+    path {
+      stroke: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium}!important;
+    }
     
     &:hover span,
     input:checked ~ span {
@@ -69,7 +63,7 @@ export const Box = styled.input.attrs({
   height: 0;
   width: 0;
 
-  &:checked ~ span:after {
+  &:checked ~ span {
     display: block;
   }
 `;
@@ -86,69 +80,8 @@ export const Mark = styled.span<IMarkCheckBox>`
   border-radius: 4px;
   border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
   transition: 180ms ease-in-out;
-
   
   &.disabled {
     border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
-
-  &.disabled {
-    &:after {
-      content: '';
-      position: absolute;
-      display: none;
-  
-      left: 50%;
-      top: 50%;
-  
-      width: 6px;
-      height: 11px;
-  
-      border: solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-      border-width: 0 2px 2px 0;
-
-      
-  
-      transform: rotate(45deg) translate(-50%, -50%);
-    }
-  }
-
-  
-
-  &:after {
-    content: '';
-    background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-    position: absolute;
-    display: none;
-
-    left: 9px;
-    top: 3px;
-
-    width: 2px;
-    height: 10px;
-
-    border-radius: 16px;
-
-    transform: rotate(45deg);
-  }
-
-  &:before {
-    content: '';
-    background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-    position: absolute;
-    display: none;
-
-    left: 4.3px;
-    top: 6.1px;
-
-    width: 2px;
-    height: 6px;
-
-    border-radius: 16px;
-
-    transform: rotate(135deg);
-  }
-
-
 `;
-

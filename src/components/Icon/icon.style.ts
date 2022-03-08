@@ -14,6 +14,7 @@ export const IconWrapper = styled.div<iIcon>`
     stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
     width: ${({ width }) => width || '32px'};
     height: ${({ height }) => height || '32px'};
+    box-sizing: border-box;
 
     ${({ fluid }) => fluid && css`
       width: 100%;

@@ -29,11 +29,21 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
         disabled={props.disabled}
         onChange={onChange}
       />
-      
+
       <Mark
         onColor={props.onColor}
         disabled={props.disabled}
-        className={props.disabled ? "disabled" : ""} />
+        className={props.disabled ? "disabled" : ""}
+      >
+        {checkedValue && (
+          !props.disabled
+          ?
+          <Icon size="XS" OnColor={!props.onColor} iconId={`check`} />
+          :
+          <Icon size="XS" OnColor={!props.checked} iconId={`check`} />
+        )}
+        
+      </Mark>
     </Label>
   );
 };
