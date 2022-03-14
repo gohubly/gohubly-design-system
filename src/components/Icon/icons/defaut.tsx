@@ -8,15 +8,11 @@ export default function Svg(props: any) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        d="M12 3V21"
-        stroke="#425DC7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M3 12H21"
+      <rect
+        x="3"
+        y="3"
+        width="18"
+        height="18"
         stroke="#425DC7"
         strokeWidth="1.5"
         strokeLinecap="round"

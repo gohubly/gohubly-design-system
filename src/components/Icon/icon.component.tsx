@@ -3,7 +3,7 @@ import React from 'react'
 import { iIcon, iIconSizes, iIconTypes } from "."
 import { IconWrapper } from './icon.style'
 
-import AppIcon from './icons/app-icon'
+import AppIcon from './icons/appIcon'
 import Bag from './icons/bag'
 import Bell from './icons/bell'
 import Block from './icons/block'
@@ -18,8 +18,10 @@ import ChevronDown from './icons/chevronDown'
 import ChevronLeft from './icons/chevronLeft'
 import ChevronRight from './icons/chevronRight'
 import ChevronUp from './icons/chevronUp'
+import ClipboardText from './icons/clipboardText'
 import Clock from './icons/clock'
 import Close from './icons/close'
+import Defaut from './icons/defaut'
 import Drag from './icons/drag'
 import Envelope from './icons/envelope'
 import Eye from './icons/eye'
@@ -57,6 +59,7 @@ import Settings from './icons/settings'
 import Shield from './icons/shield'
 import StarEmpty from './icons/starEmpty'
 import StarFilled from './icons/starFilled'
+import Tag from './icons/tag'
 import TikTok from './icons/loading'
 import Trash from './icons/trash'
 import Truck from './icons/truck'
@@ -90,8 +93,10 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
   chevronUp: ChevronUp,
+  clipboardText: ClipboardText,
   clock: Clock,
   close: Close,
+  defaut: Defaut,
   drag: Drag,
   envelope: Envelope,
   eye: Eye,
@@ -129,6 +134,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   shield: Shield,
   starEmpty: StarEmpty,
   starFilled: StarFilled,
+  tag: Tag,
   tiktok: TikTok,
   trash: Trash,
   truck: Truck,

@@ -11,10 +11,12 @@ export const IconWrapper = styled.div<iIcon>`
 
   svg, img {
     fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : (fill || 'transparent')};
-    stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
+    // stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'white' : '']};
     width: ${({ width }) => width || '32px'};
     height: ${({ height }) => height || '32px'};
     box-sizing: border-box;
+    align-items: center;
+
 
     ${({ fluid }) => fluid && css`
       width: 100%;
@@ -24,6 +26,6 @@ export const IconWrapper = styled.div<iIcon>`
 
   path {
     fill: ${({ fill }) => fill && theme.colors[fill] ? theme.colors[fill] : 'auto'};
-    stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'neutralHigh' : 'primary']};
+    stroke: ${({ OnColor, stroke }) => stroke ? theme.colors[stroke] : theme.colors[OnColor ? 'white' : '']};
   }
 `

@@ -10,12 +10,12 @@ export default {
 
 const Template: ComponentStory<typeof PeriodPicker> = (args) => <PeriodPicker {...args} />;
 
-export const Primary = Template.bind({});
+export const Period = Template.bind({});
 
-Primary.args = {
+Period.args = {
  onChange: console.log
 };
-Primary.parameters = {
+Period.parameters = {
   backgrounds: {
     default: 'figma',
   },
