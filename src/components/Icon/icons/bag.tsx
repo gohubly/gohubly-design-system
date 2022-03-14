@@ -1,9 +1,35 @@
-import React from 'react';
+import React from "react";
 
 export default function Svg(props: any) {
-  return <svg {...props} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M6.625 3L3.75 6.6V19.2C3.75 19.6774 3.95193 20.1352 4.31138 20.4728C4.67082 20.8104 5.15834 21 5.66667 21H19.0833C19.5917 21 20.0792 20.8104 20.4386 20.4728C20.7981 20.1352 21 19.6774 21 19.2V6.6L18.125 3H6.625Z" stroke="#425DC7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M3.75 6.60016H21" stroke="#425DC7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M16.2087 10.1999C16.2087 11.1554 15.8048 12.0717 15.0859 12.7474C14.367 13.423 13.392 13.8026 12.3753 13.8026C11.3587 13.8026 10.3836 13.423 9.66475 12.7474C8.94586 12.0717 8.54199 11.1554 8.54199 10.1999" stroke="#142159" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+  return (
+    <svg
+      {...props}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.625 3L3.75 6.6V19.2C3.75 19.6774 3.95193 20.1352 4.31138 20.4728C4.67082 20.8104 5.15833 21 5.66667 21H19.0833C19.5917 21 20.0792 20.8104 20.4386 20.4728C20.7981 20.1352 21 19.6774 21 19.2V6.6L18.125 3H6.625Z"
+        fill="#CDD2EB"
+        stroke="#CDD2EB"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M3.75 6.60016H21"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.2087 10.1999C16.2087 11.1554 15.8048 12.0717 15.0859 12.7474C14.367 13.423 13.392 13.8026 12.3753 13.8026C11.3587 13.8026 10.3836 13.423 9.66475 12.7474C8.94586 12.0717 8.54199 11.1554 8.54199 10.1999"
+        stroke="#425DC7"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
 }

@@ -111,7 +111,7 @@ const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
 }
 
 export const IconStyled = styled(Icon) <iIcon & { hierarchy: iButtonHierarchy, OnColor?: boolean, loading?: boolean }>`
-  margin-right: 10px;
+  margin-right: 5px;
   visibility: ${({ loading }) => loading ? 'hidden' : 'visible' };
   path {
     stroke: ${({ hierarchy, OnColor }) => {

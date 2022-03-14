@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 import { iInput } from '.';
-import { Icon } from '../Icon';
+import { Icon, iIcon } from '../Icon';
 
 import { themeWithouthInterface as theme } from '../..';
 import { defaultCss } from '../../theme/defaultCss';
-import { iInputSizes } from './input.interface';
+import { iIconPaddings, iInputSizes } from './input.interface';
 
 interface iInputDropdownWrapper {
   opened: boolean
@@ -16,6 +16,22 @@ interface iStyledCommonProps extends Partial<iInput> {
   contentLeft?: boolean
   contentRight?: boolean
   Size?: iInputSizes
+}
+
+const ICON_PADDING: Record<iIconPaddings, string> = {
+  XXXS: '6px',
+  XXS: '8px',
+  XS: '10px',
+  SM: '12px',
+  MD: '14px',
+  LG: '16px',
+}
+interface iIconRight extends Partial<iIcon> {
+  iconRightPadding?: iIconPaddings 
+}
+
+interface iIconLeft extends Partial<iIcon> {
+  iconLeftPadding?: iIconPaddings 
 }
 
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
@@ -51,6 +67,13 @@ export const HelperText = styled.span<iStyledCommonProps>`
 `
 
 export const Input = styled.input<iStyledCommonProps>`
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-text-fill-color: black!important;
+  }
+
   height: ${({ size }): string => INPUT_HEIGHT_BASED_ON_SIZE[size || 'MD']};
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
   background: ${() => theme.colors.neutralHigh};
@@ -94,8 +117,8 @@ export const Input = styled.input<iStyledCommonProps>`
       border: 1px solid ${() => theme.colors.helper};
     }
   }
-  
-  /* transition: all 0.1s linear; */
+
+  transition: all 0.1s linear; 
 `
 
 export const Label = styled.label<iStyledCommonProps>`
@@ -174,7 +197,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   border-radius: 8px;
 
   opacity: ${({ opened }) => opened ? 1 : 0};
-  pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
+  pointer-events:  
 
   transition: opacity 0.1s linear;
   z-index: 9999;
@@ -224,17 +247,17 @@ const IconCss = css<{
   // // Accessibility to have a bigger space to click
   // padding: 3px;
 
-  path {
-    stroke: ${() => theme.colors.primary};
-  }
+  // path {
+  //   stroke: ${() => theme.colors.primary};
+  // }
 `
 
-export const LeftIcon = styled(Icon)`
+export const LeftIcon = styled(Icon)<iIconLeft>`
   ${IconCss};
-  left: 12px; 
+  left: ${({ iconLeftPadding }): string => ICON_PADDING[iconLeftPadding || 'XXS']};
 `
 
-export const RightIcon = styled(Icon)`
+export const RightIcon = styled(Icon)<iIconRight>`
   ${IconCss};
-  right: 12px; 
+  right: ${({ iconRightPadding }): string => ICON_PADDING[iconRightPadding || 'XXS']};
 `
