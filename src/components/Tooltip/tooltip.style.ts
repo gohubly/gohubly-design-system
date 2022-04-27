@@ -27,19 +27,15 @@ const POINTER_SIZE_BY_SIZE = {
 
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
-  width: fit-content;
+  width: max-content;
 
   ${({ position }) => WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation]}
 
   background: ${() => theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
 
-  opacity: 1;
-  pointer-events: none;
-
-  &:hover {
-    opacity: 1;
-  }
+  opacity: 0;
+  user-select: none;
 
   border-radius: 8px;
   box-shadow: ${({ shadow }) => shadow ? theme.shadow.Level1 : ''};
@@ -102,6 +98,7 @@ export const Container = styled.div`
   &:hover {
     ${Wrapper} {
       opacity: 1;
+      user-select: all;
     }
   }
 `

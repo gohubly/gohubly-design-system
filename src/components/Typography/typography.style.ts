@@ -3,10 +3,19 @@ import { iParagraph, iTypography } from './typography.interface'
 import { themeWithouthInterface as theme } from '../..'
 import { defaultCss } from '../../theme/defaultCss'
 
+const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterRegular' | 'InterMedium' | 'InterSemiBold'> = {
+  400: 'InterRegular',
+  500: 'InterMedium',
+  600: 'InterSemiBold',
+}
+
 const TextStyled = css<iTypography>`
   ${defaultCss};
 
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '600']};
+
   font-size: ${({ size }) => theme.fontSize[size || 'MD']};
+  /* font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']}; */
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 
   color: ${({ color }) => theme.colors[color || 'white']};

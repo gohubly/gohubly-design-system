@@ -41,7 +41,7 @@ export const CardSmall = styled.div<iCardSmall>`
 
   box-shadow: ${({ theme }) => theme.shadow.Level2};
 
-  padding: 16px;
+  padding: 12px 16px;
   transition: border-color .2s, background-color .2s;
 
   &:hover {

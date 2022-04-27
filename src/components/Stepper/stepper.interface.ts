@@ -5,4 +5,6 @@ export interface iStepper {
   steps?: number
   hierarchy?: iStepperHierarchy
   hasProgressBar?: boolean
+  mini?: boolean
+  className?: string
 }

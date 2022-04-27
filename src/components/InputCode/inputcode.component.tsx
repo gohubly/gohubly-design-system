@@ -55,7 +55,7 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
 
   return (
     <Container>
-      {label && <Typography size="SM" color="neutralLowDark" fontWeight={600}>{label}</Typography>}
+      {label && <Typography size="SM" color="neutralLowDark" fontWeight={500}>{label}</Typography>}
       <InputsWrapper>
         {Array.from(Array(length).keys()).map((_, index) => (
           <Input

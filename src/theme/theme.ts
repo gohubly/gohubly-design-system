@@ -57,8 +57,8 @@ export const theme = {
     white: '#FFFFFF',
     transparent: 'transparent',
 
-    primaryLightest: '#DFE5FF',
-    primaryLight: '#B9C6FA',
+    primaryLightest: '#F1F2F9',
+    primaryLight: '#CDD2EB',
     primary: '#425DC7', // default
     primaryMedium: '#2E44A1',
     primaryDark: '#142159',

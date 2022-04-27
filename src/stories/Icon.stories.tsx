@@ -12,12 +12,12 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  iconId: 'twitter'
+  iconId: 'defaut'
 };
 
 export const OnColor = Template.bind({});
 OnColor.args = {
-  iconId: 'pinLocation',
+  iconId: 'close',
   OnColor: true
 };
 OnColor.parameters = {

@@ -13,15 +13,15 @@ const AVATAR_DETAILS_WITHOUT_ON_COLOR: Record<string, string> = {
 }
 
 const AVATAR_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
-  LG: '64px',
-  MD: '40px',
+  LG: '40px',
+  MD: '32px',
   SM: '24px',
 }
 
 const FONT_SIZE_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
-  LG: '32px',
-  MD: '24px',
-  SM: '16px',
+  LG: '24px',
+  MD: '16px',
+  SM: '14px',
 }
 
 export const Wrapper = styled.div<iAvatar>`
@@ -48,7 +48,7 @@ export const Wrapper = styled.div<iAvatar>`
   border-radius: 2px;
   border-radius: ${() => theme.borderRadius.Circular};
 
-  pointer-events: none;
+  user-select: none;
 `
 
 export const Badge = styled.div`

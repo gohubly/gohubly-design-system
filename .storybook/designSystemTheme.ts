@@ -14,8 +14,9 @@ export const designSystemTheme = {
   },
   lineHeight: {
     Default: '100%', // default
-    XS: '115%',
-    SM: '120%',
+    XXS: '115%',
+    XS: '120%',
+    SM: '125%',
     MD: '133%',
     LG: '140%',
   },

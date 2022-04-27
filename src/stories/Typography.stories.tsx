@@ -12,6 +12,6 @@ const Template: ComponentStory<typeof Typography> = (args) => <Typography {...ar
 
 export const Default = Template.bind({});
 Default.args = {
-  children: 'Passe o mouse por cima!',
+  children: 'Padrão de texto',
   color: 'primaryDark',
 };

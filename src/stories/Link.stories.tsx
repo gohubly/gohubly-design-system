@@ -39,5 +39,5 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   onClick: () => false,
   children: 'Link Disabled',
-  disabled: true,
+  disabled: true
 };

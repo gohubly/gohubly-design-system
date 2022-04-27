@@ -8,7 +8,7 @@ import dsTheme from './designSystemTheme'
 
 const themes = [dsTheme];
 export const parameters = {
-  // Add to center components iside the preview in Storybook.
+  // Add to center components inside the preview in Storybook.
   layout: 'centered',
   controls: {
     matchers: {
@@ -66,10 +66,9 @@ export const parameters = {
 // Add styled components and default theme
 addDecorator(withThemesProvider(themes), ThemeProvider);
 
-// Add DS Global Style in Storybook
+// Add font to display
 addDecorator((story) => (
-  <>
-    <GlobalStyle />
+  <div style={{ fontFamily: 'InterMedium' }}>
     {story()}
-  </>
+  </div>
 ));

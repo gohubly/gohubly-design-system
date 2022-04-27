@@ -42,3 +42,12 @@ WithoutProgressBar.args = {
   steps: 5,
   hasProgressBar: false
 };
+
+export const Mini = Template.bind({});
+
+Mini.args = {
+  children: 'Default',
+  hierarchy: 'primary',
+  steps: 5,
+  mini: true
+};

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { iButton, iButtonHierarchy } from '.';
+import { iButton, iButtonHierarchy, iButtonSizes } from '.';
 import { hexToRgb } from '../../helpers';
 import { defaultCss } from '../../theme/defaultCss';
 import { themeWithouthInterface as theme } from '../../theme/theme';
@@ -104,8 +104,15 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   secondary: 'primaryLight',
 }
 
-export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: boolean }>`
-  margin-right: 10px;
+const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: '8px 16px',
+  MD: '12px 24px',
+  LG: '16px 32px'
+}
+
+export const IconStyled = styled(Icon) <iIcon & { hierarchy: iButtonHierarchy, OnColor?: boolean, loading?: boolean }>`
+  margin-right: 5px;
+  visibility: ${({ loading }) => loading ? 'hidden' : 'visible' };
   path {
     stroke: ${({ hierarchy, OnColor }) => {
     if (hierarchy === 'primary') {
@@ -116,7 +123,7 @@ export const IconStyled = styled(Icon) <iIcon & { hierarchy: string, OnColor?: b
       })
     }
 
-    return OnColor ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]] : theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy as iButtonHierarchy]]
+    return OnColor ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy]] : theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
   }};
   }
 `
@@ -127,31 +134,36 @@ export const Button = styled.button<iButton>`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  position: relative;
+  
+  height: fit-content;
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
-
-  border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+  
+  outline: none;
+  border-color: transparent;
+  border: 1px solid;
+  border-color: ${({ OnColor, hierarchy }) => hierarchy && theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
   border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
 
   cursor: pointer;
   transition: background-color 0.3s;
 
-  padding: 12px 24px;
+  padding: ${({ size }) => size && PADDING_BY_SIZE[size]};
   color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? COLOR_ON_HIERARCHY[hierarchy] : COLOR_BY_HIERARCHY[hierarchy]]};
   background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? BACKGROUND_ON_COLOR_BY_HIERARCHY[hierarchy] : BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
 
   &:hover:not(:disabled) {
-    border: ${({ OnColor, hierarchy }) => hierarchy && `1.5px solid ${() => theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+    border: ${({ OnColor, hierarchy }) => hierarchy && `1px solid ${() => theme.colors[OnColor ? HOVER_BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
     background-color: ${({ hierarchy, OnColor }) => hierarchy && theme.colors[OnColor ? HOVER_ON_COLOR_BY_HIERARCHY[hierarchy] : HOVER_COLOR_BY_HIERARCHY[hierarchy]]};
   }
 
   &:focus:not(:disabled) {
     border-color: ${() => theme.colors.helper};
-    animation: ${({ OnColor, hierarchy }) => keyframes`
+    animation: ${({ OnColor, hierarchy, theme }) => keyframes`
       100% {
-        border: ${hierarchy && `1.5px solid ${() => theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]}`};
+        border-color: ${hierarchy && theme.colors[OnColor ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy] : BORDER_COLOR_BY_HIERARCHY[hierarchy]]};
       }
-    `} 0.8s linear;
+    `} 0.4s linear;
     
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
@@ -189,3 +201,12 @@ export const Button = styled.button<iButton>`
     color: ${({ OnColor }) => OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
   }
 `;
+
+export const ContentContainer = styled.div<{ loading?: boolean }>`
+  visibility: ${({ loading }) => loading ? 'hidden' : 'visible' };
+`
+
+export const ButtonSpinnerContainer = styled.span`
+  position: absolute;
+  height: 70%;
+`

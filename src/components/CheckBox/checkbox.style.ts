@@ -15,16 +15,13 @@ export const Label = styled.label<ILabelCheckBox>`
   font-size: 14px;
   height: 20px;
 
-  padding-top: 2px;
-  padding-bottom: 2px;
-
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
   user-select: none;
 
-  color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+  color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
   
   &:hover {
-    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
   }
 
   &:hover span,
@@ -36,12 +33,16 @@ export const Label = styled.label<ILabelCheckBox>`
   &:hover {
     span {
       background-color: ${() => theme.colors.primaryLightest};
-      border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
+      border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
     }
   }
   
   &.disabled {
     color: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+
+    path {
+      stroke: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium}!important;
+    }
     
     &:hover span,
     input:checked ~ span {
@@ -55,67 +56,32 @@ export const Label = styled.label<ILabelCheckBox>`
 export const Box = styled.input.attrs({
   type: 'checkbox',
 }) <IBoxCheckBox>`
+  box-sizing: border-box;
   cursor: pointer;
   position: absolute;
   opacity: 0;
   height: 0;
   width: 0;
 
-  &:checked ~ span:after {
+  &:checked ~ span {
     display: block;
   }
 `;
 
 export const Mark = styled.span<IMarkCheckBox>`
   position: absolute;
-  top: 0;
   left: 0;
-  height: 16px;
-  width: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-sizing: border-box;
+  height: 20px;
+  width: 20px;
   background-color: transparent;
   border-radius: 4px;
-  border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
-
+  border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLow};
+  transition: 180ms ease-in-out;
+  
   &.disabled {
     border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
-
-  transition: 180ms ease-in-out;
-
-  &.disabled {
-    &:after {
-      content: '';
-      position: absolute;
-      display: none;
-  
-      left: 5px;
-      top: 2px;
-  
-      width: 4px;
-      height: 8px;
-  
-      border: solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-      border-width: 0 2px 2px 0;
-  
-      transform: rotate(45deg);
-    }
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    display: none;
-
-    left: 5px;
-    top: 2px;
-
-    width: 4px;
-    height: 8px;
-
-    border: solid ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-    border-width: 0 2px 2px 0;
-
-    transform: rotate(45deg);
-  }
 `;
-

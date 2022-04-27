@@ -17,7 +17,7 @@ export const CardSmall: React.FC<iCardSmall> = ({
       {...props}
       OnColor={OnColor}
     >
-      {avatar && <Avatar name={avatar} image={avatar} OnColor />}
+      {avatar && <Avatar name={avatar} image={avatar} size='LG' OnColor />}
       <ContentContainer>
         {props.title && (
           <Typography color='neutralLowDark' size='XS' fontWeight={400}>
@@ -33,11 +33,13 @@ export const CardSmall: React.FC<iCardSmall> = ({
 
       </ContentContainer>
 
-      {rightComponent && (
-        <ContentContainer>
-          {rightComponent}
-        </ContentContainer>
-      )}
-    </StyledCardSmall>
+      {
+        rightComponent && (
+          <ContentContainer>
+            {rightComponent}
+          </ContentContainer>
+        )
+      }
+    </StyledCardSmall >
   );
 };
