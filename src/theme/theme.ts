@@ -38,7 +38,7 @@ export const theme = {
     Level1: '0px 1px 2px rgba(0, 0, 0, 0.16)',
     Level2: '0px 4px 8px rgba(0, 0, 0, 0.12)',
     Level3: '0px 8px 16px rgba(0, 0, 0, 0.08)',
-    Level4: '0px 16px 32px rgba(0, 0, 0, 0.08)', 
+    Level4: '0px 16px 32px rgba(0, 0, 0, 0.08)',
   },
   shadowOn: { // hover, active ?
     Level1: '0px 1px 2px rgba(0, 0, 0, 0.24);',
@@ -47,9 +47,9 @@ export const theme = {
     Level4: '0px 16px 32px rgba(0, 0, 0, 0.24); ',
   },
   fontWeight: {
-     semiBold: '600',
-     medium: '500',
-     regular: '400',
+    600: '600',
+    500: '500',
+    400: '400',
   },
   spacing: {}, // como funcionaria com responsividade
   spacingInset: {},
@@ -92,7 +92,7 @@ export const theme = {
     themeLightDark: '#E6E6E6',
     themeLowDark: '#1b1a1f',
     themeHighDark: '#0b0a0d',
-    
+
     themeHighLight: '#f6f9fc',
   }
 }
