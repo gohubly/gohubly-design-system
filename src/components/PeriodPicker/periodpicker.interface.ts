@@ -1,12 +1,12 @@
-import { Moment } from 'moment'
+import moment from 'moment'
 
 export type iPeriod = {
-  initialDate?: Moment,
-  finalDate?: Moment
+  initialDate?: moment.Moment,
+  finalDate?: moment.Moment
 }
 
 export type iCalendar = {
-  days: Moment[]
+  days: moment.Moment[]
 }[]
 
 export interface iPeriodPicker {
