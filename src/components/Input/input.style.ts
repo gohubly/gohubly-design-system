@@ -185,6 +185,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   left: 0;
 
   width: 100%;
+  opacity: ${({ opened }) => opened ? 'auto' : 0};
   max-height: 450px;
   overflow-y: auto;
 
@@ -197,7 +198,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   border-radius: 8px;
 
   opacity: ${({ opened }) => opened ? 1 : 0};
-  pointer-events:  
+  pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
 
   transition: opacity 0.1s linear;
   z-index: 9999;
