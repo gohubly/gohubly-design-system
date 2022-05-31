@@ -14,6 +14,7 @@ export const Page = Template.bind({});
 Page.args = {
   length: 10,
   goToPage: (selectedPage: number) => { console.log(selectedPage)},
+  disableNextPage: false,
   groupAt: 0
 };
 

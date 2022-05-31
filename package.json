@@ -1,13 +1,13 @@
 {
-  "name": "gohubly-ds",
-  "version": "1.1.3",
+  "name": "@gohubly/design-system",
+  "version": "1.1.7",
   "private": false,
-  "main": "./dist/lib/index.js",
-  "types": "./dist/types",
+  "main": "dist/lib/index.js",
+  "types": "dist/types/index.d.ts",
   "license": "MIT",
   "website": "http://gohubly.github.io/gohubly-design-system",
   "files": [
-    "./dist"
+    "dist"
   ],
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
@@ -31,7 +31,7 @@
     "build:lib": "yarn cache clean && yarn tsc -p .",
     "build:storybook": "mkdir public & yarn build-storybook",
     "deploy:storybook": "gh-pages -d storybook-static",
-    "pub": "yarn build:lib && yarn publish"
+    "pub": "npm run build:lib && npm publish"
   },
   "eslintConfig": {
     "extends": [
