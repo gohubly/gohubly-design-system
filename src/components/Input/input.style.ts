@@ -186,7 +186,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
 
   width: 100%;
   opacity: ${({ opened }) => opened ? 'auto' : 0};
-  max-height: 450px;
+  max-height: 400px;
   overflow-y: auto;
 
   display: flex;

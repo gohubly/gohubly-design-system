@@ -91,6 +91,7 @@ WithDropdown.args = {
       value: 'value-label-2'
     },
     {
+      label: 'label-3',
       value: 'value-label-3',
       tag: {
         background: 'warning',
