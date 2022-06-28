@@ -52,7 +52,6 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
       setDisabledPrev(false);
       setDisabledNext(false);
     }
-
     if (props.disableNextPage && !disabledNext) {
       setDisabledNext(true)
     }

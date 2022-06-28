@@ -50,6 +50,7 @@ export const theme = {
     600: '600',
     500: '500',
     400: '400',
+    300: '300',
   },
   spacing: {}, // como funcionaria com responsividade
   spacingInset: {},

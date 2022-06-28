@@ -48,7 +48,6 @@ export const Itens = styled.div<iItens>`
   color: ${({ currentPage, index }) => currentPage === index ? '#fff' : '#333333'};
   background-color: ${({ currentPage, index }) => currentPage === index ? '#425DC7' : '#fff'};
   cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
-
   &:hover {
     background-color: ${({ currentPage, index }) => currentPage === index ? '#425DC7' : '#F1F2F9'};
   }

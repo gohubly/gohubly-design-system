@@ -6,22 +6,22 @@ export interface iPaginator {
   groupAt?: number;
   goToPage: (selectedPage: number) => void;
   className?: string;
-  disableNextPage?: boolean
+  disableNextPage?: boolean;
 }
 
 export interface iItens {
-  currentPage: number
-  index: number
-  disabled?: boolean
+  currentPage: number;
+  index: number;
+  disabled?: boolean;
 }
 
 export interface iContainerIcon {
-  currentPage: number
-  disabledPrev?: boolean
-  disabledNext?: boolean
-  disabled?: boolean
+  currentPage: number;
+  disabledPrev?: boolean;
+  disabledNext?: boolean;
+  disabled?: boolean;
 }
 
 export interface iButtonNext extends Partial<iButton> {
-  iconRightPadding?: string
+  iconRightPadding?: string;
 }

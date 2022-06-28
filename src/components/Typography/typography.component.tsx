@@ -10,6 +10,7 @@ export const Typography: React.FC<iTypography> = ({
   lineHeight,
   children,
   color,
+  textAlign,
 }) => {
   const props = {
     as,
@@ -18,6 +19,7 @@ export const Typography: React.FC<iTypography> = ({
     fontWeight,
     lineHeight,
     color,
+    textAlign
   }
 
   switch (as || size) {

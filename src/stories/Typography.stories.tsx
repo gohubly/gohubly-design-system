@@ -14,4 +14,5 @@ export const Default = Template.bind({});
 Default.args = {
   children: 'Padrão de texto',
   color: 'primaryDark',
+  textAlign: 'center'
 };
