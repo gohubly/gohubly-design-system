@@ -1,20 +1,31 @@
-import React, { KeyboardEvent, useRef, useState } from 'react';
-import { iSelect, iSelectOption } from '.';
-import { Icon } from '..';
-import { useClickOutside } from '../..';
-import { Wrapper, SelectStyled, Placeholder, Options, Option, OpenIcon, HelperText } from './select.style';
+import React, { KeyboardEvent, useRef, useState } from "react";
+import { iSelect, iSelectOption } from ".";
+import { Icon } from "..";
+import { useClickOutside } from "../..";
+import {
+  Wrapper,
+  SelectStyled,
+  Placeholder,
+  Options,
+  Option,
+  OpenIcon,
+  HelperText,
+} from "./select.style";
 
-export const Select: React.FC<iSelect> = ({ 
-  placeholder, 
-  icon, 
-  items, 
-  disabled, 
-  error, 
-  helperText, 
-  selected, 
-  onSelect, 
-  ...props }) => {
-
+export const Select: React.FC<iSelect> = ({
+  placeholder,
+  icon,
+  items,
+  disabled,
+  error,
+  helperText,
+  selected,
+  onSelect,
+  width,
+  height,
+  fontSize,
+  ...props
+}) => {
   const [opened, setOpened] = useState(false);
   const selectRef = useRef(null);
 
@@ -32,36 +43,45 @@ export const Select: React.FC<iSelect> = ({
   };
 
   const handleKeyPressOnSelect = ({ key }: KeyboardEvent) => {
-    setOpened(key === 'Enter');
+    setOpened(key === "Enter");
   };
 
-  const handleKeyPressOnOption = ({ key }: KeyboardEvent, selectedOption: iSelectOption) => {
-    if (key === 'Enter') 
-      handleSelectOption(selectedOption)
+  const handleKeyPressOnOption = (
+    { key }: KeyboardEvent,
+    selectedOption: iSelectOption
+  ) => {
+    if (key === "Enter") handleSelectOption(selectedOption);
   };
 
   return (
     <Wrapper {...props} ref={selectRef}>
-      <SelectStyled 
-        disabled={disabled} 
-        error={error} 
-        onClick={handleToggleSelect} 
-        tabIndex={0} 
+      <SelectStyled
+        disabled={disabled}
+        error={error}
+        onClick={handleToggleSelect}
+        tabIndex={0}
         onKeyPress={handleKeyPressOnSelect}
         opened={opened}
+        width={width}
+        height={height}
       >
         {icon && <Icon iconId={icon} size="SM" />}
-        <Placeholder>{selected?.label || selected?.value || placeholder}</Placeholder>
+        <Placeholder fontSize={fontSize ? fontSize : "XS"}>
+          {selected?.label || selected?.value || placeholder}
+        </Placeholder>
         <OpenIcon iconId="chevronDown" opened={!disabled && opened} />
       </SelectStyled>
 
       {!disabled && opened && (
         <Options>
           {items.map((option: iSelectOption) => (
-            <Option 
+            <Option
+              fontSize={fontSize ? fontSize : "XS"}
               tabIndex={0}
               onClick={() => handleSelectOption(option)}
-              onKeyPress={(event: KeyboardEvent) => handleKeyPressOnOption(event, option)}
+              onKeyPress={(event: KeyboardEvent) =>
+                handleKeyPressOnOption(event, option)
+              }
             >
               {option.label || option.value}
             </Option>

@@ -1,4 +1,5 @@
 import { iIconTypes } from "..";
+import { theme } from "../../theme"
 
 export interface iSelectOption {
   value: string | number
@@ -14,4 +15,7 @@ export interface iSelect {
   helperText?: string
   selected?: iSelectOption
   onSelect?: (newSelectedOption: iSelectOption) => void
+  fontSize?: keyof typeof theme.fontSize
+  width?: string
+  height?: string
 }

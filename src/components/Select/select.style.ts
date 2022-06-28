@@ -20,9 +20,13 @@ export const SelectStyled = styled.div<{
   disabled?: boolean;
   error?: boolean;
   opened?: boolean;
+  width?: string;
+  height?: string;
 }>`
-  min-width: 256px;
-  min-height: 48px;
+  width: ${({ width }) => width ?? "256px"};
+  min-width: 100px;
+  height: ${({ height }) => height ?? "48px"};
+  min-height: 32px;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -58,8 +62,11 @@ export const SelectStyled = styled.div<{
     `}
 `;
 
-export const Placeholder = styled.span`
+export const Placeholder = styled.span<{ fontSize: string }>`
   flex: 1;
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean }>`
@@ -75,13 +82,14 @@ export const OpenIcon = styled(Icon)<{ opened: boolean }>`
 
 export const Options = styled.div`
   position: absolute;
+  z-indez: 2;
   width: 100%;
   padding: 8px;
   display: flex;
   flex-direction: column;
 
   background: ${({ theme }) => theme.colors.neutralHigh};
-  border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
+  border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
   box-sizing: border-box;
   border-radius: ${({ theme }) => theme.borderRadius.SM};
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
@@ -91,15 +99,17 @@ export const Options = styled.div`
 
   :hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
-    border-color: ${({ theme }) => theme.colors.neutralLowLight};
+    border-color: ${({ theme }) => theme.colors.neutralHighLight};
   }
 `;
 
-export const Option = styled.div`
+export const Option = styled.div<{ fontSize: string }>`
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
   min-height: 48px;
   display: flex;
   align-items: center;
   padding: 0 16px;
+  word-break: break-word;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};
 
