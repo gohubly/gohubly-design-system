@@ -50,7 +50,8 @@ export const designSystemTheme = {
   fontWeight: {
      semiBold: '600',
      medium: '500',
-     regular: '400  ',
+     regular: '400',
+     light: '300',
   },
   spacing: {}, // como funcionaria com responsividade
   spacingInset: {},

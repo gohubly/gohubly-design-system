@@ -1,13 +1,22 @@
 ## Componentes
 
-- [x] Button
 - [x] Avatar
-- [x] Input
-- [x] Link
-- [x] Icon
+- [x] Button
+- [x] Card
 - [x] CheckBox
+- [x] Dropdown
+- [x] Icon
+- [x] Input
+- [x] InputCode
+- [x] Link
+- [x] Paginator
+- [x] PeriodPicker
 - [x] RadioButton
+- [x] Select
+- [x] Spinner
 - [x] Stepper
+- [x] Table
+- [x] Tabs
 - [x] Tag
 - [x] Tooltip
 - [x] Typography

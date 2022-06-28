@@ -81,7 +81,8 @@ export const Input = styled.input<iStyledCommonProps>`
   border: 1px solid ${() => theme.colors.neutralLowMedium};
   box-sizing: border-box;
   border-radius: 8px;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  font-weight: 300;
   
   color: ${() => theme.colors.neutralLowMedium};
 

@@ -2,7 +2,7 @@ import React, { KeyboardEvent, useRef, useState } from 'react';
 import { iSelect, iSelectOption } from '.';
 import { Icon } from '..';
 import { useClickOutside } from '../..';
-import { Wrapper, Select as SelectStyled, Placeholder, Options, Option, OpenIcon, HelperText } from './select.style';
+import { Wrapper, SelectStyled, Placeholder, Options, Option, OpenIcon, HelperText } from './select.style';
 
 export const Select: React.FC<iSelect> = ({ 
   placeholder, 
@@ -48,10 +48,11 @@ export const Select: React.FC<iSelect> = ({
         onClick={handleToggleSelect} 
         tabIndex={0} 
         onKeyPress={handleKeyPressOnSelect}
+        opened={opened}
       >
         {icon && <Icon iconId={icon} size="SM" />}
         <Placeholder>{selected?.label || selected?.value || placeholder}</Placeholder>
-        <OpenIcon iconId="chevronRight" opened={!disabled && opened} />
+        <OpenIcon iconId="chevronDown" opened={!disabled && opened} />
       </SelectStyled>
 
       {!disabled && opened && (
