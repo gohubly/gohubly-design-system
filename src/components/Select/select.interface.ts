@@ -6,6 +6,8 @@ export interface iSelectOption {
   label?: string
 }
 
+export type iSelectTypes = 'text' | 'number'
+
 export interface iSelect {
   items: iSelectOption[]
   placeholder?: string
@@ -18,4 +20,5 @@ export interface iSelect {
   fontSize?: keyof typeof theme.fontSize
   width?: string
   height?: string
+  type?: iSelectTypes
 }

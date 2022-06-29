@@ -24,6 +24,7 @@ export const Select: React.FC<iSelect> = ({
   width,
   height,
   fontSize,
+  type = 'text',
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
@@ -64,6 +65,7 @@ export const Select: React.FC<iSelect> = ({
         opened={opened}
         width={width}
         height={height}
+        type={type}
       >
         {icon && <Icon iconId={icon} size="SM" />}
         <Placeholder fontSize={fontSize ? fontSize : "XS"}>

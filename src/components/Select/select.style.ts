@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { Icon } from "..";
+import { iSelectTypes } from ".";
 
 const fadeInDown = keyframes`
   from {
@@ -16,21 +17,43 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
+const PADDING_BY_SIZE: Record<iSelectTypes, string> = {
+  text: "0px 16px",
+  number: "4px 4px 4px 12px",
+};
+
+const GAP_BY_SIZE: Record<iSelectTypes, string> = {
+  text: "16px",
+  number: "2px",
+};
+
+const MIN_WIDTH_BY_SIZE: Record<iSelectTypes, string> = {
+  text: "150px",
+  number: "64px",
+};
+
+const MIN_HEIGHT_BY_SIZE: Record<iSelectTypes, string> = {
+  text: "32px",
+  number: "32px",
+};
+
 export const SelectStyled = styled.div<{
   disabled?: boolean;
   error?: boolean;
   opened?: boolean;
   width?: string;
   height?: string;
+  type?: string;
 }>`
-  width: ${({ width }) => width ?? "256px"};
-  min-width: 100px;
-  height: ${({ height }) => height ?? "48px"};
-  min-height: 32px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 16px;
+
+  width: ${({ width }) => width ?? "256px"};
+  min-width: ${({ type }) => MIN_WIDTH_BY_SIZE[type as iSelectTypes]};
+  height: ${({ height }) => height ?? "48px"};
+  min-height: ${({ type }) => MIN_HEIGHT_BY_SIZE[type as iSelectTypes]};
+  gap: ${({ type }) => GAP_BY_SIZE[type as iSelectTypes]};
+  padding: ${({ type }) => PADDING_BY_SIZE[type as iSelectTypes]};
 
   background: ${({ theme }) => theme.colors.white};
   border: ${({ error, theme }) =>
@@ -67,6 +90,7 @@ export const Placeholder = styled.span<{ fontSize: string }>`
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean }>`
@@ -82,7 +106,7 @@ export const OpenIcon = styled(Icon)<{ opened: boolean }>`
 
 export const Options = styled.div`
   position: absolute;
-  z-indez: 2;
+  z-index: 2;
   width: 100%;
   padding: 8px;
   display: flex;
