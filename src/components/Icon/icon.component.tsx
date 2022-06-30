@@ -56,6 +56,7 @@ import Play from './icons/play'
 import Plus from './icons/plus'
 import Search from './icons/search'
 import Settings from './icons/settings'
+import Share from './icons/share'
 import Shield from './icons/shield'
 import StarEmpty from './icons/starEmpty'
 import StarFilled from './icons/starFilled'
@@ -131,6 +132,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   plus: Plus,
   search: Search,
   settings: Settings,
+  share: Share,
   shield: Shield,
   starEmpty: StarEmpty,
   starFilled: StarFilled,

@@ -11,14 +11,14 @@ import {
 } from "./paginator.style";
 
 export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
-  const [currentPage, setCurrentPage] = useState(props.currentPage || 0);
+  const [currentPage, setCurrentPage] = useState(props?.currentPage ?? 0);
   const [disabledPrev, setDisabledPrev] = useState(true);
   const [disabledNext, setDisabledNext] = useState(false);
   const [visibleNumbers, setVisibleNumbers] = useState<number[]>();
   const [showCollapsedFew, setShowCollapsedFew] = useState<boolean>(false);
   const [showCollapsedMore, setShowCollapsedMore] = useState<boolean>(false);
 
-  const groupAt = !props.groupAt || props.groupAt === 0 ? 4 : props.groupAt;
+  const groupAt = !props.groupAt || props.groupAt === 0 ? 3 : props.groupAt;
 
   const goToPage = (page: number) => {
     setCurrentPage(page);
@@ -53,7 +53,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
       setDisabledNext(false);
     }
     if (props.disableNextPage && !disabledNext) {
-      setDisabledNext(true)
+      setDisabledNext(true);
     }
   };
 
@@ -81,17 +81,10 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
       }
 
       // middle part of pager
-      if (
-        currentPage >= groupAt &&
-        currentPage < props.length - groupAt
-      ) {
+      if (currentPage >= groupAt && currentPage < props.length - groupAt) {
         let counter = 0;
 
-        for (
-          let i = currentPage - 1;
-          i < currentPage + groupAt - 1;
-          i++
-        ) {
+        for (let i = currentPage - 1; i < currentPage + groupAt - 1; i++) {
           if (i > 0 && i < props.length - 1) {
             numbers.push(i);
             counter++;
@@ -121,6 +114,8 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
       for (let i = 0; i < props.length; i++) {
         numbers.push(i);
       }
+      setShowCollapsedMore(false);
+      setShowCollapsedFew(false);
     }
     setVisibleNumbers(numbers);
   };
@@ -138,6 +133,12 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
     loadVisibleNumbers();
     enableDisable();
   }, [currentPage, props.length, props.disableNextPage]);
+
+  useEffect(() => {
+    if (props.currentPage) {
+      setCurrentPage(props.currentPage -1);
+    }
+  }, [props.currentPage]);
 
   return (
     <Container>
@@ -172,7 +173,11 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
                 <Itens
                   currentPage={currentPage}
                   index={page}
-                  onClick={page > 0 && props.disableNextPage ? undefined : () => goToPage(page)}
+                  onClick={
+                    page > 0 && props.disableNextPage
+                      ? undefined
+                      : () => goToPage(page)
+                  }
                   disabled={page > 0 && props.disableNextPage}
                 >
                   <Number>{page + 1}</Number>

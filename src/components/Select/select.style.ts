@@ -129,10 +129,10 @@ export const Options = styled.div`
 
 export const Option = styled.div<{ fontSize: string }>`
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
-  min-height: 48px;
+  height: calc(${({ fontSize, theme }) => theme.fontSize[fontSize]} + 24px);
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0px 16px;
   word-break: break-word;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};

@@ -10,7 +10,7 @@ export type iIconTypes =
 'instagram' | 'link' | 'linkedin' | 'list' | 'loading' | 'lock' | 
 'login' | 'minus' | 'moreHorizontal' | 'moreVertical' | 'pen' | 
 'percent' | 'pinLocation' | 'phone' | 'play' | 'plus' | 'search' | 
-'settings' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
+'settings' | 'share' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
 'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' 
 
 export type iIconSizes = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
