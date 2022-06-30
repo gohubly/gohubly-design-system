@@ -9,7 +9,8 @@ export default {
 } as ComponentMeta<typeof Select>;
 
 const Template: ComponentStory<typeof Select> = (args) => <Select {...args} />;
-const templateDefaultArgs = {
+
+const templateTextDefaultArgs = {
   placeholder: 'Placeholder',
   onSelect: console.log,
   items: [
@@ -24,27 +25,49 @@ const templateDefaultArgs = {
   ]
 }
 
-export const Default = Template.bind({});
-Default.args = {
-  ...templateDefaultArgs
+const templateNumberDefaultArgs = {
+  placeholder: '1',
+  width: '72px',
+  height: '34px',
+  onSelect: console.log,
+  items: [
+    {
+      value: '1',
+      label: '1',
+    },
+    {
+      value: '2',
+      label: '2',
+    },
+  ]
+}
+
+export const DefaultText = Template.bind({});
+DefaultText.args = {
+  ...templateTextDefaultArgs
 };
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
-  ...templateDefaultArgs,
+  ...templateTextDefaultArgs,
   icon: 'information',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  ...templateDefaultArgs,
+  ...templateTextDefaultArgs,
   icon: 'information',
   disabled: true,
 };
 
 export const WithError = Template.bind({});
 WithError.args = {
-  ...templateDefaultArgs,
+  ...templateTextDefaultArgs,
   error: true,
   helperText: 'helper text'
+};
+
+export const DefaultNumber = Template.bind({});
+DefaultNumber.args = {
+  ...templateNumberDefaultArgs
 };
