@@ -25,23 +25,6 @@ const templateTextDefaultArgs = {
   ]
 }
 
-const templateNumberDefaultArgs = {
-  placeholder: '1',
-  width: '72px',
-  height: '34px',
-  onSelect: console.log,
-  items: [
-    {
-      value: '1',
-      label: '1',
-    },
-    {
-      value: '2',
-      label: '2',
-    },
-  ]
-}
-
 export const DefaultText = Template.bind({});
 DefaultText.args = {
   ...templateTextDefaultArgs
@@ -69,5 +52,24 @@ WithError.args = {
 
 export const DefaultNumber = Template.bind({});
 DefaultNumber.args = {
-  ...templateNumberDefaultArgs
+  placeholder: '10',
+  width: '32px',
+  height: '34px',
+  type: 'number',
+  fontSize: 'XXXS',
+  onSelect: console.log,
+  items: [
+    {
+      value: '10',
+      label: '10',
+    },
+    {
+      value: '50',
+      label: '50',
+    },
+    {
+      value: '100',
+      label: '100',
+    },
+  ]
 };

@@ -68,7 +68,7 @@ export const Select: React.FC<iSelect> = ({
         type={type}
       >
         {icon && <Icon iconId={icon} size="SM" />}
-        <Placeholder fontSize={fontSize ? fontSize : "XS"}>
+        <Placeholder fontSize={fontSize}>
           {selected?.label || selected?.value || placeholder}
         </Placeholder>
         <OpenIcon iconId="chevronDown" opened={!disabled && opened} />
@@ -78,7 +78,8 @@ export const Select: React.FC<iSelect> = ({
         <Options>
           {items.map((option: iSelectOption) => (
             <Option
-              fontSize={fontSize ? fontSize : "XS"}
+              type={type}
+              fontSize={fontSize}
               tabIndex={0}
               onClick={() => handleSelectOption(option)}
               onKeyPress={(event: KeyboardEvent) =>

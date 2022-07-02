@@ -11,20 +11,12 @@ interface iInputDropdownWrapper {
 }
 interface iInputDropdownItem {
   active: boolean
+  fontSize?: keyof typeof theme.fontSize 
 }
 interface iStyledCommonProps extends Partial<iInput> {
   contentLeft?: boolean
   contentRight?: boolean
   Size?: iInputSizes
-}
-
-const ICON_PADDING: Record<iIconPaddings, string> = {
-  XXXS: '6px',
-  XXS: '8px',
-  XS: '10px',
-  SM: '12px',
-  MD: '14px',
-  LG: '16px',
 }
 interface iIconRight extends Partial<iIcon> {
   iconRightPadding?: iIconPaddings 
@@ -35,8 +27,26 @@ interface iIconLeft extends Partial<iIcon> {
 }
 
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  XXS: '32px',
+  XS: '36px',
+  SM: '40px',
   MD: '48px',
-  SM: '40px'
+}
+
+const PADDING_ICON_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  XXS: '12px',
+  XS: '14px',
+  SM: '15px',
+  MD: '16px',
+}
+
+const ICON_PADDING_LEFT_OR_RIGHT: Record<iIconPaddings, string> = {
+  XXXS: '3px',
+  XXS: '6px',
+  XS: '8px',
+  SM: '10px',
+  MD: '12px',
+  LG: '14px',
 }
 
 export const LabelText = styled.span<iStyledCommonProps>`
@@ -74,9 +84,11 @@ export const Input = styled.input<iStyledCommonProps>`
     -webkit-text-fill-color: black!important;
   }
 
-  height: ${({ size }): string => INPUT_HEIGHT_BASED_ON_SIZE[size || 'MD']};
+  height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || 'MD']};
   width: ${({ fluid }) => fluid ? '100%' : 'auto'};
   background: ${() => theme.colors.neutralHigh};
+
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
 
   border: 1px solid ${() => theme.colors.neutralLowMedium};
   box-sizing: border-box;
@@ -86,16 +98,19 @@ export const Input = styled.input<iStyledCommonProps>`
   
   color: ${() => theme.colors.neutralLowMedium};
 
-  padding: 12px 16px;
-  padding-left: ${({ contentLeft }) => contentLeft ? '46px' : '16px'};
-  padding-right: ${({ contentRight }) => contentRight ? '46px' : '16px'};
+  padding-left: ${({ contentLeft, size }) => contentLeft ? '46px' : PADDING_ICON_BASED_ON_SIZE[size || 'MD']};
+  padding-right: ${({ contentRight, size }) => contentRight ? '30px' : PADDING_ICON_BASED_ON_SIZE[size || 'MD']};
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   ${({ OnColor }) => OnColor && css`
     border-width: 0px;
   `}
   
   &:hover {
-    border: 1px solid ${({ OnColor }) => OnColor ? theme.colors.primaryDark : theme.colors.primary};
+    border: 1.5px solid ${({ OnColor }) => OnColor ? theme.colors.primaryDark : theme.colors.primary};
   }
 
   &:focus {
@@ -174,7 +189,6 @@ export const SuffixText = styled.div`
 
 export const PrefixText = styled.div`
   ${PrefixAndSuffixCommons};
-
   left: 1px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
@@ -182,11 +196,10 @@ export const PrefixText = styled.div`
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 8px); 
   left: 0;
 
   width: 100%;
-  opacity: ${({ opened }) => opened ? 'auto' : 0};
   max-height: 400px;
   overflow-y: auto;
 
@@ -206,8 +219,10 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
 `
 
 export const DropdownItem = styled.div<iInputDropdownItem>`
-  padding: 12px 16px;
+  padding: calc(${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']} - 4px) 16px;
   letter-spacing: -0.005em;
+
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
 
   background: ${() => theme.colors.white};
   border-left: 1px solid ${() => theme.colors.neutralHighMedium};
@@ -256,10 +271,10 @@ const IconCss = css<{
 
 export const LeftIcon = styled(Icon)<iIconLeft>`
   ${IconCss};
-  left: ${({ iconLeftPadding }): string => ICON_PADDING[iconLeftPadding || 'XXS']};
+  left: ${({ iconLeftPadding }): string => ICON_PADDING_LEFT_OR_RIGHT[iconLeftPadding || 'XXS']};
 `
 
 export const RightIcon = styled(Icon)<iIconRight>`
   ${IconCss};
-  right: ${({ iconRightPadding }): string => ICON_PADDING[iconRightPadding || 'XXS']};
+  right: ${({ iconRightPadding }): string => ICON_PADDING_LEFT_OR_RIGHT[iconRightPadding || 'XXS']};
 `

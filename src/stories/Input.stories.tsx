@@ -83,6 +83,7 @@ WithDropdown.args = {
   name: 'input-name',
   label: 'Label',
   placeholder: 'placeholder...',
+  size: 'MD',
   dropdown: [
     {
       value: 'value-label-1'
@@ -91,12 +92,40 @@ WithDropdown.args = {
       value: 'value-label-2'
     },
     {
-      label: 'label-3',
-      value: 'value-label-3',
+      value: 'value-label-3'
+    },
+    {
+      value: 'value-label-4'
+    },
+    {
+      label: 'label-5',
+      value: 'value-label-5',
       tag: {
         background: 'warning',
         label: 'Tag'
       }
+    },
+  ]
+};
+
+export const WithDropdownNumber = Template.bind({});
+WithDropdownNumber.args = {
+  name: 'input-name',
+  iconRight: 'chevronDown',
+  placeholder: '',
+  size: 'XXS',
+  dropdown: [
+    {
+      value: '1'
+    },
+    {
+      value: '2'
+    },
+    {
+      value: '3'
+    },
+    {
+      value: '4'
     },
   ]
 };

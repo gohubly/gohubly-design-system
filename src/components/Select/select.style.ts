@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
 const PADDING_BY_SIZE: Record<iSelectTypes, string> = {
   text: "0px 16px",
-  number: "4px 4px 4px 12px",
+  number: "4px 4px 4px 10px",
 };
 
 const GAP_BY_SIZE: Record<iSelectTypes, string> = {
@@ -35,6 +35,11 @@ const MIN_WIDTH_BY_SIZE: Record<iSelectTypes, string> = {
 const MIN_HEIGHT_BY_SIZE: Record<iSelectTypes, string> = {
   text: "32px",
   number: "32px",
+};
+
+const PADDING_OPTIONS_BY_SIZE: Record<iSelectTypes, string> = {
+  text: "16px",
+  number: "9px",
 };
 
 export const SelectStyled = styled.div<{
@@ -85,9 +90,9 @@ export const SelectStyled = styled.div<{
     `}
 `;
 
-export const Placeholder = styled.span<{ fontSize: string }>`
+export const Placeholder = styled.span<{ fontSize?: string }>`
   flex: 1;
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -127,12 +132,12 @@ export const Options = styled.div`
   }
 `;
 
-export const Option = styled.div<{ fontSize: string }>`
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize]};
-  height: calc(${({ fontSize, theme }) => theme.fontSize[fontSize]} + 24px);
+export const Option = styled.div<{ fontSize?: string, type: string }>`
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
+  height: calc(${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']} + 24px);
   display: flex;
   align-items: center;
-  padding: 0px 16px;
+  padding: 0px ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
   word-break: break-word;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};

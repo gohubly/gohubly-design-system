@@ -1,7 +1,8 @@
 import { InputHTMLAttributes } from "react";
+import { theme } from "../../theme";
 import { iIconTypes } from "../Icon";
 
-export type iInputSizes = 'SM' | 'MD'
+export type iInputSizes = 'XXS' | 'XS' | 'SM' | 'MD' 
 export type iIconPaddings = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
 
 type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> 
@@ -15,6 +16,7 @@ export interface iInput extends iInputHTML {
   helperText?: string
   helperTextOnClick?: () => void
   error?: boolean
+  fontSize?: keyof typeof theme.fontSize
 
   iconLeft?: iIconTypes
   iconLeftPadding?: iIconPaddings
