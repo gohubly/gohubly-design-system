@@ -132,7 +132,11 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
     props.goToPage(currentPage);
     loadVisibleNumbers();
     enableDisable();
-  }, [currentPage, props.length, props.disableNextPage]);
+  }, [currentPage, props.disableNextPage]);
+
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [props.length])
 
   return (
     <Container>
