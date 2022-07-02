@@ -134,12 +134,6 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
     enableDisable();
   }, [currentPage, props.length, props.disableNextPage]);
 
-  useEffect(() => {
-    if (props.currentPage) {
-      setCurrentPage(props.currentPage -1);
-    }
-  }, [props.currentPage]);
-
   return (
     <Container>
       <ButtonPrevNext onClick={previousPage} disabled={disabledPrev}>

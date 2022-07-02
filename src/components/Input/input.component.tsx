@@ -4,7 +4,7 @@ import { useClickOutside } from '../../hooks';
 import { iInput } from './input.interface';
 import { Label, LabelText, HelperText, Input as StyledInput, LeftIcon, RelativeContainer, RightIcon, PrefixText, SuffixText, DropdownWrapper, DropdownItem } from './input.style';
 
-export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
+export const Input: React.FC<iInput> = ({ size: propsSize, fontSize: propsFontSize, ...props }) => {
   const dropdownRef = useRef(null)
   const [dropdownOpened, setDropdownOpened] = useState(false);
   const [inputValue, setInputValue] = useState(props.value || props.defaultValue || '')
@@ -21,11 +21,11 @@ export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
     if (props.onChange) props.onChange(evt)
     else setInputValue(evt.target.value)
   }
-
+ 
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
-    setDropdownOpened(false)
     setInputValue(itemLabel || itemValue)
     props.onClickDropdownItem && props.onClickDropdownItem(itemValue, itemLabel)
+    setDropdownOpened(false)
   }
 
   const onFocusInput = (evt: React.FocusEvent<HTMLInputElement>) => {
@@ -90,6 +90,7 @@ export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
         <StyledInput
           {...props}
           Size={propsSize}
+          fontSize={propsFontSize}
           value={inputValue}
           data-has-error={!!props?.error}
           onChange={onInputChange}
@@ -119,6 +120,7 @@ export const Input: React.FC<iInput> = ({ size: propsSize, ...props }) => {
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
             {dropdownItems.map((dropdownItem, index) => (
               <DropdownItem
+                fontSize={propsFontSize}
                 onClick={() => onClickDropdownItem(dropdownItem.value, dropdownItem.label)}
                 key={`input-dropdown-item-${dropdownItem.value}-${index}`}
                 active={!!isDropdownItemActive(dropdownItem.value.toLowerCase(), dropdownItem.label?.toLowerCase())}
