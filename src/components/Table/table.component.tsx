@@ -10,9 +10,10 @@ export const Table = ({
   indexed,
   responsive,
   striped,
+  fluid
 }: iTable) => {
   return (
-    <TableContainer responsive={responsive}>
+    <TableContainer responsive={responsive} fluid={fluid}>
       <TableStyled>
         <thead>
           <tr>

@@ -2,9 +2,10 @@ import styled, {css} from "styled-components";
 import { defaultCss } from "../../theme/defaultCss";
 import { iTableTd, iTableTr } from "./table.interface";
 
-export const TableContainer = styled.div<{ responsive?: boolean }>`
+export const TableContainer = styled.div<{ responsive?: boolean, fluid?: boolean }>`
   ${defaultCss};
   overflow-x: ${({ responsive }): string => responsive ? 'shown' : 'hidden'};
+  width: ${({ fluid }): string => fluid ? '100%' : 'initial'};
 `
 
 export const Table = styled.table`

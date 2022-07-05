@@ -1,7 +1,7 @@
 import React from "react";
 
-type iDataTypes = string | number | object | string[] | number[] | object[]
-type iCommonData = Record<string, iDataTypes>
+export type iDataTypes = string | number | object | string[] | number[] | object[]
+export type iCommonData = Record<string, iDataTypes>
 
 export interface iColumn {
   key: string;
@@ -18,6 +18,7 @@ export interface iTable {
   indexed?: boolean;
   columns: iColumn[];
   data: iCommonData[];
+  fluid?: boolean
 }
 
 export interface iTableTd {
