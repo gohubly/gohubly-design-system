@@ -100,4 +100,6 @@ export const theme = {
 
 export const themeWithouthInterface: iTheme = { ...theme }
 
+export type Theme = typeof theme
+
 export default theme

@@ -1,44 +1,43 @@
 import styled from 'styled-components';
 import { iTag, iTagHierarchy } from '.';
-import { themeWithouthInterface as theme } from '../..';
+import { Theme, themeWithouthInterface as theme } from '../..';
 import { defaultCss } from '../../theme/defaultCss';
 
-const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
-  primary: 'primaryLightest',
+const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
+  primary: 'primaryLight',
   success: 'successLight',
   alert: 'helperLight',
   warning: 'warningLight',
 }
 
-const COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
-  primary: 'neutralLowDark',
-  success: 'neutralLowDark',
-  alert: 'neutralLowDark',
-  warning: 'neutralLowDark',
+const COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
+  primary: 'primaryMedium',
+  success: 'successDark',
+  alert: 'helperMedium',
+  warning: 'warningDark',
 }
 
-const HOVER_BACKGROUND_BY_HIERARCHY: Record<iTagHierarchy, string> = {
+const HOVER_BACKGROUND_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   primary: 'primary',
   success: 'successMedium',
   alert: 'helperMedium',
   warning: 'warningMedium',
 }
 
-const HOVER_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
-  ...COLOR_BY_HIERARCHY,
+const HOVER_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   primary: 'white',
   success: 'white',
-  alert: 'white'
+  alert: 'white',
+  warning: 'neutralLowDark',
 }
 
-const HOVER_BACKGROUND_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
+const HOVER_BACKGROUND_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   ...HOVER_BACKGROUND_BY_HIERARCHY,
-  primary: 'primaryLight'
+  primary: 'primary'
 }
 
-const HOVER_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, string> = {
+const HOVER_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   ...HOVER_COLOR_BY_HIERARCHY,
-  primary: 'neutralLowDark'
 }
 
 export const Tag = styled.button<iTag>`
