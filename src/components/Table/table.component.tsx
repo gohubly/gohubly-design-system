@@ -14,7 +14,7 @@ export const Table = ({
 }: iTable) => {
   return (
     <TableContainer responsive={responsive} fluid={fluid}>
-      <TableStyled>
+      <TableStyled fluid={fluid}>
         <thead>
           <tr>
             {columns.map((column) => <TableHeaderTd><Typography size='XXXS' color="neutralLowMedium">{column.title}</Typography></TableHeaderTd>)}

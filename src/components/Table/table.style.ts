@@ -4,12 +4,13 @@ import { iTableTd, iTableTr } from "./table.interface";
 
 export const TableContainer = styled.div<{ responsive?: boolean, fluid?: boolean }>`
   ${defaultCss};
-  overflow-x: ${({ responsive }): string => responsive ? 'shown' : 'hidden'};
+  overflow-x: ${({ responsive }): string => responsive ? 'scroll' : 'hidden'};
   width: ${({ fluid }): string => fluid ? '100%' : 'initial'};
 `
 
-export const Table = styled.table`
+export const Table = styled.table<{ fluid?: boolean }>`
   border-spacing: 0px;
+  width: ${({ fluid }): string => fluid ? '100%' : 'initial'};
 `
 
 const TableTd = css<iTableTd>`
