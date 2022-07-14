@@ -74,7 +74,7 @@ export const Select: React.FC<iSelect> = ({
         <OpenIcon iconId="chevronDown" opened={!disabled && opened} />
       </SelectStyled>
 
-      {!disabled && opened && (
+      {!disabled && opened && items && (
         <Options>
           {items.map((option: iSelectOption) => (
             <Option
