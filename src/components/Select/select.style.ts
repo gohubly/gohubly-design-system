@@ -38,8 +38,8 @@ const MIN_HEIGHT_BY_SIZE: Record<iSelectTypes, string> = {
 };
 
 const PADDING_OPTIONS_BY_SIZE: Record<iSelectTypes, string> = {
-  text: "16px",
-  number: "9px",
+  text: "8px 16px",
+  number: "5px 9px",
 };
 
 export const SelectStyled = styled.div<{
@@ -134,10 +134,9 @@ export const Options = styled.div`
 
 export const Option = styled.div<{ fontSize?: string, type: string }>`
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
-  height: calc(${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']} + 24px);
   display: flex;
   align-items: center;
-  padding: 0px ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
+  padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
   word-break: break-word;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};

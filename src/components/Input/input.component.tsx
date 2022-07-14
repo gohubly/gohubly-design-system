@@ -116,7 +116,7 @@ export const Input: React.FC<iInput> = ({ size: propsSize, fontSize: propsFontSi
           </SuffixText>
         )}
 
-        {props.dropdown?.length && (
+        {!!props.dropdown?.length && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
             {dropdownItems.map((dropdownItem, index) => (
               <DropdownItem
