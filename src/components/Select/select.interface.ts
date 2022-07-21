@@ -10,7 +10,7 @@ export type iSelectTypes = 'text' | 'number'
 
 export interface iSelect {
   items: iSelectOption[]
-  placeholder?: string
+  placeholder?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
   icon?: iIconTypes
   disabled?: boolean
   error?: boolean
