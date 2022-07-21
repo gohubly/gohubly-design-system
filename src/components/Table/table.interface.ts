@@ -22,8 +22,8 @@ export interface iTable {
 }
 
 export interface iTableTd {
-  width?: string;
-  maxWidth?: string;
+  width?: number | string;
+  maxWidth?: number | string;
   onClick?: () => void;
 }
 

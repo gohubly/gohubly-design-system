@@ -78,6 +78,7 @@ export const Select: React.FC<iSelect> = ({
         <Options>
           {items.map((option: iSelectOption) => (
             <Option
+              key={option.value}
               type={type}
               fontSize={fontSize}
               tabIndex={0}

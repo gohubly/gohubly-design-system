@@ -1,80 +1,83 @@
-import styled, { css } from 'styled-components';
-import { iInput } from '.';
-import { Icon, iIcon } from '../Icon';
+import styled, { css } from "styled-components";
+import { iInput } from ".";
+import { Icon, iIcon } from "../Icon";
 
-import { themeWithouthInterface as theme } from '../..';
-import { defaultCss } from '../../theme/defaultCss';
-import { iIconPaddings, iInputSizes } from './input.interface';
+import { themeWithouthInterface as theme } from "../..";
+import { defaultCss } from "../../theme/defaultCss";
+import { iIconPaddings, iInputSizes } from "./input.interface";
 
 interface iInputDropdownWrapper {
-  opened: boolean
+  opened: boolean;
 }
 interface iInputDropdownItem {
-  active: boolean
-  fontSize?: keyof typeof theme.fontSize 
+  active: boolean;
+  fontSize?: keyof typeof theme.fontSize;
 }
 interface iStyledCommonProps extends Partial<iInput> {
-  contentLeft?: boolean
-  contentRight?: boolean
-  Size?: iInputSizes
+  contentLeft?: boolean;
+  contentRight?: boolean;
+  Size?: iInputSizes;
 }
 interface iIconRight extends Partial<iIcon> {
-  iconRightPadding?: iIconPaddings 
+  iconRightPadding?: iIconPaddings;
+  opened?: boolean;
 }
 
 interface iIconLeft extends Partial<iIcon> {
-  iconLeftPadding?: iIconPaddings 
+  iconLeftPadding?: iIconPaddings;
+  opened?: boolean;
 }
 
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
-  XXS: '32px',
-  XS: '36px',
-  SM: '40px',
-  MD: '48px',
-}
+  XXS: "32px",
+  XS: "36px",
+  SM: "40px",
+  MD: "48px",
+};
 
 const PADDING_ICON_BASED_ON_SIZE: Record<iInputSizes, string> = {
-  XXS: '12px',
-  XS: '14px',
-  SM: '15px',
-  MD: '16px',
-}
+  XXS: "12px",
+  XS: "14px",
+  SM: "15px",
+  MD: "16px",
+};
 
 const ICON_PADDING_LEFT_OR_RIGHT: Record<iIconPaddings, string> = {
-  XXXS: '3px',
-  XXS: '6px',
-  XS: '8px',
-  SM: '10px',
-  MD: '12px',
-  LG: '14px',
-}
+  XXXS: "3px",
+  XXS: "6px",
+  XS: "8px",
+  SM: "10px",
+  MD: "12px",
+  LG: "14px",
+};
 
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
   font-size: 14px;
 
-  color: ${({ OnColor }) => OnColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
-`
+  color: ${({ OnColor }) =>
+    OnColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
+`;
 
 export const HelperText = styled.span<iStyledCommonProps>`
   font-size: 12px;
   font-weight: 500;
 
   color: ${({ OnColor, onClick }) =>
-    onClick ?
-      theme.colors.primary
+    onClick
+      ? theme.colors.primary
       : OnColor
-        ? theme.colors.primaryLight
-        : theme.colors.neutralLowMedium};
+      ? theme.colors.primaryLight
+      : theme.colors.neutralLowMedium};
 
-  &[data-has-error=true] {
+  &[data-has-error="true"] {
     color: ${() => theme.colors.helper};
   }
 
-  text-decoration: ${({ onClick }) => onClick ? 'underline' : 'none'};
+  text-decoration: ${({ onClick }) => (onClick ? "underline" : "none")};
 
-  cursor: ${({ onClick }) => onClick ? 'pointer' : 'auto'};
-`
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "auto")};
+`;
 
 export const Input = styled.input<iStyledCommonProps>`
   &:-webkit-autofill,
@@ -84,41 +87,48 @@ export const Input = styled.input<iStyledCommonProps>`
     -webkit-text-fill-color: black!important;
   }
 
-  height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || 'MD']};
-  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
+  height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || "MD"]};
+  width: ${({ fluid }) => (fluid ? "100%" : "auto")};
   background: ${() => theme.colors.neutralHigh};
 
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
 
   border: 1px solid ${() => theme.colors.neutralLowMedium};
   box-sizing: border-box;
   border-radius: 8px;
   letter-spacing: -0.01em;
   font-weight: 300;
-  
   color: ${() => theme.colors.neutralLowMedium};
 
-  padding-left: ${({ contentLeft, size }) => contentLeft ? '46px' : PADDING_ICON_BASED_ON_SIZE[size || 'MD']};
-  padding-right: ${({ contentRight, size }) => contentRight ? '30px' : PADDING_ICON_BASED_ON_SIZE[size || 'MD']};
+  padding-left: ${({ contentLeft, size }) =>
+    contentLeft ? "46px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
+  padding-right: ${({ contentRight, size }) =>
+    contentRight ? "30px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
 
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  ${({ OnColor }) => OnColor && css`
-    border-width: 0px;
-  `}
-  
+  ${({ OnColor }) =>
+    OnColor &&
+    css`
+      border-width: 0px;
+    `}
+
   &:hover {
-    border: 1.5px solid ${({ OnColor }) => OnColor ? theme.colors.primaryDark : theme.colors.primary};
+    border: 1.5px solid
+      ${({ OnColor }) =>
+        OnColor ? theme.colors.primaryDark : theme.colors.primary};
   }
 
   &:focus {
     border: 1px solid ${() => theme.colors.primary};
   }
- 
+
   &::placeholder {
-    // placeholder
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
   }
 
   &:disabled {
@@ -126,16 +136,17 @@ export const Input = styled.input<iStyledCommonProps>`
     background: ${() => theme.colors.neutralHighLight};
   }
 
-  &[data-has-error=true] {
+  &[data-has-error="true"] {
     border: 1px solid ${() => theme.colors.helper};
-    
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       border: 1px solid ${() => theme.colors.helper};
     }
   }
 
-  transition: all 0.1s linear; 
-`
+  transition: all 0.1s linear;
+`;
 
 export const Label = styled.label<iStyledCommonProps>`
   ${defaultCss};
@@ -146,12 +157,22 @@ export const Label = styled.label<iStyledCommonProps>`
   flex-direction: column;
   gap: 8px;
 
-  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
+  width: ${({ fluid }) => (fluid ? "100%" : "auto")};
 `;
 
 export const RelativeContainer = styled.div`
   position: relative;
-`
+`;
+
+export const StyledDiv = styled.div`
+
+  &:hover {
+    svg,
+    path {
+      stroke: ${() => theme.colors.primary}!important;
+    }
+  }
+`;
 
 const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   display: flex;
@@ -161,7 +182,7 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  
+
   height: calc(100% - 2px);
   width: 38px;
 
@@ -174,107 +195,111 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   background: ${() => theme.colors.primaryLightest};
   color: ${() => theme.colors.neutralLow};
 
-  &[data-has-error=true] {
+  &[data-has-error="true"] {
     background: ${() => theme.colors.helperLight};
   }
-`
+`;
 
 export const SuffixText = styled.div`
   ${PrefixAndSuffixCommons};
-  
-  right: 1px;
+
+  //rever essas partes de sufixo e prefixo
+
+  left: calc(100% - 7px);
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
-`
+  // border: 1px solid red;
+  // border-left: none;
+  // box-sizing: border-box;
+  // heigth: 100%;
+`;
 
 export const PrefixText = styled.div`
   ${PrefixAndSuffixCommons};
   left: 1px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
-`
+`;
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   position: absolute;
-  top: calc(100% + 8px); 
-  left: 0;
-
+  top: calc(100% + 8px);
+  z-index: 2;
   width: 100%;
-  max-height: 400px;
-  overflow-y: auto;
-
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  
-  background: ${() => theme.colors.neutralHigh};
 
-  box-shadow: ${() => theme.shadow.Level4};
-  border-radius: 8px;
+  background: ${({ theme }) => theme.colors.neutralHigh};
+  border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
+  box-sizing: border-box;
+  border-radius: ${({ theme }) => theme.borderRadius.SM};
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
 
-  opacity: ${({ opened }) => opened ? 1 : 0};
-  pointer-events: ${({ opened }) => opened ? 'all' : 'none'};
-
-  transition: opacity 0.1s linear;
-  z-index: 9999;
-`
-
-export const DropdownItem = styled.div<iInputDropdownItem>`
-  padding: calc(${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']} - 4px) 16px;
-  letter-spacing: -0.005em;
-
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
-
-  background: ${() => theme.colors.white};
-  border-left: 1px solid ${() => theme.colors.neutralHighMedium};
-  border-right: 1px solid ${() => theme.colors.neutralHighMedium};
-
-  &:first-of-type {
-    border-top: 1px solid ${() => theme.colors.neutralHighMedium};
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-  }
-
-  &:last-of-type {
-    border-bottom: 1px solid ${() => theme.colors.neutralHighMedium};
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
+  transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
-    background: ${() => theme.colors.primaryLightest};
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
+    border-color: ${({ theme }) => theme.colors.neutralHighLight};
   }
+`;
 
-  ${({ active }) => active && css`
-    background: ${() => theme.colors.primaryLightest};
-  `}
+export const DropdownItem = styled.div<iInputDropdownItem>`
+  padding: calc(
+      ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]} - 4px
+    )
+    16px;
 
-  cursor: pointer;
-  transition: background 0.1s linear;
-`
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  display: flex;
+  align-items: center;
+
+  word-break: break-word;
+
+  border-radius: ${({ theme }) => theme.borderRadius.SM};
+
+  :hover,
+  :focus-visible {
+    background: #f0f1f5;
+    color: ${({ theme }) => theme.colors.primary};
+    outline: none;
+  }
+`;
 
 const IconCss = css<{
-  onClick?: () => void,
+  onClick?: () => void;
 }>`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
 
-  cursor: ${({ onClick }) => onClick ? 'pointer' : 'default'};
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
 
   // // Accessibility to have a bigger space to click
   // padding: 3px;
 
-  // path {
-  //   stroke: ${() => theme.colors.primary};
-  // }
-`
+`;
 
 export const LeftIcon = styled(Icon)<iIconLeft>`
   ${IconCss};
-  left: ${({ iconLeftPadding }): string => ICON_PADDING_LEFT_OR_RIGHT[iconLeftPadding || 'XXS']};
-`
+  left: ${({ iconLeftPadding }): string =>
+    ICON_PADDING_LEFT_OR_RIGHT[iconLeftPadding || "XXS"]};
+
+  svg,
+  path {
+    stroke: ${({ opened, theme }) =>
+      opened ? theme.colors.primary : theme.colors.neutralLowMedium};
+  }
+`;
 
 export const RightIcon = styled(Icon)<iIconRight>`
   ${IconCss};
-  right: ${({ iconRightPadding }): string => ICON_PADDING_LEFT_OR_RIGHT[iconRightPadding || 'XXS']};
-`
+  right: ${({ iconRightPadding }): string =>
+    ICON_PADDING_LEFT_OR_RIGHT[iconRightPadding || "XXS"]};
+
+  svg,
+  path {
+    stroke: ${({ opened, theme }) =>
+      opened ? theme.colors.primary : theme.colors.neutralLowMedium};
+  }
+`;

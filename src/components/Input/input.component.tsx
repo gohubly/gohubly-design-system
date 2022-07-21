@@ -1,64 +1,93 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
-import { useClickOutside } from '../../hooks';
+import React, { useEffect, useRef, useState, useMemo } from "react";
+import { useClickOutside } from "../../hooks";
+import { iInput } from "./input.interface";
+import {
+  Label,
+  LabelText,
+  HelperText,
+  Input as StyledInput,
+  LeftIcon,
+  RelativeContainer,
+  RightIcon,
+  PrefixText,
+  SuffixText,
+  DropdownWrapper,
+  DropdownItem,
+  StyledDiv,
+} from "./input.style";
 
-import { iInput } from './input.interface';
-import { Label, LabelText, HelperText, Input as StyledInput, LeftIcon, RelativeContainer, RightIcon, PrefixText, SuffixText, DropdownWrapper, DropdownItem } from './input.style';
-
-export const Input: React.FC<iInput> = ({ size: propsSize, fontSize: propsFontSize, ...props }) => {
-  const dropdownRef = useRef(null)
+export const Input: React.FC<iInput> = ({
+  size: propsSize,
+  fontSize: propsFontSize,
+  ...props
+}) => {
+  const dropdownRef = useRef(null);
   const [dropdownOpened, setDropdownOpened] = useState(false);
-  const [inputValue, setInputValue] = useState(props.value || props.defaultValue || '')
+  const [inputValue, setInputValue] = useState(
+    props.value || props.defaultValue || ""
+  );
 
   useEffect(() => {
-    setInputValue(props.value ?? '')
-  }, [props.value])
+    setInputValue(props.value ?? "");
+  }, [props.value]);
 
   useClickOutside(() => {
-    if (dropdownOpened) setDropdownOpened(false)
-  }, [dropdownRef, dropdownOpened])
+    if (dropdownOpened) setDropdownOpened(false);
+  }, [dropdownRef, dropdownOpened]);
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.onChange) props.onChange(evt)
-    else setInputValue(evt.target.value)
-  }
- 
+    if (props.onChange) props.onChange(evt);
+    else setInputValue(evt.target.value);
+  };
+
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
-    setInputValue(itemLabel || itemValue)
-    props.onClickDropdownItem && props.onClickDropdownItem(itemValue, itemLabel)
-    setDropdownOpened(false)
-  }
+    setDropdownOpened(false);
+    setInputValue(itemLabel || itemValue);
+    props.onClickDropdownItem &&
+      props.onClickDropdownItem(itemValue, itemLabel);
+  };
 
   const onFocusInput = (evt: React.FocusEvent<HTMLInputElement>) => {
-    if (props.onFocus) props.onFocus(evt)
+    if (props.onFocus) props.onFocus(evt);
 
-    if (!dropdownOpened) setDropdownOpened(true)
-  }
+    if (!dropdownOpened) setDropdownOpened(true);
+  };
 
   const dropdownItems = useMemo(() => {
-    if (!props.dropdown?.length) return []
-    
-    const stringInputValue = inputValue.toString().toLowerCase()
+    if (!props.dropdown?.length) return [];
+
+    const stringInputValue = inputValue.toString().toLowerCase();
     const index = props.dropdown?.findIndex(({ value, label }) => {
-      return value.toLowerCase().includes(stringInputValue) || label?.toLowerCase()?.includes(stringInputValue)
-    })
+      return (
+        value.toLowerCase().includes(stringInputValue) ||
+        label?.toLowerCase()?.includes(stringInputValue)
+      );
+    });
 
     if (index !== -1) {
-      const cloned = [...props.dropdown]
-      const sliced = cloned.splice(index, 1)
+      const cloned = [...props.dropdown];
+      const sliced = cloned.splice(index, 1);
 
-      return [...sliced, ...cloned]
+      return [...sliced, ...cloned];
     }
 
-    return props.dropdown
-  }, [inputValue, props.dropdown])
+    return props.dropdown;
+  }, [inputValue, props.dropdown]);
 
-  const isDropdownItemActive = (dropdownValue: string, dropdownLabel?: string) => {
-    if (!props.dropdown) return false
-    
-    const stringInputValue = inputValue.toString().toLowerCase()
+  const isDropdownItemActive = (
+    dropdownValue: string,
+    dropdownLabel?: string
+  ) => {
+    if (!props.dropdown) return false;
 
-    return stringInputValue !== '' && (dropdownValue.includes(stringInputValue) || dropdownLabel?.includes(stringInputValue))
-  }
+    const stringInputValue = inputValue.toString().toLowerCase();
+
+    return (
+      stringInputValue !== "" &&
+      (dropdownValue.includes(stringInputValue) ||
+        dropdownLabel?.includes(stringInputValue))
+    );
+  };
 
   return (
     <Label
@@ -67,63 +96,75 @@ export const Input: React.FC<iInput> = ({ size: propsSize, fontSize: propsFontSi
       fluid={props.fluid}
     >
       {/* Label */}
-      {props?.label &&
+      {props?.label && (
         <LabelText OnColor={props.OnColor}>{props.label}</LabelText>
-      }
+      )}
 
       <RelativeContainer>
-        {/* Icone Esquerda */}
-        {props.iconLeft && (
-          <LeftIcon
-            onClick={props.iconLeftOnClick}
-            iconId={props.iconLeft}
-            iconLeftPadding={props.iconLeftPadding}
+        <StyledDiv>
+          {/* Icone Esquerda */}
+          {props.iconLeft && (
+            <LeftIcon
+              opened={dropdownOpened}
+              onClick={props.iconLeftOnClick}
+              iconId={props.iconLeft}
+              iconLeftPadding={props.iconLeftPadding}
+            />
+          )}
+
+          {/* Prefixo */}
+          {props.prefix && (
+            <PrefixText data-has-error={props?.error}>
+              {props.prefix}
+            </PrefixText>
+          )}
+
+          {/* Input */}
+          <StyledInput
+            {...props}
+            Size={propsSize}
+            fontSize={propsFontSize}
+            value={inputValue}
+            data-has-error={!!props?.error}
+            onChange={onInputChange}
+            onFocus={onFocusInput}
+            autoComplete={props.autoComplete || (props.dropdown && "off")}
+            contentLeft={!!props.iconLeft || !!props.prefix}
           />
-        )}
 
-        {/* Prefixo */}
-        {props.prefix && !props.iconLeft && (
-          <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>
-        )}
+          {/* Icone Direita */}
+          {props.iconRight && (
+            <RightIcon
+              opened={dropdownOpened}
+              onClick={props.iconRightOnClick}
+              iconId={props.iconRight}
+              iconRightPadding={props.iconRightPadding}
+            />
+          )}
 
-        {/* Input */}
-        <StyledInput
-          {...props}
-          Size={propsSize}
-          fontSize={propsFontSize}
-          value={inputValue}
-          data-has-error={!!props?.error}
-          onChange={onInputChange}
-          onFocus={onFocusInput}
-          autoComplete={props.autoComplete || (props.dropdown && "off")}
-          contentLeft={!!props.iconLeft || !!props.prefix}
-          contentRight={!!props.iconRight || !!props.suffix}
-        />
+          {/* Sufixo */}
+          {props.suffix && (
+            <SuffixText data-has-error={!!props?.error} className="sufixo">
+              {props.suffix}
+            </SuffixText>
+          )}
+        </StyledDiv>
 
-        {/* Icone Direita */}
-        {props.iconRight && (
-          <RightIcon
-            onClick={props.iconRightOnClick}
-            iconId={props.iconRight}
-            iconRightPadding={props.iconRightPadding}
-          />
-        )}
-
-        {/* Sufixo */}
-        {props.suffix && !props.iconRight && (
-          <SuffixText data-has-error={!!props?.error}>
-            {props.suffix}
-          </SuffixText>
-        )}
-
-        {!!props.dropdown?.length && (
+        {!!props.dropdown?.length && dropdownOpened && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
             {dropdownItems.map((dropdownItem, index) => (
               <DropdownItem
                 fontSize={propsFontSize}
-                onClick={() => onClickDropdownItem(dropdownItem.value, dropdownItem.label)}
+                onClick={() =>
+                  onClickDropdownItem(dropdownItem.value, dropdownItem.label)
+                }
                 key={`input-dropdown-item-${dropdownItem.value}-${index}`}
-                active={!!isDropdownItemActive(dropdownItem.value.toLowerCase(), dropdownItem.label?.toLowerCase())}
+                active={
+                  !!isDropdownItemActive(
+                    dropdownItem.value.toLowerCase(),
+                    dropdownItem.label?.toLowerCase()
+                  )
+                }
               >
                 {dropdownItem.label || dropdownItem.value}
               </DropdownItem>
