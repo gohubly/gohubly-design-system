@@ -24,11 +24,18 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
     if (allowClipboard && clipboardCodes.includes(code)) return;
 
     const goToNextInputIfExists = () => nodes && nodes[index + 1] && (nodes[index + 1] as HTMLInputElement).focus();
+    const goToPreviousInputIfExists = () => nodes && nodes[index - 1] && (nodes[index - 1] as HTMLInputElement).focus();
 
     // When press space, check if exists next block & focus it
     const isSpace = code === 32
     if (isSpace) {
       goToNextInputIfExists();
+    }
+
+    const isBackSpace = code === 8
+
+    if (isBackSpace) {
+      goToPreviousInputIfExists()
     }
 
     const isNumberFromKeyboard = code >= 48 && code <= 57;
@@ -65,22 +72,22 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
     const divided = text.split('');
 
     const hasOnlyNumbers = (codes: string[]) => {
-      return codes.every(value => {
-        console.log(+value, value);
-        
+      return codes.every(value => {        
         return !isNaN(+value)
       })
     }
 
-    if (hasOnlyNumbers(divided)) {
-      const childs = event.currentTarget.parentElement?.children;
+    const childs = event.currentTarget.parentElement?.children;
 
+    if (hasOnlyNumbers(divided)) {
       if (childs?.length) {
         [].forEach.call(childs, (node: HTMLInputElement, index) => node.value = divided[index])
       }
 
-      setCodes(divided);
+      return setCodes(divided);
     }
+
+    event.currentTarget.value = ''
   }
 
   return (
