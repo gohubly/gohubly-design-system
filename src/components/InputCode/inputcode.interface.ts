@@ -6,5 +6,6 @@ export interface iInputCode extends iCustomInputHtmlAttributes {
   helperText?: string
   error?: boolean
   length?: number
+  allowClipboard?: boolean;
   onCode: (code: string) => void
 }

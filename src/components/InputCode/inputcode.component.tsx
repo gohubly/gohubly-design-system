@@ -5,7 +5,7 @@ import { iInputCode } from './inputcode.interface';
 import { Input, Container, InputsWrapper } from './inputcode.style';
 
 const inputCodeDefaultClass = 'ds-inputcode-rc'
-export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperText, label, ...props }) => {
+export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperText, label, allowClipboard, ...props }) => {
   const [nodes, setNodes] = useState<NodeListOf<Element>>();
   const [codes, setCodes] = useState<string[]>([]);
 
@@ -15,9 +15,13 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
   }, [])
 
   const onNext = (evt: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    let { currentTarget, keyCode, charCode, which } = evt;
+    
+    let { currentTarget, keyCode, charCode, which,  } = evt;
     const code = charCode || keyCode || which
     const value = currentTarget.value?.trim()
+    const clipboardCodes = [17, 91, 86, 67]
+
+    if (allowClipboard && clipboardCodes.includes(code)) return;
 
     const goToNextInputIfExists = () => nodes && nodes[index + 1] && (nodes[index + 1] as HTMLInputElement).focus();
 
@@ -53,16 +57,44 @@ export const InputCode: React.FC<iInputCode> = ({ error, onCode, length, helperT
     }
   };
 
+  const handleClipboardPaste = (event: React.ClipboardEvent<HTMLInputElement>, index: number) => {
+    const text = (event.clipboardData || (window as any)?.clipboardData).getData('text')
+
+    if (!text) return
+
+    const divided = text.split('');
+
+    const hasOnlyNumbers = (codes: string[]) => {
+      return codes.every(value => {
+        console.log(+value, value);
+        
+        return !isNaN(+value)
+      })
+    }
+
+    if (hasOnlyNumbers(divided)) {
+      const childs = event.currentTarget.parentElement?.children;
+
+      if (childs?.length) {
+        [].forEach.call(childs, (node: HTMLInputElement, index) => node.value = divided[index])
+      }
+
+      setCodes(divided);
+    }
+  }
+
   return (
     <Container>
       {label && <Typography size="SM" color="neutralLowDark" fontWeight={500}>{label}</Typography>}
       <InputsWrapper>
         {Array.from(Array(length).keys()).map((_, index) => (
           <Input
+            key={index}
             maxLength={1}
             className={inputCodeDefaultClass}
             data-has-error={!!error}
             onKeyUp={e => onNext(e, index)}
+            onPaste={event => allowClipboard ? handleClipboardPaste(event, index) : undefined}
             {...props}
           />
         ))}
