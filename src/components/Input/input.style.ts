@@ -238,7 +238,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   z-index: 2;
   width: 100%;
   max-height: 280px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 8px;
   display: flex;
   flex-direction: column;
