@@ -117,7 +117,7 @@ export const Options = styled.div`
   display: flex;
   flex-direction: column;
   max-height: 280px;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   background: ${({ theme }) => theme.colors.neutralHigh};
   border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
