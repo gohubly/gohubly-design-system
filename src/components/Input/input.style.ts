@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { iInput } from ".";
-import { Icon, iIcon } from "../Icon";
+import { Icon, iIcon, iIconSizes } from "../Icon";
 
 import { themeWithouthInterface as theme } from "../..";
 import { defaultCss } from "../../theme/defaultCss";
@@ -12,6 +12,7 @@ interface iInputDropdownWrapper {
 interface iInputDropdownItem {
   active: boolean;
   fontSize?: keyof typeof theme.fontSize;
+  itemSelect?: boolean;
 }
 interface iStyledCommonProps extends Partial<iInput> {
   contentLeft?: boolean;
@@ -21,11 +22,13 @@ interface iStyledCommonProps extends Partial<iInput> {
 interface iIconRight extends Partial<iIcon> {
   iconRightPadding?: iIconPaddings;
   opened?: boolean;
+  iconRigthSize?: iIconSizes;
 }
 
 interface iIconLeft extends Partial<iIcon> {
   iconLeftPadding?: iIconPaddings;
   opened?: boolean;
+  iconLeftSize?: iIconSizes;
 }
 
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
@@ -49,6 +52,15 @@ const ICON_PADDING_LEFT_OR_RIGHT: Record<iIconPaddings, string> = {
   SM: "10px",
   MD: "12px",
   LG: "14px",
+};
+
+const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
+  XXXS: "12px",
+  XXS: "14px",
+  XS: "16px",
+  SM: "20px",
+  MD: "24px",
+  LG: "32px",
 };
 
 export const LabelText = styled.span<iStyledCommonProps>`
@@ -84,7 +96,7 @@ export const Input = styled.input<iStyledCommonProps>`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
     -webkit-transition-delay: 9999s;
-    -webkit-text-fill-color: black!important;
+    -webkit-text-fill-color: black !important;
   }
 
   height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || "MD"]};
@@ -165,7 +177,6 @@ export const RelativeContainer = styled.div`
 `;
 
 export const StyledDiv = styled.div`
-
   &:hover {
     svg,
     path {
@@ -203,7 +214,7 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
 export const SuffixText = styled.div`
   ${PrefixAndSuffixCommons};
 
-  //rever essas partes de sufixo e prefixo
+  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone  
 
   left: calc(100% - 7px);
   border-bottom-left-radius: 0px;
@@ -226,6 +237,8 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   top: calc(100% + 8px);
   z-index: 2;
   width: 100%;
+  max-height: 280px;
+  overflow-y: scroll;
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -241,14 +254,22 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   &:hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
     border-color: ${({ theme }) => theme.colors.neutralHighLight};
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.neutralHighLight};
+      border-radius: 20px;
+      border: 3px solid #fff;
+    }
   }
 `;
 
 export const DropdownItem = styled.div<iInputDropdownItem>`
-  padding: calc(
-      ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]} - 4px
-    )
-    16px;
+  padding: 12px 16px;
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   display: flex;
@@ -257,6 +278,10 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
   word-break: break-word;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};
+
+  color: ${({ theme, itemSelect }) =>
+    itemSelect ? theme.colors.primary : "inherit"};
+  background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
 
   :hover,
   :focus-visible {
@@ -277,7 +302,6 @@ const IconCss = css<{
 
   // // Accessibility to have a bigger space to click
   // padding: 3px;
-
 `;
 
 export const LeftIcon = styled(Icon)<iIconLeft>`
@@ -289,6 +313,11 @@ export const LeftIcon = styled(Icon)<iIconLeft>`
   path {
     stroke: ${({ opened, theme }) =>
       opened ? theme.colors.primary : theme.colors.neutralLowMedium};
+    width: ${({ iconLeftSize }): string =>
+      ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
+
+    height: ${({ iconLeftSize }): string =>
+      ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
   }
 `;
 
@@ -301,5 +330,11 @@ export const RightIcon = styled(Icon)<iIconRight>`
   path {
     stroke: ${({ opened, theme }) =>
       opened ? theme.colors.primary : theme.colors.neutralLowMedium};
+
+    width: ${({ iconRigthSize }): string =>
+      ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
+
+    height: ${({ iconRigthSize }): string =>
+      ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
   }
 `;

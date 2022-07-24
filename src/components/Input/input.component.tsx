@@ -108,6 +108,7 @@ export const Input: React.FC<iInput> = ({
               opened={dropdownOpened}
               onClick={props.iconLeftOnClick}
               iconId={props.iconLeft}
+              iconLeftSize={props.iconLeftSize}
               iconLeftPadding={props.iconLeftPadding}
             />
           )}
@@ -138,6 +139,7 @@ export const Input: React.FC<iInput> = ({
               opened={dropdownOpened}
               onClick={props.iconRightOnClick}
               iconId={props.iconRight}
+              iconRigthSize={props.iconRightSize}
               iconRightPadding={props.iconRightPadding}
             />
           )}
@@ -165,6 +167,7 @@ export const Input: React.FC<iInput> = ({
                     dropdownItem.label?.toLowerCase()
                   )
                 }
+                itemSelect={inputValue !== undefined && inputValue === (dropdownItem?.label || dropdownItem?.value)}
               >
                 {dropdownItem.label || dropdownItem.value}
               </DropdownItem>

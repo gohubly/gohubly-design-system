@@ -4,6 +4,7 @@ import { theme } from "../../theme"
 export interface iSelectOption {
   value: string | number
   label?: string
+  isSelected?: boolean;
 }
 
 export type iSelectTypes = 'text' | 'number'

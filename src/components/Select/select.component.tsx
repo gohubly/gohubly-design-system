@@ -28,6 +28,7 @@ export const Select: React.FC<iSelect> = ({
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<any>(selected);
   const selectRef = useRef(null);
 
   useClickOutside(() => {
@@ -39,8 +40,9 @@ export const Select: React.FC<iSelect> = ({
   };
 
   const handleSelectOption = (selectedOption: iSelectOption) => {
-    setOpened(false);
+    setSelectedItem(selectedOption);
     onSelect && onSelect(selectedOption);
+    setOpened(false);
   };
 
   const handleKeyPressOnSelect = ({ key }: KeyboardEvent) => {
@@ -69,7 +71,7 @@ export const Select: React.FC<iSelect> = ({
       >
         {icon && <Icon iconId={icon} size="SM" />}
         <Placeholder fontSize={fontSize}>
-          {selected?.label || selected?.value || placeholder}
+          {selectedItem?.label || selected?.value || placeholder}
         </Placeholder>
         <OpenIcon iconId="chevronDown" opened={!disabled && opened} />
       </SelectStyled>
@@ -86,6 +88,7 @@ export const Select: React.FC<iSelect> = ({
               onKeyPress={(event: KeyboardEvent) =>
                 handleKeyPressOnOption(event, option)
               }
+              itemSelect={selectedItem !== undefined && selectedItem.value === option?.value}
             >
               {option.label || option.value}
             </Option>

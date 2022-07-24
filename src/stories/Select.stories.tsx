@@ -18,7 +18,9 @@ const templateTextDefaultArgs = {
       <Typography color="neutralLowDark" size="XS" lineHeight="MD" fontWeight={500}>Status</Typography>
     </div>
   ),
-  onSelect: console.log,
+  onSelect: (item: any) =>
+    console.log(item)
+  ,
   items: [
     {
       value: "item1",
@@ -27,6 +29,22 @@ const templateTextDefaultArgs = {
     {
       value: "item2",
       label: "Item 2",
+    },
+    {
+      value: "item3",
+      label: "Item 3",
+    },
+    {
+      value: "item4",
+      label: "Item 4",
+    },
+    {
+      value: "item5",
+      label: "Item 5",
+    },
+    {
+      value: "item6",
+      label: "Item 6",
     },
   ],
 };

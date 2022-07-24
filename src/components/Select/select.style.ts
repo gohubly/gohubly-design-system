@@ -38,8 +38,8 @@ const MIN_HEIGHT_BY_SIZE: Record<iSelectTypes, string> = {
 };
 
 const PADDING_OPTIONS_BY_SIZE: Record<iSelectTypes, string> = {
-  text: "8px 16px",
-  number: "5px 9px",
+  text: "12px 16px",
+  number: "10px 8px",
 };
 
 export const SelectStyled = styled.div<{
@@ -92,7 +92,7 @@ export const SelectStyled = styled.div<{
 
 export const Placeholder = styled.span<{ fontSize?: string }>`
   flex: 1;
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -116,6 +116,8 @@ export const Options = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: column;
+  max-height: 280px;
+  overflow-y: scroll;
 
   background: ${({ theme }) => theme.colors.neutralHigh};
   border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
@@ -129,21 +131,41 @@ export const Options = styled.div`
   :hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
     border-color: ${({ theme }) => theme.colors.neutralHighLight};
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.neutralHighLight};
+      border-radius: 20px;
+      border: 3px solid #fff;
+    }
   }
 `;
 
-export const Option = styled.div<{ fontSize?: string, type: string }>`
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || 'XS']};
+export const Option = styled.div<{
+  fontSize?: string;
+  type: string;
+  itemSelect: boolean;
+}>`
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   display: flex;
   align-items: center;
   padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
   word-break: break-word;
+  box-sizing: border-box;
 
   border-radius: ${({ theme }) => theme.borderRadius.SM};
 
+  color: ${({ theme, itemSelect }) =>
+    itemSelect ? theme.colors.primary : "inherit"};
+  background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
+
   :hover,
   :focus-visible {
-    background: #f0f1f5;
+    background: #f1f2f9;
     color: ${({ theme }) => theme.colors.primary};
     outline: none;
   }
