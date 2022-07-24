@@ -84,22 +84,48 @@ WithDropdown.args = {
   label: 'Label',
   placeholder: 'placeholder...',
   size: 'MD',
+  onClickDropdownItem(itemValue, itemLabel) {
+    console.log(`value: ${itemValue}, label: ${itemLabel ?? 'Não há'}`)
+  }
+  ,
   dropdown: [
     {
-      value: 'value-label-1'
+      value: 'value-label-1',
+      label: "valor 1"
     },
     {
-      value: 'value-label-2'
+      value: 'value-label-2',
+      label: "valor 2"
     },
     {
-      value: 'value-label-3'
+      value: 'value-label-3',
+      label: "valor 3"
     },
     {
-      value: 'value-label-4'
+      value: 'value-label-4',
+      label: "valor 4"
     },
     {
-      label: 'label-5',
-      value: 'value-label-5',
+      value: 'value-label-5'
+    },
+    {
+      value: 'value-label-6'
+    },
+    {
+      value: 'value-label-7'
+    },
+    {
+      value: 'value-label-8'
+    },
+    {
+      value: 'value-label-9'
+    },
+    {
+      value: 'value-label-10'
+    },
+    {
+      label: 'Valor com tag',
+      value: 'value-valor-com-tag',
       tag: {
         background: 'warning',
         label: 'Tag'
