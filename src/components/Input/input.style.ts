@@ -115,7 +115,7 @@ export const Input = styled.input<iStyledCommonProps>`
   padding-left: ${({ contentLeft, size }) =>
     contentLeft ? "46px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
   padding-right: ${({ contentRight, size }) =>
-    contentRight ? "30px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
+    contentRight ? "46px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
 
   overflow: hidden;
   text-overflow: ellipsis;

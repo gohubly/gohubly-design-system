@@ -91,7 +91,7 @@ WithDropdown.args = {
   dropdown: [
     {
       value: 'value-label-1',
-      label: "valor 1"
+      label: "valor 1 valor 1 valor 1 valor 1 valor 1"
     },
     {
       value: 'value-label-2',
