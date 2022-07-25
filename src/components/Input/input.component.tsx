@@ -131,6 +131,7 @@ export const Input: React.FC<iInput> = ({
             onFocus={onFocusInput}
             autoComplete={props.autoComplete || (props.dropdown && "off")}
             contentLeft={!!props.iconLeft || !!props.prefix}
+            contentRight={!!props.iconRight || !!props.suffix}
           />
 
           {/* Icone Direita */}

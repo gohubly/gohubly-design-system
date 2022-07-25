@@ -24,7 +24,7 @@ const templateTextDefaultArgs = {
   items: [
     {
       value: "item1",
-      label: "Item 1",
+      label: "Item 1 Item 1 Item 1 Item 1",
     },
     {
       value: "item2",
