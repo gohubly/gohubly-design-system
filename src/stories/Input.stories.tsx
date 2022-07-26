@@ -192,23 +192,23 @@ WithDropdownEndPlaceholderStyled.args = {
   ),
   dropdown: [
     {
-      value: "value-label-1",
-      label: "valor 1 valor 1 valor 1 valor 1 valor 1",
+      value: "name1",
+      label: "Paulo Roberto Silveira",
     },
     {
-      value: "value-label-2",
-      label: "valor 2",
+      value: "name2",
+      label: "Maria das Graças Oliveira",
     },
     {
-      value: "value-label-3",
-      label: "valor 3",
+      value: "name3",
+      label: "Patrícia Amaral",
     },
     {
-      value: "value-label-4",
-      label: "valor 4",
+      value: "name4",
+      label: "Carla Mesquita",
     },
     {
-      value: "value-label-5",
+      value: "name5",
     },
   ],
 };
