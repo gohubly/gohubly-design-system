@@ -14,6 +14,7 @@ import {
   DropdownWrapper,
   DropdownItem,
   StyledDiv,
+  PlaceholderStyled,
 } from "./input.style";
 
 export const Input: React.FC<iInput> = ({
@@ -22,10 +23,23 @@ export const Input: React.FC<iInput> = ({
   ...props
 }) => {
   const dropdownRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(false);
   const [dropdownOpened, setDropdownOpened] = useState(false);
+  const [isSelected, setIsSelected] = useState(true);
   const [inputValue, setInputValue] = useState(
     props.value || props.defaultValue || ""
   );
+  const hasPlaceholderStyled = props.placeholderStyled ? true : false;
+
+  useEffect(() => {
+    if (!inputValue) {
+      setIsSelected(true);
+      if (hasPlaceholderStyled) {
+        setIsPlaceholderVisible(true);
+      }
+    }
+  }, [inputValue]);
 
   useEffect(() => {
     setInputValue(props.value ?? "");
@@ -42,6 +56,7 @@ export const Input: React.FC<iInput> = ({
 
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
     setDropdownOpened(false);
+    setIsSelected(false);
     setInputValue(itemLabel || itemValue);
     props.onClickDropdownItem &&
       props.onClickDropdownItem(itemValue, itemLabel);
@@ -89,6 +104,16 @@ export const Input: React.FC<iInput> = ({
     );
   };
 
+  const clickIconDropdown = () => {
+    setDropdownOpened(!dropdownOpened);
+  };
+
+  const clickPlaceholder = () => {
+    setIsPlaceholderVisible(true);
+    setDropdownOpened(true);
+    inputRef?.current?.focus();
+  };
+
   return (
     <Label
       htmlFor={props?.name}
@@ -120,6 +145,16 @@ export const Input: React.FC<iInput> = ({
             </PrefixText>
           )}
 
+          {hasPlaceholderStyled && inputValue === '' && (
+            <PlaceholderStyled
+              isSelected={isSelected}
+              onClick={clickPlaceholder}
+              size={propsSize}
+            >
+              {props.placeholderStyled}
+            </PlaceholderStyled>
+          )}
+
           {/* Input */}
           <StyledInput
             {...props}
@@ -127,18 +162,22 @@ export const Input: React.FC<iInput> = ({
             fontSize={propsFontSize}
             value={inputValue}
             data-has-error={!!props?.error}
+            placeholder={props.placeholder ?? ""}
             onChange={onInputChange}
             onFocus={onFocusInput}
             autoComplete={props.autoComplete || (props.dropdown && "off")}
             contentLeft={!!props.iconLeft || !!props.prefix}
             contentRight={!!props.iconRight || !!props.suffix}
+            ref={inputRef || dropdownRef}
           />
 
           {/* Icone Direita */}
           {props.iconRight && (
             <RightIcon
               opened={dropdownOpened}
-              onClick={props.iconRightOnClick}
+              onClick={
+                props?.dropdown ? clickIconDropdown : props.iconRightOnClick
+              }
               iconId={props.iconRight}
               iconRigthSize={props.iconRightSize}
               iconRightPadding={props.iconRightPadding}
@@ -168,7 +207,10 @@ export const Input: React.FC<iInput> = ({
                     dropdownItem.label?.toLowerCase()
                   )
                 }
-                itemSelect={inputValue !== undefined && inputValue === (dropdownItem?.label || dropdownItem?.value)}
+                itemSelect={
+                  inputValue !== undefined &&
+                  inputValue === (dropdownItem?.label || dropdownItem?.value)
+                }
               >
                 {dropdownItem.label || dropdownItem.value}
               </DropdownItem>

@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import { iInput } from ".";
 import { Icon, iIcon, iIconSizes } from "../Icon";
-
 import { themeWithouthInterface as theme } from "../..";
 import { defaultCss } from "../../theme/defaultCss";
 import { iIconPaddings, iInputSizes } from "./input.interface";
@@ -63,6 +62,13 @@ const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   LG: "32px",
 };
 
+const TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  XXS: "6px",
+  XS: "8px",
+  SM: "10px",
+  MD: "14px",
+};
+
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
   font-size: 14px;
@@ -92,6 +98,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
 `;
 
 export const Input = styled.input<iStyledCommonProps>`
+  position: relative;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
@@ -214,11 +221,15 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
 export const SuffixText = styled.div`
   ${PrefixAndSuffixCommons};
 
-  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone  
-
-  left: calc(100% - 7px);
+  right: 1px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
+  z-index: 1;
+
+
+  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
+
+  // left: calc(100% - 7px);
   // border: 1px solid red;
   // border-left: none;
   // box-sizing: border-box;
@@ -230,6 +241,7 @@ export const PrefixText = styled.div`
   left: 1px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
+  z-index: 1;
 `;
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
@@ -297,6 +309,7 @@ const IconCss = css<{
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 1;
 
   cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
 
@@ -337,4 +350,21 @@ export const RightIcon = styled(Icon)<iIconRight>`
     height: ${({ iconRigthSize }): string =>
       ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
   }
+`;
+
+export const PlaceholderStyled = styled.div<{
+  isSelected?: boolean;
+  size?: iInputSizes;
+}>`
+  display: ${({ isSelected }) => (isSelected ? "initial" : "none")};
+  position: absolute;
+  z-index: 10;
+  background: #fff;
+  top: ${({ size }) => TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE[size || "MD"]};;
+  left: 16px;
+  width: calc(100% - 62px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 20px;
 `;
