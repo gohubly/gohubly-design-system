@@ -57,18 +57,19 @@ export const Input: React.FC<iInput> = ({
     if (!props.dropdown?.length) return [];
 
     const stringInputValue = inputValue.toString().toLowerCase();
-    const index = props.dropdown?.findIndex(({ value, label }) => {
+    const foundItems = props.dropdown?.filter(({ value, label }) => {
       return (
         value.toLowerCase().includes(stringInputValue) ||
         label?.toLowerCase()?.includes(stringInputValue)
       );
     });
 
-    if (index !== -1) {
-      const cloned = [...props.dropdown];
-      const sliced = cloned.splice(index, 1);
+    if (foundItems) {
+      const filtered = props.dropdown.filter(({ value }) => {
+        return !foundItems.find((item) => value === item.value)
+      })
 
-      return [...sliced, ...cloned];
+      return [...foundItems, ...filtered];
     }
 
     return props.dropdown;
