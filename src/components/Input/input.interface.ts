@@ -13,6 +13,7 @@ export interface iInput extends iInputHTML {
   size?: iInputSizes
 
   label?: string
+  placeholderStyled?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
   helperText?: string
   helperTextOnClick?: () => void
   error?: boolean
