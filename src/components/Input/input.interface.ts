@@ -3,7 +3,7 @@ import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
 
 export type iInputSizes = 'XXS' | 'XS' | 'SM' | 'MD' 
-export type iIconPaddings = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
+export type iIconPaddings = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' | 'XL'
 
 type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> 
 
