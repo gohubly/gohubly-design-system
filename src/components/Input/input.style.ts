@@ -76,7 +76,7 @@ const LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> = {
   XXS: "48px",
   XS: "48px",
   SM: "48px",
-  MD: "52px",
+  MD: "48px",
   LG: "56px",
 };
 
