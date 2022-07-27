@@ -53,6 +53,7 @@ const ICON_PADDING_LEFT_OR_RIGHT: Record<iIconPaddings, string> = {
   SM: "10px",
   MD: "12px",
   LG: "14px",
+  XL: "16px"
 };
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
