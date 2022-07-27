@@ -60,7 +60,7 @@ export const Table = ({
                           <Avatar size="MD" name={`${dataIndex}`} />
                         )}
                         {typeof cellRenderValue === "string" ? (
-                          <Typography color="neutralLowDark" as='p'>
+                          <Typography color="neutralLowDark" as='p' fontWeight={400}>
                             {cellRenderValue}
                           </Typography>
                         ) : (
