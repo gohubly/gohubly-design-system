@@ -81,8 +81,8 @@ export const Input: React.FC<iInput> = ({
 
     if (foundItems) {
       const filtered = props.dropdown.filter(({ value }) => {
-        return !foundItems.find((item) => value === item.value)
-      })
+        return !foundItems.find((item) => value === item.value);
+      });
 
       return [...foundItems, ...filtered];
     }
@@ -127,11 +127,12 @@ export const Input: React.FC<iInput> = ({
       )}
 
       <RelativeContainer>
-        <StyledDiv>
+        <StyledDiv disabled={props.disabled}>
           {/* Icone Esquerda */}
           {props.iconLeft && (
             <LeftIcon
               opened={dropdownOpened}
+              disabled={props.disabled}
               onClick={props.iconLeftOnClick}
               iconId={props.iconLeft}
               iconLeftSize={props.iconLeftSize}
@@ -146,11 +147,14 @@ export const Input: React.FC<iInput> = ({
             </PrefixText>
           )}
 
-          {hasPlaceholderStyled && inputValue === '' && (
+          {hasPlaceholderStyled && inputValue === "" && (
             <PlaceholderStyled
               isSelected={isSelected}
-              onClick={clickPlaceholder}
+              onClick={!props.disabled ? clickPlaceholder : () => null}
               size={propsSize}
+              disabled={props.disabled}
+              hasIconLeft={!!props.iconLeft}
+              sizeIconLeft={props.iconLeftSize}
             >
               {props.placeholderStyled}
             </PlaceholderStyled>
@@ -176,8 +180,9 @@ export const Input: React.FC<iInput> = ({
           {props.iconRight && (
             <RightIcon
               opened={dropdownOpened}
+              disabled={props.disabled}
               onClick={
-                props?.dropdown ? clickIconDropdown : props.iconRightOnClick
+                props?.dropdown && !props.disabled ? clickIconDropdown : props.iconRightOnClick
               }
               iconId={props.iconRight}
               iconRigthSize={props.iconRightSize}
