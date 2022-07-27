@@ -14,7 +14,7 @@ const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight
 const TextStyled = css<iTypography>`
   ${defaultCss};
 
-  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '600']};
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '600']} !important;
 
   font-size: ${({ size }) => theme.fontSize[size || 'MD']};
   /* font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']}; */
