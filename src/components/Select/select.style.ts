@@ -67,14 +67,14 @@ export const SelectStyled = styled.div<{
       : `2px solid ${theme.colors.helper}`};
   box-sizing: border-box;
   border-radius: ${({ theme }) => theme.borderRadius.SM};
-  cursor: default;
+  cursor: pointer;
 
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primary};
     outline: none;
-    svg path {
-      stroke: ${({ theme }) => theme.colors.primary};
-    }
+    // svg path {
+    //   stroke: ${({ theme }) => theme.colors.primary};
+    // }
   }
 
   ${({ disabled, theme }) =>
@@ -83,9 +83,20 @@ export const SelectStyled = styled.div<{
       background: ${theme.colors.neutralHighLight};
       color: ${theme.colors.neutralLowMedium};
       border-color: ${theme.colors.neutralLowLight};
+      cursor: not-allowed;
 
-      svg path {
+      &:hover {
+        border-color: ${theme.colors.neutralLowLight};
+        outline: none;
+
+        svg, path {
+          stroke: ${theme.colors.neutralLowMedium};
+        }
+      }
+
+      svg, path {
         stroke: ${theme.colors.neutralLowMedium};
+        fill:  ${theme.colors.neutralHighLight}
       }
     `}
 `;
@@ -96,6 +107,12 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  &:hover + div {
+    svg path {
+      stroke: ${({ theme }) => theme.colors.primary};
+    }
+  }
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean }>`
@@ -128,7 +145,7 @@ export const Options = styled.div`
   animation: ${fadeInDown} 120ms ease-out forwards;
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
-  :hover {
+  &:hover {
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
     border-color: ${({ theme }) => theme.colors.neutralHighLight};
 

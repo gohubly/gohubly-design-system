@@ -22,12 +22,14 @@ interface iIconRight extends Partial<iIcon> {
   iconRightPadding?: iIconPaddings;
   opened?: boolean;
   iconRigthSize?: iIconSizes;
+  disabled?: boolean;
 }
 
 interface iIconLeft extends Partial<iIcon> {
   iconLeftPadding?: iIconPaddings;
   opened?: boolean;
   iconLeftSize?: iIconSizes;
+  disabled?: boolean;
 }
 
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
@@ -68,6 +70,25 @@ const TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE: Record<iInputSizes, string> = {
   SM: "10px",
   MD: "14px",
 };
+
+const LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> = {
+  XXXS: "48px",
+  XXS: "48px",
+  XS: "48px",
+  SM: "48px",
+  MD: "52px",
+  LG: "56px",
+};
+
+const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
+  {
+    XXXS: "94px",
+    XXS: "94px",
+    XS: "94px",
+    SM: "94px",
+    MD: "98px",
+    LG: "102px",
+  };
 
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
@@ -153,6 +174,7 @@ export const Input = styled.input<iStyledCommonProps>`
   &:disabled {
     border: 1px solid ${() => theme.colors.neutralLowLight};
     background: ${() => theme.colors.neutralHighLight};
+    cursor: not-allowed;
   }
 
   &[data-has-error="true"] {
@@ -183,11 +205,14 @@ export const RelativeContainer = styled.div`
   position: relative;
 `;
 
-export const StyledDiv = styled.div`
+export const StyledDiv = styled.div<{ disabled?: boolean }>`
   &:hover {
     svg,
     path {
-      stroke: ${() => theme.colors.primary}!important;
+      stroke: ${({ disabled }) =>
+        disabled
+          ? theme.colors.neutralLowMedium
+          : theme.colors.primary}!important;
     }
   }
 `;
@@ -225,7 +250,6 @@ export const SuffixText = styled.div`
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
   z-index: 1;
-
 
   // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
 
@@ -305,6 +329,7 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
 
 const IconCss = css<{
   onClick?: () => void;
+  disabled?: boolean;
 }>`
   position: absolute;
   top: 50%;
@@ -312,6 +337,16 @@ const IconCss = css<{
   z-index: 1;
 
   cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
+
+  svg,
+  path {
+    stroke: ${({ theme, disabled }) =>
+      disabled
+        ? theme.colors.neutralLowMedium
+        : theme.colors.primary}!important;
+    fill: ${({ theme, disabled }) =>
+      disabled ? theme.colors.neutralHighLight : "transparent"}!important;
+  }
 
   // // Accessibility to have a bigger space to click
   // padding: 3px;
@@ -322,13 +357,14 @@ export const LeftIcon = styled(Icon)<iIconLeft>`
   left: ${({ iconLeftPadding }): string =>
     ICON_PADDING_LEFT_OR_RIGHT[iconLeftPadding || "XXS"]};
 
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+
   svg,
   path {
     stroke: ${({ opened, theme }) =>
       opened ? theme.colors.primary : theme.colors.neutralLowMedium};
     width: ${({ iconLeftSize }): string =>
       ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
-
     height: ${({ iconLeftSize }): string =>
       ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
   }
@@ -338,6 +374,8 @@ export const RightIcon = styled(Icon)<iIconRight>`
   ${IconCss};
   right: ${({ iconRightPadding }): string =>
     ICON_PADDING_LEFT_OR_RIGHT[iconRightPadding || "XXS"]};
+
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
 
   svg,
   path {
@@ -355,16 +393,41 @@ export const RightIcon = styled(Icon)<iIconRight>`
 export const PlaceholderStyled = styled.div<{
   isSelected?: boolean;
   size?: iInputSizes;
+  disabled?: boolean;
+  hasIconLeft?: boolean;
+  sizeIconLeft?: iIconSizes;
 }>`
   display: ${({ isSelected }) => (isSelected ? "initial" : "none")};
   position: absolute;
   z-index: 10;
-  background: #fff;
-  top: ${({ size }) => TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE[size || "MD"]};;
-  left: 16px;
-  width: calc(100% - 62px);
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  background: ${({ disabled, theme }) =>
+    disabled ? theme.colors.neutralHighLight : theme.colors.white};
+
+  top: ${({ size }) => TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE[size || "MD"]};
+
+  left: ${({ sizeIconLeft, hasIconLeft }) =>
+    hasIconLeft
+      ? LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE[sizeIconLeft || "MD"]
+      : "16px"};
+
+  width: ${({ sizeIconLeft, hasIconLeft }) =>
+    hasIconLeft
+      ? `calc(100% - ${
+          WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE[sizeIconLeft || "MD"]
+        })`
+      : "calc(100% - 62px)"};
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   height: 20px;
+
+  &:hover + input {
+    border: 1.5px solid
+      ${({ disabled }) =>
+        disabled
+          ? theme.colors.neutralLowLight
+          : theme.colors.primary}!important;
+  }
 `;
