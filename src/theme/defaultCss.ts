@@ -20,6 +20,11 @@ export const defaultCss = css`
     font-family: "InterSemiBold";
     src: url("/fonts/Inter-SemiBold.ttf") format("truetype");
   }
+  
+  @font-face {
+    font-family: "InterBold";
+    src: url("/fonts/Inter-Bold.ttf") format("truetype");
+  }
 
   * {
     font-family: "InterMedium", "InterRegular", sans-serif;

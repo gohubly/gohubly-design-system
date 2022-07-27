@@ -3,11 +3,12 @@ import { iParagraph, iTypography } from './typography.interface'
 import { themeWithouthInterface as theme } from '../..'
 import { defaultCss } from '../../theme/defaultCss'
 
-const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold'> = {
+const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold' | 'InterBold'> = {
   300: 'InterLight',
   400: 'InterRegular',
   500: 'InterMedium',
   600: 'InterSemiBold',
+  900: 'InterBold',
 }
 
 const TextStyled = css<iTypography>`

@@ -48,6 +48,7 @@ export const theme = {
     Level4: '0px 16px 32px rgba(0, 0, 0, 0.24); ',
   },
   fontWeight: {
+    900: '900',
     600: '600',
     500: '500',
     400: '400',
