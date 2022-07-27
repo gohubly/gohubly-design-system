@@ -399,7 +399,7 @@ export const PlaceholderStyled = styled.div<{
 }>`
   display: ${({ isSelected }) => (isSelected ? "initial" : "none")};
   position: absolute;
-  z-index: 10;
+  z-index: 1;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   background: ${({ disabled, theme }) =>
     disabled ? theme.colors.neutralHighLight : theme.colors.white};
