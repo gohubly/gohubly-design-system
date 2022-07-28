@@ -134,9 +134,9 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
   }, [currentPage, props.disableNextPage]);
 
   useEffect(() => {
-    setCurrentPage(0);
+    setCurrentPage(props.currentPage ?? 0);
     loadVisibleNumbers();
-  }, [props.length]);
+  }, [props.length, props.currentPage]);
 
   return (
     <Container>
@@ -165,6 +165,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
 
       {visibleNumbers &&
         visibleNumbers.map((page: number, index: number) => {
+          console.log({ currentPage, index })
           return (
             <Fragment key={index}>
               {
