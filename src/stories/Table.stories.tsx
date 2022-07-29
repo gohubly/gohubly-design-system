@@ -16,26 +16,26 @@ const tableCommonArgs = {
     {
       key: 'name',
       title: 'Nome',
-      width: 150
     },
     {
       key: 'age',
       title: 'Idade',
+      width: 96
     },
     {
       key: 'gender',
       title: 'Gênero',
-      width: 150
+      width: 96
     },
     {
       key: 'createdAt',
       title: 'Data de filiação',
-      width: 130
+      width: 96
     },
     {
       key: 'details',
       title: 'Detalhes',
-      width: 150,
+      width: 96,
       rowContent: (): JSX.Element => (
         <Link size="XXS" >
           Ver detalhes
