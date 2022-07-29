@@ -14,14 +14,14 @@ export const TableContainer = styled.div<{
 export const Table = styled.table<{ fluid?: boolean }>`
   border-spacing: 0 4px;
   width: ${({ fluid }): string => (fluid ? "100%" : "initial")};
+  // width: 800px;
 `;
 
-
 export const TableHeaderTd = styled.td<iTableTd>`
-  box-sizing: border-box;
   width: ${({ width }) => (width ? width : "auto")};
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.neutralHighLight}`};
+  padding: 12px 8px;
 
   p {
     font-size: 12px;
@@ -32,15 +32,17 @@ export const TableHeaderTd = styled.td<iTableTd>`
   &:first-child {
     padding: 12px 0;
   }
-  padding: 12px 16px;
+
+  &:last-child {
+    padding-right: 16px;
+  }
 `;
 
 export const TableBodyTd = styled.td<iTableTd>`
-  box-sizing: border-box;
   width: ${({ width }) => (width ? width : "auto")};
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
 
-  padding: 12px 16px;
+  padding: 12px 8px;
 
   p {
     font-size: 14px;
@@ -49,18 +51,24 @@ export const TableBodyTd = styled.td<iTableTd>`
   }
 
   &:first-child {
+    padding-left: 16px;
+
     p {
       font-size: 12px;
       line-height: 16px;
       margin: 0 !important;
     }
   }
+
+  &:last-child {
+    padding-right: 16px;
+  }
 `;
 
 export const FlexBodyTd = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
 `;
 
 const TableTr = css<iTableTr>`

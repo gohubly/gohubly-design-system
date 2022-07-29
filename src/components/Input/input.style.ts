@@ -53,7 +53,7 @@ const ICON_PADDING_LEFT_OR_RIGHT: Record<iIconPaddings, string> = {
   SM: "10px",
   MD: "12px",
   LG: "14px",
-  XL: "16px"
+  XL: "16px",
 };
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
@@ -142,7 +142,7 @@ export const Input = styled.input<iStyledCommonProps>`
   color: ${() => theme.colors.neutralLowMedium};
 
   padding-left: ${({ contentLeft, size }) =>
-    contentLeft ? "46px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
+    contentLeft ? "50px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
   padding-right: ${({ contentRight, size }) =>
     contentRight ? "46px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
 
@@ -410,14 +410,14 @@ export const PlaceholderStyled = styled.div<{
   left: ${({ sizeIconLeft, hasIconLeft }) =>
     hasIconLeft
       ? LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE[sizeIconLeft || "MD"]
-      : "16px"};
+      : "18px"};
 
   width: ${({ sizeIconLeft, hasIconLeft }) =>
     hasIconLeft
       ? `calc(100% - ${
           WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE[sizeIconLeft || "MD"]
         })`
-      : "calc(100% - 62px)"};
+      : "calc(100% - 64px)"};
 
   overflow: hidden;
   text-overflow: ellipsis;
