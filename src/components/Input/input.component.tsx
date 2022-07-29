@@ -13,7 +13,6 @@ import {
   SuffixText,
   DropdownWrapper,
   DropdownItem,
-  StyledDiv,
   PlaceholderStyled,
 } from "./input.style";
 
@@ -127,76 +126,77 @@ export const Input: React.FC<iInput> = ({
       )}
 
       <RelativeContainer>
-        <StyledDiv disabled={props.disabled}>
-          {/* Icone Esquerda */}
-          {props.iconLeft && (
-            <LeftIcon
-              opened={dropdownOpened}
-              disabled={props.disabled}
-              onClick={props.iconLeftOnClick}
-              iconId={props.iconLeft}
-              iconLeftSize={props.iconLeftSize}
-              iconLeftPadding={props.iconLeftPadding}
-            />
-          )}
-
-          {/* Prefixo */}
-          {props.prefix && (
-            <PrefixText data-has-error={props?.error}>
-              {props.prefix}
-            </PrefixText>
-          )}
-
-          {hasPlaceholderStyled && inputValue === "" && (
-            <PlaceholderStyled
-              isSelected={isSelected}
-              onClick={!props.disabled ? clickPlaceholder : () => null}
-              size={propsSize}
-              disabled={props.disabled}
-              hasIconLeft={!!props.iconLeft}
-              sizeIconLeft={props.iconLeftSize}
-            >
-              {props.placeholderStyled}
-            </PlaceholderStyled>
-          )}
-
-          {/* Input */}
-          <StyledInput
-            {...props}
-            Size={propsSize}
-            fontSize={propsFontSize}
-            value={inputValue}
-            data-has-error={!!props?.error}
-            placeholder={props.placeholder ?? ""}
-            onChange={onInputChange}
-            onFocus={onFocusInput}
-            autoComplete={props.autoComplete || (props.dropdown && "off")}
-            contentLeft={!!props.iconLeft || !!props.prefix}
-            contentRight={!!props.iconRight || !!props.suffix}
-            ref={inputRef || dropdownRef}
+        {/* Icone Esquerda */}
+        {props.iconLeft && (
+          <LeftIcon
+            opened={dropdownOpened}
+            disabled={props.disabled}
+            onClick={props.iconLeftOnClick}
+            iconId={props.iconLeft}
+            iconLeftSize={props.iconLeftSize}
+            iconLeftPadding={props.iconLeftPadding}
           />
+        )}
 
-          {/* Icone Direita */}
-          {props.iconRight && (
-            <RightIcon
-              opened={dropdownOpened}
-              disabled={props.disabled}
-              onClick={
-                props?.dropdown && !props.disabled ? clickIconDropdown : props.iconRightOnClick
-              }
-              iconId={props.iconRight}
-              iconRigthSize={props.iconRightSize}
-              iconRightPadding={props.iconRightPadding}
-            />
-          )}
+        {/* Prefixo */}
+        {props.prefix && (
+          <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>
+        )}
 
-          {/* Sufixo */}
-          {props.suffix && (
-            <SuffixText data-has-error={!!props?.error} className="sufixo">
-              {props.suffix}
-            </SuffixText>
-          )}
-        </StyledDiv>
+        {hasPlaceholderStyled && inputValue === "" && (
+          <PlaceholderStyled
+            isSelected={isSelected}
+            onClick={!props.disabled ? clickPlaceholder : () => null}
+            size={propsSize}
+            disabled={props.disabled}
+            hasIconLeft={!!props.iconLeft}
+            sizeIconLeft={props.iconLeftSize}
+            opened={dropdownOpened}
+          >
+            {props.placeholderStyled}
+          </PlaceholderStyled>
+        )}
+
+        {/* Input */}
+        <StyledInput
+          {...props}
+          opened={dropdownOpened}
+          Size={propsSize}
+          fontSize={propsFontSize}
+          value={inputValue}
+          data-has-error={!!props?.error}
+          placeholder={props.placeholder ?? ""}
+          onChange={onInputChange}
+          onFocus={onFocusInput}
+          autoComplete={props.autoComplete || (props.dropdown && "off")}
+          contentLeft={!!props.iconLeft || !!props.prefix}
+          contentRight={!!props.iconRight || !!props.suffix}
+          ref={inputRef || dropdownRef}
+        />
+
+        {/* Icone Direita */}
+        {props.iconRight && (
+          <RightIcon
+            error={props.error}
+            opened={dropdownOpened}
+            disabled={props.disabled}
+            onClick={
+              props?.dropdown && !props.disabled
+                ? clickIconDropdown
+                : props.iconRightOnClick
+            }
+            iconId={props.iconRight}
+            iconRigthSize={props.iconRightSize}
+            iconRightPadding={props.iconRightPadding}
+          />
+        )}
+
+        {/* Sufixo */}
+        {props.suffix && (
+          <SuffixText data-has-error={!!props?.error} className="sufixo">
+            {props.suffix}
+          </SuffixText>
+        )}
 
         {!!props.dropdown?.length && dropdownOpened && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>

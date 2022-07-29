@@ -1,4 +1,4 @@
-import { iIconTypes } from "..";
+import { iIconSizes, iIconTypes } from "..";
 import { theme } from "../../theme"
 
 export interface iSelectOption {
@@ -13,6 +13,7 @@ export interface iSelect {
   items: iSelectOption[]
   placeholder?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
   icon?: iIconTypes
+  iconSize?: iIconSizes
   disabled?: boolean
   error?: boolean
   helperText?: string

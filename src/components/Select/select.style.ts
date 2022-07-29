@@ -61,10 +61,10 @@ export const SelectStyled = styled.div<{
   padding: ${({ type }) => PADDING_BY_SIZE[type as iSelectTypes]};
 
   background: ${({ theme }) => theme.colors.white};
-  border: ${({ error, theme }) =>
-    !error
-      ? `1px solid ${theme.colors.neutralLowLight}`
-      : `2px solid ${theme.colors.helper}`};
+  border: ${({ opened, theme }) =>
+    opened
+      ? `2px solid ${theme.colors.primary}`
+      : `2px solid ${theme.colors.neutralLowLight}`};
   box-sizing: border-box;
   border-radius: ${({ theme }) => theme.borderRadius.SM};
   cursor: pointer;
@@ -72,10 +72,20 @@ export const SelectStyled = styled.div<{
   &:hover {
     border: 2px solid ${({ theme }) => theme.colors.primary};
     outline: none;
-    // svg path {
-    //   stroke: ${({ theme }) => theme.colors.primary};
-    // }
   }
+
+  svg, path {
+    stroke: ${({ theme }) => theme.colors.primary};
+    fill: transparent;
+  }
+
+  ${({ error, theme }) => {
+    if (error) {
+      return css`
+      border:  2px solid ${theme.colors.helper}};
+      `;
+    }
+  }};
 
   ${({ disabled, theme }) =>
     disabled &&
@@ -89,14 +99,16 @@ export const SelectStyled = styled.div<{
         border-color: ${theme.colors.neutralLowLight};
         outline: none;
 
-        svg, path {
+        svg,
+        path {
           stroke: ${theme.colors.neutralLowMedium};
         }
       }
 
-      svg, path {
+      svg,
+      path {
         stroke: ${theme.colors.neutralLowMedium};
-        fill:  ${theme.colors.neutralHighLight}
+        fill: transparent;
       }
     `}
 `;
@@ -107,20 +119,26 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  &:hover + div {
-    svg path {
-      stroke: ${({ theme }) => theme.colors.primary};
-    }
   }
 `;
 
-export const OpenIcon = styled(Icon)<{ opened: boolean }>`
+export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
   transform: rotate(${({ opened }) => (opened ? "-90deg" : "0")});
 
   svg path {
-    stroke: ${({ theme, opened }) =>
-      opened ? theme.colors.primary : theme.colors.neutralLowMedium};
+    stroke: ${({ theme }) => theme.colors.primary};
+
+    ${({ disabled, theme }) => {
+      if (disabled) {
+        return css`
+          stroke: ${theme.colors.neutralLowMedium};
+
+          &:hover {
+            stroke: ${theme.colors.neutralLowMedium};
+          }
+        `;
+      }
+    }};
   }
 
   transition: transform 0.3s ease;
@@ -146,6 +164,7 @@ export const Options = styled.div`
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
+    cursor: pointer;
     box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
     border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
