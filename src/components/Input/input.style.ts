@@ -17,12 +17,14 @@ interface iStyledCommonProps extends Partial<iInput> {
   contentLeft?: boolean;
   contentRight?: boolean;
   Size?: iInputSizes;
+  opened?: boolean;
 }
 interface iIconRight extends Partial<iIcon> {
   iconRightPadding?: iIconPaddings;
   opened?: boolean;
   iconRigthSize?: iIconSizes;
   disabled?: boolean;
+  error?: boolean;
 }
 
 interface iIconLeft extends Partial<iIcon> {
@@ -140,6 +142,7 @@ export const Input = styled.input<iStyledCommonProps>`
   letter-spacing: -0.01em;
   font-weight: 300;
   color: ${() => theme.colors.neutralLowMedium};
+  cursor: ${({ opened }) => (opened ? "text" : "pointer")};
 
   padding-left: ${({ contentLeft, size }) =>
     contentLeft ? "50px" : PADDING_ICON_BASED_ON_SIZE[size || "MD"]};
@@ -164,6 +167,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   &:focus {
     border: 1px solid ${() => theme.colors.primary};
+    cursor: text;
   }
 
   &::placeholder {
@@ -204,18 +208,6 @@ export const Label = styled.label<iStyledCommonProps>`
 
 export const RelativeContainer = styled.div`
   position: relative;
-`;
-
-export const StyledDiv = styled.div<{ disabled?: boolean }>`
-  &:hover {
-    svg,
-    path {
-      stroke: ${({ disabled }) =>
-        disabled
-          ? theme.colors.neutralLowMedium
-          : theme.colors.primary}!important;
-    }
-  }
 `;
 
 const PrefixAndSuffixCommons = css<iStyledCommonProps>`
@@ -307,18 +299,15 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
 
 export const DropdownItem = styled.div<iInputDropdownItem>`
   padding: 12px 16px;
-
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   display: flex;
   align-items: center;
-
   word-break: break-word;
-
   border-radius: ${({ theme }) => theme.borderRadius.SM};
-
   color: ${({ theme, itemSelect }) =>
     itemSelect ? theme.colors.primary : "inherit"};
   background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
+  cursor: pointer;
 
   :hover,
   :focus-visible {
@@ -341,12 +330,14 @@ const IconCss = css<{
 
   svg,
   path {
-    stroke: ${({ theme, disabled }) =>
-      disabled
-        ? theme.colors.neutralLowMedium
-        : theme.colors.primary}!important;
-    fill: ${({ theme, disabled }) =>
-      disabled ? theme.colors.neutralHighLight : "transparent"}!important;
+    ${({ disabled }) => {
+      if (disabled) {
+        return css`
+          stroke: ${theme.colors.neutralLowMedium};
+          fill: ${theme.colors.neutralHighLight};
+        `;
+      }
+    }};
   }
 
   // // Accessibility to have a bigger space to click
@@ -362,8 +353,6 @@ export const LeftIcon = styled(Icon)<iIconLeft>`
 
   svg,
   path {
-    stroke: ${({ opened, theme }) =>
-      opened ? theme.colors.primary : theme.colors.neutralLowMedium};
     width: ${({ iconLeftSize }): string =>
       ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
     height: ${({ iconLeftSize }): string =>
@@ -380,14 +369,23 @@ export const RightIcon = styled(Icon)<iIconRight>`
 
   svg,
   path {
-    stroke: ${({ opened, theme }) =>
-      opened ? theme.colors.primary : theme.colors.neutralLowMedium};
-
     width: ${({ iconRigthSize }): string =>
       ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
 
     height: ${({ iconRigthSize }): string =>
       ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
+    
+      ${({ error }) => {
+        if (error) {
+          return css`
+          stroke: ${theme.colors.helperMedium};
+          `;
+        }
+      }};
+
+    &:hover: {
+      ${({ theme }) => theme.colors.primary};
+    }
   }
 `;
 
@@ -397,6 +395,7 @@ export const PlaceholderStyled = styled.div<{
   disabled?: boolean;
   hasIconLeft?: boolean;
   sizeIconLeft?: iIconSizes;
+  opened?: boolean;
 }>`
   display: ${({ isSelected }) => (isSelected ? "initial" : "none")};
   position: absolute;
@@ -430,5 +429,9 @@ export const PlaceholderStyled = styled.div<{
         disabled
           ? theme.colors.neutralLowLight
           : theme.colors.primary}!important;
+  }
+
+  &:hover {
+    cursor: ${({ opened }) => (opened ? "text" : "pointer")};
   }
 `;

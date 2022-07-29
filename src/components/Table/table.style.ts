@@ -14,7 +14,6 @@ export const TableContainer = styled.div<{
 export const Table = styled.table<{ fluid?: boolean }>`
   border-spacing: 0 4px;
   width: ${({ fluid }): string => (fluid ? "100%" : "initial")};
-  // width: 800px;
 `;
 
 export const TableHeaderTd = styled.td<iTableTd>`

@@ -162,6 +162,8 @@ WithDropdownEndPlaceholderStyled.args = {
   iconRightOnClick: () => {},
   size: "MD", 
   type: "text",
+  disabled: false,
+  error: false,
   placeholderStyled: (
     <div style={{ display: "flex", gap: "5px" }}>
       <Typography

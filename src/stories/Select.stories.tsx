@@ -21,6 +21,8 @@ const templateTextDefaultArgs = {
   onSelect: (item: any) =>
     console.log(item)
   ,
+  error: false,
+  disabled: false,
   items: [
     {
       value: "item1",
