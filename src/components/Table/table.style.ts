@@ -17,6 +17,7 @@ export const Table = styled.table<{ fluid?: boolean }>`
 `;
 
 export const TableHeaderTd = styled.td<iTableTd>`
+  box-sizing: content-box;
   width: ${({ width }) => (width ? width : "auto")};
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.neutralHighLight}`};
@@ -38,6 +39,7 @@ export const TableHeaderTd = styled.td<iTableTd>`
 `;
 
 export const TableBodyTd = styled.td<iTableTd>`
+  box-sizing: content-box;
   width: ${({ width }) => (width ? width : "auto")};
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
 
