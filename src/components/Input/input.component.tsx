@@ -125,7 +125,7 @@ export const Input: React.FC<iInput> = ({
         <LabelText OnColor={props.OnColor}>{props.label}</LabelText>
       )}
 
-      <RelativeContainer>
+      <RelativeContainer disabled={props.disabled}>
         {/* Icone Esquerda */}
         {props.iconLeft && (
           <LeftIcon

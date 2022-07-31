@@ -14,7 +14,6 @@ import {
 
 export const Select: React.FC<iSelect> = ({
   placeholder,
-  icon,
   items,
   disabled,
   error,
@@ -25,7 +24,9 @@ export const Select: React.FC<iSelect> = ({
   height,
   fontSize,
   type = 'text',
-  iconSize,
+  iconRight,
+  iconLeft,
+  iconSizeLeft,
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
@@ -70,11 +71,11 @@ export const Select: React.FC<iSelect> = ({
         height={height}
         type={type}
       >
-        {icon && <Icon iconId={icon} size={iconSize} />}
+        {iconLeft && <Icon iconId={iconLeft} size={iconSizeLeft} />}
         <Placeholder fontSize={fontSize}>
           {selectedItem?.label || selected?.value || placeholder}
         </Placeholder>
-        <OpenIcon iconId="chevronDown" opened={!disabled && opened} disabled={disabled}/>
+        <OpenIcon iconId={opened ? "chevronUp" : (iconRight ?? "chevronDown")} opened={!disabled && opened} disabled={disabled}/>
       </SelectStyled>
 
       {!disabled && opened && items && (

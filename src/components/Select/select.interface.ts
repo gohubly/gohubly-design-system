@@ -8,12 +8,14 @@ export interface iSelectOption {
 }
 
 export type iSelectTypes = 'text' | 'number'
+export type iIconRightTypes = 'chevronDown' | 'chevronRight' 
 
 export interface iSelect {
   items: iSelectOption[]
   placeholder?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
-  icon?: iIconTypes
-  iconSize?: iIconSizes
+  iconRight?: iIconRightTypes
+  iconLeft?: iIconTypes
+  iconSizeLeft?: iIconSizes
   disabled?: boolean
   error?: boolean
   helperText?: string
