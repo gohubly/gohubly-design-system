@@ -64,7 +64,7 @@ export const SelectStyled = styled.div<{
   border: ${({ opened, theme }) =>
     opened
       ? `2px solid ${theme.colors.primary}`
-      : `2px solid ${theme.colors.neutralLowLight}`};
+      : `1px solid ${theme.colors.neutralLowLight}`};
   box-sizing: border-box;
   border-radius: ${({ theme }) => theme.borderRadius.SM};
   cursor: pointer;
@@ -123,8 +123,6 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
-  transform: rotate(${({ opened }) => (opened ? "-90deg" : "0")});
-
   svg path {
     stroke: ${({ theme }) => theme.colors.primary};
 

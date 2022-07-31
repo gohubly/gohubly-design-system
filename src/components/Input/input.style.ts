@@ -136,7 +136,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
 
-  border: 1px solid ${() => theme.colors.neutralLowMedium};
+  border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
   border-radius: 8px;
   letter-spacing: -0.01em;
@@ -160,7 +160,7 @@ export const Input = styled.input<iStyledCommonProps>`
     `}
 
   &:hover {
-    border: 1.5px solid
+    border: 2px solid
       ${({ OnColor }) =>
         OnColor ? theme.colors.primaryDark : theme.colors.primary};
   }
@@ -206,8 +206,16 @@ export const Label = styled.label<iStyledCommonProps>`
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
 `;
 
-export const RelativeContainer = styled.div`
+export const RelativeContainer = styled.div<{ disabled?: boolean }>`
   position: relative;
+
+  &:hover > input {
+    border: 2px solid
+      ${({ disabled }) =>
+        disabled
+          ? theme.colors.neutralLowLight
+          : theme.colors.primary}!important;
+  }
 `;
 
 const PrefixAndSuffixCommons = css<iStyledCommonProps>`
@@ -309,8 +317,8 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
   background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
   cursor: pointer;
 
-  :hover,
-  :focus-visible {
+  &:hover,
+  &:focus-visible {
     background: #f0f1f5;
     color: ${({ theme }) => theme.colors.primary};
     outline: none;
@@ -330,6 +338,10 @@ const IconCss = css<{
 
   svg,
   path {
+    &:hover {
+      pointer-events: inherit;
+    }
+
     ${({ disabled }) => {
       if (disabled) {
         return css`
@@ -374,18 +386,14 @@ export const RightIcon = styled(Icon)<iIconRight>`
 
     height: ${({ iconRigthSize }): string =>
       ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
-    
-      ${({ error }) => {
-        if (error) {
-          return css`
-          stroke: ${theme.colors.helperMedium};
-          `;
-        }
-      }};
 
-    &:hover: {
-      ${({ theme }) => theme.colors.primary};
-    }
+    ${({ error }) => {
+      if (error) {
+        return css`
+          stroke: ${theme.colors.helperMedium};
+        `;
+      }
+    }};
   }
 `;
 
@@ -423,15 +431,8 @@ export const PlaceholderStyled = styled.div<{
   white-space: nowrap;
   height: 20px;
 
-  &:hover + input {
-    border: 1.5px solid
-      ${({ disabled }) =>
-        disabled
-          ? theme.colors.neutralLowLight
-          : theme.colors.primary}!important;
-  }
-
   &:hover {
     cursor: ${({ opened }) => (opened ? "text" : "pointer")};
+    pointer-events: inherit;
   }
 `;

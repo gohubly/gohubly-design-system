@@ -59,13 +59,13 @@ DefaultText.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...templateTextDefaultArgs,
-  icon: "information",
+  iconLeft: "information",
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
   ...templateTextDefaultArgs,
-  icon: "information",
+  iconLeft: "information",
   disabled: true,
 };
 
