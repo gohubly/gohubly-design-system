@@ -11,7 +11,6 @@ export const Wrapper = styled.div<{ direction: iDirectionTypes }>`
     direction === "vertical" ? "column" : "row"};
   gap: ${({ direction }) => (direction === "vertical" ? "20px" : "24px")};
   position: relative;
-  z-index: 1;
 
   ${({ direction, theme }) =>
     direction === "horizontal" &&
@@ -36,6 +35,7 @@ export const TabItem = styled.div<{ selected: boolean }>`
   letter-spacing: -0.005em;
   padding-bottom: 16px;
   cursor: pointer;
+  z-index: 1;
   border-bottom: 2px solid
     ${({ theme, selected }) =>
       selected ? theme.colors.primary : "transparent"};

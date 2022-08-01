@@ -17,6 +17,22 @@ Default.args = {
   placeholder: "placeholder...",
 };
 
+export const DefaultWithPlaceholderStyled = Template.bind({});
+DefaultWithPlaceholderStyled.args = {
+  name: "input-name",
+  label: "Label",
+  placeholderStyled: (
+    <Typography
+      color="neutralLowMedium"
+      size="XS"
+      lineHeight="MD"
+      fontWeight={400}
+    >
+      Placeholder Styled
+    </Typography>
+  ),
+};
+
 export const WithError = Template.bind({});
 WithError.args = {
   name: "input-name",
@@ -160,7 +176,7 @@ WithDropdownEndPlaceholderStyled.args = {
   name: "input-name",
   iconRight: "chevronDown",
   iconRightOnClick: () => {},
-  size: "MD", 
+  size: "MD",
   type: "text",
   disabled: false,
   error: false,
