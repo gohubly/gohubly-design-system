@@ -75,12 +75,12 @@ const TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE: Record<iInputSizes, string> = {
 };
 
 const LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> = {
-  XXXS: "48px",
-  XXS: "48px",
-  XS: "48px",
-  SM: "48px",
-  MD: "52px",
-  LG: "56px",
+  XXXS: "49px",
+  XXS: "49px",
+  XS: "49px",
+  SM: "49px",
+  MD: "53px",
+  LG: "57px",
 };
 
 const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
@@ -160,7 +160,7 @@ export const Input = styled.input<iStyledCommonProps>`
     `}
 
   &:hover {
-    border: 2px solid
+    border: 1px solid
       ${({ OnColor }) =>
         OnColor ? theme.colors.primaryDark : theme.colors.primary};
   }
@@ -210,7 +210,7 @@ export const RelativeContainer = styled.div<{ disabled?: boolean }>`
   position: relative;
 
   &:hover > input {
-    border: 2px solid
+    border: 1px solid
       ${({ disabled }) =>
         disabled
           ? theme.colors.neutralLowLight
