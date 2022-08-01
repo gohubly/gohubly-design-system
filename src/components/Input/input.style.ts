@@ -417,7 +417,7 @@ export const PlaceholderStyled = styled.div<{
   left: ${({ sizeIconLeft, hasIconLeft }) =>
     hasIconLeft
       ? LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE[sizeIconLeft || "MD"]
-      : "18px"};
+      : "19px"};
 
   width: ${({ sizeIconLeft, hasIconLeft }) =>
     hasIconLeft
