@@ -21,6 +21,8 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected'>>`
   align-items: center;
   gap: 16px;
 
+  cursor: pointer;
+
   padding: 16px 24px;
 
   background-color: white;
