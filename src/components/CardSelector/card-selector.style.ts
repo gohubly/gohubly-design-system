@@ -32,7 +32,7 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected'>>`
 
   ${({ selected }) => !selected && css`
     &:hover {
-      border: 1.5px solid ${theme.colors.neutralHighMedium};
+      border: 1px solid ${theme.colors.neutralHighMedium};
     }
   `}
 `
