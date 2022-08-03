@@ -14,6 +14,9 @@ export interface iShare {
   onBackClick?: () => void;
   onShare?: (selectedMedia: EShareMedia, link?: string, email?: string) => void;
   success?: boolean
+  apiKeys: {
+    facebookMessenger: string
+  }
   canAddMultipleEmails?: boolean
 };
 

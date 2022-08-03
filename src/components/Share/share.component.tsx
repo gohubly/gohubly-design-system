@@ -21,7 +21,8 @@ export const Share: React.FC<iShare> = ({
   onShare,
   onBackClick,
   canAddMultipleEmails,
-  success
+  success,
+  apiKeys
 }): JSX.Element => {
   const [selectedMedia, setSelectedMedia] = useState<EShareMedia>(EShareMedia.email);
   const medias = Object.keys(EShareMedia).filter(key => isNaN(+key));
@@ -41,6 +42,7 @@ export const Share: React.FC<iShare> = ({
         getLinkToSocialMedia(
           EShareMedia[(selectedMedia as unknown) as keyof typeof EShareMedia],
           link as string,
+          apiKeys
         ),
         '_blank',
       );
