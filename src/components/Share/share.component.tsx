@@ -167,7 +167,7 @@ export const Share: React.FC<iShare> = ({
       ) }
 
 
-      { canAddMultipleEmails && !success && (
+      { canAddMultipleEmails && !success && selectedMedia === EShareMedia.email && (
         <Box marginY="15px">
           <Button hierarchy='ghost' onClick={handleAddEmail} disabled={(error?.length ?? 0) > 0} fluid>
             Adicionar mais e-mails
