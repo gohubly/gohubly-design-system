@@ -1,4 +1,4 @@
-import React, { ReactText, useState } from 'react';
+import React, { ReactText, useEffect, useState } from 'react';
 import copy from 'clipboard-copy';
 import * as css from './share.style';
 import { emailRegex, getLinkToSocialMedia } from '../../helpers';
@@ -31,6 +31,13 @@ export const Share: React.FC<iShare> = ({
   const [value, setValue] = useState<string | undefined>('')
   const [error, setError] = useState<string | undefined>('')
   const [emails, setEmails] = useState<string[]>([])
+
+  useEffect(() => {
+    if (success) {
+      setValue("");
+      setEmails([]);
+    }
+  }, [success])
 
   const handleCopyLinkClick = (): void => {
     copy(link);
