@@ -79,23 +79,30 @@ export const ToggleStyled = styled.div<CommonProps>`
 
   > div {
     position: relative;
-    top: 50%;
-    left: 70%;
+    top: 52%;
+    left: 71%;
     transform: translate(-50%, -50%);
 
     opacity: ${({ active }): number => (active ? 1 : 0)};
     transition: opacity 0.1s linear;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     svg,
     path {
       stroke: #fff;
     }
   }
+  
   ${({ disabled, active }) => {
     if (disabled) {
       return css`
         cursor: not-allowed;
-        background: ${active ? theme.colors.neutralLowLight : theme.colors.white};
+        background: ${active
+          ? theme.colors.neutralLowLight
+          : theme.colors.white};
       `;
     }
   }};
