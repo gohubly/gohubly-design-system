@@ -7,6 +7,9 @@ export interface iShare {
     icon?: iIconTypes,
     content: string
   }
+  custom?: {
+    shareButton: string
+  }
   padding?: string;
   helperText?: JSX.Element;
   loading?: boolean;
