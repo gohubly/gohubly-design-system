@@ -14,6 +14,7 @@ export interface iShare {
   onBackClick?: () => void;
   onShare?: (selectedMedia: EShareMedia, link?: string, email?: string) => void;
   success?: boolean
+  fluid?: boolean
   apiKeys: {
     facebookMessenger: string
   }

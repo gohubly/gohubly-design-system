@@ -22,6 +22,7 @@ export const Share: React.FC<iShare> = ({
   onBackClick,
   canAddMultipleEmails,
   success,
+  fluid,
   apiKeys
 }): JSX.Element => {
   const [selectedMedia, setSelectedMedia] = useState<EShareMedia>(EShareMedia.email);
@@ -84,18 +85,21 @@ export const Share: React.FC<iShare> = ({
   };
 
   return (
-    <css.Container padding={padding}>
+    <css.Container padding={padding} fluid={fluid}>
       {header && (
-        <css.FlexContainer>
-          { header?.icon && <Icon iconId={header.icon} stroke="neutralLow" onClick={onBackClick} /> }
+        <>
+          <css.FlexContainer>
+            { header?.icon && <Icon iconId={header.icon} stroke="neutralLow" onClick={onBackClick} /> }
 
-          <Typography size="MD" fontWeight={600} color="neutralLow">
-            {header.content}
-          </Typography>
-        </css.FlexContainer>
+            <Typography size="MD" fontWeight={600} color="neutralLow">
+              {header.content}
+            </Typography>
+          </css.FlexContainer>
+
+          <css.Spacer marginTop="24px" />
+        </>
       )}
 
-      <css.Spacer marginTop="24px" />
 
       <LinkSuccessCopy {...linkSuccessProps} button={{ ...linkSuccessProps.button, onClick: handleCopyLinkClick }} />
 

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { Theme, theme } from '../../theme';
 
-export const Container = styled.div< {padding?: string }>`
+export const Container = styled.div< { padding?: string , fluid?: boolean }>`
+  width: ${({ fluid }) => fluid ? '100%' : 'auto'};
   padding: ${({ padding = '24px 16px 16px 16px' }) => padding};
 
   display: flex;
