@@ -23,7 +23,8 @@ export const Share: React.FC<iShare> = ({
   canAddMultipleEmails,
   success,
   fluid,
-  apiKeys
+  apiKeys,
+  custom
 }): JSX.Element => {
   const [selectedMedia, setSelectedMedia] = useState<EShareMedia>(EShareMedia.email);
   const medias = Object.keys(EShareMedia).filter(key => isNaN(+key));
@@ -219,7 +220,7 @@ export const Share: React.FC<iShare> = ({
         loading={loading}
         disabled={!emails.length && selectedMedia === EShareMedia.email}
       >
-        Compartilhar
+        { custom?.shareButton ?? 'Compartilhar' }
       </Button>
     </css.Container>
   );
