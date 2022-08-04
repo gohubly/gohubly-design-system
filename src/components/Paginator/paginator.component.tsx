@@ -165,7 +165,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
 
       {visibleNumbers &&
         visibleNumbers.map((page: number, index: number) => {
-          console.log({ currentPage, index })
+          // console.log({ currentPage, index })
           return (
             <Fragment key={index}>
               {

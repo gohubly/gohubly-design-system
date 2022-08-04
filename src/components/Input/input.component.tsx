@@ -83,7 +83,13 @@ export const Input: React.FC<iInput> = ({
         return !foundItems.find((item) => value === item.value);
       });
 
-      return [...foundItems, ...filtered];
+      let items = [...foundItems, ...filtered];
+
+      if(props.hasAllItems && props.dropdown?.indexOf({label: 'Todos', value: ''}) === -1) {
+        items?.unshift({label: 'Todos', value: ''})
+      }
+
+      return items;
     }
 
     return props.dropdown;

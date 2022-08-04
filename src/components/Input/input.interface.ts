@@ -32,6 +32,8 @@ export interface iInput extends iInputHTML {
   prefix?: string
   suffix?: string
 
+  hasAllItems?: boolean;
+
   onClickDropdownItem?: (itemValue: string, itemLabel?: string) => void
   dropdown?: {
     value: string
