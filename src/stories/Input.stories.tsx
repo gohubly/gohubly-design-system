@@ -208,6 +208,7 @@ WithDropdownEndPlaceholderStyled.args = {
       </div>
     </div>
   ),
+  hasAllItems: true,
   dropdown: [
     {
       value: "name1",
@@ -224,6 +225,10 @@ WithDropdownEndPlaceholderStyled.args = {
     {
       value: "name4",
       label: "Carla Mesquita",
+    },
+    {
+      value: "name5",
+      label: "Carlos Luiz",
     },
     {
       value: "name5",
