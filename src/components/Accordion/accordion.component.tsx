@@ -5,7 +5,7 @@ import { Typography } from '../Typography';
 import { iAccordion } from './accordion.interface';
 import * as css from './accordion.style'
 
-export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid, highlightLabel, action }) => {
+export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid, highlightLabel, action, loadingForItem }) => {
   const [openedAccordion, setOpenedAccordion] = useState<string | undefined>(undefined);
 
   const renderLabelWithHighlight = (label: string) => {
@@ -37,10 +37,16 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
               </css.LeftContent>
 
               {action && (
-                <Button hierarchy='ghost' onClick={e => {
-                  e.stopPropagation();
-                  action?.onClick && action.onClick({ label, value });
-                }} size="SM">
+                <Button 
+                  hierarchy='ghost' 
+                  onClick={e => {
+                    e.stopPropagation();
+                    action?.onClick && action.onClick({ label, value });
+                  }}
+                  size="SM"
+                  loading={!!loadingForItem && loadingForItem === value}
+                  disabled={!!loadingForItem && loadingForItem !== value}
+                >
                   <Typography color='primary' size='XXS'>
                     { action.text }
                   </Typography>
@@ -54,12 +60,14 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
                 
                 {action && value === openedAccordion && (
                   <Button 
-                    hierarchy='ghost' 
-                    loading={action?.loading} 
+                    hierarchy='ghost'
+                    loading={!!loadingForItem && loadingForItem === value}
+                    disabled={!!loadingForItem && loadingForItem !== value}
                     onClick={e => {
                       e.stopPropagation();
                       action?.onClick && action.onClick({ label, value });
-                    }} size="SM">
+                    }} size="SM"
+                  >
                     <Typography color='primary' size='XXS'>
                       { action.text }
                     </Typography>

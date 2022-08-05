@@ -44,6 +44,7 @@ export const WithAction = Template.bind({});
 
 WithAction.args = {
   highlightLabel: true,
+  loadingForItem: "Teste 1",
   action: { text: "Ação" },
   items: [
     { label: "Teste 1", value: "Teste 1", items: [ { label: "Teste teste 1", value: "Teste teste 1" }, { label: "Teste teste 1", value: "Teste teste 1" } ] },

@@ -3,6 +3,7 @@ export interface iAccordion {
   fluid?: boolean
   items: iAccordionItem[]
   highlightLabel?: boolean
+  loadingForItem?: string
   action?: iAccordionAction
 }
 
@@ -14,6 +15,5 @@ export interface iAccordionItem {
 
 export interface iAccordionAction {
   text?: string
-  loading?: boolean
   onClick?: (item: Omit<iAccordionItem, 'items'>) => void
 }
