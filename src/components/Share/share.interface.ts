@@ -5,7 +5,8 @@ export interface iShare {
   link: string;
   header?: {
     icon?: iIconTypes,
-    content: string
+    content: string,
+    position?: "start" | "end"
   }
   custom?: {
     shareButton: string

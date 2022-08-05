@@ -2,10 +2,34 @@ import React from "react";
 
 export default function ShareOutline(props: any) {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M1 11V17.4C1 17.8243 1.23705 18.2313 1.65901 18.5314C2.08097 18.8314 2.65326 19 3.25 19H16.75C17.3467 19 17.919 18.8314 18.341 18.5314C18.7629 18.2313 19 17.8243 19 17.4V11" stroke="transparent" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M14 5L10 1L6 5" stroke="#CDD2EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M10 1V11" stroke="#CDD2EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 13V19.4C3 19.8243 3.23705 20.2313 3.65901 20.5314C4.08097 20.8314 4.65326 21 5.25 21H18.75C19.3467 21 19.919 20.8314 20.341 20.5314C20.7629 20.2313 21 19.8243 21 19.4V13"
+        stroke="transparent"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M16 7L12 3L8 7"
+        stroke="#CDD2EB"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12 3V13"
+        stroke="#CDD2EB"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
     </svg>
   );
 }

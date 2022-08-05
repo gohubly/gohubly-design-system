@@ -274,6 +274,7 @@ export const Button = styled.button<iButton>`
 
 export const ContentContainer = styled.div<{ loading?: boolean }>`
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
+  opacity: ${({ loading }) => (loading ? "0" : "1")};
 `;
 
 export const ButtonSpinnerContainer = styled.span`
