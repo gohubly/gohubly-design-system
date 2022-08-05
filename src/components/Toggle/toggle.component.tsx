@@ -17,7 +17,7 @@ export const Toggle: React.FC<IToggle> = (props) => {
 
   useEffect(() => {
     console.log("checked", checked);
-    props.onChange(checked);
+    props.onClick(checked);
   }, [checked]);
 
   return (

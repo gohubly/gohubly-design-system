@@ -21,5 +21,5 @@ ToggleDefault.args = {
   id: "toggle",
   checked: true,
   disabled: false,
-  onChange: (value: boolean) => console.log(value),
+  onClick: (value: boolean) => console.log(value),
 };
