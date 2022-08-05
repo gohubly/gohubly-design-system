@@ -53,10 +53,13 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
                 { label }
                 
                 {action && value === openedAccordion && (
-                  <Button hierarchy='ghost' onClick={e => {
-                    e.stopPropagation();
-                    action?.onClick && action.onClick({ label, value });
-                  }} size="SM">
+                  <Button 
+                    hierarchy='ghost' 
+                    loading={action?.loading} 
+                    onClick={e => {
+                      e.stopPropagation();
+                      action?.onClick && action.onClick({ label, value });
+                    }} size="SM">
                     <Typography color='primary' size='XXS'>
                       { action.text }
                     </Typography>
