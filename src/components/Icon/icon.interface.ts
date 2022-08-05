@@ -11,7 +11,7 @@ export type iIconTypes =
 'login' | 'minus' | 'moreHorizontal' | 'moreVertical' | 'pen' | 
 'percent' | 'pinLocation' | 'phone' | 'play' | 'plus' | 'search' | 
 'settings' | 'share' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
-'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 'instagramColor'
+'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 'instagramColor' | 'shareOutline'
 
 export type iIconSizes = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
 export interface iIcon {

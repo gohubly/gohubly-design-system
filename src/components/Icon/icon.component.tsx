@@ -71,6 +71,7 @@ import Youtube from './icons/youtube'
 import WhatsApp from './icons/whatsapp'
 import Messenger from './icons/messenger'
 import InstagramColor from './icons/instagram-color'
+import ShareOutline from './icons/shareOutline'
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: '12px',
@@ -150,6 +151,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   whatsapp: WhatsApp,
   messenger: Messenger,
   instagramColor: InstagramColor,
+  shareOutline: ShareOutline,
 }
 
 export const Icon: React.FC<iIcon> = ({
