@@ -54,15 +54,15 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
               )}
             </css.Item>
 
-            { items?.length > 0 && items.map(({ label }) => (
+            { items?.length > 0 && items.map(({ label, value: childrenValue }) => (
               <css.Children open={value === openedAccordion}>
                 { label }
                 
                 {action && value === openedAccordion && (
                   <Button 
                     hierarchy='ghost'
-                    loading={!!loadingForItem && loadingForItem === value}
-                    disabled={!!loadingForItem && loadingForItem !== value}
+                    loading={!!loadingForItem && loadingForItem === childrenValue}
+                    disabled={!!loadingForItem && loadingForItem !== childrenValue}
                     onClick={e => {
                       e.stopPropagation();
                       action?.onClick && action.onClick({ label, value });
