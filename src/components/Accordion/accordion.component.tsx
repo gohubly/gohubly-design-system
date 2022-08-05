@@ -29,7 +29,7 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
           <css.AccordionItemContainer>
             <css.Item onClick={() => setOpenedAccordion(value === openedAccordion ? undefined : value)}>
               <css.LeftContent>
-                {items.length  && <Icon iconId={value === openedAccordion ? 'chevronUp' : 'chevronDown'} size='MD' />}
+                {items.length > 0 && <Icon iconId={value === openedAccordion ? 'chevronUp' : 'chevronDown'} size='MD' />}
 
                 {
                   renderLabelWithHighlight(label)
