@@ -47,7 +47,10 @@ export const LeftContent = styled.div`
 `
 
 export const Children = styled.div<{ open?: boolean }>`
-  height: ${({ open }) => !open ? '0' : 'auto'};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   height: ${({ open }) => !open ? '0' : 'auto'};
 
   color: ${({ open }) => !open ? 'transparent' : 'black'};
@@ -57,6 +60,7 @@ export const Children = styled.div<{ open?: boolean }>`
   transition: all .5s;
   
   padding: ${({ open }) => !open ? '0' : '20px 52px'};
+  padding-right: ${({ open }) => !open ? '0' : '16px'};
 
   &:hover {
     color: ${() => theme.colors.primary};

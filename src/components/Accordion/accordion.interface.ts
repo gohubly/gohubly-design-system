@@ -14,5 +14,5 @@ export interface iAccordionItem {
 
 export interface iAccordionAction {
   text?: string
-  onClick?: () => void
+  onClick?: (item: Omit<iAccordionItem, 'items'>) => void
 }

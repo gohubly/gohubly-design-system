@@ -39,7 +39,7 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
               {action && (
                 <Button hierarchy='ghost' onClick={e => {
                   e.stopPropagation();
-                  action?.onClick && action.onClick();
+                  action?.onClick && action.onClick({ label, value });
                 }} size="SM">
                   <Typography color='primary' size='XXS'>
                     { action.text }
@@ -51,6 +51,17 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
             { items?.length > 0 && items.map(({ label }) => (
               <css.Children open={value === openedAccordion}>
                 { label }
+                
+                {action && value === openedAccordion && (
+                  <Button hierarchy='ghost' onClick={e => {
+                    e.stopPropagation();
+                    action?.onClick && action.onClick({ label, value });
+                  }} size="SM">
+                    <Typography color='primary' size='XXS'>
+                      { action.text }
+                    </Typography>
+                  </Button>
+                )}
               </css.Children>
             )) }
           </css.AccordionItemContainer>
