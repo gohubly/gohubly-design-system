@@ -96,7 +96,7 @@ export const Share: React.FC<iShare> = ({
 			{header && (
 				<>
 					<Flex flexDirection={(header.position ?? "start") === 'start' ? 'row' : 'row-reverse'} justifyContent={(header.position ?? "start") === 'start' ? 'initial' : 'space-between'} alignItems="center">
-						{ header?.icon && <Icon iconId={header.icon} stroke="neutralLow" onClick={onBackClick} /> }
+						{ header?.icon && <Icon iconId={header.icon} stroke="neutralLow" onClick={header?.onIconClick} /> }
 
 						<Typography size="MD" fontWeight={600} color="neutralLow">
 							{header.content}
