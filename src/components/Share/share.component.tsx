@@ -29,7 +29,7 @@ export const Share: React.FC<iShare> = ({
 	const [selectedMedia, setSelectedMedia] = useState<EShareMedia>(EShareMedia.email);
 	const medias = Object.keys(EShareMedia).filter(key => isNaN(+key));
 	const [value, setValue] = useState<string | undefined>('');
-	const [error, setError] = useState<string | undefined>('');
+	const [error, setError] = useState<string | undefined>('initial');
 	const [emails, setEmails] = useState<string[]>([]);
 
 	useEffect(() => {
@@ -72,6 +72,10 @@ export const Share: React.FC<iShare> = ({
 		const { currentTarget: { value } } = event;
 
 		setValue(value);
+
+		if (!value.length && emails.length && canAddMultipleEmails) {
+			return setError('');
+		}
 
 		if (!emailRegex.test(value)) {
 			return setError('E-mail inválido');
@@ -148,8 +152,8 @@ export const Share: React.FC<iShare> = ({
 							placeholder="exemplo@email.com"
 							value={value}
 							onChange={handleEmailChange}
-							helperText={error}
-							error={(error?.length ?? 0) > 1}
+							helperText={error !== 'initial' ? error : ''}
+							error={((error?.length ?? 0) > 1) && error !== 'initial'}
 							fluid
 						/>
 					)}
@@ -224,7 +228,7 @@ export const Share: React.FC<iShare> = ({
 				icon="shareOutline"
 				onClick={handleShareClick}
 				loading={loading}
-				disabled={!emails.length && selectedMedia === EShareMedia.email}
+				disabled={((canAddMultipleEmails && !emails.length) || !!error) && selectedMedia === EShareMedia.email}
 			>
 				{ custom?.shareButton ?? 'Compartilhar' }
 			</Button>
