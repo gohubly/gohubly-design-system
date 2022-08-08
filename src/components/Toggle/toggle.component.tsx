@@ -3,44 +3,59 @@ import { Icon } from "../Icon";
 import { IToggle } from "./toggle.interface";
 import { Container, ToggleStyled } from "./toggle.style";
 
-export const Toggle: React.FC<IToggle> = (props) => {
-  const [checked, setChecked] = useState(props.checked ?? false);
+export const Toggle: React.FC<IToggle> = ({
+  id,
+  active: activeProps,
+  disabled = false,
+  onClick,
+  error = false,
+}: IToggle) => {
+  const [isActive, setIsActive] = useState(false);
 
-  const handleKeyPress = () => {
-    if (props.disabled) return;
-    setChecked(!checked);
+  useEffect(() => {
+    setIsActive(!!activeProps);
+  }, [activeProps]);
+
+  const handleClick = (): void => {
+    if (disabled) return;
+
+    if (onClick) {
+      if (!isActive) {
+        setIsActive(true);
+        onClick(true);
+      } else {
+        setIsActive(false);
+        onClick(false);
+      }
+    }
   };
 
-  useEffect(() => {
-    setChecked(props.checked);
-  }, [props.checked]);
-
-  useEffect(() => {
-    console.log("checked", checked);
-    props.onChange(checked);
-  }, [checked]);
-
   return (
-    <Container active={checked} onClick={handleKeyPress} disabled={props.disabled} error={!!props?.error}>
+    <Container
+      active={isActive}
+      onClick={handleClick}
+      disabled={disabled}
+      error={!!error}
+    >
       <input
         type="checkbox"
-        name={props.id}
+        name={id}
         className="checkbox"
-        id={props.id}
-        checked={checked}
-        onChange={handleKeyPress}
-        disabled={props.disabled}
-        data-has-error={!!props?.error}
+        id={id}
+        checked={isActive}
+        onChange={handleClick}
+        disabled={disabled}
+        data-has-error={error}
         // tabIndex={props.disabled ? -1 : 1}
         //TODO: fix focus
       />
       <ToggleStyled
         className="label"
-        active={checked}
-        disabled={props.disabled}
-        error={!!props?.error}
+        active={isActive}
+        disabled={disabled}
+        error={error}
       >
-        {!props.disabled && <Icon iconId={!!props?.error ? "close" : "check"} size="XXXS" />}
+        {!disabled && <Icon iconId={error ? "close" : "check"} size="XXXS" />}
       </ToggleStyled>
     </Container>
   );

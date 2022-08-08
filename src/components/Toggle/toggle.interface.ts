@@ -1,7 +1,7 @@
 export interface IToggle {
   id: string;
-  checked: boolean;
-  onChange: (value: boolean) => void;
+  active: boolean;
+  onClick?(value: boolean): void;
   disabled?: boolean;
   error?: boolean;
 }
