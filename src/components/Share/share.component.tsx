@@ -57,7 +57,7 @@ export const Share: React.FC<iShare> = ({
 			);
 		}
 
-		if (onShare) {onShare(selectedMedia, link, emails[0]);}
+		if (onShare) {onShare(selectedMedia, link, canAddMultipleEmails ? emails : [value ?? '']);}
 	};
 
 	const handleAddEmail = () => {

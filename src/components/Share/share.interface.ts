@@ -17,7 +17,7 @@ export interface iShare {
   loading?: boolean;
   linkSuccessProps: iLinkSuccessState
   onBackClick?: () => void;
-  onShare?: (selectedMedia: EShareMedia, link?: string, email?: string) => void;
+  onShare?: (selectedMedia: EShareMedia, link?: string, email?: string[]) => void;
   success?: boolean
   fluid?: boolean
   apiKeys: {
