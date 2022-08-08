@@ -65,7 +65,7 @@ export const Accordion: React.FC<iAccordion> = ({ items, width = "400px", fluid,
                     disabled={!!loadingForItem && loadingForItem !== childrenValue}
                     onClick={e => {
                       e.stopPropagation();
-                      action?.onClick && action.onClick({ label, value });
+                      action?.onClick && action.onClick({ label, value: childrenValue });
                     }} size="SM"
                   >
                     <Typography color='primary' size='XXS'>
