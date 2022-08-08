@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof Toggle> = (args) => <Toggle {...args} />;
 export const ToggleDefault = Template.bind({});
 ToggleDefault.args = {
   id: "toggle",
-  checked: true,
+  active: true,
   disabled: false,
-  onClick: (value: boolean) => console.log(value),
+  onClick: (value: boolean) => console.log("value", value),
 };
