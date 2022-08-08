@@ -7,6 +7,7 @@ export interface iShare {
     icon?: iIconTypes,
     content: string,
     position?: "start" | "end"
+    onIconClick?: () => void
   }
   custom?: {
     shareButton: string
