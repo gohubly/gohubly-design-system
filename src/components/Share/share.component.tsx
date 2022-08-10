@@ -35,7 +35,6 @@ export const Share: React.FC<iShare> = ({
 	useEffect(() => {
 		if (success) {
 			setValue('');
-			setEmails([]);
 		}
 	}, [success]);
 
