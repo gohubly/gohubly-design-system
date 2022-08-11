@@ -1,6 +1,6 @@
 {
   "name": "@gohubly/design-system",
-  "version": "1.6.22",
+  "version": "1.6.23+1",
   "private": false,
   "main": "dist/lib/index.js",
   "types": "dist/types/index.d.ts",
@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "repository": "https://github.com/gohubly/gohubly-design-system",
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "@storybook/preset-typescript": "^3.0.0",
     "@testing-library/jest-dom": "^5.11.4",
