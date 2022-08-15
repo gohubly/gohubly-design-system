@@ -179,7 +179,7 @@ export const Input = styled.input<iStyledCommonProps>`
   &:disabled {
     border: 1px solid ${() => theme.colors.neutralLowLight};
     background: ${() => theme.colors.neutralHighLight};
-    cursor: not-allowed;
+    cursor: not-allowed!important;
   }
 
   &[data-has-error="true"] {
@@ -408,7 +408,7 @@ export const PlaceholderStyled = styled.div<{
   display: ${({ isSelected }) => (isSelected ? "initial" : "none")};
   position: absolute;
   z-index: 1;
-  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
+  cursor: pointer;
   background: ${({ disabled, theme }) =>
     disabled ? theme.colors.neutralHighLight : theme.colors.white};
 
@@ -434,5 +434,13 @@ export const PlaceholderStyled = styled.div<{
   &:hover {
     cursor: ${({ opened }) => (opened ? "text" : "pointer")};
     pointer-events: inherit;
+
+    ${({ disabled }) => {
+      if (disabled) {
+        return css`
+        cursor: not-allowed;
+        `;
+      }
+    }};
   }
 `;

@@ -1,15 +1,14 @@
-import React from 'react'
+import React from "react";
 
-import { iTooltip } from './tooltip.interface'
-import { Wrapper, Pointer, Container } from './tooltip.style'
-
+import { iTooltip } from "./tooltip.interface";
+import { Wrapper, Pointer, Container, ContainerInfo } from "./tooltip.style";
 
 export const Tooltip: React.FC<iTooltip> = ({
   children,
-  pointerOrientation,
-  pointerPosition = 'center',
-  size = 'SM',
-  position,
+  pointerOrientation = 'up',
+  pointerPosition = "center",
+  size = "SM",
+  position = 'down',
   text,
   shadow,
 }) => {
@@ -20,14 +19,17 @@ export const Tooltip: React.FC<iTooltip> = ({
     size,
     shadow,
     text,
-  }
+  };
   return (
     <Container>
-      {children}
+      <ContainerInfo>{children}</ContainerInfo>
       <Wrapper {...props}>
-        <span>{text}</span>
+        <div style={{ position: 'relative'}}>
+          <span>{text}</span>
         <Pointer {...props} />
+        </div>
+        
       </Wrapper>
     </Container>
-  )
-}
+  );
+};
