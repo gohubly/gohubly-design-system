@@ -118,6 +118,7 @@ export const ContainerInfo = styled.div`
      {
       opacity: 1;
       user-select: all;
+      z-index: 2;
     }
   }
 `;
