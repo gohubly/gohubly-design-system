@@ -48,7 +48,7 @@ export const Share: React.FC<iShare> = ({
 		if (selectedMedia !== EShareMedia.email) {
 			window.open(
 				getLinkToSocialMedia(
-					EShareMedia[selectedMedia as unknown as keyof typeof EShareMedia],
+					selectedMedia,
           link as string,
           apiKeys,
 				),
