@@ -1,7 +1,6 @@
-import { Box } from 'rebass';
 import styled from 'styled-components';
 
-export const ProductItem = styled(Box)`
+export const ProductItem = styled.div`
   padding: 24px;
   max-width: 252px !important;
   height: 100%;
