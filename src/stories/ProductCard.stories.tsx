@@ -47,6 +47,21 @@ WithCustomizedButton.args = {
   }  
 };
 
+export const WithoutSkuSelector = Template.bind({});
+
+WithoutSkuSelector.args = {
+  product,
+  hasSkuSelector: false,
+  buttonProps: {
+    icon: 'plus',
+    children: (
+      <>
+        Criar link
+      </>
+    )
+  }  
+};
+
 Default.parameters = {
   backgrounds: {
     default: 'figma',

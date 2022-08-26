@@ -2,6 +2,7 @@ import { iButton } from "../Button";
 
 export interface iProductCard {
   product: iIntegrationProduct
+  hasSkuSelector?: boolean
   buttonProps: iButton
 }
 

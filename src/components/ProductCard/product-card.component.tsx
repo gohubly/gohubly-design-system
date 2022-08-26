@@ -6,6 +6,7 @@ import { iProductCard } from './product-card.interface';
 
 export const ProductCard: React.FC<iProductCard> = ({
   product,
+  hasSkuSelector = true,
   buttonProps
 }) => {
   const {
@@ -49,23 +50,27 @@ export const ProductCard: React.FC<iProductCard> = ({
       <Typography as="p" size="XXXS" color="neutralLowMedium" lineHeight="MD" fontWeight={500}>
         <div title={getProductName()}>{getProductName()}</div>
       </Typography>
-      <Select
-        width="100%"
-        height="34px"
-        fontSize="XXS"
-        type="number"
-        onSelect={({ value }): void => setSelectedItem(skus.find(({ id }) => id === value.toString()) as typeof skus[0])}
-        items={skus.map(({ name, id }) => {
-          return {
-            label: name,
-            value: id,
-          };
-        })}
-        selected={{
-          label: selectedItem.name,
-          value: selectedItem.id,
-        }}
-      />
+      {
+        hasSkuSelector && (
+          <Select
+            width="100%"
+            height="34px"
+            fontSize="XXS"
+            type="number"
+            onSelect={({ value }): void => setSelectedItem(skus.find(({ id }) => id === value.toString()) as typeof skus[0])}
+            items={skus.map(({ name, id }) => {
+              return {
+                label: name,
+                value: id,
+              };
+            })}
+            selected={{
+              label: selectedItem.name,
+              value: selectedItem.id,
+            }}
+          />
+        )
+      }
 
       <Flex className="price" flexDirection="column" justifyContent="end">
         {listPrice > bestPrice && (
