@@ -16,7 +16,7 @@ export const ProductCard: React.FC<iProductCard> = ({
   } = product
   const [selectedItem, setSelectedItem] = useState<typeof skus[0]>(skus.at(0) as typeof skus[0]);
 
-  const bestPrice = selectedItem.bestPrice
+  const bestPrice = selectedItem.bestPrice === 0 ? selectedItem.listPrice : selectedItem.bestPrice
   const listPrice = selectedItem.listPrice
 
   const percent = ((bestPrice * 100) / listPrice - 100).toFixed(2);

@@ -24,6 +24,13 @@ const product = {
         listPrice: 15,
         bestPrice: 11,
         isAvailable: true
+      },
+      {
+        id: "2",
+        name: "Whole Watermelon Mini Fresh 2",
+        listPrice: 15,
+        bestPrice: 0,
+        isAvailable: true
       }
     ]
   ]
