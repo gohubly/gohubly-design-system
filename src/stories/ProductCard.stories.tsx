@@ -74,3 +74,25 @@ Default.parameters = {
     default: 'figma',
   },
 };
+
+export const WithoutButton = Template.bind({});
+
+WithoutButton.args = {
+  product,
+  hasSkuSelector: false,
+  hideButton: true,
+  buttonProps: {
+    icon: 'plus',
+    children: (
+      <>
+        Criar link
+      </>
+    )
+  }  
+};
+
+Default.parameters = {
+  backgrounds: {
+    default: 'figma',
+  },
+};

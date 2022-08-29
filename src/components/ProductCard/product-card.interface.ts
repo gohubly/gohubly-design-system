@@ -3,6 +3,8 @@ import { iButton } from "../Button";
 export interface iProductCard {
   product: iIntegrationProduct
   hasSkuSelector?: boolean
+  hideButton?: boolean
+  hideDiscountFlag?: boolean
   buttonProps: iButton
 }
 

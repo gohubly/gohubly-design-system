@@ -7,6 +7,8 @@ import { iProductCard } from './product-card.interface';
 export const ProductCard: React.FC<iProductCard> = ({
   product,
   hasSkuSelector = true,
+  hideButton,
+  hideDiscountFlag,
   buttonProps
 }) => {
   const {
@@ -94,7 +96,7 @@ export const ProductCard: React.FC<iProductCard> = ({
               </Text>
             )}
           </Flex>
-          {listPrice > bestPrice && true && (
+          {listPrice > bestPrice && !hideDiscountFlag && (
             <Flex>
               <Text
                 fontSize="12px"
@@ -114,14 +116,16 @@ export const ProductCard: React.FC<iProductCard> = ({
         </Flex>
       </Flex>
 
-      <Button
-        size="SM"
-        hierarchy="primary"
-        fluid
-        {...buttonProps}
-      >
-        { buttonProps?.children ?? 'Adicionar' }
-      </Button>
+      {!hideButton && (
+        <Button
+          size="SM"
+          hierarchy="primary"
+          fluid
+          {...buttonProps}
+        >
+          { buttonProps?.children ?? 'Adicionar' }
+        </Button>
+      )}
     </ProductItem>
   )
 };
