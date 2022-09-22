@@ -6,5 +6,6 @@ export interface iCardSelector {
   color: 'primary' | 'successMedium' | 'helperMedium' | 'warning'
   icon: Pick<iIcon, 'size' | 'fluid' | 'iconId' | 'fill'>
   onClick?: () => void
+  responsive?: boolean
   selected?: boolean
 }

@@ -16,7 +16,7 @@ const SELECTED_ICON_BACKGROUND_BY_COLOR: Record<iCardSelector['color'], keyof Th
   warning: "warning"
 }
 
-export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected'>>`
+export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | 'responsive'>>`
   display: flex;
   align-items: center;
   gap: 16px;
@@ -37,6 +37,11 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected'>>`
       border: 1px solid ${theme.colors.neutralHighMedium};
     }
   `}
+
+  ${({ responsive }) => responsive && css`
+    flex-direction: column;
+    justify-content: center;
+  `}
 `
 
 export const IconContainer = styled.div<Pick<iCardSelector, 'color' | 'selected'>>`
@@ -49,4 +54,6 @@ export const IconContainer = styled.div<Pick<iCardSelector, 'color' | 'selected'
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+
 `

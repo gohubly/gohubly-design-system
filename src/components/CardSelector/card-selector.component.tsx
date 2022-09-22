@@ -4,12 +4,12 @@ import { Typography } from '../Typography';
 import { iCardSelector } from './card-selector.interface';
 import * as css from './card-selector.style'
 
-export const CardSelector: React.FC<iCardSelector> = ({ color, icon, title, selected, onClick }) => {
+export const CardSelector: React.FC<iCardSelector> = ({ color, icon, title, selected, responsive, onClick }) => {
   const splitted = title.split(" ");
   const lastSentence = splitted[splitted.length - 1]
 
   return (
-    <css.Container selected={selected} color={color} onClick={onClick}>
+    <css.Container selected={selected} color={color} onClick={onClick} responsive={responsive}>
       <css.IconContainer selected={selected} color={color}>
         <Icon {...icon} stroke={selected ? 'white' : color} />
       </css.IconContainer>
@@ -20,7 +20,7 @@ export const CardSelector: React.FC<iCardSelector> = ({ color, icon, title, sele
         </Typography>
 
         {lastSentence && (
-          <Typography color={selected ? color : 'neutralLow'} size="XS" fontWeight={600}>
+          <Typography color={selected || responsive ? color : 'neutralLow'} size="XS" fontWeight={600} {...responsive && { textAlign: 'center' }}>
             { lastSentence }
           </Typography>
         )}
