@@ -41,7 +41,10 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | '
   ${({ responsive }) => responsive && css`
     flex-direction: column;
     justify-content: center;
-    padding: 55px 22px;
+
+    height: 218px;
+    box-sizing: border-box;
+    padding: 24px 16px;
   `}
 `
 
