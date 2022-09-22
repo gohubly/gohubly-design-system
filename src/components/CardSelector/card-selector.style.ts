@@ -41,6 +41,7 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | '
   ${({ responsive }) => responsive && css`
     flex-direction: column;
     justify-content: center;
+    padding: 55px 22px;
   `}
 `
 
@@ -54,6 +55,4 @@ export const IconContainer = styled.div<Pick<iCardSelector, 'color' | 'selected'
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-
 `
