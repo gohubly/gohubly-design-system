@@ -15,7 +15,7 @@ export const CardSelector: React.FC<iCardSelector> = ({ color, icon, title, sele
       </css.IconContainer>
 
       <css.TitleContainer>
-        <Typography size='XS' color='neutralLowMedium' fontWeight={500} lineHeight='SM'>
+        <Typography size='XS' color='neutralLowMedium' fontWeight={500} lineHeight='SM' {...responsive && { textAlign: 'center' }}>
           { splitted.slice(0, splitted.length - 1).join(' ') }
         </Typography>
 
