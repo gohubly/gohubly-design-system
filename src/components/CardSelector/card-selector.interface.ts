@@ -7,5 +7,8 @@ export interface iCardSelector {
   icon: Pick<iIcon, 'size' | 'fluid' | 'iconId' | 'fill'>
   onClick?: () => void
   responsive?: boolean
+  highlighted?: boolean
+  bordered?: boolean;
+  spaced?: boolean;
   selected?: boolean
 }

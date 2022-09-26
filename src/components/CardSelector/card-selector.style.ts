@@ -16,14 +16,14 @@ const SELECTED_ICON_BACKGROUND_BY_COLOR: Record<iCardSelector['color'], keyof Th
   warning: "warning"
 }
 
-export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | 'responsive'>>`
+export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | 'responsive' | 'bordered' | 'spaced'>>`
   display: flex;
   align-items: center;
   gap: 16px;
 
   cursor: pointer;
 
-  padding: 16px 24px;
+  padding: ${({ spaced }): string => (!spaced ? '0' : '16px 24px')};
 
   background-color: white;
 
@@ -45,6 +45,10 @@ export const Container = styled.div<Pick<iCardSelector, 'color' | 'selected' | '
     height: 218px;
     box-sizing: border-box;
     padding: 24px 16px;
+  `}
+
+  ${({ bordered }) => !bordered && css`
+    border: 0;
   `}
 `
 
