@@ -33,6 +33,7 @@ export const Wrapper = styled.div<iAvatar>`
   justify-content: center;
 
   width: ${({ size }) => size && AVATAR_SIZE_BASED_ON_SIZE[size]};
+  min-width: ${({ size }) => size && AVATAR_SIZE_BASED_ON_SIZE[size]};
   height: ${({ size }) => size && AVATAR_SIZE_BASED_ON_SIZE[size]};
 
   color: red;

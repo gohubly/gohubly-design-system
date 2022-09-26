@@ -55,6 +55,8 @@ export const EmailsContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
+  gap: 16px;
+
   padding: 10px 16px;
 
   border-radius: ${theme.borderRadius.SM};
@@ -73,4 +75,10 @@ export const IconContainer = styled.div<{ backgroundColor?: keyof Theme['colors'
   border-radius: ${theme.borderRadius.MD};
 
   background-color: ${({ backgroundColor = 'primaryLightest' }) => theme.colors[backgroundColor]};
+`
+
+export const EmailContainer = styled.div`
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `
