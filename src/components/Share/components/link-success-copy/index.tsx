@@ -10,11 +10,12 @@ import { Button } from '../../../Button';
 const LinkSuccessCopy: React.FC<iLinkSuccessState> = ({
   title,
   subtitle,
-  button: { content: buttonContent, onClick }
+  button: { content: buttonContent, onClick },
+  padding = '16px',
 }): JSX.Element => {
   return (
     <css.Container
-      padding="16px"
+      padding={padding}
       flexDirection="column"
       backgroundColor={theme.colors.primaryLightest}
     >
