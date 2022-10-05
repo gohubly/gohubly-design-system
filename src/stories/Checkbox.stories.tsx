@@ -1,20 +1,22 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { CheckBox } from '..';
+import { CheckBox, Link, Typography } from "..";
 
 export default {
-  title: 'Components/CheckBox',
+  title: "Components/CheckBox",
   component: CheckBox,
-  argTypes: { onClick: { action: 'clicked' } },
+  argTypes: { onClick: { action: "clicked" } },
   parameters: {
     backgrounds: {
-      default: 'light',
+      default: "light",
     },
   },
 } as ComponentMeta<typeof CheckBox>;
 
-const Template: ComponentStory<typeof CheckBox> = (args) => <CheckBox {...args} />;
+const Template: ComponentStory<typeof CheckBox> = (args) => (
+  <CheckBox {...args} />
+);
 
 export const CheckedBox = Template.bind({});
 CheckedBox.args = {
@@ -24,11 +26,11 @@ CheckedBox.args = {
   readOnly: false,
   disabled: false,
   onColor: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 CheckedBox.parameters = {
   backgrounds: {
-    default: 'light',
+    default: "light",
   },
 };
 
@@ -40,11 +42,11 @@ DisabledCheckedBox.args = {
   readOnly: false,
   disabled: true,
   onColor: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 DisabledCheckedBox.parameters = {
   backgrounds: {
-    default: 'light',
+    default: "light",
   },
 };
 
@@ -56,11 +58,11 @@ DisabledUncheckedBox.args = {
   readOnly: false,
   disabled: true,
   onColor: false,
-  onChange: () => {}
+  onChange: () => {},
 };
 DisabledUncheckedBox.parameters = {
   backgrounds: {
-    default: 'light',
+    default: "light",
   },
 };
 
@@ -72,11 +74,11 @@ CheckedBoxOnColor.args = {
   readOnly: false,
   disabled: false,
   onColor: true,
-  onChange: () => {}
+  onChange: () => {},
 };
 CheckedBoxOnColor.parameters = {
   backgrounds: {
-    default: 'figma',
+    default: "figma",
   },
 };
 
@@ -88,12 +90,12 @@ disabledCheckedOnColor.args = {
   readOnly: false,
   disabled: true,
   onColor: true,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 disabledCheckedOnColor.parameters = {
   backgrounds: {
-    default: 'figma',
+    default: "figma",
   },
 };
 
@@ -105,11 +107,39 @@ disabledUncheckedOnColor.args = {
   readOnly: false,
   disabled: true,
   onColor: true,
-  onChange: () => {}
+  onChange: () => {},
 };
 
 disabledUncheckedOnColor.parameters = {
   backgrounds: {
-    default: 'figma',
+    default: "figma",
+  },
+};
+
+export const CheckedBoxStyled = Template.bind({});
+CheckedBoxStyled.args = {
+  name: "checked",
+  label: (
+    <div style={{ display: "flex", gap: "5px" }}>
+      <Typography
+        color="neutralLowMedium"
+        size="XS"
+        lineHeight="MD"
+        fontWeight={400}
+      >
+        Concordo com os
+      </Typography>
+      <Link>Termos de Uso</Link>
+    </div>
+  ),
+  checked: true,
+  readOnly: false,
+  disabled: false,
+  onColor: false,
+  onChange: () => {},
+};
+CheckedBoxStyled.parameters = {
+  backgrounds: {
+    default: "light",
   },
 };

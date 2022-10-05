@@ -1,5 +1,5 @@
 export interface iCheckBox {
-    label?: string;
+    label?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
     name: string;
     value: any;
     checked?: boolean;
