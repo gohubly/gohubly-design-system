@@ -50,6 +50,9 @@ Mini.args = {
   hierarchy: 'white',
   steps: 5,
   mini: true,
+  onClick() {
+    console.log("Clicou")
+  }
 };
 Mini.parameters = {
   backgrounds: {
