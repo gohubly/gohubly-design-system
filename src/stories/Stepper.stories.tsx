@@ -47,7 +47,12 @@ export const Mini = Template.bind({});
 
 Mini.args = {
   children: 'Default',
-  hierarchy: 'primary',
+  hierarchy: 'white',
   steps: 5,
-  mini: true
+  mini: true,
+};
+Mini.parameters = {
+  backgrounds: {
+    default: "figma",
+  },
 };
