@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon, Typography } from "..";
 
 import {
@@ -22,9 +22,15 @@ export const Stepper: React.FC<iStepper> = ({
 
   const [current, setCurrent] = useState(currentStep);
 
+  useEffect(() => {
+    if (onClick) {
+      setCurrent(currentStep);
+    }
+  }, [currentStep]);
+
   const handleCurrent = (index: number) => {
-    setCurrent(index)
-    if(onClick) onClick();
+    setCurrent(index);
+    if (onClick) onClick();
   };
 
   return (
