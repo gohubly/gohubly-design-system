@@ -16,3 +16,11 @@ Default.args = {
   color: 'primaryDark',
   textAlign: 'center'
 };
+
+export const WithOpacity = Template.bind({});
+WithOpacity.args = {
+  children: 'Padrão de texto',
+  color: 'neutralLowDark',
+  textAlign: 'center',
+  colorOpacity: 0.5
+};

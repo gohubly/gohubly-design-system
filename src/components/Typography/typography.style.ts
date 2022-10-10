@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import { iParagraph, iTypography } from './typography.interface'
-import { themeWithouthInterface as theme } from '../..'
+import { hexToRgb, themeWithouthInterface as theme } from '../..'
 import { defaultCss } from '../../theme/defaultCss'
 
 const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold' | 'InterBold'> = {
@@ -20,7 +20,7 @@ const TextStyled = css<iTypography>`
   /* font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']}; */
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 
-  color: ${({ color }) => theme.colors[color || 'white']};
+  color: ${({ color, colorOpacity }) => colorOpacity ? hexToRgb(theme.colors[color || 'white'], { asCSS: true, alpha: colorOpacity }) : theme.colors[color || 'white']};
 
   text-align: ${({ textAlign }) => textAlign ?? 'initial'};
 `

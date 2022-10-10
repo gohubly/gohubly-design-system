@@ -11,6 +11,7 @@ export interface iTypography {
   fontWeight?: keyof typeof theme.fontWeight
   color?: keyof typeof theme.colors
   textAlign?: string
+  colorOpacity?: number
 }
 
 export interface iParagraph extends iTypography {
