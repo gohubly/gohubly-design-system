@@ -1,4 +1,4 @@
-export type iStepperHierarchy = 'primary' | 'secondary' | 'ghost'
+export type iStepperHierarchy = 'primary' | 'secondary' | 'ghost' | 'white'
 
 export interface iStepper {
   currentStep?: number
@@ -7,4 +7,5 @@ export interface iStepper {
   hasProgressBar?: boolean
   mini?: boolean
   className?: string
+  onClick?: () => void
 }
