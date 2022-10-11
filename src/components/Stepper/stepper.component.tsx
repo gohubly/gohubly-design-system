@@ -28,9 +28,9 @@ export const Stepper: React.FC<iStepper> = ({
     }
   }, [currentStep]);
 
-  const handleCurrent = (index: number) => {
+  const handleCurrentStep = (index: number) => {
     setCurrent(index);
-    if (onClick) onClick();
+    if (onClick) onClick(index);
   };
 
   return (
@@ -47,7 +47,7 @@ export const Stepper: React.FC<iStepper> = ({
               hierarchy={hierarchy}
               isCurrent={isCurrentStep}
               isWhite={hierarchy === "white"}
-              onClick={() => handleCurrent(i)}
+              onClick={() => handleCurrentStep(i)}
             />
           );
         }
