@@ -7,5 +7,5 @@ export interface iStepper {
   hasProgressBar?: boolean
   mini?: boolean
   className?: string
-  onClick?: () => void
+  onClick?: (step: number) => void
 }
