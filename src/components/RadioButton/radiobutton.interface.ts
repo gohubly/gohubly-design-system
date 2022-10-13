@@ -1,5 +1,5 @@
 export interface iRadio {
-    label: string;
+    label?: string;
     name: string;
     value: any;
     readOnly?: boolean;

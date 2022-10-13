@@ -44,7 +44,7 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   disabled={props.disabled}
                   className={props.disabled ? 'disabled' : ''} />
               </Label>
-              <Spacer />
+              {(props?.options?.length ?? 0) > 1 && <Spacer />}
             </>
           )
         }))
