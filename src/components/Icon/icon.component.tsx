@@ -72,6 +72,8 @@ import WhatsApp from './icons/whatsapp'
 import Messenger from './icons/messenger'
 import InstagramColor from './icons/instagram-color'
 import ShareOutline from './icons/shareOutline'
+import CreditCard from './icons/creditCard'
+import BankSlip from './icons/bankSlip'
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: '12px',
@@ -152,6 +154,8 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   messenger: Messenger,
   instagramColor: InstagramColor,
   shareOutline: ShareOutline,
+  creditCard: CreditCard,
+  bankSlip: BankSlip
 }
 
 export const Icon: React.FC<iIcon> = ({
