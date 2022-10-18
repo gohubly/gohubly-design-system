@@ -61,7 +61,7 @@ export const ExpandableItem: React.FC<iExpandableItem> = ({
                 <Flex justifyContent="space-between" flex="1 1 0px" marginTop="20px" style={{ ...(buttonsProps.length > 1 && { gap: '8px' }) }}>
                   {
                     buttonsProps.length && buttonsProps.map((props, index) => (
-                      <Button {...props} onClick={() => onItemClick()} fluid>
+                      <Button {...props} fluid>
                         <Typography size="XXXS" lineHeight="LG" color={index !== 0 ? 'primary' : 'white'}>
                           { props.children }
                         </Typography>
