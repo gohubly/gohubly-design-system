@@ -1,7 +1,8 @@
 import { Flex } from 'rebass';
 import styled from 'styled-components';
 
-export const ContainerList = styled(Flex)<{ expanded?: boolean }>`
+export const ContainerList = styled.div<{ expanded?: boolean }>`
+  display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
@@ -26,8 +27,8 @@ export const ContainerList = styled(Flex)<{ expanded?: boolean }>`
   }
 `;
 
-export const Item = styled(Flex)`
-  flex-direction: row;
+export const Item = styled.div`
+  display: flex;
   justify-content: space-between;
   width: 100%;
 `;
