@@ -13,15 +13,27 @@ const AVATAR_DETAILS_WITHOUT_ON_COLOR: Record<string, string> = {
 }
 
 const AVATAR_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
-  LG: '40px',
-  MD: '32px',
-  SM: '24px',
+  XS: '32px',
+  SM: '36px',
+  MD: '40px',
+  LG: '48px',
+  XL: '64px'
 }
 
 const FONT_SIZE_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
-  LG: '24px',
-  MD: '16px',
-  SM: '14px',
+  XS: '14px',
+  SM: '16px',
+  MD: '18px',
+  LG: '22px',
+  XL: '24px'
+}
+
+const LINE_HEIGHT_SIZE_BASED_ON_SIZE: Record<iAvatarSizes, string> = {
+  XS: '16px',
+  SM: '18px',
+  MD: '20px',
+  LG: '28px',
+  XL: '32px'
 }
 
 export const Wrapper = styled.div<iAvatar>`
@@ -45,6 +57,7 @@ export const Wrapper = styled.div<iAvatar>`
   box-shadow: ${() => theme.shadow.Level1};
 
   font-size: ${({ size }) => size && FONT_SIZE_SIZE_BASED_ON_SIZE[size]};
+  line-height: ${({ size }) => size && LINE_HEIGHT_SIZE_BASED_ON_SIZE[size]};
 
   border-radius: 2px;
   border-radius: ${() => theme.borderRadius.Circular};
