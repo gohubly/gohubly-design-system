@@ -7,6 +7,7 @@ export interface iPaginator {
   goToPage: (selectedPage: number) => void;
   className?: string;
   disableNextPage?: boolean;
+  fluid?: boolean;
 }
 
 export interface iItens {
