@@ -41,7 +41,7 @@ export const ExpandableItem: React.FC<iExpandableItem> = ({
 
         {expanded && (
           <Flex width="100%" justifyContent="center" padding="0 8px 8px 8px">
-            <Flex className="item" height="176px" width="100%" padding="16px">
+            <Flex className="item" width="100%" padding="16px">
               <Flex flexDirection="column" width="100%" justifyContent="space-between">
                 <Flex flexDirection="column" style={{ gap: '16px' }}>
                   {
