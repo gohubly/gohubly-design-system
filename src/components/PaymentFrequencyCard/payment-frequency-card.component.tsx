@@ -25,7 +25,6 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
         {...radioProps}
         name={radioProps?.name ?? 'radio'}
         value={selected ? (radioProps?.options ?? [])[0]?.title ?? '' : '_'}
-        options={[{ title: 'Assinatura mensal', value: '' }]}
       />
 
       <Flex style={{ gap: '2px' }} flexDirection="column" justifyContent="center" alignItems="flex-end">
