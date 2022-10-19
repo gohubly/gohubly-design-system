@@ -95,7 +95,7 @@ const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
 
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
-  font-size: 14px;
+  font-size: ${({ fontSizeLabel, theme }) => theme.fontSize[fontSizeLabel || "XXS"]};
 
   color: ${({ OnColor }) =>
     OnColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
