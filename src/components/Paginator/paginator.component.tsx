@@ -139,7 +139,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
   }, [props.length, props.currentPage]);
 
   return (
-    <Container>
+    <Container fluid={props.fluid}>
       <ButtonPrevNext onClick={previousPage} disabled={disabledPrev}>
         <Icon iconId={"chevronLeft"} size="XS" />
       </ButtonPrevNext>

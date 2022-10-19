@@ -1,12 +1,16 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { iButtonNext, iContainerIcon, iItens } from '.'
 import { Button } from '../Button'
 
-export const Container = styled.div`
+export const Container = styled.div<{ fluid?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
+  
+  ${({ fluid }) => fluid && css`
+    width: 100%;
+  `}
 `
 export const ContainerIcon = styled.div<iContainerIcon>`
   display: flex;
