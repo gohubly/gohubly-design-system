@@ -6,6 +6,7 @@ import { iPaymentTypeCard } from './payment-type-card.interface'
 export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
   ${defaultCss};
 
+  width: 312px;
   position: relative;
 
   display: flex;
@@ -14,7 +15,9 @@ export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
   align-items: center;
   gap: 16px;
 
-  padding: 40px 70px;
+  padding: 40px 28px 32px 28px;
+
+  box-sizing: border-box;
 
   border: 2px solid ${({ selected }) => (selected ? theme.colors.primary : theme.colors.neutralHighLight)};
   border-radius: 8px;
@@ -64,11 +67,11 @@ export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
           }
 
           path:not(:last-of-type):not(.line-bg) {
-            stroke: rgba(255, 255, 255, 0.5);
+            stroke: rgba(255, 255, 255, 1);
           }
           
           rect:not(:first-of-type){
-            fill: rgba(255, 255, 255, 0.5);
+            fill: rgba(255, 255, 255, 1);
           }
         }
       `

@@ -7,6 +7,7 @@ export const Wrapper = styled.div<Pick<iPaymentCardFrequency, 'selected'>>`
   ${defaultCss};
 
   position: relative;
+  box-sizing: border-box;
 
   display: flex;
   justify-content: space-between;
