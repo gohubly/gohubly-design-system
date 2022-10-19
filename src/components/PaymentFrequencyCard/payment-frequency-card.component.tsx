@@ -24,10 +24,10 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
       <RadioButton 
         {...radioProps}
         name={radioProps?.name ?? 'radio'}
-        value={selected ? (radioProps?.options ?? [])[0]?.title ?? '' : '_'}
+        value={selected ? (radioProps?.options ?? [])[0]?.value ?? '' : '_'}
       />
 
-      <Flex style={{ gap: '2px' }} flexDirection="column" justifyContent="center" alignItems="flex-end">
+      <Flex style={{ gap: '0.5px' }} flexDirection="column" justifyContent="center" alignItems="flex-end">
         { !pricing?.Wrapper ? (
           <Flex alignItems="center" style={{ gap: '3px' }}>
             <Typography color='neutralLowDark' size='XS' lineHeight='XL'>
@@ -49,7 +49,7 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
       {
         !pricing?.Detail
           ? (
-            <Flex alignItems="center" style={{ gap: '0.5px' }}>
+            <Flex alignItems="center" style={{ gap: '3px' }}>
               <Typography color="neutralLowMedium" size='XXS' lineHeight='LG' fontWeight={400}>
                 Pagamento único de
               </Typography>
