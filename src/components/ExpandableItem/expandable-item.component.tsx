@@ -49,7 +49,7 @@ export const ExpandableItem: React.FC<iExpandableItem> = ({
                     data.map(({ label, value }) => (
                       <css.Item>
                         <Flex fontSize="12px" lineHeight="16px" color="#555555">
-                          label
+                          {label}
                         </Flex>
                         <Flex fontSize="12px" lineHeight="16px">
                           {value}
