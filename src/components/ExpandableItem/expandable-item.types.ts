@@ -6,6 +6,7 @@ export interface iExpandableItem {
   itemRight: JSX.Element
   data: iExpandableItemRow[]
   expanded?: boolean
+  solid?: boolean
   onItemClick: () => void
   onExpandClick: () => void
   buttonsProps: iButton[]

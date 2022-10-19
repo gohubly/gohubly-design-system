@@ -1,7 +1,7 @@
 import { Flex } from 'rebass';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const ContainerList = styled.div<{ expanded?: boolean }>`
+export const ContainerList = styled.div<{ expanded?: boolean, solid?: boolean }>`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,20 +11,24 @@ export const ContainerList = styled.div<{ expanded?: boolean }>`
   border: ${({ expanded }) => (expanded ? '1px solid #425DC7' : 'none')};
 
   border-radius: 8px;
-  &:nth-child(odd) {
+  
+  ${({ solid }) => solid && css`
     background: #f1f2f9;
+      
     .item {
       background: white;
       border-radius: 4px;
     }
-  }
-  &:nth-child(even) {
+  `}
+  
+  ${({ solid }) => !solid && css`
     background: white;
+      
     .item {
       background: #f1f2f9;
       border-radius: 4px;
     }
-  }
+  `}
 `;
 
 export const Item = styled.div`

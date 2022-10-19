@@ -13,12 +13,13 @@ export const ExpandableItem: React.FC<iExpandableItem> = ({
   itemRight,
   onItemClick,
   expanded,
+  solid = true,
   onExpandClick,
   buttonsProps = []
 }): JSX.Element => {
   return (
     <Flex flexDirection="column" minWidth={minWidth}>
-      <css.ContainerList expanded={expanded}>
+      <css.ContainerList expanded={expanded} solid={solid}>
         <Flex
           flexDirection="row"
           justifyContent="space-between"
