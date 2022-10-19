@@ -10,7 +10,7 @@ export const Label = styled.label<ILabelRadio>`
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 28px;
+  padding-left: 30px;
   line-height: 16px;
   font-size: 14px;
 
@@ -68,10 +68,11 @@ export const Box = styled.input.attrs({
 
 export const Mark = styled.span<IMarkRadio>`
   position: absolute;
+  box-sizing: border-box;
   top: 0;
   left: 0;
-  height: 16px;
-  width: 16px;
+  height: 20px;
+  width: 20px;
   background-color: transparent;
   border-radius: 50%;
   border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
@@ -86,17 +87,15 @@ export const Mark = styled.span<IMarkRadio>`
     content: '';
     position: absolute;
     display: none;
-
-    top: 4px;
-    left: 4px;
-
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    top: 4.5px;
+    left: 4.5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
     background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-
-    border: solid ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
+    // border: 1px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
     border-width: 0 2px 2px 0;
+    box-sizing: border-box;
   }
 `;
 
