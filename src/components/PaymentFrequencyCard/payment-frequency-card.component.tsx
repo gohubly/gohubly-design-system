@@ -29,7 +29,7 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
 
       <Flex style={{ gap: '0.5px' }} flexDirection="column" justifyContent="center" alignItems="flex-end">
         { !pricing?.Wrapper ? (
-          <Flex alignItems="center" style={{ gap: '3px' }}>
+          <Flex alignItems="center" style={{ gap: '5px' }}>
             <Typography color='neutralLowDark' size='XS' lineHeight='XL'>
               { new Intl
                 .NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 })
@@ -49,7 +49,7 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
       {
         !pricing?.Detail
           ? (
-            <Flex alignItems="center" style={{ gap: '3px' }}>
+            <Flex alignItems="center" style={{ gap: '5px' }}>
               <Typography color="neutralLowMedium" size='XXS' lineHeight='LG' fontWeight={400}>
                 Pagamento único de
               </Typography>
