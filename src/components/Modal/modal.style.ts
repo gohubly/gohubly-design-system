@@ -48,7 +48,7 @@ export const Wrapper = styled.div<WrapperProps>`
     min-height: ${minHeight};
   `}
 
-  background: #f6f7fc;
+  background: #fff;
   box-shadow: 0px 0px 32px rgba(0, 0, 0, 0.32);
 
   overflow-y: ${({ scrollable }): string =>

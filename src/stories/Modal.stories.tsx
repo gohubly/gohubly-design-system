@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import Modal from "../components/Modal/modal.component";
+import { Modal } from "..";
 import { Typography } from "../components";
 
 export default {
