@@ -5,7 +5,7 @@ import { Typography } from '../Typography';
 import { IModal } from './modal.interface';
 import { Container, Header, Wrapper } from './modal.style';
 
-const Modal: React.FC<IModal> = ({
+export const Modal: React.FC<IModal> = ({
   title,
   showCloseIcon,
   width,
@@ -45,5 +45,3 @@ const Modal: React.FC<IModal> = ({
     </Container>
   );
 };
-
-export default Modal;
