@@ -16,7 +16,7 @@ export const theme = {
     Default: '100%', // default
     XS: '115%',
     SM: '120%',
-    MD: '133%',
+    MD: '133.33%',
     LG: '140%',
     XL: '150%',
     XXL: '200%',
