@@ -21,7 +21,6 @@ export const Modal: React.FC<IModal> = ({
       show={show}
       width={backdropPosition?.width}
       left={backdropPosition?.left}
-      onClick={toggleModal}
     >
       <Wrapper
         minHeight={minHeight}
@@ -40,7 +39,7 @@ export const Modal: React.FC<IModal> = ({
             </Flex>
           )}
         </Header>
-        <Box pt={2}>{children}</Box>
+        <Box>{children}</Box>
       </Wrapper>
     </Container>
   );
