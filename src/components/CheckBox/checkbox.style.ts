@@ -14,7 +14,7 @@ export const Label = styled.label<ILabelCheckBox>`
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 28px;
+  padding-left: 24px;
   line-height: 16px;
   font-size: 14px;
   height: 20px;
@@ -34,14 +34,14 @@ export const Label = styled.label<ILabelCheckBox>`
   input:checked ~ span {
     background-color: ${({ onColor }) =>
       onColor ? theme.colors.white : theme.colors.primary};
-    border: 2px solid
+    border: 1px solid
       ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.primary)};
   }
 
   &:hover {
     span {
       background-color: ${() => theme.colors.primaryLightest};
-      border: 2px solid
+      border: 1px solid
         ${({ onColor }) =>
           onColor ? theme.colors.white : theme.colors.neutralLow};
     }
@@ -62,7 +62,7 @@ export const Label = styled.label<ILabelCheckBox>`
     input:checked ~ span {
       background-color: ${({ onColor }) =>
         onColor ? "transparent" : theme.colors.white};
-      border: 2px solid
+      border: 1px solid
         ${({ onColor }) =>
           onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
       cursor: not-allowed;
@@ -70,7 +70,7 @@ export const Label = styled.label<ILabelCheckBox>`
   }
 
   &:hover {
-     div > span {
+    div > span {
       background-color: inherit;
       border: none;
     }
@@ -93,21 +93,29 @@ export const Box = styled.input.attrs({
 `;
 
 export const Mark = styled.span<IMarkCheckBox>`
+  div {
+    margin-left: 1px;
+  }
+
+  div > svg > path {
+   stroke-width: 3;
+  }
+
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
   box-sizing: border-box;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   background-color: transparent;
-  border-radius: 4px;
-  border: 2px solid
+  border-radius: 2px;
+  border: 1px solid
     ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.neutralLow)};
   transition: 180ms ease-in-out;
 
   &.disabled {
-    border: 2px solid
+    border: 1px solid
       ${({ onColor }) =>
         onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }

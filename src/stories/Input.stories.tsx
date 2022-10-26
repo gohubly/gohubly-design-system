@@ -78,21 +78,21 @@ WithIconRight.args = {
   iconRight: "instagram",
 };
 
-export const WithPrefix = Template.bind({});
-WithPrefix.args = {
-  name: "input-name",
-  label: "Label",
-  placeholder: "placeholder...",
-  prefix: "R$",
-};
+// export const WithPrefix = Template.bind({});
+// WithPrefix.args = {
+//   name: "input-name",
+//   label: "Label",
+//   placeholder: "placeholder...",
+//   prefix: "R$",
+// };
 
-export const WithSuffix = Template.bind({});
-WithSuffix.args = {
-  name: "input-name",
-  label: "Label",
-  placeholder: "placeholder...",
-  suffix: "kg",
-};
+// export const WithSuffix = Template.bind({});
+// WithSuffix.args = {
+//   name: "input-name",
+//   label: "Label",
+//   placeholder: "placeholder...",
+//   suffix: "kg",
+// };
 
 export const WithDropdown = Template.bind({});
 WithDropdown.args = {

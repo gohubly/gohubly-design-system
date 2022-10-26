@@ -11,10 +11,12 @@ export type iIconTypes =
 'login' | 'minus' | 'moreHorizontal' | 'moreVertical' | 'pen' | 
 'percent' | 'pinLocation' | 'phone' | 'play' | 'plus' | 'search' | 
 'settings' | 'share' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
-'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 'instagramColor' | 'shareOutline'
-| 'creditCard' | 'bankSlip'
+'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 
+'instagramColor' | 'shareOutline' | 'creditCard' | 'bankSlip' | 'visa' | 'mastercard' | 
+'hipercard'| 'elo'| 'discover'| 'diners'| 'amex' | 'cardInfos' 
 
 export type iIconSizes = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
+
 export interface iIcon {
   iconId?: iIconTypes 
   OnColor?: boolean
@@ -25,4 +27,5 @@ export interface iIcon {
   fluid?: boolean
   width?: string;
   height?: string;
+  gray?: boolean
 }
