@@ -20,17 +20,23 @@ interface iStyledCommonProps extends Partial<iInput> {
   opened?: boolean;
 }
 interface iIconRight extends Partial<iIcon> {
-  iconRightPadding?: iIconPaddings;
   opened?: boolean;
+  iconGray?: boolean;
+  iconRightPadding?: iIconPaddings;
+  iconRightWidth?: string;
+  iconRightHeight?: string;
   iconRigthSize?: iIconSizes;
   disabled?: boolean;
   error?: boolean;
 }
 
 interface iIconLeft extends Partial<iIcon> {
-  iconLeftPadding?: iIconPaddings;
   opened?: boolean;
+  iconGray?: boolean;
+  iconLeftPadding?: iIconPaddings;
   iconLeftSize?: iIconSizes;
+  iconLeftWidth?: string;
+  iconLeftHeight?: string;
   disabled?: boolean;
 }
 
@@ -95,7 +101,8 @@ const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
 
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
-  font-size: ${({ fontSizeLabel, theme }) => theme.fontSize[fontSizeLabel || "XXS"]};
+  font-size: ${({ fontSizeLabel, theme }) =>
+    theme.fontSize[fontSizeLabel || "XXS"]};
 
   color: ${({ OnColor }) =>
     OnColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
@@ -138,7 +145,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 5px;
   letter-spacing: -0.01em;
   font-weight: 300;
   color: ${() => theme.colors.neutralLowMedium};
@@ -162,11 +169,12 @@ export const Input = styled.input<iStyledCommonProps>`
   &:hover {
     border: 1px solid
       ${({ OnColor }) =>
-        OnColor ? theme.colors.primaryDark : theme.colors.primary};
+        OnColor ? theme.colors.primaryDark : theme.colors.primaryMedium};
   }
 
   &:focus {
-    border: 1px solid ${() => theme.colors.primary};
+    border: 1px solid ${() => theme.colors.primaryMedium};
+    outline: 4px solid #f1f2f9;
     cursor: text;
   }
 
@@ -179,7 +187,7 @@ export const Input = styled.input<iStyledCommonProps>`
   &:disabled {
     border: 1px solid ${() => theme.colors.neutralLowLight};
     background: ${() => theme.colors.neutralHighLight};
-    cursor: not-allowed!important;
+    cursor: not-allowed !important;
   }
 
   &[data-has-error="true"] {
@@ -218,56 +226,56 @@ export const RelativeContainer = styled.div<{ disabled?: boolean }>`
   }
 `;
 
-const PrefixAndSuffixCommons = css<iStyledCommonProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// const PrefixAndSuffixCommons = css<iStyledCommonProps>`
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
 
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+//   position: absolute;
+//   top: 50%;
+//   transform: translateY(-50%);
 
-  height: calc(100% - 2px);
-  width: 38px;
+//   height: calc(100% - 2px);
+//   width: 38px;
 
-  border-radius: 8px;
-  font-size: 16px;
-  line-height: 24px;
+//   border-radius: 8px;
+//   font-size: 16px;
+//   line-height: 24px;
 
-  letter-spacing: -0.005em;
+//   letter-spacing: -0.005em;
 
-  background: ${() => theme.colors.primaryLightest};
-  color: ${() => theme.colors.neutralLow};
+//   background: ${() => theme.colors.primaryLightest};
+//   color: ${() => theme.colors.neutralLow};
 
-  &[data-has-error="true"] {
-    background: ${() => theme.colors.helperLight};
-  }
-`;
+//   &[data-has-error="true"] {
+//     background: ${() => theme.colors.helperLight};
+//   }
+// `;
 
-export const SuffixText = styled.div`
-  ${PrefixAndSuffixCommons};
+// export const SuffixText = styled.div`
+//   ${PrefixAndSuffixCommons};
 
-  right: 1px;
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-  z-index: 1;
+//   right: 1px;
+//   border-bottom-left-radius: 0px;
+//   border-top-left-radius: 0px;
+//   z-index: 1;
 
-  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
+//   // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
 
-  // left: calc(100% - 7px);
-  // border: 1px solid red;
-  // border-left: none;
-  // box-sizing: border-box;
-  // heigth: 100%;
-`;
+//   // left: calc(100% - 7px);
+//   // border: 1px solid red;
+//   // border-left: none;
+//   // box-sizing: border-box;
+//   // heigth: 100%;
+// `;
 
-export const PrefixText = styled.div`
-  ${PrefixAndSuffixCommons};
-  left: 1px;
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-  z-index: 1;
-`;
+// export const PrefixText = styled.div`
+//   ${PrefixAndSuffixCommons};
+//   left: 1px;
+//   border-bottom-right-radius: 0px;
+//   border-top-right-radius: 0px;
+//   z-index: 1;
+// `;
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   position: absolute;
@@ -328,6 +336,7 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
 const IconCss = css<{
   onClick?: () => void;
   disabled?: boolean;
+  iconGray?: boolean;
 }>`
   position: absolute;
   top: 50%;
@@ -342,14 +351,20 @@ const IconCss = css<{
       pointer-events: inherit;
     }
 
-    ${({ disabled }) => {
-      if (disabled) {
-        return css`
-          stroke: ${theme.colors.neutralLowMedium};
-          fill: ${theme.colors.neutralHighLight};
-        `;
-      }
-    }};
+    ${({ iconGray }) =>
+      iconGray &&
+      css`
+        stroke: ${theme.colors.neutralLowMedium};
+        stroke-width: 2;
+        fill: transparent;
+      `}
+
+    ${({ disabled }) =>
+      disabled &&
+      css`
+        stroke: ${theme.colors.neutralLowMedium};
+        fill: ${theme.colors.neutralHighLight};
+      `}
   }
 
   // // Accessibility to have a bigger space to click
@@ -365,10 +380,10 @@ export const LeftIcon = styled(Icon)<iIconLeft>`
 
   svg,
   path {
-    width: ${({ iconLeftSize }): string =>
-      ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
-    height: ${({ iconLeftSize }): string =>
-      ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
+    width: ${({ iconLeftWidth, iconLeftSize }): string =>
+      iconLeftWidth ?? ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
+    height: ${({ iconLeftHeight, iconLeftSize }): string =>
+      iconLeftHeight ?? ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]};
   }
 `;
 
@@ -381,11 +396,11 @@ export const RightIcon = styled(Icon)<iIconRight>`
 
   svg,
   path {
-    width: ${({ iconRigthSize }): string =>
-      ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
+    width: ${({ iconRightWidth, iconRigthSize }): string =>
+      iconRightWidth ?? ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
 
-    height: ${({ iconRigthSize }): string =>
-      ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
+    height: ${({ iconRightHeight, iconRigthSize }): string =>
+      iconRightHeight ?? ICON_SIZE_BY_SIZE[iconRigthSize || "MD"]};
 
     ${({ error }) => {
       if (error) {
@@ -438,7 +453,7 @@ export const PlaceholderStyled = styled.div<{
     ${({ disabled }) => {
       if (disabled) {
         return css`
-        cursor: not-allowed;
+          cursor: not-allowed;
         `;
       }
     }};

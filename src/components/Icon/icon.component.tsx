@@ -74,6 +74,15 @@ import InstagramColor from './icons/instagram-color'
 import ShareOutline from './icons/shareOutline'
 import CreditCard from './icons/creditCard'
 import BankSlip from './icons/bankSlip'
+import Visa from './icons/visa'
+import Mastercard from './icons/mastercard'
+import Hipercard from './icons/hipercard'
+import Elo from './icons/elo'
+import Discover from './icons/discover'
+import Diners from './icons/diners'
+import Amex from './icons/amex'
+import CardInfos from './icons/cardInfos'
+
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: '12px',
@@ -155,20 +164,30 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   instagramColor: InstagramColor,
   shareOutline: ShareOutline,
   creditCard: CreditCard,
-  bankSlip: BankSlip
+  bankSlip: BankSlip,
+  visa: Visa,
+  mastercard: Mastercard,
+  hipercard: Hipercard,
+  elo: Elo,
+  discover: Discover,
+  diners: Diners,
+  amex: Amex,
+  cardInfos: CardInfos
 }
 
 export const Icon: React.FC<iIcon> = ({
   iconId,
   children,
+  width,
+  height,
   ...props
 }) => {
   if (!iconId) return null
 
   const _props = {
     ...props,
-    width: ICON_SIZE_BY_SIZE[props?.size || 'MD'],
-    height: ICON_SIZE_BY_SIZE[props?.size || 'MD'],
+    width: width ?? ICON_SIZE_BY_SIZE[props?.size || 'MD'],
+    height: height ?? ICON_SIZE_BY_SIZE[props?.size || 'MD'],
   }
 
   const Svg = SVG_COMPONENT[iconId];

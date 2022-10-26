@@ -2,46 +2,57 @@ import { InputHTMLAttributes } from "react";
 import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
 
-export type iInputSizes = 'XXS' | 'XS' | 'SM' | 'MD' 
-export type iIconPaddings = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' | 'XL'
+export type iInputSizes = "XXS" | "XS" | "SM" | "MD";
+export type iIconPaddings = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL";
 
-type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>,'size'> 
+type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
 
 export interface iInput extends iInputHTML {
-  OnColor?: boolean
-  fluid?: boolean
-  size?: iInputSizes
+  OnColor?: boolean;
+  fluid?: boolean;
+  size?: iInputSizes;
+  disabled?: boolean;
 
-  label?: string
-  fontSizeLabel?: keyof typeof theme.fontSize
-  placeholderStyled?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
-  helperText?: string
-  helperTextOnClick?: () => void
-  error?: boolean
-  fontSize?: keyof typeof theme.fontSize
+  label?: string;
+  fontSizeLabel?: keyof typeof theme.fontSize;
+  placeholderStyled?:
+    | string
+    | number
+    | JSX.Element
+    | React.ReactChild
+    | React.ReactChildren
+    | Element
+    | Element[];
+  helperText?: string;
+  helperTextOnClick?: () => void;
+  error?: boolean;
+  fontSize?: keyof typeof theme.fontSize;
 
-  iconLeft?: iIconTypes
-  iconLeftSize?: iIconSizes
-  iconLeftPadding?: iIconPaddings
-  iconLeftOnClick?: () => void
+  iconGray?: boolean;
 
-  iconRight?: iIconTypes
-  iconRightSize?: iIconSizes
-  iconRightPadding?: iIconPaddings
-  iconRightOnClick?: () => void
+  iconLeft?: iIconTypes;
+  iconLeftSize?: iIconSizes;
+  iconLeftWidth?: string;
+  iconLeftHeight?: string;
+  iconLeftPadding?: iIconPaddings;
+  iconLeftOnClick?: () => void;
 
-  prefix?: string
-  suffix?: string
+  iconRight?: iIconTypes;
+  iconRightSize?: iIconSizes;
+  iconRightWidth?: string;
+  iconRightHeight?: string;
+  iconRightPadding?: iIconPaddings;
+  iconRightOnClick?: () => void;
 
   hasAllItems?: boolean;
 
-  onClickDropdownItem?: (itemValue: string, itemLabel?: string) => void
+  onClickDropdownItem?: (itemValue: string, itemLabel?: string) => void;
   dropdown?: {
-    value: string
-    label?: string
+    value: string;
+    label?: string;
     tag?: {
-      background: string
-      label: string
-    }
-  }[]
+      background: string;
+      label: string;
+    };
+  }[];
 }

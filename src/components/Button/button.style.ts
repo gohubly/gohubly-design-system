@@ -3,7 +3,7 @@ import { iButton, iButtonHierarchy, iButtonSizes } from ".";
 import { hexToRgb } from "../../helpers";
 import { defaultCss } from "../../theme/defaultCss";
 import { themeWithouthInterface as theme } from "../../theme/theme";
-import { Icon, iIcon } from "../Icon";
+import { Icon, iIcon, iIconSizes } from "../Icon";
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "primary",
@@ -109,15 +109,27 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 };
 
 const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
-  SM: "7px 16px",
-  MD: "11px 24px",
-  LG: "15px 32px",
+  SM: "8px 12px",
+  MD: "10px 16px",
+  LG: "12px 24px",
+};
+
+const RADIUS_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "4px",
+  MD: "5px",
+  LG: "5px",
+};
+
+const MARGIN_RIGHT_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "4px",
+  MD: "4px",
+  LG: "8px",
 };
 
 export const IconStyled = styled(Icon)<
-  iIcon & { hierarchy: iButtonHierarchy; OnColor?: boolean; loading?: boolean }
+  iIcon & { hierarchy: iButtonHierarchy; OnColor?: boolean; loading?: boolean; sizeProps: iButtonSizes }
 >`
-  margin-right: 5px;
+  margin-right: ${({ sizeProps }): string => MARGIN_RIGHT_BY_SIZE[sizeProps || "MD"]};
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
   path {
     stroke: ${({ hierarchy, OnColor }) => {
@@ -151,7 +163,7 @@ export const Button = styled.button<iButton>`
 
   outline: none;
   border-color: transparent;
-  border: 1px solid;
+  border: 1.5px solid;
   border-color: ${({ OnColor, hierarchy }) =>
     hierarchy &&
     theme.colors[
@@ -159,7 +171,8 @@ export const Button = styled.button<iButton>`
         ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy]
         : BORDER_COLOR_BY_HIERARCHY[hierarchy]
     ]};
-  border-radius: ${({ radius }) => radius && theme.borderRadius[radius]};
+  : ${({ radius }) => radius && theme.borderRadius[radius]};
+  border-radius: ${({ size }) => RADIUS_BY_SIZE[size || "MD"]};
 
   cursor: pointer;
   transition: background-color 0.3s;
@@ -279,5 +292,5 @@ export const ContentContainer = styled.div<{ loading?: boolean }>`
 
 export const ButtonSpinnerContainer = styled.span`
   position: absolute;
-  height: 70%;
+  height: 50%;
 `;

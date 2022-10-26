@@ -9,8 +9,6 @@ import {
   LeftIcon,
   RelativeContainer,
   RightIcon,
-  PrefixText,
-  SuffixText,
   DropdownWrapper,
   DropdownItem,
   PlaceholderStyled,
@@ -144,15 +142,13 @@ export const Input: React.FC<iInput> = ({
             opened={dropdownOpened}
             disabled={props.disabled}
             onClick={props.iconLeftOnClick}
+            iconGray={props.iconGray}
             iconId={props.iconLeft}
             iconLeftSize={props.iconLeftSize}
+            iconLeftWidth={props.iconLeftWidth}
+            iconLeftHeight={props.iconLeftHeight}
             iconLeftPadding={props.iconLeftPadding}
           />
-        )}
-
-        {/* Prefixo */}
-        {props.prefix && (
-          <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>
         )}
 
         {hasPlaceholderStyled && inputValue === "" && (
@@ -181,8 +177,8 @@ export const Input: React.FC<iInput> = ({
           onChange={onInputChange}
           onFocus={onFocusInput}
           autoComplete={props.autoComplete || (props.dropdown && "off")}
-          contentLeft={!!props.iconLeft || !!props.prefix}
-          contentRight={!!props.iconRight || !!props.suffix}
+          contentLeft={!!props.iconLeft}
+          contentRight={!!props.iconRight}
           ref={inputRef || dropdownRef}
         />
 
@@ -198,16 +194,12 @@ export const Input: React.FC<iInput> = ({
                 : props.iconRightOnClick
             }
             iconId={props.iconRight}
+            iconGray={props.iconGray}
             iconRigthSize={props.iconRightSize}
+            iconRightWidth={props.iconRightWidth}
+            iconRightHeight={props.iconRightHeight}
             iconRightPadding={props.iconRightPadding}
           />
-        )}
-
-        {/* Sufixo */}
-        {props.suffix && (
-          <SuffixText data-has-error={!!props?.error} className="sufixo">
-            {props.suffix}
-          </SuffixText>
         )}
 
         {!!props.dropdown?.length && dropdownOpened && (
