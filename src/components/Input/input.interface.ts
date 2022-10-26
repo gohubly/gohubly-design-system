@@ -13,6 +13,7 @@ export interface iInput extends iInputHTML {
   size?: iInputSizes
 
   label?: string
+  fontSizeLabel?: keyof typeof theme.fontSize
   placeholderStyled?: string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
   helperText?: string
   helperTextOnClick?: () => void
