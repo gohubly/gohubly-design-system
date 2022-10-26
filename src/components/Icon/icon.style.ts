@@ -6,7 +6,11 @@ import { defaultCss } from "../../theme/defaultCss";
 export const IconWrapper = styled.div<iIcon>`
   ${defaultCss};
 
-  height: ${({ height }) => (height === "12px" ? "18px" : height)};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: ${({ height }) => height === '12px' ? '18px' : height};
   box-sizing: border-box;
 
   svg,
