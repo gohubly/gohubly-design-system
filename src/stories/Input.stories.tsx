@@ -15,6 +15,10 @@ Default.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
+  helperText: "Clique em mim",
+  helperTextOnClick() {
+    console.log("Clicou")
+  },
 };
 
 export const DefaultWithPlaceholderStyled = Template.bind({});

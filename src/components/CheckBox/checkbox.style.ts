@@ -33,7 +33,7 @@ export const Label = styled.label<ILabelCheckBox>`
   &:hover span,
   input:checked ~ span {
     background-color: ${({ onColor }) =>
-      onColor ? theme.colors.white : theme.colors.primary};
+      onColor ? theme.colors.white : theme.colors.primaryMedium};
     border: 1px solid
       ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.primary)};
   }
@@ -49,7 +49,7 @@ export const Label = styled.label<ILabelCheckBox>`
 
   &.disabled {
     color: ${({ onColor }) =>
-      onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+      onColor ? theme.colors.primaryLight : 'rgba(0, 0, 0, 0.6)'};
 
     path {
       stroke: ${({ onColor }) =>
@@ -61,7 +61,7 @@ export const Label = styled.label<ILabelCheckBox>`
     &:hover span,
     input:checked ~ span {
       background-color: ${({ onColor }) =>
-        onColor ? "transparent" : theme.colors.white};
+        onColor ? "transparent" : theme.colors.neutralHighMedium};
       border: 1px solid
         ${({ onColor }) =>
           onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
@@ -93,10 +93,6 @@ export const Box = styled.input.attrs({
 `;
 
 export const Mark = styled.span<IMarkCheckBox>`
-  div {
-    margin-left: 1px;
-  }
-
   div > svg > path {
    stroke-width: 3;
   }
@@ -115,8 +111,9 @@ export const Mark = styled.span<IMarkCheckBox>`
   transition: 180ms ease-in-out;
 
   &.disabled {
+    background-color: ${theme.colors.neutralHighMedium};
     border: 1px solid
       ${({ onColor }) =>
-        onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+        onColor ? theme.colors.primaryLight : theme.colors.neutralHighDark};
   }
 `;

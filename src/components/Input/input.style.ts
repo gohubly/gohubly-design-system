@@ -114,7 +114,7 @@ export const HelperText = styled.span<iStyledCommonProps>`
 
   color: ${({ OnColor, onClick }) =>
     onClick
-      ? theme.colors.primary
+      ? theme.colors.primaryMedium
       : OnColor
       ? theme.colors.primaryLight
       : theme.colors.neutralLowMedium};
@@ -123,7 +123,11 @@ export const HelperText = styled.span<iStyledCommonProps>`
     color: ${() => theme.colors.helper};
   }
 
-  text-decoration: ${({ onClick }) => (onClick ? "underline" : "none")};
+  &:hover {
+    text-decoration: ${({ onClick }) => (onClick ? "underline" : "none")};
+    text-underline-position: ${({ onClick }) => (onClick ? "under" : "none")};
+  }
+  text-decoration: none;
 
   cursor: ${({ onClick }) => (onClick ? "pointer" : "auto")};
 `;
@@ -225,57 +229,6 @@ export const RelativeContainer = styled.div<{ disabled?: boolean }>`
           : theme.colors.primary}!important;
   }
 `;
-
-// const PrefixAndSuffixCommons = css<iStyledCommonProps>`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-
-//   position: absolute;
-//   top: 50%;
-//   transform: translateY(-50%);
-
-//   height: calc(100% - 2px);
-//   width: 38px;
-
-//   border-radius: 8px;
-//   font-size: 16px;
-//   line-height: 24px;
-
-//   letter-spacing: -0.005em;
-
-//   background: ${() => theme.colors.primaryLightest};
-//   color: ${() => theme.colors.neutralLow};
-
-//   &[data-has-error="true"] {
-//     background: ${() => theme.colors.helperLight};
-//   }
-// `;
-
-// export const SuffixText = styled.div`
-//   ${PrefixAndSuffixCommons};
-
-//   right: 1px;
-//   border-bottom-left-radius: 0px;
-//   border-top-left-radius: 0px;
-//   z-index: 1;
-
-//   // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
-
-//   // left: calc(100% - 7px);
-//   // border: 1px solid red;
-//   // border-left: none;
-//   // box-sizing: border-box;
-//   // heigth: 100%;
-// `;
-
-// export const PrefixText = styled.div`
-//   ${PrefixAndSuffixCommons};
-//   left: 1px;
-//   border-bottom-right-radius: 0px;
-//   border-top-right-radius: 0px;
-//   z-index: 1;
-// `;
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   position: absolute;
@@ -406,6 +359,27 @@ export const RightIcon = styled(Icon)<iIconRight>`
       if (error) {
         return css`
           stroke: ${theme.colors.helperMedium};
+        `;
+      }
+    }};
+  }
+
+  rect {
+    ${({ error }) => {
+      if (error) {
+        return css`
+          stroke: ${theme.colors.helperMedium};
+          // fill: ${theme.colors.helperMedium};
+        `;
+      }
+    }};
+  }
+
+  rect:nth-last-child(-n + 2) {
+    ${({ error }) => {
+      if (error) {
+        return css`
+          fill: ${theme.colors.helperMedium};
         `;
       }
     }};

@@ -13,12 +13,12 @@ export const Wrapper = styled.div<Pick<iPaymentCardFrequency, 'selected'>>`
   justify-content: space-between;
   align-items: center;
 
-  padding: 16px 24px;
+  padding: 16px 16px 16px 24px;
 
-  border: 2px solid ${({ selected }) => (selected ? theme.colors.primary : theme.colors.neutralHighLight)};
-  border-radius: 8px;
+  border: 1px solid ${({ selected }) => (selected ? theme.colors.primaryMedium : theme.colors.neutralHighLight)};
+  border-radius: 5px;
 
-  background-color: ${({ selected }) => (selected ? '#F3F5F7' : 'transparent')};
+  background-color: ${({ selected }) => (selected ? theme.colors.primaryLightest : 'transparent')};
 
   transition: all .5s;
 
@@ -28,16 +28,15 @@ export const Wrapper = styled.div<Pick<iPaymentCardFrequency, 'selected'>>`
 `
 
 export const DiscountFlag = styled.div`
-  position: absolute;
-  top: -12px;
-  right: 10px;
-  
-  padding: 4px 12px;
+  padding: 2px 8px;
   background-color: ${theme.colors.helperMedium};
+  box-shadow: 4px 4px 12px -32px rgba(240, 52, 96, 0.08);
   
   font-size: 12px;
+  line-height: 16px;
   text-align: center;
   color: white;
 
-  border-radius: 16px;
+  border-radius: 2px;
+  margin-top: 8px;
 `

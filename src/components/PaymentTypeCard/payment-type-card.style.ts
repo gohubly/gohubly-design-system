@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components'
-import { theme } from '../../theme'
-import { defaultCss } from '../../theme/defaultCss'
-import { iPaymentTypeCard } from './payment-type-card.interface'
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
+import { defaultCss } from "../../theme/defaultCss";
+import { iPaymentTypeCard } from "./payment-type-card.interface";
 
-export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
+export const Wrapper = styled.div<Pick<iPaymentTypeCard, "selected" | "type">>`
   ${defaultCss};
 
   width: 312px;
@@ -13,21 +13,24 @@ export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
 
-  padding: 40px 28px 32px 28px;
+  padding: 32px 28px 22px 28px;
 
   box-sizing: border-box;
 
-  border: 2px solid ${({ selected }) => (selected ? theme.colors.primary : theme.colors.neutralHighLight)};
-  border-radius: 8px;
+  border: 1px solid
+    ${({ selected }) =>
+      selected ? theme.colors.primaryMedium : theme.colors.neutralHighLight};
+  border-radius: 5px;
 
-  background-color: ${({ selected }) => (selected ? theme.colors.primaryLightest : 'transparent')};
+  background-color: ${({ selected }) =>
+    selected ? theme.colors.primaryLightest : "transparent"};
 
-  transition: all .5s;
+  transition: all 0.5s;
 
   &:hover {
-    border-color: ${theme.colors.primary}
+    border-color: ${theme.colors.primary};
   }
 
   div:first-of-type,
@@ -37,30 +40,32 @@ export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
   }
 
   ${({ selected, type }) => {
-    if (selected && type === 'creditCard') {
+    if (selected && type === "creditCard") {
       return css`
         svg {
           rect:first-of-type {
             fill: ${theme.colors.primary};
           }
-          
+
           rect:not(:first-of-type):not(:last-of-type) {
             fill: white;
           }
-    
+
           rect:last-of-type {
-            fill: 'initial';
+            fill: "initial";
           }
         }
-      `
-    } else if (selected && type === 'bankSlip') {
-        return css`
+      `;
+    } else if (selected && type === "bankSlip") {
+      return css`
         svg {
           rect:first-of-type {
             fill: ${theme.colors.primary};
           }
 
-          path.line-bg { stroke: ${theme.colors.primary} }
+          path.line-bg {
+            stroke: ${theme.colors.primary};
+          }
 
           path:last-of-type {
             stroke: white;
@@ -69,31 +74,27 @@ export const Wrapper = styled.div<Pick<iPaymentTypeCard, 'selected' | 'type'>>`
           path:not(:last-of-type):not(.line-bg) {
             stroke: rgba(255, 255, 255, 1);
           }
-          
-          rect:not(:first-of-type){
+
+          rect:not(:first-of-type) {
             fill: rgba(255, 255, 255, 1);
           }
         }
-      `
+      `;
     }
 
-    return ``
+    return ``;
   }}
-`
+`;
 
 export const Flag = styled.div`
-  position: absolute;
-  bottom: -12px;
-  right: 50%;
-  
-  transform: translateX(50%);
-  
-  padding: 4px 12px;
+  padding: 2px 8px;
   background-color: ${theme.colors.helperMedium};
-  
+  box-shadow: 4px 4px 12px -32px rgba(240, 52, 96, 0.08);
+
   font-size: 12px;
+  line-height: 16px;
   text-align: center;
   color: white;
 
-  border-radius: 16px;
-`
+  border-radius: 2px;
+`;

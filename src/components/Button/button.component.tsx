@@ -14,11 +14,10 @@ export const Button: React.FC<iButton> = ({
   disabled,
   hierarchy = "primary",
   size = "MD",
-  radius = "SM",
   error,
   loading,
   icon,
-  // iconSize,
+  iconSize = 'SM',
   OnColor,
   ...props
 }) => {
@@ -29,13 +28,12 @@ export const Button: React.FC<iButton> = ({
       hierarchy={hierarchy}
       data-has-error={error}
       size={size}
-      radius={radius}
       OnColor={OnColor}
       {...props}
     >
       {icon && (
         <IconStyled
-          size='SM'
+          size={iconSize}
           iconId={icon}
           hierarchy={hierarchy}
           OnColor={OnColor}

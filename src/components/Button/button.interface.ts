@@ -4,7 +4,7 @@ import { iIconTypes } from "../Icon";
 
 export type iButtonHierarchy = 'primary' | 'secondary' | 'ghost'
 export type iButtonSizes = 'SM' | 'MD' | 'LG'
-// export type iIconSizes = 'XS' | 'SM'
+export type iIconSizesButton = 'XS' | 'SM'
 
 export interface iButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   hierarchy?: iButtonHierarchy,
@@ -13,10 +13,10 @@ export interface iButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   error?: boolean
   loading?: boolean
   icon?: iIconTypes
-  // iconSize?: iIconSizes
+  iconSize?: iIconSizesButton
   fluid?: boolean
   size?: iButtonSizes
-  radius?: keyof typeof theme.borderRadius
+  // radius?: keyof typeof theme.borderRadius
   type?: 'submit'
   onClick?: (evt: React.MouseEvent<HTMLButtonElement>) => void
 }
