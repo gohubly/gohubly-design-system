@@ -15,12 +15,24 @@ const Template: ComponentStory<typeof PaymentFrequencyCard> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   children: "PaymentFrequencyCard",
+  radioProps: {
+    name: "Radio Default",
+    value: "radioDefault",
+    label: "Radio Default",
+    options: [{ title: "Default", value: "1" }],
+  },
 };
 
 export const Selected = Template.bind({});
 
 Selected.args = {
   selected: true,
+  radioProps: {
+    name: "Radio Selected",
+    value: "radioSelected",
+    label: "Radio Selected",
+    options: [{ title: "Selected", value: "1" }],
+  },
 };
 
 export const WithDiscountFlag = Template.bind({});

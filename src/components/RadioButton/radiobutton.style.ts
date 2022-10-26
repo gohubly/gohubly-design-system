@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import { defaultCss } from '../../theme/defaultCss';
-import theme from '../../theme/theme';
+import styled from "styled-components";
+import { defaultCss } from "../../theme/defaultCss";
+import theme from "../../theme/theme";
 
-import { ILabelRadio, IBoxRadio, IMarkRadio } from './radiobutton.interface';
+import { ILabelRadio, IBoxRadio, IMarkRadio } from "./radiobutton.interface";
 
 export const Label = styled.label<ILabelRadio>`
   ${defaultCss};
@@ -10,51 +10,60 @@ export const Label = styled.label<ILabelRadio>`
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 30px;
+  padding-left: 24px;
   line-height: 16px;
   font-size: 14px;
 
   padding-top: 2px;
   padding-bottom: 2px;
 
-  cursor: ${({ disabled }) => disabled ? 'not-allowed' : 'pointer'};
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   user-select: none;
 
-  color: ${({ onColor }) => onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
-  
+  color: ${({ onColor }) =>
+    onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
+
   &:hover {
-    color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    color: ${({ onColor }) =>
+      onColor ? theme.colors.white : theme.colors.neutralLowDark};
   }
 
   &:hover span,
   input:checked ~ span {
-    background-color: ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
-    border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
+    background-color: ${({ onColor }) =>
+      onColor ? theme.colors.white : theme.colors.primaryMedium};
+    border: 1px solid
+      ${({ onColor }) =>
+        onColor ? theme.colors.white : theme.colors.primaryMedium};
   }
 
   &:hover {
     span {
       background-color: ${() => theme.colors.primaryLightest};
-      border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
+      border: 1px solid
+        ${({ onColor }) =>
+          onColor ? theme.colors.white : theme.colors.neutralLowDark};
     }
   }
-  
+
   &.disabled {
-    color: ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-    
-    &:hover {
-      span {
-        background-color: ${({ onColor }) => onColor ? 'transparent' : theme.colors.white};
-        border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
-        cursor: not-allowed;
-      }
+    color: ${({ onColor }) =>
+      onColor ? theme.colors.primaryLight : 'rgba(0, 0, 0, 0.6)'};
+
+    span {
+      background-color: ${({ onColor }) =>
+        onColor ? "transparent" : theme.colors.neutralHighMedium};
+      border: 1px solid
+        ${({ onColor }) =>
+          onColor ? theme.colors.primaryLight : theme.colors.neutralHighDark};
+      cursor: not-allowed;
     }
   }
 `;
 
 export const Box = styled.input.attrs({
-  type: 'radio',
-}) <IBoxRadio>`
+  type: "radio",
+})<IBoxRadio>`
   cursor: pointer;
   position: absolute;
   opacity: 0;
@@ -69,37 +78,44 @@ export const Box = styled.input.attrs({
 export const Mark = styled.span<IMarkRadio>`
   position: absolute;
   box-sizing: border-box;
-  top: 0;
   left: 0;
-  height: 20px;
-  width: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 16px;
+  width: 16px;
   background-color: transparent;
   border-radius: 50%;
-  border: 2px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.neutralLowDark};
+  border: 1px solid
+    ${({ onColor }) =>
+      onColor ? theme.colors.white : theme.colors.neutralLowDark};
 
   &.disabled {
-    border: 2px solid ${({ onColor }) => onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+    border: 1px solid
+      ${({ onColor }) =>
+        onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
   }
 
   transition: 180ms ease-in-out;
 
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     display: none;
-    top: 4.5px;
-    left: 4.5px;
-    width: 7px;
-    height: 7px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
     border-radius: 100%;
-    background: ${({ onColor }) => onColor ? theme.colors.primary : theme.colors.white};
-    // border: 1px solid ${({ onColor }) => onColor ? theme.colors.white : theme.colors.primary};
-    border-width: 0 2px 2px 0;
+    background: ${({ onColor }) =>
+      onColor ? theme.colors.primaryMedium : theme.colors.white};
+    border: 1px solid
+      ${({ onColor }) =>
+        onColor ? theme.colors.white : theme.colors.primaryMedium};
     box-sizing: border-box;
   }
 `;
 
 export const Spacer = styled.div`
-margin-bottom: 10px;
-`
-
+  margin-bottom: 10px;
+`;

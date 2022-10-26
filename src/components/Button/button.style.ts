@@ -6,21 +6,21 @@ import { themeWithouthInterface as theme } from "../../theme/theme";
 import { Icon, iIcon, iIconSizes } from "../Icon";
 
 const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
-  primary: "primary",
+  primary: "primaryMedium",
   ghost: "transparent",
   secondary: "transparent",
 };
 
 const HOVER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
-  primary: "primaryMedium",
+  primary: "primary",
   ghost: "primaryLightest",
   secondary: "primaryLightest",
 };
 
 const COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "white",
-  ghost: "primary",
-  secondary: "primary",
+  ghost: "primaryMedium",
+  secondary: "primaryMedium",
 };
 
 const DISABLED_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> =
@@ -33,7 +33,7 @@ const DISABLED_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> =
 const BORDER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "transparent",
   ghost: "transparent",
-  secondary: "primary",
+  secondary: "primaryMedium",
 };
 
 const HELPER_BACKGROUND_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
@@ -55,9 +55,9 @@ const HELPER_BORDER_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 };
 
 const ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
-  primary: "primaryLight",
-  secondary: "primary",
-  ghost: "primary",
+  primary: "white",
+  secondary: "primaryMedium",
+  ghost: "primaryMedium",
 };
 
 const BACKGROUND_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
@@ -104,7 +104,7 @@ const HELPER_COLOR_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 
 const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   ...ICON_COLOR_BY_HIERARCHY,
-  primary: "primaryLight",
+  primary: "white",
   secondary: "primaryLight",
 };
 
@@ -126,20 +126,35 @@ const MARGIN_RIGHT_BY_SIZE: Record<iButtonSizes, string> = {
   LG: "8px",
 };
 
+const FONT_SIZE_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "12px",
+  MD: "14px",
+  LG: "16px",
+};
+
+const LINE_HEIGHT_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "16px",
+  MD: "20px",
+  LG: "24px",
+};
+
+
 export const IconStyled = styled(Icon)<
   iIcon & { hierarchy: iButtonHierarchy; OnColor?: boolean; loading?: boolean; sizeProps: iButtonSizes }
 >`
   margin-right: ${({ sizeProps }): string => MARGIN_RIGHT_BY_SIZE[sizeProps || "MD"]};
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
   path {
+    fill: transparent;
+    stroke-width: 2;
     stroke: ${({ hierarchy, OnColor }) => {
-      if (hierarchy === "primary") {
-        // return theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
-        return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
-          alpha: 0.8,
-          asCSS: true,
-        });
-      }
+      // if (hierarchy === "primary") {
+      //   // return theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]]
+      //   return hexToRgb(theme.colors[ICON_COLOR_BY_HIERARCHY[hierarchy]], {
+      //     alpha: 0.8,
+      //     asCSS: true,
+      //   });
+      // }
 
       return OnColor
         ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy]]
@@ -155,8 +170,10 @@ export const Button = styled.button<iButton>`
   align-items: center;
   justify-content: center;
   position: relative;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size || "MD"]};
+  line-height: ${({ size }) => LINE_HEIGHT_BY_SIZE[size || "MD"]};
+
+  font-weight: 600;
 
   height: fit-content;
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
@@ -171,7 +188,7 @@ export const Button = styled.button<iButton>`
         ? BORDER_ON_COLOR_BY_HIERARCHY[hierarchy]
         : BORDER_COLOR_BY_HIERARCHY[hierarchy]
     ]};
-  : ${({ radius }) => radius && theme.borderRadius[radius]};
+
   border-radius: ${({ size }) => RADIUS_BY_SIZE[size || "MD"]};
 
   cursor: pointer;

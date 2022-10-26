@@ -1,4 +1,5 @@
 import React from "react";
+import { Flex } from "rebass";
 import { iPaymentTypeCard } from ".";
 import { Icon } from "../Icon";
 import { Typography } from "../Typography";
@@ -15,10 +16,12 @@ export const PaymentTypeCard: React.FC<iPaymentTypeCard> = ({
     <css.Wrapper selected={selected} type={type}>
       <Icon width="50px" height="32px" iconId={type} />
 
-      <Typography color="neutralLowDark" fontWeight={600} size="XS">
-        {children ??
-          (type === "creditCard" ? "Cartão de Crédito" : "Boleto Bancário")}
-      </Typography>
+      <Flex mt='8px'>
+        <Typography color="neutralLowDark" fontWeight={500} size="XXS" lineHeight="XL" textAlign="center">
+          {children ??
+            (type === "creditCard" ? "Cartão de Crédito" : "Boleto Bancário")}
+        </Typography>
+      </Flex>
 
       {recomended && <css.Flag>{flagText ?? "Recomendado"}</css.Flag>}
     </css.Wrapper>
