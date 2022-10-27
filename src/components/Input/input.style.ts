@@ -43,8 +43,8 @@ interface iIconLeft extends Partial<iIcon> {
 const INPUT_HEIGHT_BASED_ON_SIZE: Record<iInputSizes, string> = {
   XXS: "32px",
   XS: "36px",
-  SM: "40px",
-  MD: "48px",
+  SM: "40px", // mobile
+  MD: "48px", // desktop
 };
 
 const PADDING_ICON_BASED_ON_SIZE: Record<iInputSizes, string> = {
@@ -98,6 +98,15 @@ const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
     MD: "98px",
     LG: "102px",
   };
+ 
+  const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
+    XXXS: "16px",
+    XXS: "20px",
+    XS: "24px",
+    SM: "28px",
+    MD: "32px",
+    LG: "36px",
+  };
 
 export const LabelText = styled.span<iStyledCommonProps>`
   letter-spacing: -0.005em;
@@ -138,7 +147,7 @@ export const Input = styled.input<iStyledCommonProps>`
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
     -webkit-transition-delay: 9999s;
-    -webkit-text-fill-color: black !important;
+    -webkit-text-fill-color: color: rgba(0, 0, 0, 0.6)!important;
   }
 
   height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || "MD"]};
@@ -146,13 +155,14 @@ export const Input = styled.input<iStyledCommonProps>`
   background: ${() => theme.colors.neutralHigh};
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
 
   border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
   border-radius: 5px;
   letter-spacing: -0.01em;
   font-weight: 300;
-  color: ${() => theme.colors.neutralLowMedium};
+  color: rgba(0, 0, 0, 0.6);
   cursor: ${({ opened }) => (opened ? "text" : "pointer")};
 
   padding-left: ${({ contentLeft, size }) =>
@@ -183,8 +193,8 @@ export const Input = styled.input<iStyledCommonProps>`
   }
 
   &::placeholder {
-    font-size: 16px;
-    line-height: 20px;
+    font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+    line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
     font-weight: 400;
   }
 
@@ -201,6 +211,11 @@ export const Input = styled.input<iStyledCommonProps>`
     &:focus {
       border: 1px solid ${() => theme.colors.helper};
     }
+  }
+
+  &[type="password"]:not(:placeholder-shown) {
+    letter-spacing: 1.5px;
+    font-size: 15px;
   }
 
   transition: all 0.1s linear;
@@ -269,6 +284,7 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
 export const DropdownItem = styled.div<iInputDropdownItem>`
   padding: 12px 16px;
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   display: flex;
   align-items: center;
   word-break: break-word;

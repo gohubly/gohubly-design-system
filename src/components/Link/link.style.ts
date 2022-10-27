@@ -9,7 +9,7 @@ export const Link = styled.a<iLink>`
   }
 `
 const LINK_COLOR = {
-  default: 'primary',
+  default: 'primaryMedium',
   hover: 'neutralLowDark',
   disabled: 'neutralLowLight',
 }
