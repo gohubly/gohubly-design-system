@@ -13,6 +13,7 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   name: "input-name",
+  type: 'password',
   label: "Label",
   placeholder: "placeholder...",
   helperText: "Clique em mim",
