@@ -5,5 +5,6 @@ export interface iCountdown {
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   highlightedDescription?: string | JSX.Element;
+  onCloseClick: () => void;
   buttonProps?: iButton;
 }

@@ -12,7 +12,8 @@ export const Countdown: React.FC<iCountdown> = ({
   title,
   description: descriptionProp,
   highlightedDescription,
-  buttonProps
+  buttonProps,
+  onCloseClick
 }) => {
   const getCountDownColors = (count: number) => {
     if (countdown === 1 && count === 1) return theme.colors.helperMedium;
@@ -28,7 +29,7 @@ export const Countdown: React.FC<iCountdown> = ({
     if (countdown === 1) return '';
     if (countdown === 7) return 'teste de 7 dias'
 
-    return `expira em ${countdown} dia`
+    return `expira em ${countdown} dias`
   }
 
   const getDescription = () => {
@@ -104,7 +105,7 @@ export const Countdown: React.FC<iCountdown> = ({
         </Button>
       </Flex>
 
-      <css.IconContainer>
+      <css.IconContainer onClick={onCloseClick}>
         <Icon 
           iconId='close'
           stroke='neutralLowMedium'
