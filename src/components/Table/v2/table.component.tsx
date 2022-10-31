@@ -11,7 +11,7 @@ import {
   Table as TableStyled,
 } from "./table.style";
 
-export const Table = ({
+export const TableV2 = ({
   columns,
   data: datas,
   indexed,

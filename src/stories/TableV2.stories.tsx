@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Table } from '../components/Table/v2';
+import { TableV2 as Table } from '../components/Table/v2';
 import { Link } from '../components';
 
 export default {
