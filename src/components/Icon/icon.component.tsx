@@ -27,6 +27,7 @@ import Envelope from './icons/envelope'
 import Eye from './icons/eye'
 import EyeSlash from './icons/eyeSlash'
 import Facebook from './icons/facebook'
+import File from './icons/file'
 import File1 from './icons/file1'
 import File2 from './icons/file2'
 import Globe from './icons/globe'
@@ -118,6 +119,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   eye: Eye,
   eyeSlash: EyeSlash,
   facebook: Facebook,
+  file: File,
   file1: File1,
   file2: File2,
   globe: Globe,

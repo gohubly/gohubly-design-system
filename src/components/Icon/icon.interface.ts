@@ -13,7 +13,7 @@ export type iIconTypes =
 'settings' | 'share' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
 'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 
 'instagramColor' | 'shareOutline' | 'creditCard' | 'bankSlip' | 'visa' | 'mastercard' | 
-'hipercard'| 'elo'| 'discover'| 'diners'| 'amex' | 'cardInfos' 
+'hipercard'| 'elo'| 'discover'| 'diners'| 'amex' | 'cardInfos' | 'file'
 
 export type iIconSizes = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
 
