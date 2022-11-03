@@ -41,7 +41,7 @@ export const Wrapper = styled.div<WrapperProps>`
   margin: auto;
   margin-left: ${({ left }): string => left ?? "auto"};
 
-  padding: 32px 48px 72px 48px;
+  padding: 32px 0px 48px 0px;
   border-radius: 5px;
 
   ${({ minHeight }): any => css`
@@ -59,6 +59,11 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  padding: 0px 48px;
+  padding-bottom: 32px;
+
+  border-bottom: 1px solid ${({ theme }): string => theme.colors.neutralHighLight}
 `;
 
 export const Hr = styled.hr`

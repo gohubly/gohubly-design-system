@@ -25,34 +25,18 @@ export const CouponCard: React.FC<iCouponCard> = ({
   }
 
   return (
-    <Flex 
-      style={
-        {
-          gap: '32px',
-          border: `8px solid ${hexToRgb('#000000', { alpha: 0.05, asCSS: true })}`,
-          borderRadius: '8px'
-        }
-      }
+    <Flex
       minWidth="640px"
-      padding="32px 48px"
       flexDirection="column"
       backgroundColor="white"
     >
       <Flex style={{ gap: '8px' }} flexDirection="column">
-        <Flex justifyContent="space-between" alignItems="center">
-          <Typography size='MD' color='neutralLowDark'>
-            { title ?? 'Cupom de desconto' }
-          </Typography>
-
-          <Icon iconId='close' stroke='neutralLowDark' {...iconProps} />
-        </Flex>
-
-        <Typography size='XS' color='neutralLowMedium'>
+        <Typography size='XS' color='neutralLowDark'>
           { renderSubtitle() }
         </Typography>
       </Flex>
 
-      <Flex style={{ gap: '32px' }} alignItems="center">
+      <Flex style={{ gap: '32px' }} mt="24px" alignItems="center">
         <Box flexBasis="65%">
           <Input 
             { ...inputProps }
