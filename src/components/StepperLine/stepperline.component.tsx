@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Container,
-  StepLineWrapper,
-} from "./stepperline.style";
+import { Container, StepLineWrapper } from "./stepperline.style";
 import { IStepperLine } from "./stepperline.interface";
 
 export const StepperLine: React.FC<IStepperLine> = ({
@@ -10,12 +7,9 @@ export const StepperLine: React.FC<IStepperLine> = ({
   steps = 0,
   className,
 }) => {
-
   return (
     <Container className={className}>
-      <StepLineWrapper
-          totalSteps={steps}
-          currentStep={currentStep}/>
+      <StepLineWrapper totalSteps={steps} currentStep={currentStep} />
     </Container>
   );
 };

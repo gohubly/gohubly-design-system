@@ -142,12 +142,13 @@ export const HelperText = styled.span<iStyledCommonProps>`
 `;
 
 export const Input = styled.input<iStyledCommonProps>`
-  position: relative;
+position: relative;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
     -webkit-transition-delay: 9999s;
-    -webkit-text-fill-color: color: rgba(0, 0, 0, 0.6)!important;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.6)!important;
+    -webkit-text-stroke: 0.35px;
   }
 
   height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || "MD"]};

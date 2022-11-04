@@ -2,7 +2,8 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { TableV2 as Table } from '../components/Table/v2';
-import { Link } from '../components';
+import { Avatar, Link, Typography } from '../components';
+import { Flex } from 'rebass';
 
 export default {
   title: 'Components/Table/V2',
@@ -16,7 +17,18 @@ const tableCommonArgs = {
     {
       key: 'name',
       title: 'Nome',
-      width: 190
+      width: 190,
+      rowContent: (): JSX.Element => (
+        <Flex alignItems="center" style={{ gap: '12px' }}>
+          <Avatar size="XS" name={'nt'} />
+          <div style={{ marginTop: '2px'}}>
+            <Typography size="XXS" lineHeight="LG" color="neutralLowDark" textAlign='center' fontWeight={500}>
+            {'Nome Teste'}
+          </Typography>
+          </div>
+          
+        </Flex>
+      ),
     },
     {
       key: 'age',

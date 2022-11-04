@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
-import { Typography } from "../Typography";
 import { iAccordion } from "./accordion.interface";
 
 export const Container = styled.div<Pick<iAccordion, 'width' | 'fluid'>>`
