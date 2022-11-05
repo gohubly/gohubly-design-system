@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Modal } from "..";
-import { Typography } from "../components";
+import { CouponCard, Typography } from "../components";
 
 export default {
   title: "Components/Modal",
@@ -18,7 +18,19 @@ Default.args = {
   // width: ""
   children: (
     <Typography color="neutralLowMedium" size="XS" lineHeight="XL" fontWeight={400}>
-      Texto exmplo para o Modal!
+      Texto exemplo para o Modal!
     </Typography>
+  ),
+};
+
+export const WithComplexLayout = Template.bind({});
+
+WithComplexLayout.args = {
+  title: "Cupom de desconto",
+  show: true,
+  showCloseIcon: true,
+  // width: ""
+  children: (
+    <CouponCard />
   ),
 };
