@@ -12,7 +12,7 @@ export const TableContainer = styled.div<{
 `;
 
 export const Table = styled.table<{ fluid?: boolean }>`
-  border-spacing: 0 4px;
+  border-spacing: 0;
   width: ${({ fluid }): string => (fluid ? "100%" : "initial")};
 `;
 
@@ -33,20 +33,24 @@ export const TableHeaderTd = styled.td<iTableTd>`
     padding: 12px 0;
   }
 
-  &:last-child {
-    padding-right: 16px;
+  // &:last-child {
+  //   padding-right: 16px;
+  // }
+
+  tr:hover td {
+    border-bottom: ${({ theme }) => `1px solid ${theme.colors.primaryMedium}`};
   }
 `;
 
 export const TableBodyTd = styled.td<iTableTd>`
-  box-sizing: content-box;
+  box-sizing: border-box;
 
   width: ${({ width }) => (width ? width : "auto")};
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
 
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.neutralHighLight}`};
 
-  padding: 22px 0;
+  padding: 15px 0 16px;
 
   p {
     font-size: 14px;
@@ -64,9 +68,9 @@ export const TableBodyTd = styled.td<iTableTd>`
     }
   }
 
-  &:last-child {
-    padding-right: 16px;
-  }
+  // &:last-child {
+  //   padding-right: 16px;
+  // }
 `;
 
 export const FlexBodyTd = styled.div`
@@ -76,22 +80,13 @@ export const FlexBodyTd = styled.div`
 `;
 
 const TableTr = css<iTableTr>`
-  border-radius: 8px;
+  &:hover {
+    transition: all .3s ease-in-out;
+    background: rgba(241,242,249,0.5);
 
-  &:nth-child(even) {
-    ${TableBodyTd} {
-      background: ${({ theme, striped }): string =>
-        striped ? theme.colors.primaryLightest : "transparent"};
-
-      &:first-of-type {
-        border-top-left-radius: 8px;
-        border-bottom-left-radius: 8px;
-      }
-
-      &:last-of-type {
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
+    td {
+      transition: all .3s ease-in-out;
+      border-bottom: ${({ theme }) => `1px solid ${theme.colors.primaryMedium}`};
     }
   }
 `;

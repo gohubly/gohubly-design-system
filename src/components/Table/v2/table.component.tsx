@@ -38,7 +38,7 @@ export const TableV2 = ({
           {datas.map((data, dataIndex) => {
             return (
               <TableBodyTr
-                striped={striped}
+                // striped={striped}
                 key={`table-${datas.length}-${dataIndex}`}
               >
                 {columns.map((column, columnIndex) => {
@@ -56,9 +56,9 @@ export const TableV2 = ({
                       key={column.key + columnIndex}
                     >
                       <FlexBodyTd>
-                        {indexed && columnIndex === 0 && (
+                        {/* {indexed && columnIndex === 0 && (
                           <Avatar size="MD" name={`${dataIndex}`} />
-                        )}
+                        )} */}
                         {typeof cellRenderValue === "string" ? (
                           <Typography color="neutralLowDark" as='p' fontWeight={500}>
                             {cellRenderValue}

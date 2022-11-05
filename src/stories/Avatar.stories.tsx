@@ -15,6 +15,12 @@ Default.args = {
   name: 'Default',
 };
 
+export const DefaultTwoLetter = Template.bind({});
+DefaultTwoLetter.args = {
+  name: 'Default two letter',
+  twoLetter: true
+};
+
 export const WithBadge = Template.bind({});
 WithBadge.args = {
   name: 'Badge',
