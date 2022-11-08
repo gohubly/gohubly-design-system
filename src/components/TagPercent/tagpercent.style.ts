@@ -39,12 +39,12 @@ export const Tag = styled.div<ITagPercentProps>`
   border-radius: ${() => theme.borderRadius.Pill};
 
   span {
-    margin-top: 2px;
+    margin-top: 1px;
   }
 
   svg,
   path {
-    margin-top: 1px;
+    margin-bottom: 1px;
     stroke: ${({ status }) =>
       status && theme.colors[BACKGROUND_COLOR_BY_STATUS[status]]};
     stroke-width: 3.5;

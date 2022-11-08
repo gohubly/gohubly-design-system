@@ -34,8 +34,10 @@ export const TagPercent: React.FC<ITagPercent> = ({ children, ...props }) => {
       >
         <Icon size="XXS" iconId={isGrowth ? "chevronUp" : "chevronDown"} />
       </Flex>
-      <Typography size="XXXS"  color={isGrowth ? "successDark" : "helperDark"}>
-        {`${isGrowth ? "CRESCEU" : "CAIU"} ${props.value.toFixed(1)}%`}
+      <Typography size="XXXS" color={isGrowth ? "successDark" : "helperDark"}>
+        {`${isGrowth ? "CRESCEU" : "CAIU"} ${new Intl.NumberFormat("pt-BR", {
+          maximumFractionDigits: 1,
+        }).format(props.value)}%`}
       </Typography>
     </StyledTag>
   );
