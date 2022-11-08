@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { ITagPercent, ITagPercentStatus } from ".";
 import { Theme, themeWithouthInterface as theme } from "../..";
 import { defaultCss } from "../../theme/defaultCss";
@@ -44,7 +44,20 @@ export const Tag = styled.div<ITagPercentProps>`
 
   svg,
   path {
-    margin-bottom: 1px;
+    ${({ status }) => {
+      if (status === 'alert') {
+        return css`
+          margin-top: 1px;
+        `;
+      }
+
+      if (status === 'success') {
+        return css`
+          margin-bottom: 1px;
+        `;
+      }
+    }};
+
     stroke: ${({ status }) =>
       status && theme.colors[BACKGROUND_COLOR_BY_STATUS[status]]};
     stroke-width: 3.5;
