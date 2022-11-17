@@ -1,8 +1,6 @@
 import React from 'react'
 import { Box, Flex } from 'rebass'
-import { hexToRgb } from '../../helpers'
 import { Button } from '../Button'
-import { Icon } from '../Icon'
 import { Input } from '../Input'
 import { Typography } from '../Typography'
 import { iCouponCard } from './coupon-card.interface'
@@ -51,6 +49,7 @@ export const CouponCard: React.FC<iCouponCard> = ({
         <Box flexBasis="35%">
           <Button 
             {...buttonProps}
+            size={'LG'}
             fluid
           >
             { buttonProps?.children ?? 'Validar cupom' }

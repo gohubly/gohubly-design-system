@@ -98,18 +98,21 @@ const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
     MD: "98px",
     LG: "102px",
   };
- 
-  const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
-    XXXS: "16px",
-    XXS: "20px",
-    XS: "24px",
-    SM: "28px",
-    MD: "32px",
-    LG: "36px",
-  };
+
+const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
+  XXXS: "16px",
+  XXS: "20px",
+  XS: "24px",
+  SM: "28px",
+  MD: "32px",
+  LG: "36px",
+};
 
 export const LabelText = styled.span<iStyledCommonProps>`
+  ${defaultCss};
   letter-spacing: -0.005em;
+  font-weight: 400;
+  
   font-size: ${({ fontSizeLabel, theme }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
 
@@ -118,8 +121,9 @@ export const LabelText = styled.span<iStyledCommonProps>`
 `;
 
 export const HelperText = styled.span<iStyledCommonProps>`
+  ${defaultCss};
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
 
   color: ${({ OnColor, onClick }) =>
     onClick
@@ -142,12 +146,13 @@ export const HelperText = styled.span<iStyledCommonProps>`
 `;
 
 export const Input = styled.input<iStyledCommonProps>`
-position: relative;
+  ${defaultCss};
+  position: relative;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:active {
     -webkit-transition-delay: 9999s;
-    -webkit-text-fill-color: rgba(0, 0, 0, 0.6)!important;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0.6) !important;
     -webkit-text-stroke: 0.35px;
   }
 
@@ -156,7 +161,8 @@ position: relative;
   background: ${() => theme.colors.neutralHigh};
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
-  line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+  line-height: ${({ fontSize, theme }) =>
+    LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
 
   border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
@@ -195,7 +201,8 @@ position: relative;
 
   &::placeholder {
     font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
-    line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+    line-height: ${({ fontSize, theme }) =>
+      LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
     font-weight: 400;
   }
 
@@ -283,9 +290,11 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
 `;
 
 export const DropdownItem = styled.div<iInputDropdownItem>`
+  ${defaultCss};
   padding: 12px 16px;
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
-  line-height: ${({ fontSize, theme }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+  line-height: ${({ fontSize, theme }) =>
+    LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   display: flex;
   align-items: center;
   word-break: break-word;

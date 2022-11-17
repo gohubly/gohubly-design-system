@@ -13,4 +13,5 @@ export interface iPaymentCardFrequency {
   }
   hasDiscountFlag?: boolean
   selected?: boolean
+  isDesktop?: boolean;
 }

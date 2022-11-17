@@ -17,7 +17,7 @@ const TextStyled = css<iTypography>`
   font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '600']} !important;
 
   font-size: ${({ size }) => theme.fontSize[size || 'MD']};
-  /* font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']}; */
+  // font-weight: ${({ fontWeight }) => theme.fontWeight[fontWeight || 'MD']}; 
   line-height: ${({ lineHeight }) => theme.lineHeight[lineHeight || 'Default']};
 
   color: ${({ color, colorOpacity }) => colorOpacity ? hexToRgb(theme.colors[color || 'white'], { asCSS: true, alpha: colorOpacity }) : theme.colors[color || 'white']};

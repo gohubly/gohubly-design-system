@@ -7,12 +7,13 @@ import { iPaymentCardFrequency } from "./payment-frequency-card.interface";
 import * as css from "./payment-frequency-card.style";
 
 export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
-  minWidth = "640px",
   radioProps,
   pricing,
   selected,
   hasDiscountFlag,
   discountText,
+  isDesktop = true,
+  minWidth = isDesktop ? "640px" : "328px",
 }) => {
   return (
     <css.Wrapper
@@ -20,21 +21,23 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
       selected={selected}
       as="label"
       htmlFor={(radioProps?.options ?? [])[0]?.title ?? "Assinatura mensal"}
+      isDesktop={isDesktop}
     >
-      <RadioButton
-        {...radioProps}
-        name={radioProps?.name ?? "radio"}
-        value={selected ? (radioProps?.options ?? [])[0]?.value ?? "" : "_"}
-      />
+      <css.RadioButtonContainer isDesktop={isDesktop}>
+        <RadioButton
+          {...radioProps}
+          name={radioProps?.name ?? "radio"}
+          value={selected ? (radioProps?.options ?? [])[0]?.value ?? "" : "_"}
+        />
+      </css.RadioButtonContainer>
 
-      <Flex
-        style={{ gap: "0.5px" }}
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="flex-end"
-      >
+      <css.Container isDesktop={isDesktop}>
         {!pricing?.Wrapper ? (
-          <Flex alignItems="center" style={{ gap: "5px" }}>
+          <Flex
+            alignItems="center"
+            justifyContent={isDesktop ? "end" : "start"}
+            style={{ gap: "5px" }}
+          >
             <Typography color="neutralLowDark" size="XS" lineHeight="XL">
               {new Intl.NumberFormat("pt-BR", {
                 style: "currency",
@@ -57,7 +60,11 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
         )}
 
         {!pricing?.Detail ? (
-          <Flex alignItems="center" style={{ gap: "5px" }}>
+          <Flex
+            alignItems="center"
+            justifyContent={isDesktop ? "end" : "start"}
+            style={{ gap: "5px" }}
+          >
             <Typography
               color="neutralLowMedium"
               size="XXS"
@@ -78,8 +85,12 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
           <pricing.Detail />
         )}
 
-        {hasDiscountFlag && <css.DiscountFlag>{discountText}</css.DiscountFlag>}
-      </Flex>
+        {hasDiscountFlag && (
+          <css.DiscountFlag isDesktop={isDesktop}>
+            {discountText}
+          </css.DiscountFlag>
+        )}
+      </css.Container>
     </css.Wrapper>
   );
 };

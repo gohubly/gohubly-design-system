@@ -19,7 +19,8 @@ export const theme = {
     MD: '133.33%',
     LG: '140%',
     XL: '150%',
-    XXL: '200%',
+    XXL: '170%',
+    XXXL: '200%',
   },
   borderRadius: {
     None: '0px', // default
