@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex } from "rebass";
-import { hexToRgb } from "../../helpers";
 import { RadioButton } from "../RadioButton";
 import { Typography } from "../Typography";
 import { iPaymentCardFrequency } from "./payment-frequency-card.interface";
@@ -13,7 +12,7 @@ export const PaymentFrequencyCard: React.FC<iPaymentCardFrequency> = ({
   hasDiscountFlag,
   discountText,
   isDesktop = true,
-  minWidth = isDesktop ? "640px" : "328px",
+  minWidth = isDesktop ? "544px" : "328px",
 }) => {
   return (
     <css.Wrapper
