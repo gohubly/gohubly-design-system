@@ -1,17 +1,13 @@
-import React from 'react'
-import { iChip } from '.'
-import { Typography } from '../Typography'
-import { Wrapper } from './chip.style'
+import React from "react";
+import { IChip } from ".";
+import { Label, Wrapper } from "./chip.style";
 
-export const Chip: React.FC<iChip> = ({
-  selected,
-  children
-}) => {
+export const Chip: React.FC<IChip> = ({ selected, children, size }) => {
   return (
-    <Wrapper selected={selected}>
-      <Typography color={selected ? 'primary' : 'neutralLow'} fontWeight={500} size='XXS' lineHeight='XXL'>
-        { children }
-      </Typography>
+    <Wrapper selected={selected} size={size}>
+      <Label selected={selected} size={size}>
+        {children}
+      </Label>
     </Wrapper>
-  )
-}
+  );
+};
