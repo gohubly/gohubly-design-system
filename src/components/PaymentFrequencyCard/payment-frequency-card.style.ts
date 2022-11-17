@@ -7,6 +7,7 @@ export const Wrapper = styled.div<
   Pick<iPaymentCardFrequency, "selected" | "isDesktop">
 >`
   ${defaultCss};
+  width: 100%;
 
   position: relative;
   box-sizing: border-box;
