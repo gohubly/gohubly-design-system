@@ -9,7 +9,7 @@ export const Chip: React.FC<iChip> = ({
 }) => {
   return (
     <Wrapper selected={selected}>
-      <Typography color={selected ? 'primary' : 'neutralLow'} fontWeight={500} size='XXS'>
+      <Typography color={selected ? 'primary' : 'neutralLow'} fontWeight={500} size='XXS' lineHeight='XXL'>
         { children }
       </Typography>
     </Wrapper>

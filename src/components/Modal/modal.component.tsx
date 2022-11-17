@@ -1,10 +1,10 @@
-import React from 'react'
-import { Box, Flex } from 'rebass';
-import { theme } from '../../theme';
-import { Icon } from '../Icon'
-import { Typography } from '../Typography';
-import { IModal } from './modal.interface';
-import { Container, Header, Wrapper } from './modal.style';
+import React from "react";
+import { Box, Flex } from "rebass";
+import { theme } from "../../theme";
+import { Icon } from "../Icon";
+import { Typography } from "../Typography";
+import { IModal } from "./modal.interface";
+import { Container, Header, Wrapper } from "./modal.style";
 
 export const Modal: React.FC<IModal> = ({
   title,
@@ -16,6 +16,7 @@ export const Modal: React.FC<IModal> = ({
   children,
   backdropPosition,
   scrollable,
+  isDesktop = true,
 }) => {
   return (
     <Container
@@ -25,22 +26,41 @@ export const Modal: React.FC<IModal> = ({
     >
       <Wrapper
         minHeight={minHeight}
-        width={width || 'auto'}
+        width={width || "auto"}
         className="modal-wrapper"
         scrollable={scrollable}
+        isDesktop={isDesktop}
       >
-        <Header>
-          <Typography color="primaryMedium" size="SM" lineHeight="MD" fontWeight={600}>
-            {title || ''}
+        <Header isDesktop={isDesktop}>
+          <Typography
+            color="primaryMedium"
+            size="SM"
+            lineHeight="MD"
+            fontWeight={600}
+          >
+            {title || ""}
           </Typography>
 
           {showCloseIcon && (
-            <Box paddingY="2px" paddingX="4px" style={{ cursor: 'pointer', border: `1px solid ${theme.colors.neutralHighMedium}`, borderRadius: '4px' }}>
+            <Box
+              paddingY="2px"
+              paddingX="4px"
+              style={{
+                cursor: "pointer",
+                border: `1px solid ${theme.colors.neutralHighMedium}`,
+                borderRadius: "4px",
+              }}
+            >
               <Icon iconId="close" size="XXXS" onClick={toggleModal} />
             </Box>
           )}
         </Header>
-        <Box paddingX="32px" mt="24px">{children}</Box>
+        <Box
+          paddingX={isDesktop ? "32px" : "20px"}
+          mt={isDesktop ? "24px" : "20px"}
+        >
+          {children}
+        </Box>
       </Wrapper>
     </Container>
   );

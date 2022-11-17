@@ -10,5 +10,6 @@ export interface IModal {
     width?: string;
     left?: string;
   };
+  isDesktop?: boolean;
   children: JSX.Element | React.ReactChild | any;
 }

@@ -32,6 +32,7 @@ interface WrapperProps {
   left?: string;
   minHeight?: string;
   scrollable?: boolean;
+  isDesktop?: boolean;
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -41,7 +42,7 @@ export const Wrapper = styled.div<WrapperProps>`
   margin: auto;
   margin-left: ${({ left }): string => left ?? "auto"};
 
-  padding: 32px 0px 48px 0px;
+  padding: ${({ isDesktop }): string => isDesktop ? "32px 0px 48px 0px" : "20px 0px 24px 0px"}; 
   border-radius: 5px;
 
   ${({ minHeight }): any => css`
@@ -55,13 +56,13 @@ export const Wrapper = styled.div<WrapperProps>`
     scrollable ? "scroll" : "initial"};
 `;
 
-export const Header = styled.div`
+export const Header = styled.div<{isDesktop?: boolean}>`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0px 48px;
-  padding-bottom: 32px;
+  padding: ${({ isDesktop }): string => isDesktop ? "0px 48px" : "0px 20px"};
+  padding-bottom: ${({ isDesktop }): string => isDesktop ? "32px" : "20px"}; 
 
   border-bottom: 1px solid ${({ theme }): string => theme.colors.neutralHighLight}
 `;

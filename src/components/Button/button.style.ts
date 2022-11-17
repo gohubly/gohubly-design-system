@@ -109,9 +109,9 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 };
 
 const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
-  SM: "8px 12px",
-  MD: "10px 16px",
-  LG: "12px 24px",
+  SM: "6.5px 12px",
+  MD: "8.5px 16px",
+  LG: "10.5px 24px",
 };
 
 const RADIUS_BY_SIZE: Record<iButtonSizes, string> = {
@@ -166,13 +166,14 @@ export const IconStyled = styled(Icon)<
 export const Button = styled.button<iButton>`
   ${defaultCss};
 
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  box-sizing: border-box;
+
   font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size || "MD"]};
   line-height: ${({ size }) => LINE_HEIGHT_BY_SIZE[size || "MD"]};
-
   font-weight: 600;
 
   height: fit-content;
