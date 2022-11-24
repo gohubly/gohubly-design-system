@@ -35,7 +35,7 @@ export const Label = styled.label<ILabelCheckBox>`
     background-color: ${({ onColor }) =>
       onColor ? theme.colors.white : theme.colors.primaryMedium};
     border: 1px solid
-      ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.primary)};
+      ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.primaryMedium)};
   }
 
   &:hover {
@@ -49,7 +49,7 @@ export const Label = styled.label<ILabelCheckBox>`
 
   &.disabled {
     color: ${({ onColor }) =>
-      onColor ? theme.colors.primaryLight : 'rgba(0, 0, 0, 0.6)'};
+      onColor ? theme.colors.primaryLight : "rgba(0, 0, 0, 0.6)"};
 
     path {
       stroke: ${({ onColor }) =>
@@ -93,8 +93,15 @@ export const Box = styled.input.attrs({
 `;
 
 export const Mark = styled.span<IMarkCheckBox>`
+  div > svg {
+    position: absolute;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+  }
+
   div > svg > path {
-   stroke-width: 3;
+    stroke-width: 3;
   }
 
   position: absolute;

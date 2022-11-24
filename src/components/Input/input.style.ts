@@ -108,6 +108,15 @@ const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
   LG: "36px",
 };
 
+const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
+  XXXS: "10px",
+  XXS: "10px",
+  XS: "11px",
+  SM: "11px",
+  MD: "12px",
+  LG: "13px",
+};
+
 export const LabelText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   letter-spacing: -0.005em;
@@ -122,7 +131,7 @@ export const LabelText = styled.span<iStyledCommonProps>`
 
 export const HelperText = styled.span<iStyledCommonProps>`
   ${defaultCss};
-  font-size: 12px;
+  font-size: ${({ Size }) => FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE[Size || "MD"]};
   font-weight: 400;
 
   color: ${({ OnColor, onClick }) =>
