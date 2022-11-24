@@ -79,8 +79,8 @@ export const ToggleStyled = styled.div<CommonProps>`
 
   > div {
     position: relative;
-    top: 52%;
-    left: 71%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 
     opacity: ${({ active }): number => (active ? 1 : 0)};

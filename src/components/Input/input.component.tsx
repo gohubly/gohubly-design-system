@@ -235,6 +235,7 @@ export const Input: React.FC<iInput> = ({
           onClick={props.helperTextOnClick}
           data-has-error={props?.error}
           OnColor={props.OnColor}
+          Size={propsSize}
         >
           {props.helperText}
         </HelperText>
