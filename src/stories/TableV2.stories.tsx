@@ -18,12 +18,12 @@ const tableCommonArgs = {
       key: 'name',
       title: 'Nome',
       width: 190,
-      rowContent: (): JSX.Element => (
+      rowContent: (data: any): JSX.Element => (
         <Flex alignItems="center" style={{ gap: '12px' }}>
           <Avatar size="XS" name={'nt'} />
           <div style={{ marginTop: '2px'}}>
             <Typography size="XXS" lineHeight="LG" color="neutralLowDark" textAlign='center' fontWeight={500}>
-            {'Nome Teste'}
+            {data}
           </Typography>
           </div>
           
@@ -93,4 +93,17 @@ export const Striped = Template.bind({});
 Striped.args = {
   ...tableCommonArgs,
   striped: true,
+};
+
+export const WithComplexKeys = Template.bind({});
+WithComplexKeys.args = {
+  ...tableCommonArgs,
+  data: tableCommonArgs.data.map(({ name, ...rest }) => ({
+    ...rest,
+    name: { first: name }
+  })),
+  columns: tableCommonArgs.columns.map(c => ({
+    ...c,
+    key: c.key === 'name' ? 'name.first' : c.key
+  }))
 };

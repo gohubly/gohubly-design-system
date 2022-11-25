@@ -1,5 +1,4 @@
 import React from "react";
-import { Avatar } from "../../Avatar";
 import { Typography } from "../../Typography";
 import { iTable } from "./table.interface";
 import {
@@ -19,6 +18,22 @@ export const TableV2 = ({
   striped,
   fluid,
 }: iTable) => {
+  const getNestedDataValueByKey = (data: Record<string, any>, key: string) => {
+    if (!key.includes('.')) return data[key]
+
+    const keys = key.split('.')
+
+    const result = keys.reduce((prev, curr) => {
+      if (prev.hasOwnProperty(curr)) {
+        return prev[curr]
+      }
+
+      return null
+    }, data)
+
+    return result
+  }
+
   return (
     <TableContainer responsive={responsive} fluid={fluid}>
       <TableStyled fluid={fluid}>
@@ -42,8 +57,8 @@ export const TableV2 = ({
                 key={`table-${datas.length}-${dataIndex}`}
               >
                 {columns.map((column, columnIndex) => {
-                  const dataValueOfCell: any =
-                    data[column.key as keyof typeof data];
+                getNestedDataValueByKey(data, column.key)
+                  const dataValueOfCell = getNestedDataValueByKey(data, column.key)
                   const cellRenderValue = column.rowContent
                     ? column.rowContent(dataValueOfCell, data)
                     : dataValueOfCell;
