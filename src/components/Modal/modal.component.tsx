@@ -43,8 +43,8 @@ export const Modal: React.FC<IModal> = ({
 
           {showCloseIcon && (
             <Box
-              paddingY="2px"
-              paddingX="4px"
+              padding="5px"
+              alignContent='center'
               style={{
                 cursor: "pointer",
                 border: `1px solid ${theme.colors.neutralHighMedium}`,
