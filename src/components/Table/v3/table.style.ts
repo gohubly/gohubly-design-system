@@ -27,14 +27,11 @@ export const TableHeaderTd = styled.td<iTableTd>`
     font-size: 16px;
     line-height: 24px;
     margin: 0 !important;
-    text-align: center;
   }
 
-  &:first-child {
-    padding: 12px 0;
-
+  &:nth-last-child(-n + 3) {
     p {
-      text-align: start;
+      text-align: center;
     }
   }
 
@@ -57,23 +54,11 @@ export const TableBodyTd = styled.td<iTableTd>`
     margin: 0 !important;
   }
 
-  &:first-child {
-    p {
-      font-size: 14px;
-      line-height: 20px;
-      margin: 0 !important;
-      justify-content: start;
-    }
-
-    div {
-      justify-content: start;
-    }
-  }
-
+  &:nth-last-child(-n + 3) {
     div {
       justify-content: center;
     }
-
+  }
 `;
 
 export const FlexBodyTd = styled.div`
