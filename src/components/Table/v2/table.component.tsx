@@ -24,7 +24,7 @@ export const TableV2 = ({
     const keys = key.split('.')
 
     const result = keys.reduce((prev, curr) => {
-      if (prev.hasOwnProperty(curr)) {
+      if (prev?.hasOwnProperty(curr)) {
         return prev[curr]
       }
 
