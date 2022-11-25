@@ -27,16 +27,15 @@ export const TableHeaderTd = styled.td<iTableTd>`
     font-size: 16px;
     line-height: 24px;
     margin: 0 !important;
-  }
-
-  &:nth-last-child(-n + 4) {
-    p {
-      text-align: center;
-    }
+    text-align: center;
   }
 
   &:first-child {
     padding: 12px 0;
+
+    p {
+      text-align: start;
+    }
   }
 
 `;
@@ -60,17 +59,21 @@ export const TableBodyTd = styled.td<iTableTd>`
 
   &:first-child {
     p {
-      font-size: 12px;
-      line-height: 16px;
+      font-size: 14px;
+      line-height: 20px;
       margin: 0 !important;
+      justify-content: start;
+    }
+
+    div {
+      justify-content: start;
     }
   }
 
-  &:nth-last-child(-n + 4) {
     div {
       justify-content: center;
     }
-  }
+
 `;
 
 export const FlexBodyTd = styled.div`
