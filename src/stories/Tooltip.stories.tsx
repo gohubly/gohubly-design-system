@@ -20,8 +20,9 @@ Default.args = {
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   children: <Icon iconId="helpCircle" size="XS" />,
-  text: 'Receita líquida: valor somado considerando pedidos com cupom ou descontos aplicados.',
+  text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae culpa sint obcaecati. Illum dolore et quis natus id saepe expedita! Doloremque adipisci eos culpa expedita nam ex similique, officiis quas!',
   pointerOrientation: 'up',
   pointerPosition: 'left',
-  position: 'down'
+  position: 'down',
+  width: '200px'
 };

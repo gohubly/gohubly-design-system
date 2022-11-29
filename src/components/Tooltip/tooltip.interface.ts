@@ -10,6 +10,7 @@ export interface iTooltip {
   pointerPosition?: iTooltipPointerPosition
   pointerOrientation: iTooltipPointerOrientation
   shadow?: boolean
+  width?: string;
 }
 
 export type iTooltipWithoutChildren = Omit<iTooltip, 'children'>
