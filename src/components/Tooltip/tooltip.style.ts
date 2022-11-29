@@ -125,8 +125,8 @@ export const ContainerInfo = styled.div`
 
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
-  width: max-content;
-  width: ${({ width }) => (width ?? "196px")};
+  
+  width: ${({ width }) => (width ?? "max-content")};
 
   box-sizing: border-box;
 
