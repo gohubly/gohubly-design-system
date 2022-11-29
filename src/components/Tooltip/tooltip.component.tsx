@@ -11,6 +11,7 @@ export const Tooltip: React.FC<iTooltip> = ({
   position = 'down',
   text,
   shadow,
+  width
 }) => {
   const props = {
     pointerOrientation,
@@ -19,6 +20,7 @@ export const Tooltip: React.FC<iTooltip> = ({
     size,
     shadow,
     text,
+    width
   };
   return (
     <Container>

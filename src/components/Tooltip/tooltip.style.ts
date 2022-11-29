@@ -126,7 +126,9 @@ export const ContainerInfo = styled.div`
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
   width: max-content;
-  max-width: 196px;
+  width: ${({ width }) => (width ?? "196px")};
+
+  box-sizing: border-box;
 
   ${({ position, size }) =>
     WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation][size as iTooltipSizes]}
@@ -138,13 +140,12 @@ export const Wrapper = styled.div<iTooltip>`
   user-select: none;
 
   border-radius: 8px;
-  box-shadow: ${({ shadow }) => (shadow ? theme.shadow.Level1 : "")};
+  box-shadow: ${({ shadow }) => (shadow ? theme.shadow.Level2 : "")};
 
   span {
     font-weight: 500;
     font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size as iTooltipSizes]};
     line-height: ${({ size }) => LINE_HEIGHT_BY_SIZE[size as iTooltipSizes]};
-    max-width: 196px;
     display: flex;
     flex-direction: column;
     justify-content: center;
