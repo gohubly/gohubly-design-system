@@ -27,6 +27,7 @@ export interface iInput extends iInputHTML {
   helperTextOnClick?: () => void;
   error?: boolean;
   fontSize?: keyof typeof theme.fontSize;
+  fontWeight?: keyof typeof theme.fontWeight
 
   iconGray?: boolean;
 
