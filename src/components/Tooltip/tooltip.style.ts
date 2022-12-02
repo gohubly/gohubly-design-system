@@ -116,7 +116,7 @@ export const ContainerInfo = styled.div`
 
   &:hover + div {
      {
-      opacity: 1;
+      display: block;
       user-select: all;
       z-index: 2;
     }
@@ -126,7 +126,8 @@ export const ContainerInfo = styled.div`
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
   
-  width: ${({ width }) => (width ?? "max-content")};
+  max-width: ${({ width }) => (width ?? "max-content")};
+  width: max-content;
 
   box-sizing: border-box;
 
@@ -136,7 +137,7 @@ export const Wrapper = styled.div<iTooltip>`
   background: ${() => theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
 
-  opacity: 0;
+  display: none;
   user-select: none;
 
   border-radius: 8px;

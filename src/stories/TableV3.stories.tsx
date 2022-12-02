@@ -2,8 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { TableV3 as Table } from "../components/Table/v3";
-import { Avatar, Icon, Link, Typography } from "../components";
-import { Flex } from "rebass";
+import { Icon, Tooltip } from "../components";
 
 export default {
   title: "Components/Table/V3",
@@ -17,13 +16,25 @@ const tableCommonArgs = {
     {
       key: "feature",
       title: "",
+      width: "260px",
     },
     {
       key: "info",
       title: "",
       width: "10%",
       rowContent: (): JSX.Element => {
-        return <Icon iconId="information" size="XS" gray />;
+        return (
+          <Tooltip
+            text=" Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dolorem quo magni sunt vitae cumque aut alias dicta quae aperiam? Adipisci ratione odio quis dolores rerum quidem minus asperiores ipsam!"
+            size="LG"
+            pointerOrientation="up"
+            pointerPosition="left"
+            position="down"
+            width="300px"
+          >
+            <Icon iconId="helpCircle" size="XS" gray />
+          </Tooltip>
+        );
       },
     },
     {
