@@ -117,10 +117,18 @@ const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, s
   LG: "13px",
 };
 
+const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold' | 'InterBold'> = {
+  300: 'InterLight',
+  400: 'InterRegular',
+  500: 'InterMedium',
+  600: 'InterSemiBold',
+  900: 'InterBold',
+}
+
 export const LabelText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   letter-spacing: -0.005em;
-  font-weight: 400;
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
   
   font-size: ${({ fontSizeLabel, theme }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
@@ -132,7 +140,7 @@ export const LabelText = styled.span<iStyledCommonProps>`
 export const HelperText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   font-size: ${({ Size }) => FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE[Size || "MD"]};
-  font-weight: 400;
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
 
   color: ${({ OnColor, onClick }) =>
     onClick
@@ -173,12 +181,14 @@ export const Input = styled.input<iStyledCommonProps>`
   line-height: ${({ fontSize, theme }) =>
     LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
 
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
+
   border: 1px solid ${() => theme.colors.neutralLowLight};
   box-sizing: border-box;
   border-radius: 5px;
   letter-spacing: -0.01em;
-  font-weight: 300;
-  color: rgba(0, 0, 0, 0.6);
+
+  color: ${() => theme.colors.neutralLowDark};
   cursor: ${({ opened }) => (opened ? "text" : "pointer")};
 
   padding-left: ${({ contentLeft, size }) =>
@@ -209,10 +219,11 @@ export const Input = styled.input<iStyledCommonProps>`
   }
 
   &::placeholder {
+    color: rgba(0, 0, 0, 0.6);
     font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
     line-height: ${({ fontSize, theme }) =>
       LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
-    font-weight: 400;
+    font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
   }
 
   &:disabled {

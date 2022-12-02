@@ -44,6 +44,7 @@ WithError.args = {
   label: "Label",
   placeholder: "placeholder...",
   error: true,
+  helperText: "Teste"
 };
 
 export const OnColor = Template.bind({});

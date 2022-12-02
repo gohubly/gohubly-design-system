@@ -52,6 +52,7 @@ export const SelectStyled = styled.div<{
 }>`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   width: ${({ width }) => width ?? "256px"};
   min-width: ${({ type }) => MIN_WIDTH_BY_SIZE[type as iSelectTypes]};
@@ -63,26 +64,38 @@ export const SelectStyled = styled.div<{
   background: ${({ theme }) => theme.colors.white};
   border: ${({ opened, theme }) =>
     opened
-      ? `2px solid ${theme.colors.primary}`
+      ? `1px solid ${theme.colors.primaryMedium}`
       : `1px solid ${theme.colors.neutralLowLight}`};
   box-sizing: border-box;
-  border-radius: ${({ theme }) => theme.borderRadius.SM};
+  border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ theme }) => theme.colors.primaryMedium};
     outline: none;
+
+    svg,
+    path {
+      stroke: ${({ theme }) => theme.colors.primaryMedium};
+    }
   }
 
-  svg, path {
-    stroke: ${({ theme }) => theme.colors.primary};
-    fill: transparent;
+  svg,
+    path {
+      stroke: ${({ theme }) => theme.colors.primaryMedium};
+      fill: transparent;
+    }
+
+  &:focus-visible {
+    border: 1px solid ${({ theme }) => theme.colors.primaryMedium};
+    outline: 4px solid #f1f2f9;
+    cursor: text;
   }
 
   ${({ error, theme }) => {
     if (error) {
       return css`
-      border:  2px solid ${theme.colors.helper}};
+      border:  1px solid ${theme.colors.helper}};
       `;
     }
   }};
@@ -115,7 +128,6 @@ export const SelectStyled = styled.div<{
 
 export const Placeholder = styled.span<{ fontSize?: string }>`
   flex: 1;
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -124,7 +136,7 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
   svg path {
-    stroke: ${({ theme }) => theme.colors.primary};
+    stroke: ${({ theme, opened }) => opened? theme.colors.primaryMedium : theme.colors.neutralLowMedium};
 
     ${({ disabled, theme }) => {
       if (disabled) {
@@ -155,7 +167,7 @@ export const Options = styled.div`
   background: ${({ theme }) => theme.colors.neutralHigh};
   border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
   box-sizing: border-box;
-  border-radius: ${({ theme }) => theme.borderRadius.SM};
+  border-radius: 5px;
   box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
 
   animation: ${fadeInDown} 120ms ease-out forwards;
@@ -184,23 +196,37 @@ export const Option = styled.div<{
   type: string;
   itemSelect: boolean;
 }>`
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  // font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   display: flex;
   align-items: center;
   padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
   word-break: break-word;
   box-sizing: border-box;
 
-  border-radius: ${({ theme }) => theme.borderRadius.SM};
+  margin-bottom: 1px;
+
+  border-radius: 4px;
+
+  span {
+    color: ${({ theme, itemSelect }) =>
+      itemSelect ? theme.colors.primaryMedium : "inherit"};
+    background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
+  }
 
   color: ${({ theme, itemSelect }) =>
-    itemSelect ? theme.colors.primary : "inherit"};
+    itemSelect ? theme.colors.primaryMedium : "inherit"};
   background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "inherit")};
 
   :hover,
   :focus-visible {
+    span {
+      background: #f1f2f9;
+      color: ${({ theme }) => theme.colors.primaryMedium};
+      outline: none;
+    }
+
     background: #f1f2f9;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primaryMedium};
     outline: none;
   }
 `;

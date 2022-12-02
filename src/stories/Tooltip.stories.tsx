@@ -15,6 +15,7 @@ Default.args = {
   children: 'Passe o mouse por cima!',
   text: 'Olá, sou um tooltip',
   pointerOrientation: 'right',
+  width: '300px'
 };
 
 export const WithIcon = Template.bind({});

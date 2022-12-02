@@ -1,6 +1,6 @@
 import React, { KeyboardEvent, useRef, useState } from "react";
 import { iSelect, iSelectOption } from ".";
-import { Icon } from "..";
+import { Icon, Typography } from "..";
 import { useClickOutside } from "../..";
 import {
   Wrapper,
@@ -22,8 +22,8 @@ export const Select: React.FC<iSelect> = ({
   onSelect,
   width,
   height,
-  fontSize,
-  type = 'text',
+  fontSize = "XS",
+  type = "text",
   iconRight,
   iconLeft,
   iconSizeLeft,
@@ -73,9 +73,15 @@ export const Select: React.FC<iSelect> = ({
       >
         {iconLeft && <Icon iconId={iconLeft} size={iconSizeLeft} />}
         <Placeholder fontSize={fontSize}>
-          {selectedItem?.label || selected?.value || placeholder}
+          <Typography size={fontSize} color="neutralLowDark" fontWeight={300}>
+            {selectedItem?.label || selected?.value || placeholder}
+          </Typography>
         </Placeholder>
-        <OpenIcon iconId={opened ? "chevronUp" : (iconRight ?? "chevronDown")} opened={!disabled && opened} disabled={disabled}/>
+        <OpenIcon
+          iconId={opened ? "chevronUp" : iconRight ?? "chevronDown"}
+          opened={!disabled && opened}
+          disabled={disabled}
+        />
       </SelectStyled>
 
       {!disabled && opened && items && (
@@ -90,9 +96,18 @@ export const Select: React.FC<iSelect> = ({
               onKeyPress={(event: KeyboardEvent) =>
                 handleKeyPressOnOption(event, option)
               }
-              itemSelect={selectedItem !== undefined && selectedItem.value === option?.value}
+              itemSelect={
+                selectedItem !== undefined &&
+                selectedItem.value === option?.value
+              }
             >
-              {option.label || option.value}
+              <Typography
+                size={fontSize}
+                color="neutralLowDark"
+                fontWeight={300}
+              >
+                {option.label || option.value}
+              </Typography>
             </Option>
           ))}
         </Options>
