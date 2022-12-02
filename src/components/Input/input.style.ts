@@ -128,7 +128,7 @@ const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight
 export const LabelText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   letter-spacing: -0.005em;
-  font-weight: 400;
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
   
   font-size: ${({ fontSizeLabel, theme }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
@@ -140,7 +140,7 @@ export const LabelText = styled.span<iStyledCommonProps>`
 export const HelperText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   font-size: ${({ Size }) => FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE[Size || "MD"]};
-  font-weight: 400;
+  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
 
   color: ${({ OnColor, onClick }) =>
     onClick
