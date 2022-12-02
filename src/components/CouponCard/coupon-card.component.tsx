@@ -27,6 +27,8 @@ export const CouponCard: React.FC<iCouponCard> = ({
       minWidth="640px"
       flexDirection="column"
       backgroundColor="white"
+      mt='24px'
+      paddingX='32px'
     >
       <Flex style={{ gap: '8px' }} flexDirection="column">
         <Typography size='XS' color='neutralLowDark'>

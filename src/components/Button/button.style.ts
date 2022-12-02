@@ -299,7 +299,7 @@ export const Button = styled.button<iButton>`
         }
       )};
     color: ${({ OnColor }) =>
-      OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
+      OnColor ? theme.colors.primaryLight : 'rgba(0,0,0,0.5)'};
   }
 `;
 
