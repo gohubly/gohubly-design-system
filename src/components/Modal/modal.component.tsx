@@ -56,8 +56,8 @@ export const Modal: React.FC<IModal> = ({
           )}
         </Header>
         <Box
-          paddingX={isDesktop ? "32px" : "20px"}
-          mt={isDesktop ? "24px" : "20px"}
+          // paddingX={isDesktop ? "32px" : "20px"}
+          // mt={isDesktop ? "24px" : "20px"}
         >
           {children}
         </Box>
