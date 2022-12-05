@@ -29,20 +29,20 @@ const WRAPPER_POSITION_BY_POSITION: Record<
   Record<iTooltipSizes, string>
 > = {
   up: {
-    SM: "bottom: calc(100% + 10px); left: -9px;",
-    LG: "bottom: calc(100% + 12px); left: -9px;"
+    SM: "bottom: 100%; left: 0px;",
+    LG: "bottom: 100%; left: 0px;"
   },
   down: {
-    SM: "top: calc(100% + 10px); left: -9px;",
-    LG: "top: calc(100% + 12px); left: -9px;"
+    SM: "top: 100%; left: 0px;",
+    LG: "top: 100%; left: 0px;"
   },
   left: {
-    SM: "left: calc(100% + 12px); top: -5px;",
-    LG: "left: calc(100% + 16px); top: -8px;"
+    SM: "left: 100%; top: 0px;",
+    LG: "left: 100%; top: 0px;"
   },
   right: {
-    SM: "right: calc(100% + 12px); top: -5px;",
-    LG: "right: calc(100% + 16px); top: -8px;"
+    SM: "right: 100%; top: 0px;",
+    LG: "right: 100%; top: 0px;"
   },
 };
 
@@ -56,7 +56,7 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_SM: Record<
   Record<iTooltipPointerPosition, string>
 > = {
   up: {
-    left: `top: -7px; left: 4px; transform: rotate(45deg)`,
+    left: `top: -7px; left: 5px; transform: rotate(45deg)`,
     center: `top: -7px; left: 50%; transform: translateX(-50%) rotate(45deg)`,
     right: `top: -7px; right: 8px; transform: rotate(45deg)`,
   },
@@ -106,6 +106,15 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_LG: Record<
 export const Container = styled.div`
   ${defaultCss};
   position: relative;
+  padding: 10px;
+
+  &:hover > div + div {
+    {
+     display: block;
+     user-select: all;
+     z-index: 2;
+   }
+ }
 `;
 
 export const ContainerInfo = styled.div`
