@@ -23,6 +23,7 @@ export const Modal: React.FC<IModal> = ({
       show={show}
       width={backdropPosition?.width}
       left={backdropPosition?.left}
+      onClick={toggleModal}
     >
       <Wrapper
         minHeight={minHeight}
