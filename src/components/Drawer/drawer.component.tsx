@@ -9,7 +9,6 @@ export const Drawer: React.FC<iDrawerProps> = ({
   ...props
 }) => (
   <css.Overlay show={show} zIndex={zIndex}>
-    saodsados
     <css.Content {...props} zIndex={zIndex}>
       { children }
     </css.Content>
