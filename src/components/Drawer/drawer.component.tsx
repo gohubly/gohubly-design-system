@@ -1,5 +1,4 @@
-import { useEffect } from '@storybook/addons'
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as css from './drawer.styles'
 import { iDrawerProps } from './drawer.types'
 
