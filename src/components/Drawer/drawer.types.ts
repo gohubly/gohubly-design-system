@@ -4,4 +4,6 @@ export interface iDrawerProps {
   zIndex: number
   width?: string
   show?: boolean
+  overlayRef?: React.Ref<HTMLDivElement>,
+  drawerRef?: React.Ref<HTMLDivElement>,
 }
