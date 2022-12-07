@@ -7,7 +7,7 @@ export const TableContainer = styled.div<{
   fluid?: boolean;
 }>`
   ${defaultCss};
-  overflow-x: ${({ responsive }): string => (responsive ? "scroll" : "hidden")};
+  overflow-x: ${({ responsive }): string => (responsive ? "auto" : "hidden")};
   // overflow-y: hidden;
   width: ${({ fluid }): string => (fluid ? "100%" : "initial")};
 `;
