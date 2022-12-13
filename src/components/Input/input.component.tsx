@@ -9,6 +9,8 @@ import {
   LeftIcon,
   RelativeContainer,
   RightIcon,
+  PrefixText,
+  SuffixText,
   DropdownWrapper,
   DropdownItem,
   PlaceholderStyled,
@@ -37,7 +39,7 @@ export const Input: React.FC<iInput> = ({
         setIsPlaceholderVisible(true);
       }
     }
-  }, [inputValue]);
+  }, [hasPlaceholderStyled, inputValue]);
 
   useEffect(() => {
     setInputValue(props.value ?? "");
@@ -95,7 +97,7 @@ export const Input: React.FC<iInput> = ({
     }
 
     return props.dropdown;
-  }, [inputValue, props.dropdown]);
+  }, [inputValue, props.dropdown, props.hasAllItems]);
 
   const isDropdownItemActive = (
     dropdownValue: string,
@@ -151,6 +153,11 @@ export const Input: React.FC<iInput> = ({
           />
         )}
 
+        {/* Prefixo */}
+        {props.prefix && (
+          <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>
+        )}
+
         {hasPlaceholderStyled && inputValue === "" && (
           <PlaceholderStyled
             isSelected={isSelected}
@@ -177,8 +184,8 @@ export const Input: React.FC<iInput> = ({
           onChange={onInputChange}
           onFocus={onFocusInput}
           autoComplete={props.autoComplete || (props.dropdown && "off")}
-          contentLeft={!!props.iconLeft}
-          contentRight={!!props.iconRight}
+          contentLeft={!!props.iconLeft || !!props.prefix}
+          contentRight={!!props.iconRight || !!props.suffix}
           ref={inputRef || dropdownRef}
         />
 
@@ -200,6 +207,13 @@ export const Input: React.FC<iInput> = ({
             iconRightHeight={props.iconRightHeight}
             iconRightPadding={props.iconRightPadding}
           />
+        )}
+
+        {/* Sufixo */}
+        {props.suffix && (
+          <SuffixText data-has-error={!!props?.error} className="sufixo">
+            {props.suffix}
+          </SuffixText>
         )}
 
         {!!props.dropdown?.length && dropdownOpened && (

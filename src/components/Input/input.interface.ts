@@ -45,6 +45,9 @@ export interface iInput extends iInputHTML {
   iconRightPadding?: iIconPaddings;
   iconRightOnClick?: () => void;
 
+  prefix?: string
+  suffix?: string
+
   hasAllItems?: boolean;
 
   onClickDropdownItem?: (itemValue: string, itemLabel?: string) => void;
