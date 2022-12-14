@@ -1,4 +1,5 @@
 import { InputHTMLAttributes } from "react";
+import { CSSProperties } from "styled-components";
 import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
 
@@ -12,6 +13,8 @@ export interface iInput extends iInputHTML {
   fluid?: boolean;
   size?: iInputSizes;
   disabled?: boolean;
+
+  textAlign?: CSSProperties['textAlign']
 
   label?: string;
   fontSizeLabel?: keyof typeof theme.fontSize;

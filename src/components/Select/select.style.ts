@@ -231,8 +231,9 @@ export const Option = styled.div<{
   }
 `;
 
-export const HelperText = styled.span`
+export const HelperText = styled.div<{ hasError?: boolean }>`
+  margin-top: 8px;
   font-size: ${({ theme }) => theme.fontSize.XXXS};
   line-height: 16px;
-  color: ${({ theme }) => theme.colors.helper};
+  color: ${({ theme, hasError }) => hasError ? theme.colors.helper : theme.colors.neutralLow};
 `;

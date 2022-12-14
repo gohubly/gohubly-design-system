@@ -17,6 +17,7 @@ Default.args = {
   label: "Label",
   placeholder: "placeholder...",
   helperText: "Clique em mim",
+  textAlign: 'initial',
   helperTextOnClick() {
     console.log("Clicou")
   },
@@ -84,21 +85,29 @@ WithIconRight.args = {
   iconRight: "instagram",
 };
 
-// export const WithPrefix = Template.bind({});
-// WithPrefix.args = {
-//   name: "input-name",
-//   label: "Label",
-//   placeholder: "placeholder...",
-//   prefix: "R$",
-// };
+export const WithPrefix = Template.bind({});
 
-// export const WithSuffix = Template.bind({});
-// WithSuffix.args = {
-//   name: "input-name",
-//   label: "Label",
-//   placeholder: "placeholder...",
-//   suffix: "kg",
-// };
+WithPrefix.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  prefix: "R$",
+  iconLeftOnClick() {
+    console.log("Clicou")
+  },
+};
+
+export const WithSuffix = Template.bind({});
+
+WithSuffix.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  suffix: "kg",
+  iconRightOnClick() {
+    console.log("Clicou")
+  },
+};
 
 export const WithDropdown = Template.bind({});
 WithDropdown.args = {

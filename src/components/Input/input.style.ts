@@ -181,6 +181,7 @@ export const Input = styled.input<iStyledCommonProps>`
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   line-height: ${({ fontSize, theme }) =>
     LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+  text-align: ${({ textAlign }) => textAlign};
 
   font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
 

@@ -113,7 +113,7 @@ export const Select: React.FC<iSelect> = ({
         </Options>
       )}
 
-      {helperText && <HelperText>{helperText}</HelperText>}
+      {helperText && <HelperText hasError={error}>{helperText}</HelperText>}
     </Wrapper>
   );
 };

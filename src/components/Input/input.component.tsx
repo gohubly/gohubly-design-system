@@ -155,7 +155,9 @@ export const Input: React.FC<iInput> = ({
 
         {/* Prefixo */}
         {props.prefix && (
-          <PrefixText data-has-error={props?.error}>{props.prefix}</PrefixText>
+          <PrefixText data-has-error={props?.error} onClick={props.iconLeftOnClick} style={{ cursor: props.iconLeftOnClick ? 'pointer' : 'initial' }}>
+            {props.prefix}
+          </PrefixText>
         )}
 
         {hasPlaceholderStyled && inputValue === "" && (
@@ -211,7 +213,7 @@ export const Input: React.FC<iInput> = ({
 
         {/* Sufixo */}
         {props.suffix && (
-          <SuffixText data-has-error={!!props?.error} className="sufixo">
+          <SuffixText data-has-error={!!props?.error} className="sufixo" onClick={props.iconRightOnClick} style={{ cursor: props.iconRightOnClick ? 'pointer' : 'initial' }}>
             {props.suffix}
           </SuffixText>
         )}
