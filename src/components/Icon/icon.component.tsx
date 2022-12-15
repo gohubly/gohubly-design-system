@@ -83,6 +83,7 @@ import Discover from './icons/discover'
 import Diners from './icons/diners'
 import Amex from './icons/amex'
 import CardInfos from './icons/cardInfos'
+import Commission from './icons/commission'
 
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
@@ -174,7 +175,8 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   discover: Discover,
   diners: Diners,
   amex: Amex,
-  cardInfos: CardInfos
+  cardInfos: CardInfos,
+  commission: Commission
 }
 
 export const Icon: React.FC<iIcon> = ({
