@@ -285,7 +285,8 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   transform: translateY(-50%);
 
   height: calc(100% - 2px);
-  width: 48px;
+  min-width: 48px;
+  padding: 0 10px;
 
   border-radius: 5px;
   font-size: 16px;

@@ -32,19 +32,6 @@ export const Input: React.FC<iInput> = ({
   );
   const hasPlaceholderStyled = props.placeholderStyled ? true : false;
 
-  useEffect(() => {
-    if (!inputValue) {
-      setIsSelected(true);
-      if (hasPlaceholderStyled) {
-        setIsPlaceholderVisible(true);
-      }
-    }
-  }, [hasPlaceholderStyled, inputValue]);
-
-  useEffect(() => {
-    setInputValue(props.value ?? "");
-  }, [props.value]);
-
   useClickOutside(() => {
     if (dropdownOpened) setDropdownOpened(false);
   }, [dropdownRef, dropdownOpened]);
@@ -123,6 +110,36 @@ export const Input: React.FC<iInput> = ({
     setDropdownOpened(true);
     inputRef?.current?.focus();
   };
+
+  useEffect(() => {
+    if (!inputValue) {
+      setIsSelected(true);
+      if (hasPlaceholderStyled) {
+        setIsPlaceholderVisible(true);
+      }
+    }
+  }, [hasPlaceholderStyled, inputValue]);
+
+  useEffect(() => {
+    setInputValue(props.value ?? "");
+  }, [props.value]);
+
+  useEffect(() => {
+    if (inputRef?.current) {
+      const suffix = inputRef?.current?.nextSibling
+
+      if (suffix) {
+        const values = window.getComputedStyle(suffix as HTMLElement)
+
+        console.log(values.getPropertyValue('width'), values.getPropertyValue('padding'))
+
+        const width = values.getPropertyValue('width')
+        const padding = values.getPropertyValue('padding')?.replace('0px ', '')
+
+        inputRef.current.style.paddingRight = `calc(${width} + ${padding} + ${padding})`
+      }
+    }
+  }, [inputRef])
 
   return (
     <Label
