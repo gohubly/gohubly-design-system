@@ -9,7 +9,7 @@ export const Wrapper = styled.div<{ direction: iDirectionTypes }>`
   display: flex;
   flex-direction: ${({ direction }) =>
     direction === "vertical" ? "column" : "row"};
-  gap: ${({ direction }) => (direction === "vertical" ? "20px" : "24px")};
+  gap: ${({ direction }) => (direction === "vertical" ? "20px" : "0px")};
   position: relative;
 
   ${({ direction, theme }) =>
@@ -19,26 +19,26 @@ export const Wrapper = styled.div<{ direction: iDirectionTypes }>`
         content: "";
         height: 1px;
         width: 100%;
-        background-color: ${theme.colors.neutralHighMedium};
+        background-color: #E5E5E5;
         position: absolute;
         bottom: 0px;
       }
     `}
 `;
 
-export const TabItem = styled.div<{ selected: boolean }>`
+export const TabItem = styled.div<{ selected: boolean; isDesktop: boolean; direction: iDirectionTypes }>`
   color: ${({ theme, selected }) =>
-    selected ? theme.colors.primary : theme.colors.neutralLowMedium};
-  font-size: 16px;
+    selected ? theme.colors.primaryMedium : theme.colors.neutralLow};
+  font-size: ${({ isDesktop }) => (isDesktop ? "16px" : "14px")};
   font-weight: 500;
   line-height: 20px;
   letter-spacing: -0.005em;
-  padding-bottom: 16px;
+  padding: ${({ direction }) => (direction === "vertical" ? "0 0 16px 0" : "0 16px 16px 16px")};
   cursor: pointer;
   z-index: 1;
-  border-bottom: 2px solid
+  border-bottom: 1.5px solid
     ${({ theme, selected }) =>
-      selected ? theme.colors.primary : "transparent"};
+      selected ? theme.colors.primaryMedium : "transparent"};
 
   ${({ selected }) =>
     !selected &&

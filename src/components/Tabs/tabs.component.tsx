@@ -2,7 +2,7 @@ import React from 'react';
 import { iTabs } from '.';
 import { TabItem, Wrapper } from './tabs.style';
 
-export const Tabs: React.FC<iTabs> = ({ items, onSelect, selected, direction = 'horizontal' }) => {
+export const Tabs: React.FC<iTabs> = ({ items, onSelect, selected, direction = 'horizontal', isDesktop = true }) => {
   return (
     <Wrapper direction={direction}>
       {items.map((tabName, index) => {
@@ -15,6 +15,8 @@ export const Tabs: React.FC<iTabs> = ({ items, onSelect, selected, direction = '
             onClick={() => {
               onSelect(index);
             }}
+            isDesktop={isDesktop}
+            direction={direction}
           >
             {tabName}
           </TabItem>
