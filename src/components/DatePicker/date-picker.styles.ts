@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const PickerContainer = styled.div<{ show?: boolean }>`
   position: absolute;
-  top: 60px;
+  top: 85px;
   left: 50%;
   transform: translateX(-50%);
 

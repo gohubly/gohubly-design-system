@@ -1,6 +1,6 @@
 import moment from 'moment'
 import React, { useRef, useState } from 'react'
-import { Flex } from 'rebass'
+import { Box, Flex } from 'rebass'
 import { Input } from '../Input'
 import { PeriodPicker } from '../PeriodPicker'
 import { iDatePickerProps } from './date-picker.types'
@@ -23,28 +23,36 @@ export const DatePicker: React.FC<iDatePickerProps> = ({
   return (
     <css.Container>
       <Flex style={{ gap: '8px' }}>
-        <Input
-          iconLeft='calendar'
-          iconRight='chevronRight'
-          iconGray
-          placeholder='Selecionar'
-          value={from ? moment(from)?.format('DD/MM/YYYY') : ''}
-          onKeyDown={e => e.preventDefault()}
-          onClick={() => setShowPicker((show) => !show)}
-          style={{ cursor: 'pointer' }}
-          readOnly
+        <Box width="224px">
+          <Input
+            iconLeft='calendar'
+            iconRight='chevronRight'
+            iconGray
+            placeholder='Selecionar'
+            label="Inicia em"
+            value={from ? moment(from)?.format('DD/MM/YYYY') : ''}
+            onKeyDown={e => e.preventDefault()}
+            onClick={() => setShowPicker((show) => !show)}
+            style={{ cursor: 'pointer' }}
+            readOnly
+            fluid
           />
+        </Box>
 
-        <Input
-          iconLeft='calendar'
-          iconGray
-          placeholder='Selecionar'
-          disabled={!from && !to}
-          onKeyDown={e => e.preventDefault()}
-          value={to ? moment(to)?.format('DD/MM/YYYY') : ''}
-          style={{ cursor: 'pointer' }}
-          readOnly
-        />
+        <Box width="224px">
+          <Input
+            iconLeft='calendar'
+            iconGray
+            placeholder='Selecionar'
+            label="Termina em"
+            onKeyDown={e => e.preventDefault()}
+            value={to ? moment(to)?.format('DD/MM/YYYY') : ''}
+            style={{ cursor: 'pointer' }}
+            readOnly
+            fluid
+            disabled={!from && !to}
+          />
+        </Box>
       </Flex>
 
       <css.PickerContainer show={showPicker}>
