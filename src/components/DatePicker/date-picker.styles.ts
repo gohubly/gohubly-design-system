@@ -3,19 +3,28 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-
-  position: relative;
 `
 
 export const PickerContainer = styled.div<{ show?: boolean }>`
   position: absolute;
   top: 85px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
 
+  width: 100%;
   height: ${({ show }) => show ? '401px' : '0'};
+
   opacity: ${({ show }) => show ? '1' : '0'};
   visibility: ${({ show }) => show ? 'visible' : 'hidden'};
+  overflow: hidden;
+  
+  z-index: 99999;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
+
+  border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
+  border-radius: 8px;
+
+  user-select: ${({ show }): string => (show ? 'auto ' : 'none')};
+  pointer-events: ${({ show }): string => (show ? 'all ' : 'none')};
 
   transition: all .5s;
 `
