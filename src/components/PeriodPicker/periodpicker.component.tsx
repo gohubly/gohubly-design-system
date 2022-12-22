@@ -1,7 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import moment, { Moment } from 'moment';
-
-import { useClickOutside } from '../..';
 
 import { iPeriodPicker } from './periodpicker.interface';
 import {
@@ -19,13 +17,13 @@ import {
   HelperContainer,
   PeriodCallout,
 } from './periodpicker.style';
-import { iCalendar, iPeriod } from '.';
+import { iCalendar } from '.';
 import { Button, Icon } from '..';
 
 import 'moment/locale/pt-br';
 moment.locale('pt-br');
 
-export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) => {
+export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, containerRef, ...props }) => {
   const [centralDate, setCentralDate] = useState(moment());
   const [initialDate, setInitialDate] = useState<Moment | null>(null);
   const [finalDate, setFinalDate] = useState<Moment | null>(null);
@@ -110,6 +108,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
     setFinalDate(null);
     setSelectIsInitialDate(true);
     setCentralDate(moment())
+    if (onReset) onReset()
   };
 
   const handleClickSubmit = () => {
@@ -117,7 +116,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
   };
 
   return (
-    <Container>
+    <Container ref={containerRef}>
       <PreviousButtonContainer onClick={handleClickPreviousMonth}>
         <Icon iconId={'chevronLeft'} size="SM" />
       </PreviousButtonContainer>
@@ -128,7 +127,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, ...props }) =>
       <MonthsContainer>
         {exibitionMonths.map((month) => {
           return (
-            <Month>
+            <Month key={month.toDate().getTime()}>
               <MonthApresentation>{month.format('MMMM / YYYY')}</MonthApresentation>
 
               <MonthWeeks>
