@@ -108,22 +108,40 @@ const ICON_ON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   secondary: "primaryLight",
 };
 
+const FONT_SIZE_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "12px",
+  MD: "14px",
+  LG: "16px",
+  XL: "16px",
+};
+
+const LINE_HEIGHT_BY_SIZE: Record<iButtonSizes, string> = {
+  SM: "16px",
+  MD: "20px",
+  LG: "24px",
+  XL: "24px",
+};
+
 const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
-  SM: "8px 16px",
-  MD: "12px 24px",
-  LG: "16px 32px",
+  SM: "6.5px 12px",
+  MD: "8.5px 16px",
+  LG: "10.5px 24px",
+  XL: "14.5px 32px",
+
 };
 
 const RADIUS_BY_SIZE: Record<iButtonSizes, string> = {
   SM: "4px",
   MD: "5px",
   LG: "5px",
+  XL: "5px",
 };
 
 const MARGIN_RIGHT_BY_SIZE: Record<iButtonSizes, string> = {
   SM: "4px",
   MD: "4px",
   LG: "8px",
+  XL: "8px",
 };
 
 export const IconStyled = styled(Icon)<
@@ -158,6 +176,9 @@ export const Button = styled.button<iButton>`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  
+  font-size: ${({ size }) => size && FONT_SIZE_BY_SIZE[size]};
+  line-height: ${({ size }) => size && LINE_HEIGHT_BY_SIZE[size]};
 
   height: fit-content;
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
@@ -286,7 +307,7 @@ export const Button = styled.button<iButton>`
   }
 `;
 
-export const ContentContainer = styled.div<{ loading?: boolean }>`
+export const ContentContainer = styled.div<{ loading?: boolean}>`
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
   opacity: ${({ loading }) => (loading ? "0" : "1")};
 `;
