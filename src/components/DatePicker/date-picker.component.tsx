@@ -37,7 +37,6 @@ export const DatePicker: React.FC<iDatePickerProps> = ({
 
         <Input
           iconLeft='calendar'
-          iconRight='chevronRight'
           iconGray
           placeholder='Selecionar'
           disabled={!from && !to}
