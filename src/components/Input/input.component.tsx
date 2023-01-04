@@ -144,7 +144,7 @@ export const Input: React.FC<iInput> = ({
         const width = values.getPropertyValue('width')
         const padding = values.getPropertyValue('padding')?.replace('0px ', '')
 
-        inputRef.current.style.paddingLeft = `calc(${width} + ${padding} + ${padding} + 16px)`
+        inputRef.current.style.paddingLeft = `calc(${width} + ${padding} + ${padding})`
       }
     }
   }, [inputRef])

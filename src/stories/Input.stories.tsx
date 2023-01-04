@@ -91,7 +91,8 @@ WithPrefix.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
-  prefix: "R$",
+  prefix: "https://",
+  iconLeftWidth: '90px',
   iconLeftOnClick() {
     console.log("Clicou")
   },
