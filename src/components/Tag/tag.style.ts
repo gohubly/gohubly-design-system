@@ -52,7 +52,7 @@ export const Tag = styled.button<iTag>`
   ${defaultCss};
 
   font-size: 12px;
-  line-hieght: 16px;
+  line-height: 16px;
 
   font-family: ${fontFamilyBasedOnWeight['600']} !important;
 
