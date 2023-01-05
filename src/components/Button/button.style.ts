@@ -127,7 +127,6 @@ const PADDING_BY_SIZE: Record<iButtonSizes, string> = {
   MD: "8.5px 16px",
   LG: "10.5px 24px",
   XL: "14.5px 32px",
-
 };
 
 const RADIUS_BY_SIZE: Record<iButtonSizes, string> = {
@@ -145,9 +144,15 @@ const MARGIN_RIGHT_BY_SIZE: Record<iButtonSizes, string> = {
 };
 
 export const IconStyled = styled(Icon)<
-  iIcon & { hierarchy: iButtonHierarchy; OnColor?: boolean; loading?: boolean; sizeProps: iButtonSizes }
+  iIcon & {
+    hierarchy: iButtonHierarchy;
+    OnColor?: boolean;
+    loading?: boolean;
+    sizeProps: iButtonSizes;
+  }
 >`
-  margin-right: ${({ sizeProps }): string => MARGIN_RIGHT_BY_SIZE[sizeProps || "MD"]};
+  margin-right: ${({ sizeProps }): string =>
+    MARGIN_RIGHT_BY_SIZE[sizeProps || "MD"]};
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
   path {
     fill: transparent;
@@ -176,7 +181,7 @@ export const Button = styled.button<iButton>`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  
+
   font-size: ${({ size }) => size && FONT_SIZE_BY_SIZE[size]};
   line-height: ${({ size }) => size && LINE_HEIGHT_BY_SIZE[size]};
 
@@ -302,12 +307,21 @@ export const Button = styled.button<iButton>`
           asCSS: true,
         }
       )};
+
     color: ${({ OnColor }) =>
       OnColor ? theme.colors.primaryLight : 'rgba(0,0,0,0.5)'};
+
+
+    svg,
+    path {
+      fill: transparent;
+      stroke: ${({ OnColor }) =>
+      OnColor ? theme.colors.primaryLight : 'rgba(0,0,0,0.5)'};
+    }
   }
 `;
 
-export const ContentContainer = styled.div<{ loading?: boolean}>`
+export const ContentContainer = styled.div<{ loading?: boolean }>`
   visibility: ${({ loading }) => (loading ? "hidden" : "visible")};
   opacity: ${({ loading }) => (loading ? "0" : "1")};
 `;
