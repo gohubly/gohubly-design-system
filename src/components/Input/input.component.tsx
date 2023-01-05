@@ -126,19 +126,19 @@ export const Input: React.FC<iInput> = ({
 
   useEffect(() => {
     if (inputRef?.current) {
-      const suffix = inputRef?.current?.nextSibling
-      const prefix = inputRef?.current?.previousSibling
-
-      if (suffix) {
+      
+      if (props.suffix) {
+        const suffix = inputRef?.current?.nextSibling
         const values = window.getComputedStyle(suffix as HTMLElement)
-
+        
         const width = values.getPropertyValue('width')
         const padding = values.getPropertyValue('padding')?.replace('0px ', '')
-
+        
         inputRef.current.style.paddingRight = `calc(${width} + ${padding} + ${padding})`
       }
-
-      if (prefix) {
+      
+      if (props.prefix) {
+        const prefix = inputRef?.current?.previousSibling
         const values = window.getComputedStyle(prefix as HTMLElement)
 
         const width = values.getPropertyValue('width')
