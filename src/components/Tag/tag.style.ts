@@ -40,12 +40,25 @@ const HOVER_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> 
   ...HOVER_COLOR_BY_HIERARCHY,
 }
 
+const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold' | 'InterBold'> = {
+  300: 'InterLight',
+  400: 'InterRegular',
+  500: 'InterMedium',
+  600: 'InterSemiBold',
+  900: 'InterBold',
+}
+
 export const Tag = styled.button<iTag>`
   ${defaultCss};
 
+  font-size: 12px;
+  line-hieght: 16px;
+
+  font-family: ${fontFamilyBasedOnWeight['600']} !important;
+
   width: ${({ fluid }) => fluid ? '100%' : 'fit-content'};
   transition: background-color .3s linear;
-  padding: 4px 8px;
+  padding: 2px 8px;
 
   color: ${({ hierarchy }) => hierarchy && theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
   background-color: ${({ hierarchy }) => hierarchy && theme.colors[BACKGROUND_COLOR_BY_HIERARCHY[hierarchy]]};
