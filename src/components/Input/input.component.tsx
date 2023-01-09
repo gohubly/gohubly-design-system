@@ -126,34 +126,34 @@ export const Input: React.FC<iInput> = ({
 
   useEffect(() => {
     if (inputRef?.current) {
-      
       if (props.suffix) {
-        const suffix = inputRef?.current?.nextSibling
-        const values = window.getComputedStyle(suffix as HTMLElement)
-        
-        const width = values.getPropertyValue('width')
-        const padding = values.getPropertyValue('padding')?.replace('0px ', '')
-        
-        inputRef.current.style.paddingRight = `calc(${width} + ${padding} + ${padding})`
+        const suffix = inputRef?.current?.nextSibling;
+        const values = window.getComputedStyle(suffix as HTMLElement);
+
+        const width = values.getPropertyValue("width");
+        const padding = values.getPropertyValue("padding")?.replace("0px ", "");
+
+        inputRef.current.style.paddingRight = `calc(${width} + ${padding} + ${padding})`;
       }
-      
+
       if (props.prefix) {
-        const prefix = inputRef?.current?.previousSibling
-        const values = window.getComputedStyle(prefix as HTMLElement)
+        const prefix = inputRef?.current?.previousSibling;
+        const values = window.getComputedStyle(prefix as HTMLElement);
 
-        const width = values.getPropertyValue('width')
-        const padding = values.getPropertyValue('padding')?.replace('0px ', '')
+        const width = values.getPropertyValue("width");
+        const padding = values.getPropertyValue("padding")?.replace("0px ", "");
 
-        inputRef.current.style.paddingLeft = `calc(${width} + ${padding} + ${padding})`
+        inputRef.current.style.paddingLeft = `calc(${width} + ${padding} + ${padding})`;
       }
     }
-  }, [inputRef])
+  }, [inputRef]);
 
   return (
     <Label
       htmlFor={props?.name}
       data-has-error={props?.error}
       fluid={props.fluid}
+      size={propsSize}
     >
       {/* Label */}
       {props?.label && (
@@ -180,7 +180,13 @@ export const Input: React.FC<iInput> = ({
 
         {/* Prefixo */}
         {props.prefix && (
-          <PrefixText data-has-error={props?.error} onClick={props.iconLeftOnClick} style={{ cursor: props.iconLeftOnClick ? 'pointer' : 'initial' }}>
+          <PrefixText
+            data-has-error={props?.error}
+            onClick={props.iconLeftOnClick}
+            fontSize={propsFontSize}
+            size={propsSize}
+            style={{ cursor: props.iconLeftOnClick ? "pointer" : "initial" }}
+          >
             {props.prefix}
           </PrefixText>
         )}
@@ -238,7 +244,14 @@ export const Input: React.FC<iInput> = ({
 
         {/* Sufixo */}
         {props.suffix && (
-          <SuffixText data-has-error={!!props?.error} className="sufixo" onClick={props.iconRightOnClick} style={{ cursor: props.iconRightOnClick ? 'pointer' : 'initial' }}>
+          <SuffixText
+            data-has-error={!!props?.error}
+            className="sufixo"
+            onClick={props.iconRightOnClick}
+            fontSize={propsFontSize}
+            size={propsSize}
+            style={{ cursor: props.iconRightOnClick ? "pointer" : "initial" }}
+          >
             {props.suffix}
           </SuffixText>
         )}
