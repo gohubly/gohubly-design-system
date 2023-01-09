@@ -108,7 +108,10 @@ const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
   LG: "36px",
 };
 
-const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {
+const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<
+  keyof typeof theme.fontSize,
+  string
+> = {
   XXXS: "10px",
   XXS: "10px",
   XS: "11px",
@@ -117,19 +120,23 @@ const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, s
   LG: "13px",
 };
 
-const fontFamilyBasedOnWeight: Record<keyof typeof theme.fontWeight, 'InterLight' | 'InterRegular' | 'InterMedium' | 'InterSemiBold' | 'InterBold'> = {
-  300: 'InterLight',
-  400: 'InterRegular',
-  500: 'InterMedium',
-  600: 'InterSemiBold',
-  900: 'InterBold',
-}
+const fontFamilyBasedOnWeight: Record<
+  keyof typeof theme.fontWeight,
+  "InterLight" | "InterRegular" | "InterMedium" | "InterSemiBold" | "InterBold"
+> = {
+  300: "InterLight",
+  400: "InterRegular",
+  500: "InterMedium",
+  600: "InterSemiBold",
+  900: "InterBold",
+};
 
 export const LabelText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   letter-spacing: -0.005em;
-  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
-  
+  font-family: ${({ fontWeight }) =>
+    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
+
   font-size: ${({ fontSizeLabel, theme }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
 
@@ -140,7 +147,8 @@ export const LabelText = styled.span<iStyledCommonProps>`
 export const HelperText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   font-size: ${({ Size }) => FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE[Size || "MD"]};
-  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
+  font-family: ${({ fontWeight }) =>
+    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
 
   color: ${({ OnColor, onClick }) =>
     onClick
@@ -183,9 +191,10 @@ export const Input = styled.input<iStyledCommonProps>`
     LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   text-align: ${({ textAlign }) => textAlign};
 
-  font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
+  font-family: ${({ fontWeight }) =>
+    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
 
-  border: 1px solid ${() => theme.colors.neutralLowLight};
+  border: 1px solid #bbbbbb;
   box-sizing: border-box;
   border-radius: 5px;
   letter-spacing: -0.01em;
@@ -225,7 +234,8 @@ export const Input = styled.input<iStyledCommonProps>`
     font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
     line-height: ${({ fontSize, theme }) =>
       LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
-    font-family: ${({ fontWeight }) => fontFamilyBasedOnWeight[fontWeight || '400']} !important;
+    font-family: ${({ fontWeight }) =>
+      fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
   }
 
   &:disabled {
@@ -285,12 +295,14 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   transform: translateY(-50%);
 
   height: calc(100% - 2px);
-  min-width: 48px;
-  padding: 0 10px;
+  // min-width: 48px;
+  padding: 0 16px;
 
   border-radius: 5px;
   font-size: 16px;
   line-height: 24px;
+
+  font-family: ${fontFamilyBasedOnWeight["400"]} !important;
 
   letter-spacing: -0.005em;
 
@@ -300,6 +312,10 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   &[data-has-error="true"] {
     background: ${() => theme.colors.helperLight};
   }
+
+  z-index: 1;
+
+  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
 `;
 
 export const SuffixText = styled.div`
@@ -308,15 +324,6 @@ export const SuffixText = styled.div`
   right: 1px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
-  z-index: 1;
-
-  // TODO: rever essa parte de sufixo e prefixo para poder tê-los junto com os ícone
-
-  // left: calc(100% - 7px);
-  // border: 1px solid red;
-  // border-left: none;
-  // box-sizing: border-box;
-  // heigth: 100%;
 `;
 
 export const PrefixText = styled.div`
@@ -324,7 +331,6 @@ export const PrefixText = styled.div`
   left: 1px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
-  z-index: 1;
 `;
 
 export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
