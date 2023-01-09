@@ -120,6 +120,20 @@ const FONT_SIZE_HELPER_TEXT_BASED_ON_SIZE: Record<
   LG: "13px",
 };
 
+const PADDING_PREFIX_SUFIX_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  XXS: "0 12px",
+  XS: "0 12px",
+  SM: "0 12px",
+  MD: "0 16px",
+};
+
+const GAP_LABEL_BASED_ON_SIZE: Record<iInputSizes, string> = {
+  XXS: "8px",
+  XS: "8px",
+  SM: "8px",
+  MD: "12px",
+};
+
 const fontFamilyBasedOnWeight: Record<
   keyof typeof theme.fontWeight,
   "InterLight" | "InterRegular" | "InterMedium" | "InterSemiBold" | "InterBold"
@@ -187,7 +201,7 @@ export const Input = styled.input<iStyledCommonProps>`
   background: ${() => theme.colors.neutralHigh};
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
-  line-height: ${({ fontSize, theme }) =>
+  line-height: ${({ fontSize }) =>
     LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   text-align: ${({ textAlign }) => textAlign};
 
@@ -199,7 +213,7 @@ export const Input = styled.input<iStyledCommonProps>`
   border-radius: 5px;
   letter-spacing: -0.01em;
 
-  color: ${() => theme.colors.neutralLowDark};
+  color: rgba(0, 0, 0, 0.6);
   cursor: ${({ opened }) => (opened ? "text" : "pointer")};
 
   padding-left: ${({ contentLeft, size }) =>
@@ -268,7 +282,8 @@ export const Label = styled.label<iStyledCommonProps>`
 
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap:${({ size }) => GAP_LABEL_BASED_ON_SIZE[size || "MD"]};
+  
 
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
 `;
@@ -295,12 +310,14 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
   transform: translateY(-50%);
 
   height: calc(100% - 2px);
-  // min-width: 48px;
-  padding: 0 16px;
+ 
+  padding: ${({ size }) => PADDING_PREFIX_SUFIX_BASED_ON_SIZE[size || "MD"]};
 
   border-radius: 5px;
-  font-size: 16px;
-  line-height: 24px;
+
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  line-height: ${({ fontSize }) =>
+    LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
 
   font-family: ${fontFamilyBasedOnWeight["400"]} !important;
 

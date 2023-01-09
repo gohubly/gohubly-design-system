@@ -1,44 +1,39 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div<{ minWidth?: string }>`
+  width: 100%;
   min-width: ${({ minWidth }) => minWidth ?? "100%"};
   display: flex;
   align-items: center;
   flex-direction: column;
   border-bottom: 1px solid #e5e5e5;
-  width: 300px;
 `;
 
-export const ContainerList = styled.div`
+export const ContainerList = styled.div<{ notAvatar?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   align-items: center;
   padding: 8px 0;
-  gap: 8px;
+  gap: 4px;
+
+  ${({ notAvatar }) =>
+  notAvatar &&
+    css`
+      gap: 0px;
+    `}
 `;
 
 export const ContainerLeft = styled.div<{
   itemRight?: boolean;
   itemRigthAndAvatar?: boolean;
+  containerLeftMaxWidth?: string;
 }>`
   display: flex;
   align-items: center;
   gap: 8px;
-  max-width: 86%;
-
-  ${({ itemRight }) =>
-    itemRight &&
-    css`
-      max-width: 59%;
-    `}
-
-  ${({ itemRigthAndAvatar }) =>
-    itemRigthAndAvatar &&
-    css`
-      max-width: 56%;
-    `}
+  max-width: ${({ containerLeftMaxWidth }) => containerLeftMaxWidth ?? "86%"};
 `;
 
 export const ContainerTitle = styled.div`
@@ -58,7 +53,7 @@ export const ContainerTitle = styled.div`
 
 export const ContainerRight = styled.div<{ avatar?: boolean }>`
   display: flex;
-  gap: 8px;
+  gap: 4px;
   align-items: center;
 
   span {

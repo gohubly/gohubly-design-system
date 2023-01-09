@@ -18,16 +18,17 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
   buttonsProps = [],
   children,
   avatar,
+  containerLeftMaxWidth,
 }): JSX.Element => {
   return (
     <css.Container minWidth={minWidth}>
-      <css.ContainerList>
-        <css.ContainerLeft itemRight={!!itemRight} itemRigthAndAvatar={!!itemRight && avatar}>
+      <css.ContainerList notAvatar={!avatar}>
+        <css.ContainerLeft containerLeftMaxWidth={containerLeftMaxWidth}>
           {avatar && <Avatar size="XS" name={title} twoLetter />}
           <css.ContainerTitle>
             <Typography
-              size={avatar ? 'XXXS': "XXS"}
-              lineHeight={avatar ? 'MD': "LG"}
+              size={avatar ? "XXXS" : "XXS"}
+              lineHeight={avatar ? "MD" : "LG"}
               fontWeight={avatar ? 500 : 400}
               color="neutralLowDark"
             >
@@ -38,8 +39,8 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
 
         <css.ContainerRight avatar={avatar}>
           <Typography
-            size={avatar ? 'XXXS': "XXS"}
-            lineHeight={avatar ? 'MD': "LG"}
+            size={avatar ? "XXXS" : "XXS"}
+            lineHeight={avatar ? "MD" : "LG"}
             fontWeight={avatar ? 500 : 400}
             color="neutralLowDark"
           >
@@ -56,7 +57,7 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
       </css.ContainerList>
 
       {expanded && (
-        <Flex width="100%" justifyContent="center" pt="4px">
+        <Flex width="100%" justifyContent="center">
           <Flex className="item" width="100%" paddingBottom="8px">
             <Flex
               flexDirection="column"
