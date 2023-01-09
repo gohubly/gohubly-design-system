@@ -42,6 +42,12 @@ const HELPER_BACKGROUND_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   secondary: "transparent",
 };
 
+const HELPER_BACKGROUND_HOVER_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
+  primary: "helper",
+  ghost: "transparent",
+  secondary: "helperLight",
+};
+
 const HELPER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "white",
   ghost: "helper",
@@ -51,6 +57,12 @@ const HELPER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 const HELPER_BORDER_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "transparent",
   ghost: "transparent",
+  secondary: "helper",
+};
+
+const HELPER_ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
+  primary: "white",
+  ghost: "helper",
   secondary: "helper",
 };
 
@@ -273,7 +285,8 @@ export const Button = styled.button<iButton>`
 
     &:hover:not(:disabled) {
       background-color: ${({ hierarchy }) =>
-        hierarchy && theme.colors[HELPER_BACKGROUND_BY_HIERARCHY[hierarchy]]};
+        hierarchy &&
+        theme.colors[HELPER_BACKGROUND_HOVER_BY_HIERARCHY[hierarchy]]};
       border-color: ${({ hierarchy }) =>
         hierarchy && theme.colors[HELPER_BORDER_BY_HIERARCHY[hierarchy]]};
       color: ${({ hierarchy, OnColor }) =>
@@ -286,7 +299,10 @@ export const Button = styled.button<iButton>`
     }
 
     & > ${IconStyled} {
-      background-color: ${() => theme.colors.white};
+      path {
+        stroke: ${({ hierarchy }) =>
+          hierarchy && theme.colors[HELPER_ICON_COLOR_BY_HIERARCHY[hierarchy]]};
+      }
     }
   }
 
@@ -309,14 +325,13 @@ export const Button = styled.button<iButton>`
       )};
 
     color: ${({ OnColor }) =>
-      OnColor ? theme.colors.primaryLight : 'rgba(0,0,0,0.5)'};
-
+      OnColor ? theme.colors.primaryLight : "rgba(0,0,0,0.5)"};
 
     svg,
     path {
       fill: transparent;
       stroke: ${({ OnColor }) =>
-      OnColor ? theme.colors.primaryLight : 'rgba(0,0,0,0.5)'};
+        OnColor ? theme.colors.primaryLight : "rgba(0,0,0,0.5)"};
     }
   }
 `;
