@@ -22,7 +22,7 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
 }): JSX.Element => {
   return (
     <css.Container minWidth={minWidth}>
-      <css.ContainerList notAvatar={!avatar}>
+      <css.ContainerList notAvatar={!avatar} expanded={expanded}>
         <css.ContainerLeft containerLeftMaxWidth={containerLeftMaxWidth}>
           {avatar && <Avatar size="XS" name={title} twoLetter />}
           <css.ContainerTitle>
