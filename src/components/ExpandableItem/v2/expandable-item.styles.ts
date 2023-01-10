@@ -9,13 +9,13 @@ export const Container = styled.div<{ minWidth?: string }>`
   border-bottom: 1px solid #e5e5e5;
 `;
 
-export const ContainerList = styled.div<{ notAvatar?: boolean }>`
+export const ContainerList = styled.div<{ notAvatar?: boolean; expanded?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  padding: 8px 0;
+  padding: ${({ expanded }) => (expanded ? "12px 0 8px 0" : "12px 0")};
   gap: 4px;
 
   ${({ notAvatar }) =>
@@ -57,7 +57,7 @@ export const ContainerRight = styled.div<{ avatar?: boolean }>`
   align-items: center;
 
   span {
-    padding-top: ${({ avatar }) => (avatar ? "5px" : "2px")};
+    padding-top: ${({ avatar }) => (avatar ? "4px" : "2px")};
   }
 
   div svg {
