@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Flex, Text } from 'rebass';
+import { Box, Flex, Text } from 'rebass';
 import { ProductItem } from './product-card.style';
 import { Button, Typography, Select } from '../';
 import { iProductCard } from './product-card.interface';
@@ -9,6 +9,7 @@ export const ProductCard: React.FC<iProductCard> = ({
   hasSkuSelector = true,
   hideButton,
   hideDiscountFlag,
+  showPrice = true,
   buttonProps
 }) => {
   const {
@@ -74,47 +75,51 @@ export const ProductCard: React.FC<iProductCard> = ({
         )
       }
 
-      <Flex className="price" flexDirection="column" justifyContent="end">
-        {listPrice > bestPrice && (
-          <Text
-            fontSize="12px"
-            lineHeight="16px"
-            fontWeight={400}
-            color="#555555"
-            style={{
-              textDecoration: 'line-through',
-            }}
-          >
-            {formatPrice(listPrice)}
-          </Text>
-        )}
-        <Flex justifyContent="space-between" alignItems="center">
-          <Flex>
-            {bestPrice && (
-              <Text fontSize="16px" color="#000" lineHeight="24px" fontWeight={600}>
-                {formatPrice(bestPrice)}
-              </Text>
+      {showPrice && (
+        <Flex className="price" flexDirection="column" justifyContent="end">
+          {listPrice > bestPrice && (
+            <Text
+              fontSize="12px"
+              lineHeight="16px"
+              fontWeight={400}
+              color="#555555"
+              style={{
+                textDecoration: 'line-through',
+              }}
+            >
+              {formatPrice(listPrice)}
+            </Text>
+          )}
+          <Flex justifyContent="space-between" alignItems="center">
+            <Flex>
+              {bestPrice && (
+                <Text fontSize="16px" color="#000" lineHeight="24px" fontWeight={600}>
+                  {formatPrice(bestPrice)}
+                </Text>
+              )}
+            </Flex>
+            {listPrice > bestPrice && !hideDiscountFlag && (
+              <Flex>
+                <Text
+                  fontSize="12px"
+                  lineHeight="16px"
+                  fontWeight={600}
+                  color="#fff"
+                  padding="2px 4px"
+                  style={{
+                    background: '#EB0045',
+                    borderRadius: '500px',
+                  }}
+                >
+                  {percent}%
+                </Text>
+              </Flex>
             )}
           </Flex>
-          {listPrice > bestPrice && !hideDiscountFlag && (
-            <Flex>
-              <Text
-                fontSize="12px"
-                lineHeight="16px"
-                fontWeight={600}
-                color="#fff"
-                padding="2px 4px"
-                style={{
-                  background: '#EB0045',
-                  borderRadius: '500px',
-                }}
-              >
-                {percent}%
-              </Text>
-            </Flex>
-          )}
         </Flex>
-      </Flex>
+      )}
+
+      {!showPrice && <Box height="24px"></Box>}
 
       {!hideButton && (
         <Button
