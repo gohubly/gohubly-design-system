@@ -4,6 +4,7 @@ export interface iProductCard {
   product: iIntegrationProduct
   hasSkuSelector?: boolean
   hideButton?: boolean
+  showPrice?: boolean
   hideDiscountFlag?: boolean
   buttonProps: iButton
 }

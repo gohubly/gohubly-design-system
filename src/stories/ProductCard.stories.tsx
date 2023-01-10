@@ -91,6 +91,21 @@ WithoutButton.args = {
   }  
 };
 
+export const WithoutPrice = Template.bind({});
+
+WithoutPrice.args = {
+  product,
+  showPrice: false,
+  buttonProps: {
+    icon: 'plus',
+    children: (
+      <>
+        Criar link
+      </>
+    )
+  }  
+};
+
 Default.parameters = {
   backgrounds: {
     default: 'figma',
