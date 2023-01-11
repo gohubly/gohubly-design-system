@@ -17,9 +17,8 @@ const Template: ComponentStory<typeof ExpandableItem> = (args) => (
 export const Default = Template.bind({});
 
 Default.args = {
-  title: "Expandableeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  title: "Expandable Expandable Expandable Expandable Expandable",
   expanded: true,
-  buttonsProps: [{ children: "Button" }],
   data: [
     { label: "Row 1", value: "Row 1" },
     { label: "Row 2", value: "Row 2" },
@@ -90,7 +89,7 @@ WithAvatar.args = {
 export const WithStyledButton = Template.bind({});
 
 WithStyledButton.args = {
-  title: "Expandableeeeeeeeeeeeeeeeeeeeee",
+  title: "Expandable",
   expanded: true,
   itemRight: (
     <Button size="SM" hierarchy="ghost">
@@ -171,7 +170,7 @@ export const WithIcon = Template.bind({});
 WithIcon.args = {
   title: "Expandable 2B WI",
   expanded: true,
-  itemRight: <Tag hierarchy="success">Icon test</Tag>,
+  itemRight: <Tag hierarchy="success">Confirmado</Tag>,
   buttonsProps: [
     { children: "Button" },
     { children: "Button 2", hierarchy: "secondary" },

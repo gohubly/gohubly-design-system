@@ -57,8 +57,14 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
       </css.ContainerList>
 
       {expanded && (
-        <Flex width="100%" justifyContent="center">
-          <Flex className="item" width="100%" paddingBottom="8px">
+        <Flex
+          width="100%"
+          justifyContent="center"
+          paddingBottom={
+            buttonsProps.length > 0 || children !== undefined ? "8px" : "0"
+          }
+        >
+          <Flex className="item" width="100%">
             <Flex
               flexDirection="column"
               width="100%"
