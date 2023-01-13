@@ -22,7 +22,7 @@ export const Container = styled.div<ContainerProps>`
 
   background: rgba(0, 0, 0, 0.3);
 
-  z-index: 9999999999999;
+  z-index: 99999;
 
   transition: all 0.1s linear;
 `;

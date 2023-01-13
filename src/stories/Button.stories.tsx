@@ -28,6 +28,12 @@ Ghost.args = {
   hierarchy: 'ghost'
 };
 
+export const TonalFilled = Template.bind({});
+TonalFilled.args = {
+  children: 'TonalFilled',
+  hierarchy: 'tonalFilled'
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   children: 'Disabled',
