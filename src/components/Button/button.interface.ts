@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
 import { iIconTypes } from "../Icon";
 
-export type iButtonHierarchy = "primary" | "secondary" | "ghost";
+export type iButtonHierarchy = "primary" | "secondary" | "ghost" | "tonalFilled";
 export type iButtonSizes = "SM" | "MD" | "LG" | "XL";
 export type iIconSizesButton = "XS" | "SM";
 

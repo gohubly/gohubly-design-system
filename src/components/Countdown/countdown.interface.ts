@@ -7,4 +7,5 @@ export interface iCountdown {
   highlightedDescription?: string | JSX.Element;
   onCloseClick: () => void;
   buttonProps?: iButton;
+  isDesktop?: boolean;
 }

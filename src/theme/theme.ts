@@ -99,6 +99,7 @@ export const theme = {
     themeHighDark: '#0b0a0d',
 
     themeHighLight: '#f6f9fc',
+    disabled: '#DAE0E4',
   }
 }
 
