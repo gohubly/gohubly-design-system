@@ -24,28 +24,38 @@ export const ExpandableItemV2: React.FC<iExpandableItem> = ({
     <css.Container minWidth={minWidth}>
       <css.ContainerList notAvatar={!avatar} expanded={expanded}>
         <css.ContainerLeft containerLeftMaxWidth={containerLeftMaxWidth}>
-          {avatar && <Avatar size="XS" name={title} twoLetter />}
+          {avatar && typeof title === "string" && (
+            <Avatar size="XS" name={title} twoLetter />
+          )}
           <css.ContainerTitle>
+            {typeof title === "string" ? (
+              <Typography
+                size={avatar ? "XXXS" : "XXS"}
+                lineHeight={avatar ? "MD" : "LG"}
+                fontWeight={avatar ? 500 : 400}
+                color="neutralLowDark"
+              >
+                {title}
+              </Typography>
+            ) : (
+              title
+            )}
+          </css.ContainerTitle>
+        </css.ContainerLeft>
+
+        <css.ContainerRight avatar={avatar}>
+          {typeof title === "string" ? (
             <Typography
               size={avatar ? "XXXS" : "XXS"}
               lineHeight={avatar ? "MD" : "LG"}
               fontWeight={avatar ? 500 : 400}
               color="neutralLowDark"
             >
-              {title}
+              {itemRight}
             </Typography>
-          </css.ContainerTitle>
-        </css.ContainerLeft>
-
-        <css.ContainerRight avatar={avatar}>
-          <Typography
-            size={avatar ? "XXXS" : "XXS"}
-            lineHeight={avatar ? "MD" : "LG"}
-            fontWeight={avatar ? 500 : 400}
-            color="neutralLowDark"
-          >
-            {itemRight}
-          </Typography>
+          ) : (
+            itemRight
+          )}
 
           <Icon
             iconId={expanded ? "chevronUp" : "chevronDown"}

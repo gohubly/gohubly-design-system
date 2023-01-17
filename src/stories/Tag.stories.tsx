@@ -34,6 +34,12 @@ Success.args = {
   children: 'Tag'
 }
 
+export const Gray = Template.bind({});
+Gray.args = {
+  hierarchy: 'gray',
+  children: 'Tag'
+}
+
 export const PrimaryOnColor = Template.bind({});
 PrimaryOnColor.args = {
   hierarchy: 'primary',

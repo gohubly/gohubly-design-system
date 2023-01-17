@@ -4,6 +4,7 @@ import { ExpandableItemV2 as ExpandableItem } from "../components/ExpandableItem
 import { Tag } from "../components/Tag/tag.style";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
+import { Typography } from "../components/Typography";
 
 export default {
   title: "Components/ExpandableItem/V2",
@@ -15,7 +16,6 @@ const Template: ComponentStory<typeof ExpandableItem> = (args) => (
 );
 
 export const Default = Template.bind({});
-
 Default.args = {
   title: "Expandable Expandable Expandable Expandable Expandable",
   expanded: true,
@@ -26,12 +26,34 @@ Default.args = {
   ],
 };
 
-export const WithAvatar = Template.bind({});
+export const StyledTitle = Template.bind({});
+StyledTitle.args = {
+  title: (
+    <div style={{ gap: "12px", alignItems: 'center', flexDirection: 'row', display: 'flex' }}>
+      <Icon size="XS" iconId="file1" gray />
+      <Typography size="XXS" color="neutralLowDark" fontWeight={500}>
+        07 de Setembro, 2022
+      </Typography>
+    </div>
+  ),
+  expanded: true,
+  data: [
+    { label: "Row 1", value: "Row 1" },
+    { label: "Row 2", value: "Row 2" },
+    { label: "Row 3", value: "Row 3" },
+  ],
+};
 
+export const WithAvatar = Template.bind({});
 WithAvatar.args = {
   title: "Caio Espírito",
   avatar: true,
-  itemRight: <>D53AC43F-06</>,
+  itemRight: (
+    <div>
+      D53AC43F-06
+      <div>o</div>
+    </div>
+  ),
   expanded: true,
   data: [
     {
@@ -87,7 +109,6 @@ WithAvatar.args = {
 };
 
 export const WithStyledButton = Template.bind({});
-
 WithStyledButton.args = {
   title: "Expandable",
   expanded: true,
@@ -150,7 +171,6 @@ WithStyledButton.args = {
 };
 
 export const WithTwoButtons = Template.bind({});
-
 WithTwoButtons.args = {
   title: "Expandable 2B",
   expanded: true,
@@ -166,7 +186,6 @@ WithTwoButtons.args = {
 };
 
 export const WithIcon = Template.bind({});
-
 WithIcon.args = {
   title: "Expandable 2B WI",
   expanded: true,
