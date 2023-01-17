@@ -2,16 +2,16 @@ import { iAvatar } from "../../Avatar";
 import { iButton } from "../../Button";
 
 export interface iExpandableItem {
-  title: string;
+  title?: string | number | JSX.Element;
   minWidth?: string;
-  itemRight: JSX.Element;
+  itemRight:  string | number | JSX.Element;
   containerLeftMaxWidth?: string;
   data: iExpandableItemRow[];
   expanded?: boolean;
   onItemClick?: () => void;
   onExpandClick: () => void;
   buttonsProps?: iButton[];
-  children?: JSX.Element | React.ReactChild | any;
+  children?: string | number | JSX.Element;
   avatar?: boolean;
 }
 

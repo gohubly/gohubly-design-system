@@ -3,6 +3,7 @@ import { Box, Flex } from "rebass";
 import { theme } from "../../theme";
 import { Typography } from "../Typography";
 import { iHorizontalCountdown } from "./horizontal-countdown.interface";
+import { StyledDays } from "./horizontal-countdown.style";
 
 export const HorizontalCountdown: React.FC<iHorizontalCountdown> = ({
   countdown = 7,
@@ -45,15 +46,16 @@ export const HorizontalCountdown: React.FC<iHorizontalCountdown> = ({
         <Flex style={{ gap: "4px" }}>
           <Typography
             color="neutralLow"
-            size="XS"
+            size="XXXS"
             fontWeight={500}
-            lineHeight="LG"
+            lineHeight="MD"
           >
             {description?.toString().split("hl")[0]}{" "}
             <Typography
               color={countdown === 1 ? "helperMedium" : "primaryMedium"}
-              size="XS"
+              size="XXXS"
               fontWeight={500}
+              lineHeight="MD"
             >
               {getHighlightedText()}
             </Typography>
@@ -64,13 +66,17 @@ export const HorizontalCountdown: React.FC<iHorizontalCountdown> = ({
         description
       )}
 
-      <Flex style={{ gap: "4px" }}>
+      <StyledDays>
         {[...Array(7)].map((_, i) => (
           <Flex style={{ gap: "4px" }} flex="1" flexDirection="column">
             <Box height="8px" backgroundColor={getCountdownColor(i + 1)} />
 
             {showDays && (
-              <Typography color="neutralLowDark" size="XXXS" fontWeight={400}>
+              <Typography
+                color="neutralLowDark"
+                lineHeight="MD"
+                fontWeight={400}
+              >
                 {onRenderDay
                   ? onRenderDay(i + 1)
                   : `${i + 1} ${i === 0 ? "dia" : "dias"}`}
@@ -78,7 +84,7 @@ export const HorizontalCountdown: React.FC<iHorizontalCountdown> = ({
             )}
           </Flex>
         ))}
-      </Flex>
+      </StyledDays>
     </Flex>
   );
 };

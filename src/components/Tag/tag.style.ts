@@ -8,6 +8,7 @@ const BACKGROUND_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']
   success: 'successLight',
   alert: 'helperLight',
   warning: 'warningLight',
+  gray: 'grayLight'
 }
 
 const COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
@@ -15,6 +16,7 @@ const COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   success: 'successDark',
   alert: 'helperMedium',
   warning: 'warningDark',
+  gray: 'neutralLow'
 }
 
 const HOVER_BACKGROUND_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
@@ -22,6 +24,7 @@ const HOVER_BACKGROUND_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']
   success: 'successMedium',
   alert: 'helperMedium',
   warning: 'warningMedium',
+  gray: 'grayLight'
 }
 
 const HOVER_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
@@ -29,6 +32,7 @@ const HOVER_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
   success: 'white',
   alert: 'white',
   warning: 'neutralLowDark',
+  gray: 'neutralLow'
 }
 
 const HOVER_BACKGROUND_ON_COLOR_BY_HIERARCHY: Record<iTagHierarchy, keyof Theme['colors']> = {
