@@ -17,6 +17,8 @@ export const Modal: React.FC<IModal> = ({
   backdropPosition,
   scrollable,
   isDesktop = true,
+  position,
+  fontSizeTitle
 }) => {
   return (
     <Container
@@ -30,11 +32,13 @@ export const Modal: React.FC<IModal> = ({
         className="modal-wrapper"
         scrollable={scrollable}
         isDesktop={isDesktop}
+        position={position}
+        show={show}
       >
         <Header isDesktop={isDesktop}>
           <Typography
             color="primaryMedium"
-            size="SM"
+            size={fontSizeTitle ?? "SM"}
             lineHeight="MD"
             fontWeight={600}
           >
@@ -44,7 +48,7 @@ export const Modal: React.FC<IModal> = ({
           {showCloseIcon && (
             <Box
               padding="5px"
-              alignContent='center'
+              alignContent="center"
               style={{
                 cursor: "pointer",
                 border: `1px solid ${theme.colors.neutralHighMedium}`,
@@ -56,8 +60,8 @@ export const Modal: React.FC<IModal> = ({
           )}
         </Header>
         <Box
-          // paddingX={isDesktop ? "32px" : "20px"}
-          // mt={isDesktop ? "24px" : "20px"}
+        // paddingX={isDesktop ? "32px" : "20px"}
+        // mt={isDesktop ? "24px" : "20px"}
         >
           {children}
         </Box>
