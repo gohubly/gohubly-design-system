@@ -1,12 +1,4 @@
 import styled, { css } from "styled-components";
-import { IModalPositions } from "./modal.interface";
-
-const MARGIN_RIGHT_BY_SIZE: Record<IModalPositions, string> = {
-  up: "4px",
-  right: "4px",
-  down: "8px",
-  left: "8px",
-};
 
 interface ContainerProps {
   show: boolean;
@@ -44,8 +36,6 @@ export const Wrapper = styled.div<WrapperProps>`
   height: max-content;
   margin: auto;
   margin-left: ${({ left }): string => left ?? "auto"};
-  padding: ${({ isDesktop }): string =>
-    isDesktop ? "32px 0px 48px 0px" : "20px 0px 24px 0px"};
   border-radius: 5px;
   ${({ minHeight }): any => css`
     min-height: ${minHeight};
@@ -53,10 +43,10 @@ export const Wrapper = styled.div<WrapperProps>`
   background: #fff;
   outline: 8px solid rgba(0, 0, 0, 0.05);
   overflow-y: ${({ scrollable }): string =>
-    scrollable ? "scroll" : "initial"};
+    scrollable ? "auto" : "initial"};
 
-  ${({ position, show }) => {
-    if (position === "up") {
+  ${({ position}) => {
+    if (position === "top") {
       return css`
         position: absolute;
         border-radius: 0 0 8px 8px;
@@ -72,7 +62,7 @@ export const Wrapper = styled.div<WrapperProps>`
       `;
     }
 
-    if (position === "down") {
+    if (position === "bottom") {
       return css`
         position: absolute;
         border-radius: 8px 8px 0 0;
@@ -94,8 +84,7 @@ export const Header = styled.div<{ isDesktop?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ isDesktop }): string => (isDesktop ? "0px 48px" : "0px 20px")};
-  padding-bottom: ${({ isDesktop }): string => (isDesktop ? "32px" : "20px")};
+  padding: ${({ isDesktop }): string => (isDesktop ? "34px 48px" : "20px 24px")};
   border-bottom: 1px solid
     ${({ theme }): string => theme.colors.neutralHighLight};
 `;

@@ -6,16 +6,17 @@ import { ILabelRadio, IBoxRadio, IMarkRadio } from "./radiobutton.interface";
 
 export const Label = styled.label<ILabelRadio>`
   ${defaultCss};
-
   display: flex;
   align-items: center;
   position: relative;
   padding-left: 24px;
-  line-height: 16px;
-  font-size: 14px;
 
   padding-top: 2px;
   padding-bottom: 2px;
+
+  p {
+    margin: 0!important;
+  }
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   user-select: none;

@@ -1,5 +1,5 @@
 import { theme } from "../../theme";
-export type IModalPositions = "up" | "right" | "down" | "left";
+export type IModalPositions = "top" | "right" | "bottom" | "left";
 
 export interface IModal {
   show: boolean;

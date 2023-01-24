@@ -10,8 +10,9 @@ export interface iRadio {
   }
 
   export interface iRadioOption {
-    title: string,
-    value: string
+    title?: string,
+    value: string,
+    child?: JSX.Element | React.ReactChild | any;
   }
   
   export interface ILabelRadio {
