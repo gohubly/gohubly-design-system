@@ -1,24 +1,22 @@
-import React, { useRef, useState } from 'react';
-import { iRadioOption } from '.';
-import { iRadio } from './radiobutton.interface';
-import { Box, Label, Mark, Spacer } from './radiobutton.style';
+import React, { useRef, useState } from "react";
+import { iRadioOption } from ".";
+import { Typography } from "../Typography";
+import { iRadio } from "./radiobutton.interface";
+import { Box, Label, Mark, Spacer } from "./radiobutton.style";
 
 export const RadioButton: React.FC<iRadio> = (props) => {
-
   const [checkedValue, setCheckedValue] = useState<string>(props.value);
 
   const onChangeValue = (evt: any) => {
     setCheckedValue(evt.target.value);
-    if (props.onChange)
-      props.onChange(evt.target.value);
-  }
+    if (props.onChange) props.onChange(evt.target.value);
+  };
   const ref = useRef();
 
   return (
     <div>
-      {
-        props.options &&
-        (props.options.map((value: iRadioOption, index: number) => {
+      {props.options &&
+        props.options.map((value: iRadioOption, index: number) => {
           return (
             <>
               <Label
@@ -27,9 +25,21 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                 htmlFor={value.title}
                 disabled={props.disabled}
                 onColor={props.onColor}
-                className={props.disabled ? 'disabled' : ''}
+                className={props.disabled ? "disabled" : ""}
               >
-                {value.title}
+                {value.title && (
+                  <Typography
+                    color="neutralLowDark"
+                    size="XXS"
+                    lineHeight="LG"
+                    fontWeight={400}
+                    as='p'
+                  >
+                    {value.title}
+                  </Typography>
+                )}
+
+                {value.child && <div>{value.child}</div>}
                 <Box
                   id={value.title}
                   name={props.name}
@@ -37,19 +47,18 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   value={value.value}
                   checked={checkedValue === value.value}
                   disabled={props.disabled}
-                  onChange={onChangeValue} 
+                  onChange={onChangeValue}
                 />
                 <Mark
                   onColor={props.onColor}
                   disabled={props.disabled}
-                  className={props.disabled ? 'disabled' : ''} />
+                  className={props.disabled ? "disabled" : "mark"}
+                />
               </Label>
               {(props?.options?.length ?? 0) > 1 && <Spacer />}
             </>
-          )
-        }))
-      }
+          );
+        })}
     </div>
-  )
+  );
 };
-
