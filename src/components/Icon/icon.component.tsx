@@ -84,6 +84,9 @@ import Diners from './icons/diners'
 import Amex from './icons/amex'
 import CardInfos from './icons/cardInfos'
 import Commission from './icons/commission'
+import PlayRounded from './icons/play-rounded'
+import Download from './icons/download'
+import Clipboard from './icons/clipboard'
 
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
@@ -176,7 +179,10 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   diners: Diners,
   amex: Amex,
   cardInfos: CardInfos,
-  commission: Commission
+  commission: Commission,
+  playRounded: PlayRounded,
+  download: Download,
+  clipboard: Clipboard,
 }
 
 export const Icon: React.FC<iIcon> = ({
