@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { iRadioOption } from ".";
 import { Typography } from "../Typography";
 import { iRadio } from "./radiobutton.interface";
-import { Box, Label, Mark, Spacer } from "./radiobutton.style";
+import { Box, Container, Label, Mark, Spacer } from "./radiobutton.style";
 
 export const RadioButton: React.FC<iRadio> = (props) => {
   const [checkedValue, setCheckedValue] = useState<string>(props.value);
@@ -14,7 +14,7 @@ export const RadioButton: React.FC<iRadio> = (props) => {
   const ref = useRef();
 
   return (
-    <div>
+    <Container>
       {props.options &&
         props.options.map((value: iRadioOption, index: number) => {
           return (
@@ -57,12 +57,13 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   className={props.disabled ? "disabled" : "mark"}
                 />
               </Label>
-              {(props?.options?.length ?? 0) > 1 && (
-                <Spacer underlined={props.underlined} />
+
+              {(props?.options?.length ?? 0) > 1 && !props.underlined && (
+                <Spacer />
               )}
             </>
           );
         })}
-    </div>
+    </Container>
   );
 };
