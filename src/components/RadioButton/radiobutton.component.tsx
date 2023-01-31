@@ -26,6 +26,8 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                 disabled={props.disabled}
                 onColor={props.onColor}
                 className={props.disabled ? "disabled" : ""}
+                underlined={props.underlined}
+                paddingOptions={props.paddingOptions}
               >
                 {value.title && (
                   <Typography
@@ -33,7 +35,7 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                     size="XXS"
                     lineHeight="LG"
                     fontWeight={400}
-                    as='p'
+                    as="p"
                   >
                     {value.title}
                   </Typography>
@@ -55,7 +57,9 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   className={props.disabled ? "disabled" : "mark"}
                 />
               </Label>
-              {(props?.options?.length ?? 0) > 1 && <Spacer />}
+              {(props?.options?.length ?? 0) > 1 && (
+                <Spacer underlined={props.underlined} />
+              )}
             </>
           );
         })}

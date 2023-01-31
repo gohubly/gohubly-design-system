@@ -2,7 +2,15 @@ import styled from "styled-components";
 import { defaultCss } from "../../theme/defaultCss";
 import theme from "../../theme/theme";
 
-import { ILabelRadio, IBoxRadio, IMarkRadio } from "./radiobutton.interface";
+import { ILabelRadio, IBoxRadio, IMarkRadio, IPaddingOptions } from "./radiobutton.interface";
+
+const PADDING: Record<IPaddingOptions, string> = {
+  SM: "10px",
+  MD: "12px",
+  LG: "16px",
+  XL: "18px",
+  XXL: "20px"
+};
 
 export const Label = styled.label<ILabelRadio>`
   ${defaultCss};
@@ -11,15 +19,17 @@ export const Label = styled.label<ILabelRadio>`
   position: relative;
   padding-left: 24px;
 
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: ${({ underlined, paddingOptions }) => (underlined && paddingOptions ? PADDING[paddingOptions] : "2px")};
+  padding-bottom: ${({ underlined, paddingOptions }) => (underlined && paddingOptions ? PADDING[paddingOptions] : "2px")};
 
   p {
-    margin: 0!important;
+    margin: 0 !important;
   }
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   user-select: none;
+
+  border-bottom: ${({ underlined }) => (underlined ? "1px solid #E5E5E5" : "none")};
 
   color: ${({ onColor }) =>
     onColor ? theme.colors.neutralHigh : theme.colors.neutralLowDark};
@@ -49,7 +59,7 @@ export const Label = styled.label<ILabelRadio>`
 
   &.disabled {
     color: ${({ onColor }) =>
-      onColor ? theme.colors.primaryLight : 'rgba(0, 0, 0, 0.6)'};
+      onColor ? theme.colors.primaryLight : "rgba(0, 0, 0, 0.6)"};
 
     span {
       background-color: ${({ onColor }) =>
@@ -117,6 +127,6 @@ export const Mark = styled.span<IMarkRadio>`
   }
 `;
 
-export const Spacer = styled.div`
-  margin-bottom: 10px;
+export const Spacer = styled.div<{ underlined?: boolean }>`
+  margin-bottom: ${({ underlined }) => (underlined ? "0px" : "10px")};
 `;
