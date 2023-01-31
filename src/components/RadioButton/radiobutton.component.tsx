@@ -59,7 +59,7 @@ export const RadioButton: React.FC<iRadio> = (props) => {
               </Label>
 
               {(props?.options?.length ?? 0) > 1 && !props.underlined && (
-                <Spacer underlined={props.underlined} />
+                <Spacer />
               )}
             </>
           );

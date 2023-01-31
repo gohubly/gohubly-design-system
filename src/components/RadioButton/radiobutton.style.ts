@@ -143,6 +143,6 @@ export const Mark = styled.span<IMarkRadio>`
   }
 `;
 
-export const Spacer = styled.div<{ underlined?: boolean }>`
-  margin-bottom: ${({ underlined }) => (underlined ? "0px" : "10px")};
+export const Spacer = styled.div`
+  margin-bottom: 10px;
 `;
