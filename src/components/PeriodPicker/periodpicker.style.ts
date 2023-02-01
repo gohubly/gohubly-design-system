@@ -8,7 +8,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.neutralHigh};
+
+  border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
   border-radius: ${({ theme }) => theme.borderRadius.SM};
+
   position: relative;
 `
 
@@ -21,16 +24,46 @@ const ControlMonthButtonDefault = styled.div`
 `
 
 export const PreviousButtonContainer = styled(ControlMonthButtonDefault)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   left: 22px;
+
+  padding: 2px;
+
+  border: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
+  border-radius: 5px;
+
+  svg {
+    path {
+      stroke: ${({ theme }) => theme.colors.neutralLow};
+    }
+  }
 `
 
 export const NextButtonContainer = styled(ControlMonthButtonDefault)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   right: 22px;
+
+  padding: 2px;
+
+  border: 1px solid ${({ theme }) => theme.colors.neutralHighMedium};
+  border-radius: 5px;
+
+  svg {
+    path {
+      stroke: ${({ theme }) => theme.colors.neutralLow};
+    }
+  }
 `
 
-export const MonthsContainer = styled.div`
+export const MonthsContainer = styled.div<{ count?: number }>`
   display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: ${({ count = 3 }) => `repeat(${count}, 1fr)`};
   gap: 24px;
   margin: 24px;
   flex: 1;
@@ -56,7 +89,6 @@ export const MonthWeeks = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin: 0 auto;
 `
 
 export const Week = styled.div`
@@ -79,8 +111,8 @@ export const DayName = styled(DayDefault)`
   user-select: none;
 `
 
-export const DayNumber = styled(DayDefault)<{ isBetween: boolean, isSelected: boolean, isInitialDate: boolean, isTotalSelected: boolean}>`
-  color: ${({ theme }) => theme.colors.neutralLow};
+export const DayNumber = styled(DayDefault)<{ isBetween?: boolean, isSelected?: boolean, isInitialDate?: boolean, isTotalSelected?: boolean, disabled?: boolean}>`
+  color: ${({ theme, disabled }) => disabled ? theme.colors.neutralLowLight : theme.colors.neutralLow};
   position: relative;
   background-color: ${({ isBetween, isSelected, theme }) => isBetween ? theme.colors.primaryLightest : 'transparent'};
   cursor: pointer;
@@ -96,6 +128,10 @@ export const DayNumber = styled(DayDefault)<{ isBetween: boolean, isSelected: bo
     position: absolute;
     border-radius: 50%;
   }
+
+  ${({ disabled }) => disabled && css`
+    cursor: not-allowed;
+  `}
 
   ${({ isSelected, theme, isInitialDate, isTotalSelected }) => isSelected && css`
     color: ${({ theme }) => theme.colors.neutralHigh};
@@ -121,10 +157,11 @@ export const DayNumber = styled(DayDefault)<{ isBetween: boolean, isSelected: bo
 
 export const Footer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  gap: 16px;
-  padding: 24px;
+  
+  padding: 16px;
+  
   border-top: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
 `
 

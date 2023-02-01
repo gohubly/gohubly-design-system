@@ -23,7 +23,7 @@ import { Button, Icon } from '..';
 import 'moment/locale/pt-br';
 moment.locale('pt-br');
 
-export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, containerRef, ...props }) => {
+export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, containerRef, count = 3, ...props }) => {
   const [centralDate, setCentralDate] = useState(moment());
   const [initialDate, setInitialDate] = useState<Moment | null>(null);
   const [finalDate, setFinalDate] = useState<Moment | null>(null);
@@ -31,11 +31,16 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
   const [isSelectInitialDate, setSelectIsInitialDate] = useState(true);
 
   const exibitionMonths = useMemo(() => {
-    const firstMonth = centralDate.clone().subtract(1, 'months');
-    const lastMonth = centralDate.clone().add(1, 'months');
+    const months = [
+      ...(count > 1 ? Array(count - 1).fill(0).map((_, idx) => {
+        console.log(centralDate.clone(), idx + 1)
+        return centralDate.clone().subtract(idx + 1, 'months')
+      }) : []).reverse(),
+      centralDate
+    ]
 
-    return [firstMonth, centralDate, lastMonth];
-  }, [centralDate]);
+    return months
+  }, [centralDate, count]);
 
   const getCalendarByMomentDate = (date: Moment): iCalendar => {
     const calendar = [];
@@ -124,11 +129,11 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
         <Icon iconId={'chevronRight'} size="SM" />
       </NextButtonContainer>
 
-      <MonthsContainer>
+      <MonthsContainer count={count}>
         {exibitionMonths.map((month) => {
           return (
             <Month key={month.toDate().getTime()}>
-              <MonthApresentation>{month.format('MMMM / YYYY')}</MonthApresentation>
+              <MonthApresentation>{month.format('MMMM YYYY')}</MonthApresentation>
 
               <MonthWeeks>
                 <Week>
@@ -139,7 +144,11 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
                 {getCalendarByMomentDate(month).map((week) => (
                   <Week>
                     {week.days.map((day) => {
-                      if (!day.isSame(month, 'month')) return <div></div>
+                      if (!day.isSame(month, 'month')) return (
+                        <DayNumber onClick={() => {}} disabled>
+                          <span>{day.format('D')}</span>
+                        </DayNumber>
+                      )
 
                       const isBetween = day.isBetween(initialDate, finalDate);
                       const isInitialDate = day.isSame(initialDate);
@@ -155,7 +164,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
                           isInitialDate={isInitialDate} 
                           isTotalSelected={isTotalSelectedAndDatesAreDifferents}
                         >
-                          <span>{day.format('DD')}</span>
+                          <span>{day.format('D')}</span>
                         </DayNumber>
                       );
                     })}
@@ -168,20 +177,11 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
       </MonthsContainer>
 
       <Footer>
-        <HelperContainer>
-          {(initialDate === null || finalDate === null) && `Selecione a data ${isSelectInitialDate ? 'inicial' : 'final'}`}
-          {initialDate && finalDate && (
-            <PeriodCallout>
-              Período selecionado: {initialDate.format('DD/MM/YYYY')} a {finalDate.format('DD/MM/YYYY')}
-            </PeriodCallout>
-          )}
-        </HelperContainer>
-
-        <Button hierarchy="ghost" onClick={handleClickReset}>
+        <Button disabled={!initialDate || !finalDate} hierarchy="ghost" onClick={handleClickReset}>
           Redefinir
         </Button>
         <Button disabled={!initialDate || !finalDate} onClick={handleClickSubmit}>
-          Aplicar Período
+          Aplicar
         </Button>
       </Footer>
     </Container>

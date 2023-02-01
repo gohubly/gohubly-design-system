@@ -15,9 +15,3 @@ export const Period = Template.bind({});
 Period.args = {
  onChange: console.log
 };
-Period.parameters = {
-  backgrounds: {
-    default: 'figma',
-  },
-};
-

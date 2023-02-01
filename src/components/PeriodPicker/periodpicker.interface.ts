@@ -12,6 +12,7 @@ export type iCalendar = {
 
 export interface iPeriodPicker {
   period: iPeriod
+  count?: 1 | 2 | 3
   onChange: (newPeriod: iPeriod) => void
   containerRef?: React.Ref<HTMLDivElement>
   onReset?: () => void
