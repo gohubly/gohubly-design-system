@@ -41,7 +41,10 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   </Typography>
                 )}
 
-                {value.child && <div>{value.child}</div>}
+                {value.child && (
+                  <div style={{ width: "100%" }}>{value.child}</div>
+                )}
+
                 <Box
                   id={value.title}
                   name={props.name}
@@ -51,6 +54,7 @@ export const RadioButton: React.FC<iRadio> = (props) => {
                   disabled={props.disabled}
                   onChange={onChangeValue}
                 />
+
                 <Mark
                   onColor={props.onColor}
                   disabled={props.disabled}
