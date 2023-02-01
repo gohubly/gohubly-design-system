@@ -12,7 +12,9 @@ export const Modal: React.FC<IModal> = ({
   width,
   show,
   minHeight,
+  padding,
   toggleModal,
+  titleColor = "primaryMedium",
   children,
   backdropPosition,
   scrollable,
@@ -35,9 +37,9 @@ export const Modal: React.FC<IModal> = ({
         position={position}
         show={show}
       >
-        <Header isDesktop={isDesktop}>
+        <Header padding={padding} isDesktop={isDesktop}>
           <Typography
-            color="primaryMedium"
+            color={titleColor}
             size={fontSizeTitle ?? "SM"}
             lineHeight="MD"
             fontWeight={600}

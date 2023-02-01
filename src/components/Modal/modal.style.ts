@@ -1,10 +1,19 @@
 import styled, { css } from "styled-components";
+import { HeaderSpacing, IModal } from "./modal.interface";
 
 interface ContainerProps {
   show: boolean;
   width?: string;
   left?: string;
 }
+
+const HEADER_PADDING: Record<HeaderSpacing, string> = {
+  XS: "16px",
+  SM: "20px 24px",
+  MD: "24px",
+  LG: "34px 48px"
+}
+
 export const Container = styled.div<ContainerProps>`
   pointer-events: ${({ show }): string => (show ? "all" : "none")};
   opacity: ${({ show }): number => (show ? 1 : 0)};
@@ -80,11 +89,11 @@ export const Wrapper = styled.div<WrapperProps>`
   }};
 `;
 
-export const Header = styled.div<{ isDesktop?: boolean }>`
+export const Header = styled.div<{ isDesktop?: boolean, padding?: HeaderSpacing }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ isDesktop }): string => (isDesktop ? "34px 48px" : "20px 24px")};
+  padding: ${({ isDesktop, padding = 'LG' }): string => (isDesktop ? HEADER_PADDING[padding] : "20px 24px")};
   border-bottom: 1px solid
     ${({ theme }): string => theme.colors.neutralHighLight};
 `;
