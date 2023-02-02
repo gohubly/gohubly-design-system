@@ -11,6 +11,7 @@ export type iCalendar = {
 }[]
 
 export interface iPeriodPicker {
+  width?: string
   period: iPeriod
   count?: 1 | 2 | 3
   onChange: (newPeriod: iPeriod) => void

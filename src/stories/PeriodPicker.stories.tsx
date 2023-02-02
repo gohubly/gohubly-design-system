@@ -15,3 +15,11 @@ export const Period = Template.bind({});
 Period.args = {
  onChange: console.log
 };
+
+export const WithCustomWidth = Template.bind({});
+
+WithCustomWidth.args = {
+  width: '200px',
+  count: 1,
+  onChange: console.log
+};

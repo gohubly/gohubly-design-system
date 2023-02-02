@@ -87,6 +87,7 @@ import Commission from './icons/commission'
 import PlayRounded from './icons/play-rounded'
 import Download from './icons/download'
 import Clipboard from './icons/clipboard'
+import Close2 from './icons/close2'
 
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
@@ -183,6 +184,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   playRounded: PlayRounded,
   download: Download,
   clipboard: Clipboard,
+  close2: Close2,
 }
 
 export const Icon: React.FC<iIcon> = ({
