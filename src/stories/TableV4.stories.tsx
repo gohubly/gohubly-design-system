@@ -17,6 +17,19 @@ Default.args = {
       key: "feature",
       title: "",
       width: "109px",
+      rowContent: (value, data): JSX.Element => {
+        return (
+          <div
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <div style={{ width: "90%" }}>{value}</div>
+          </div>
+        );
+      },
     },
     {
       key: "basic",

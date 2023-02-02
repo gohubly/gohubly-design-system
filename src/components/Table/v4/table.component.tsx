@@ -54,14 +54,8 @@ export const TableV4 = ({
                       data[column.key as keyof typeof data];
                     console.log("dataValueOfCell -- 3", dataValueOfCell);
 
-                    const cellRenderValue = column.rowContent
-                      ? column.rowContent(dataValueOfCell, data)
-                      : dataValueOfCell;
-
-                    console.log("cellRenderValue -- 4", cellRenderValue);
-
                     return (
-                      typeof cellRenderValue === "string" && (
+                      dataValueOfCell !== "true" && dataValueOfCell !== "false" && (
                         <Flex
                           width="300%"
                           p="16px"
