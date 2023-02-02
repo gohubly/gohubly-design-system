@@ -23,7 +23,7 @@ import { Button, Icon } from '..';
 import 'moment/locale/pt-br';
 moment.locale('pt-br');
 
-export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, containerRef, count = 3, ...props }) => {
+export const PeriodPicker: React.FC<iPeriodPicker> = ({ width, onChange, onReset, containerRef, count = 3, ...props }) => {
   const [centralDate, setCentralDate] = useState(moment());
   const [initialDate, setInitialDate] = useState<Moment | null>(null);
   const [finalDate, setFinalDate] = useState<Moment | null>(null);
@@ -121,7 +121,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ onChange, onReset, conta
   };
 
   return (
-    <Container ref={containerRef}>
+    <Container ref={containerRef} style={{ ...(width && { width }) }}>
       <PreviousButtonContainer onClick={handleClickPreviousMonth}>
         <Icon iconId={'chevronLeft'} size="SM" />
       </PreviousButtonContainer>

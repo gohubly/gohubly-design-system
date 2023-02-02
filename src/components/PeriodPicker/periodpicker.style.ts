@@ -93,7 +93,8 @@ export const MonthWeeks = styled.div`
 
 export const Week = styled.div`
   display: grid;
-  grid-template-columns: repeat(7, 47px);
+  gap: 12px;
+  grid-template-columns: repeat(7, 31px);
 `
 
 const DayDefault = styled.div`
