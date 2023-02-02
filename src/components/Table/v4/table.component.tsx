@@ -17,6 +17,9 @@ export const TableV4 = ({
   responsive,
   fluid,
 }: iTable) => {
+  console.log("columns -- 1", columns);
+  console.log("datas -- 2", datas);
+
   return (
     <TableContainer responsive={responsive} fluid={fluid}>
       <TableStyled fluid={fluid}>
@@ -49,10 +52,13 @@ export const TableV4 = ({
                   {columns.map((column, columnIndex) => {
                     const dataValueOfCell: any =
                       data[column.key as keyof typeof data];
+                    console.log("dataValueOfCell -- 3", dataValueOfCell);
 
                     const cellRenderValue = column.rowContent
                       ? column.rowContent(dataValueOfCell, data)
                       : dataValueOfCell;
+
+                    console.log("cellRenderValue -- 4", cellRenderValue);
 
                     return (
                       typeof cellRenderValue === "string" && (
