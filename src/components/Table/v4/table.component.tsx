@@ -18,9 +18,6 @@ export const TableV4 = ({
   responsive,
   fluid,
 }: iTable) => {
-  console.log("columns -- 1", columns);
-  console.log("datas -- 2", datas);
-
   return (
     <TableContainer responsive={responsive} fluid={fluid}>
       <TableStyled fluid={fluid}>
@@ -53,31 +50,24 @@ export const TableV4 = ({
                   {columns.map((column, columnIndex) => {
                     const dataValueOfCell: any =
                       data[column.key as keyof typeof data];
-                    console.log("dataValueOfCell -- 3", dataValueOfCell);
-                    console.log("column -- 4", column);
 
                     const cellRenderValue = column.rowContent
                       ? column.rowContent(dataValueOfCell, data)
                       : dataValueOfCell;
 
-                    console.log("cellRenderValue -- 5", cellRenderValue);
-
                     return (
-                      dataValueOfCell !== "true" &&
-                      dataValueOfCell !== "false" && (
-                        <Flex
-                          width="300%"
-                          p="16px"
-                          pr="0"
-                          style={{ borderBottom: "1px solid #EEEEEE" }}
-                          color={theme.colors.neutralLow}
-                          fontSize="12px"
-                          lineHeight="16px"
-                          fontWeight={theme.fontWeight[500]}
-                          key={column.key + columnIndex}
-                        >
-                          {cellRenderValue}
-                        </Flex>
+                      typeof dataValueOfCell === "string" && (
+                        <TableBodyTd colSpan={3}>
+                          <Flex
+                            p="2.2px 16px"
+                            color={theme.colors.neutralLow}
+                            fontWeight={theme.fontWeight[500]}
+                            key={column.key + columnIndex}
+                            className="feature"
+                          >
+                            {cellRenderValue}
+                          </Flex>
+                        </TableBodyTd>
                       )
                     );
                   })}

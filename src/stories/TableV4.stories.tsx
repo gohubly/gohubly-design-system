@@ -36,7 +36,7 @@ Default.args = {
       title: "Básico",
       width: "109px",
       rowContent: (value: any, data: any): JSX.Element => {
-        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
+        return value === true ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
     {
@@ -44,7 +44,7 @@ Default.args = {
       title: "Intermed.",
       width: "109px",
       rowContent: (value: any, data: any): JSX.Element => {
-        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
+        return value === true ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
     {
@@ -52,40 +52,40 @@ Default.args = {
       title: "Enterprise",
       width: "109px",
       rowContent: (value: any, data: any): JSX.Element => {
-        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
+        return value === true ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
   ],
   data: [
     {
       feature: "Integração nativa VTEX",
-      basic: "true",
-      enterprise: "true",
-      intermediary: "true",
+      basic: true,
+      enterprise: true,
+      intermediary: true,
     },
     {
       feature: "Integração nativa Loja Integrada",
-      basic: "false",
-      enterprise: "true",
-      intermediary: "true",
+      basic: false,
+      enterprise: true,
+      intermediary: true,
     },
     {
       feature: "Administradores com hierarquia",
-      basic: "true",
-      enterprise: "true",
-      intermediary: "true",
+      basic: true,
+      enterprise: true,
+      intermediary: true,
     },
     {
       feature: "Revendedores",
-      basic: "false",
-      enterprise: "true",
-      intermediary: "true",
+      basic: false,
+      enterprise: true,
+      intermediary: true,
     },
     {
       feature: "Vitrines digitais personalizadas",
-      basic: "true",
-      enterprise: "true",
-      intermediary: "true",
+      basic: true,
+      enterprise: true,
+      intermediary: true,
     },
   ],
 };

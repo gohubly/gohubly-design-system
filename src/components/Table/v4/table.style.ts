@@ -70,6 +70,12 @@ export const TableBodyTd = styled.td<iTableTd>`
     }
   }
 
+  &:first-child {
+    .feature {
+      justify-content: start;
+    }
+  }
+
   &:last-child {
     border-right: none;
   }
