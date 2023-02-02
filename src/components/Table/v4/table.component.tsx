@@ -1,5 +1,6 @@
 import React from "react";
 import { Flex } from "rebass";
+import { theme } from "../../../theme";
 import { Typography } from "../../Typography";
 import { iTable } from "./table.interface";
 import {
@@ -53,26 +54,29 @@ export const TableV4 = ({
                     const dataValueOfCell: any =
                       data[column.key as keyof typeof data];
                     console.log("dataValueOfCell -- 3", dataValueOfCell);
+                    console.log("column -- 4", column);
+
+                    const cellRenderValue = column.rowContent
+                      ? column.rowContent(dataValueOfCell, data)
+                      : dataValueOfCell;
+
+                    console.log("cellRenderValue -- 5", cellRenderValue);
 
                     return (
-                      dataValueOfCell !== "true" && dataValueOfCell !== "false" && (
+                      dataValueOfCell !== "true" &&
+                      dataValueOfCell !== "false" && (
                         <Flex
                           width="300%"
                           p="16px"
                           pr="0"
                           style={{ borderBottom: "1px solid #EEEEEE" }}
+                          color={theme.colors.neutralLow}
+                          fontSize="12px"
+                          lineHeight="16px"
+                          fontWeight={theme.fontWeight[500]}
                           key={column.key + columnIndex}
                         >
-                          <Flex>
-                            <Typography
-                              color="neutralLow"
-                              size="XXXS"
-                              lineHeight="MD"
-                              fontWeight={500}
-                            >
-                              {dataValueOfCell}
-                            </Typography>
-                          </Flex>
+                          {cellRenderValue}
                         </Flex>
                       )
                     );
