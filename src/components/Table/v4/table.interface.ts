@@ -1,6 +1,6 @@
 import React from "react";
 
-export type iDataTypes = string | number | object | string[] | number[] | object[]
+export type iDataTypes = string | number | object | string[] | number[] | object[] | any
 export type iCommonData = Record<string, iDataTypes>
 
 export interface iColumn {
