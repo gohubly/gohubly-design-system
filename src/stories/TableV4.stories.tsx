@@ -10,8 +10,8 @@ export default {
 
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 
-const tableCommonArgs = {
-  width: "300px",
+export const Default = Template.bind({});
+Default.args = {
   columns: [
     {
       key: "feature",
@@ -22,47 +22,57 @@ const tableCommonArgs = {
       key: "basic",
       title: "Básico",
       width: "109px",
-      rowContent: (): JSX.Element => {
-        return <Icon iconId="check" size="XXXS" />;
+      rowContent: (value: any, data: any): JSX.Element => {
+        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
     {
       key: "intermediary",
       title: "Intermed.",
       width: "109px",
-      rowContent: (): JSX.Element => {
-        return <Icon iconId="check" size="XXXS" />;
+      rowContent: (value: any, data: any): JSX.Element => {
+        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
     {
       key: "enterprise",
       title: "Enterprise",
       width: "109px",
-      rowContent: (): JSX.Element => {
-        return <Icon iconId="check" size="XXXS" />;
+      rowContent: (value: any, data: any): JSX.Element => {
+        return value === "true" ? <Icon iconId="check" size="XXXS" /> : <></>;
       },
     },
   ],
   data: [
     {
       feature: "Integração nativa VTEX",
+      basic: "true",
+      enterprise: "true",
+      intermediary: "true",
     },
     {
       feature: "Integração nativa Loja Integrada",
+      basic: "false",
+      enterprise: "true",
+      intermediary: "true",
     },
     {
       feature: "Administradores com hierarquia",
+      basic: "true",
+      enterprise: "true",
+      intermediary: "true",
     },
     {
       feature: "Revendedores",
+      basic: "false",
+      enterprise: "true",
+      intermediary: "true",
     },
     {
       feature: "Vitrines digitais personalizadas",
+      basic: "true",
+      enterprise: "true",
+      intermediary: "true",
     },
   ],
-};
-
-export const Default = Template.bind({});
-Default.args = {
-  ...tableCommonArgs,
 };
