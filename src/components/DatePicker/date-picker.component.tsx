@@ -10,6 +10,7 @@ import { useClickOutside } from '../../hooks'
 export const DatePicker: React.FC<iDatePickerProps> = ({
   from,
   to,
+  count = 3,
   onReset,
   onPeriodChange
 }) => {
@@ -63,6 +64,7 @@ export const DatePicker: React.FC<iDatePickerProps> = ({
           }}
           onReset={onReset}
           containerRef={ref}
+          count={count}
           period={{
             initialDate: moment(from).utc(),
             finalDate: moment(to).utc(),

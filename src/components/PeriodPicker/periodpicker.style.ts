@@ -94,6 +94,7 @@ export const MonthWeeks = styled.div`
 export const Week = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 41px);
+  justify-content: center;
 `
 
 const DayDefault = styled.div`
