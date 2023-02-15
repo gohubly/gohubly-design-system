@@ -7,7 +7,7 @@ export const Container = styled.div<{ width?: string }>`
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: ${({ width }) => width ?? "100%"}
+  width: ${({ width }) => width ?? "100%"};
   background-color: ${({ theme }) => theme.colors.neutralHigh};
 
   border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
