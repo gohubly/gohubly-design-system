@@ -10,14 +10,14 @@ export const PickerContainer = styled.div<{ show?: boolean }>`
   top: 85px;
   left: 0;
 
-  width: 100%;
-  height: ${({ show }) => show ? '401px' : '0'};
+  // width: 100%;
+  height: ${({ show }) => show ? '360px' : '0'};
 
   opacity: ${({ show }) => show ? '1' : '0'};
   visibility: ${({ show }) => show ? 'visible' : 'hidden'};
   overflow: hidden;
   
-  z-index: 99999;
+  z-index: 3;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
 
   border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
