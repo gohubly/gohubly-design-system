@@ -43,7 +43,7 @@ export const PreviousButtonContainer = styled(ControlMonthButtonDefault)`
   }
 `;
 
-export const NextButtonContainer = styled(ControlMonthButtonDefault)`
+export const NextButtonContainer = styled(ControlMonthButtonDefault)<{ disabled?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -60,6 +60,10 @@ export const NextButtonContainer = styled(ControlMonthButtonDefault)`
       stroke: ${({ theme }) => theme.colors.neutralLow};
     }
   }
+
+  ${({ disabled }) => disabled && css`
+    cursor: not-allowed;
+  `}
 `;
 
 export const MonthsContainer = styled.div<{ count?: number }>`

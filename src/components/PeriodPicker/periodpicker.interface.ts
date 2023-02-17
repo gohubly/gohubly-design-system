@@ -10,10 +10,17 @@ export type iCalendar = {
   days: moment.Moment[]
 }[]
 
+export type BlockType = "after"
+
+export type DateLimit = {
+  endDate?: Date
+}
+
 export interface iPeriodPicker {
   width?: string
   period: iPeriod
   count?: 1 | 2 | 3
+  limit?: DateLimit
   onChange: (newPeriod: iPeriod) => void
   containerRef?: React.Ref<HTMLDivElement>
   onReset?: () => void

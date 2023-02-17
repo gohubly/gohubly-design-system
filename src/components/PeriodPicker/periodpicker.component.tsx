@@ -23,7 +23,7 @@ import { Button, Icon } from '..';
 import 'moment/locale/pt-br';
 moment.locale('pt-br');
 
-export const PeriodPicker: React.FC<iPeriodPicker> = ({ width, onChange, onReset, containerRef, count = 3, ...props }) => {
+export const PeriodPicker: React.FC<iPeriodPicker> = ({ width, onChange, onReset, containerRef, count = 3, limit, ...props }) => {
   const [centralDate, setCentralDate] = useState(moment());
   const [initialDate, setInitialDate] = useState<Moment | null>(null);
   const [finalDate, setFinalDate] = useState<Moment | null>(null);
@@ -67,6 +67,20 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ width, onChange, onReset
   const handleClickPreviousMonth = () => {
     setCentralDate((preValue) => preValue.clone().subtract(1, 'months'));
   };
+
+  const isBlocked = useMemo(() => {
+    if (limit) {
+      const {
+        endDate
+      } = limit
+
+      if (endDate) {
+        return !moment(centralDate).utc().isBefore(moment(endDate).utc(), 'month')
+      }
+    }
+
+    return false
+  }, [limit, centralDate])
 
   const handleClickDay = (day: Moment) => {
 
@@ -125,7 +139,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({ width, onChange, onReset
       <PreviousButtonContainer onClick={handleClickPreviousMonth}>
         <Icon iconId={'chevronLeft'} size="SM" />
       </PreviousButtonContainer>
-      <NextButtonContainer onClick={handleClickNextMonth}>
+      <NextButtonContainer onClick={isBlocked ? () => {} : handleClickNextMonth} disabled={isBlocked}>
         <Icon iconId={'chevronRight'} size="SM" />
       </NextButtonContainer>
 
