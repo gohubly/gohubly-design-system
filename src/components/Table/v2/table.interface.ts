@@ -8,6 +8,7 @@ export interface iColumn {
   title?: string | number;
   width?: number | string;
   maxWidth?: number | string;
+  minWidth?: number | string;
   rowClick?: (value: iDataTypes, data: iCommonData) => void;
   rowContent?: (value: iDataTypes, data: iCommonData) => string | number | JSX.Element | React.ReactChild | React.ReactChildren | Element | Element[];
 }
@@ -24,6 +25,7 @@ export interface iTable {
 export interface iTableTd {
   width?: number | string;
   maxWidth?: number | string;
+  minWidth?: number | string;
   onClick?: () => void;
 }
 

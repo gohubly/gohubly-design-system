@@ -11,7 +11,7 @@ export const PickerContainer = styled.div<{ show?: boolean }>`
   left: 0;
 
   // width: 100%;
-  height: ${({ show }) => show ? '360px' : '0'};
+  height: ${({ show }) => show ? 'max-content' : '0'};
 
   opacity: ${({ show }) => show ? '1' : '0'};
   visibility: ${({ show }) => show ? 'visible' : 'hidden'};

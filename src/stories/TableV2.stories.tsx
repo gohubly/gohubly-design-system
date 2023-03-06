@@ -17,7 +17,8 @@ const tableCommonArgs = {
     {
       key: 'name',
       title: 'Nome',
-      width: 190,
+      width: 'auto',
+      minWidth: '150px',
       rowContent: (data: any): JSX.Element => (
         <Flex alignItems="center" style={{ gap: '12px' }}>
           <Avatar size="XS" name={'nt'} />
@@ -33,22 +34,26 @@ const tableCommonArgs = {
     {
       key: 'age',
       title: 'Idade',
-      width: 96
+      width: '96px',
+      minWidth: '96px',
     },
     {
       key: 'gender',
       title: 'Gênero',
-      width: 96
+      width: '96px',
+      minWidth: '96px',
     },
     {
       key: 'createdAt',
       title: 'Data de filiação',
-      width: 96
+      width: '96px',
+      minWidth: '96px',
     },
     {
       key: 'details',
       title: 'Detalhes',
-      width: 96,
+      width: '96px',
+      minWidth: '96px',
       rowContent: (): JSX.Element => (
         <Link size="XXS" >
           Ver detalhes

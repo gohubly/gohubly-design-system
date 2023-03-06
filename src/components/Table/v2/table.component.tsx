@@ -19,20 +19,20 @@ export const TableV2 = ({
   fluid,
 }: iTable) => {
   const getNestedDataValueByKey = (data: Record<string, any>, key: string) => {
-    if (!key.includes('.')) return data[key]
+    if (!key.includes(".")) return data[key];
 
-    const keys = key.split('.')
+    const keys = key.split(".");
 
     const result = keys.reduce((prev, curr) => {
       if (prev?.hasOwnProperty(curr)) {
-        return prev[curr]
+        return prev[curr];
       }
 
-      return null
-    }, data)
+      return null;
+    }, data);
 
-    return result
-  }
+    return result;
+  };
 
   return (
     <TableContainer responsive={responsive} fluid={fluid}>
@@ -40,8 +40,18 @@ export const TableV2 = ({
         <thead>
           <tr>
             {columns.map((column) => (
-              <TableHeaderTd key={column.key} width={column?.width} maxWidth={column?.maxWidth} >
-                <Typography color="neutralLow" as='p' fontWeight={400} size="XXXS">
+              <TableHeaderTd
+                key={column.key}
+                width={column?.width}
+                maxWidth={column?.maxWidth}
+                minWidth={column?.minWidth}
+              >
+                <Typography
+                  color="neutralLow"
+                  as="p"
+                  fontWeight={400}
+                  size="XXXS"
+                >
                   {column.title}
                 </Typography>
               </TableHeaderTd>
@@ -57,8 +67,11 @@ export const TableV2 = ({
                 key={`table-${datas.length}-${dataIndex}`}
               >
                 {columns.map((column, columnIndex) => {
-                getNestedDataValueByKey(data, column.key)
-                  const dataValueOfCell = getNestedDataValueByKey(data, column.key)
+                  getNestedDataValueByKey(data, column.key);
+                  const dataValueOfCell = getNestedDataValueByKey(
+                    data,
+                    column.key
+                  );
                   const cellRenderValue = column.rowContent
                     ? column.rowContent(dataValueOfCell, data)
                     : dataValueOfCell;
@@ -75,7 +88,11 @@ export const TableV2 = ({
                           <Avatar size="MD" name={`${dataIndex}`} />
                         )} */}
                         {typeof cellRenderValue === "string" ? (
-                          <Typography color="neutralLowDark" as='p' fontWeight={500}>
+                          <Typography
+                            color="neutralLowDark"
+                            as="p"
+                            fontWeight={500}
+                          >
                             {cellRenderValue}
                           </Typography>
                         ) : (
