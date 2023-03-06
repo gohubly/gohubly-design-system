@@ -38,7 +38,7 @@ const BORDER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "transparent",
   ghost: "transparent",
   secondary: "primaryMedium",
-  tonalFilled: "transparent",
+  tonalFilled: "primaryLightest",
 };
 
 const HELPER_BACKGROUND_BY_HIERARCHY: Record<iButtonHierarchy, string> = {

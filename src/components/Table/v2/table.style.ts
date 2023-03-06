@@ -18,8 +18,9 @@ export const Table = styled.table<{ fluid?: boolean }>`
 
 export const TableHeaderTd = styled.td<iTableTd>`
   box-sizing: content-box;
-  width: ${({ width }) => (width ? width : "auto")};
-  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : "auto")};
+  width: ${({ width }) => width ?? "auto"};
+  max-width: ${({ maxWidth }) => maxWidth ?? "auto"};
+  min-width: ${({ minWidth }) => minWidth ?? "auto"};
   border-bottom: ${({ theme }) => `1px solid ${theme.colors.neutralHighLight}`};
   padding: 12px 0;
 
@@ -81,12 +82,13 @@ export const FlexBodyTd = styled.div`
 
 const TableTr = css<iTableTr>`
   &:hover {
-    transition: all .3s ease-in-out;
-    background: rgba(241,242,249,0.5);
+    transition: all 0.3s ease-in-out;
+    background: rgba(241, 242, 249, 0.5);
 
     td {
-      transition: all .3s ease-in-out;
-      border-bottom: ${({ theme }) => `1px solid ${theme.colors.primaryMedium}`};
+      transition: all 0.3s ease-in-out;
+      border-bottom: ${({ theme }) =>
+        `1px solid ${theme.colors.primaryMedium}`};
     }
   }
 `;
