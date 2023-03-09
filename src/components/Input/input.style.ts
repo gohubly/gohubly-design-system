@@ -71,6 +71,7 @@ const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   SM: "20px",
   MD: "24px",
   LG: "32px",
+  XL: "40px"
 };
 
 const TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE: Record<iInputSizes, string> = {
@@ -87,6 +88,7 @@ const LEFT_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> = {
   SM: "49px",
   MD: "53px",
   LG: "57px",
+  XL: "61px"
 };
 
 const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
@@ -97,6 +99,7 @@ const WIDTH_PLACEHOLDER_STYLED_BASED_ON_ICON_SIZE: Record<iIconSizes, string> =
     SM: "94px",
     MD: "98px",
     LG: "102px",
+    XL: "106px"
   };
 
 const LINE_HEIGHT_BASED_ON_SIZE: Record<keyof typeof theme.fontSize, string> = {

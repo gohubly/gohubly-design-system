@@ -1,3 +1,5 @@
+import { iIconTypes } from "../Icon";
+
 export type iTagHierarchy =
   | "primary"
   | "success"
@@ -10,4 +12,5 @@ export interface iTag {
   OnColor?: boolean;
   fluid?: boolean;
   onClick?: () => void;
+  icon?: iIconTypes;
 }
