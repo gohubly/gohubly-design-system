@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
+import { iTag } from ".";
+import { Icon, iIconTypes } from "../Icon";
+import { IconTag, Tag as StyledTag } from "./tag.style";
 
-import { iTag } from '.';
-import { Tag as StyledTag } from './tag.style';
-
-export const Tag: React.FC<iTag> = ({
-  children,
-  ...props
-}) => {
+export const Tag: React.FC<iTag> = ({ children, icon, ...props }) => {
   return (
-    <StyledTag
-      {...props}
-    >
+    <StyledTag {...props} icon={icon}>
+      {icon && (
+        <IconTag hierarchy={props?.hierarchy}>
+          <Icon iconId={icon} size="XS" />
+        </IconTag>
+      )}
       {children}
     </StyledTag>
   );

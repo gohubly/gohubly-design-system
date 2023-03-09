@@ -1,32 +1,111 @@
 import { theme } from "../..";
 
 export type iIconTypes =
-'app' | 'bag' | 'bell' | 'block' | 'brench1' | 'brench2' | 
-'calendar' | 'camera' | 'cashSign' | 'cashSign2' | 'check' | 
-'chevronDown' | 'chevronLeft' | 'chevronRight' | 'chevronUp' | 'clipboardText' |
-'clock' | 'close' | 'defaut' | 'drag' | 'envelope' | 'eye' | 'eyeSlash' | 'facebook' | 
-'file1' | 'file2' | 'globe' | 'grid' | 'hamburguer' | 'heart' |
-'helpCircle' | 'home' | 'image' | 'information' | 'informationTriangle' | 
-'instagram' | 'link' | 'linkedin' | 'list' | 'loading' | 'lock' | 
-'login' | 'minus' | 'moreHorizontal' | 'moreVertical' | 'pen' | 
-'percent' | 'pinLocation' | 'phone' | 'play' | 'plus' | 'search' | 
-'settings' | 'share' | 'shield' | 'starEmpty' | 'starFilled' | 'tag' | 'tiktok' | 
-'trash' | 'truck' | 'twitter' | 'user1' | 'user2' | 'youtube' | 'whatsapp' | 'messenger' | 
-'instagramColor' | 'shareOutline' | 'creditCard' | 'bankSlip' | 'visa' | 'mastercard' | 
-'hipercard'| 'elo'| 'discover'| 'diners'| 'amex' | 'cardInfos' | 'file' | 'commission' |
-'playRounded' | 'download' | 'clipboard' | 'close2'
+  | "amex"
+  | "app"
+  | "bag"
+  | "bankSlip"
+  | "bell"
+  | "block"
+  | "brench1"
+  | "brench2"
+  | "calendar"
+  | "camera"
+  | "cardInfos"
+  | "cashCircle"
+  | "cashSign"
+  | "cashSign2"
+  | "check"
+  | "chevronDown"
+  | "chevronLeft"
+  | "chevronRight"
+  | "chevronUp"
+  | "clipboard"
+  | "clipboardText"
+  | "clock"
+  | "close"
+  | "close2"
+  | "coins2"
+  | "commission"
+  | "creditCard"
+  | "defaut"
+  | "diners"
+  | "discover"
+  | "download"
+  | "drag"
+  | "elo"
+  | "envelope"
+  | "eye"
+  | "eyeSlash"
+  | "facebook"
+  | "file"
+  | "file1"
+  | "file2"
+  | "fileQuestion"
+  | "globe"
+  | "grid"
+  | "hamburguer"
+  | "heart"
+  | "helpCircle"
+  | "hipercard"
+  | "home"
+  | "image"
+  | "information"
+  | "informationTriangle"
+  | "instagram"
+  | "instagramColor"
+  | "link"
+  | "linkedin"
+  | "list"
+  | "loading"
+  | "lock"
+  | "login"
+  | "mastercard"
+  | "messenger"
+  | "minus"
+  | "moreHorizontal"
+  | "moreVertical"
+  | "pen"
+  | "percent"
+  | "phone"
+  | "pinLocation"
+  | "play"
+  | "playRounded"
+  | "plus"
+  | "receiptCheck"
+  | "search"
+  | "settings"
+  | "share"
+  | "shareOutline"
+  | "shield"
+  | "starEmpty"
+  | "starFilled"
+  | "tag"
+  | "target4"
+  | "ticket2"
+  | "tiktok"
+  | "trash"
+  | "truck"
+  | "twitter"
+  | "user1"
+  | "user2"
+  | "users"
+  | "visa"
+  | "whatsapp"
+  | "youtube"
+  | "zapFast";
 
-export type iIconSizes = 'XXXS' | 'XXS' | 'XS' | 'SM' | 'MD' | 'LG' 
+export type iIconSizes = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL";
 
 export interface iIcon {
-  iconId?: iIconTypes 
-  OnColor?: boolean
-  onClick?: () => void
-  size?: iIconSizes
-  fill?: keyof typeof theme.colors & string
-  stroke?: keyof typeof theme.colors // Main
-  fluid?: boolean
+  iconId?: iIconTypes;
+  OnColor?: boolean;
+  onClick?: () => void;
+  size?: iIconSizes;
+  fill?: keyof typeof theme.colors & string;
+  stroke?: keyof typeof theme.colors; // Main
+  fluid?: boolean;
   width?: string;
   height?: string;
-  gray?: boolean
+  gray?: boolean;
 }
