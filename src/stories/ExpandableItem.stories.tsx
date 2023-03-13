@@ -32,7 +32,7 @@ WithTwoButtons.args = {
   expanded: true,
   buttonsProps: [
     { children: 'Button' },
-    { children: 'Button 2', hierarchy: 'secondary' },
+    { children: 'Button 2', hierarchy: 'tonalFilled' },
   ],
   data: [
     { label: 'Row 1', value: 'Row 1' },

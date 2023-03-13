@@ -76,12 +76,12 @@ export const Tag = styled.button<iTag>`
   font-size: 12px;
   line-height: 16px;
 
-  font-family: ${fontFamilyBasedOnWeight["600"]} !important;
+  font-family: ${fontFamilyBasedOnWeight["500"]} !important;
 
   width: ${({ fluid }) => (fluid ? "100%" : "fit-content")};
   transition: background-color 0.3s linear;
 
-  padding: ${({ icon }) => (icon ? "4px 12px" : "2px 8px")};
+  padding: 4px 12px;
 
   color: ${({ hierarchy }) =>
     hierarchy && theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
@@ -122,7 +122,7 @@ export const IconTag = styled.div<iTag>`
   path {
     stroke: ${({ hierarchy }) =>
       hierarchy && theme.colors[COLOR_BY_HIERARCHY[hierarchy]]};
-    stroke-width: 1.25;
+    stroke-width: 1.1;
     fill: transparent;
   }
 `;

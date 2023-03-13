@@ -92,10 +92,14 @@ import ZapFast from "./icons/zapFast";
 import CashCircle from "./icons/cashCircle";
 import Coins2 from "./icons/coins2";
 import FileQuestion from "./icons/fileQuestion";
+import FilePlus from "./icons/filePlus";
 import ReceiptCheck from "./icons/receiptCheck";
 import Target4 from "./icons/target4";
 import Ticket2 from "./icons/ticket2";
 import Users from "./icons/users";
+import ArrowRigth from "./icons/arrowRigth";
+import FaceCash from "./icons/faceCash";
+
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: "12px",
@@ -110,6 +114,7 @@ const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
 const SVG_COMPONENT: Record<iIconTypes, any> = {
   amex: Amex,
   app: AppIcon,
+  arrowRigth: ArrowRigth,
   bag: Bag,
   bankSlip: BankSlip,
   bell: Bell,
@@ -145,10 +150,12 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   eye: Eye,
   eyeSlash: EyeSlash,
   facebook: Facebook,
+  faceCash: FaceCash,
   file: File,
   file1: File1,
   file2: File2,
   fileQuestion: FileQuestion,
+  filePlus: FilePlus,
   globe: Globe,
   grid: Grid,
   hamburguer: Hamburguer,
