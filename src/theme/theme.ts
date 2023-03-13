@@ -7,6 +7,7 @@ export const theme = {
     XS: '16px',
     SM: '20px',
     MD: '24px',
+    M: '28px',
     LG: '32px',
     XL: '40px',
     XXL: '48px',
@@ -17,6 +18,7 @@ export const theme = {
     XS: '115%',
     SM: '120%',
     MD: '133.333%',
+    M: '32px', // new model with pixel TODO: 
     LG: '140%',
     XL: '150%',
     XXL: '170%',
@@ -69,14 +71,14 @@ export const theme = {
     primaryDark: '#142159',
 
     neutralLow: '#333333', // default
-    neutralLowLight: '#999999',
+    neutralLowLight: '#777777',
     neutralLowMedium: '#555555',
     neutralLowDark: '#000000',
 
     neutralHigh: '#FFFFFF', // default
     neutralHighLight: '#EEEEEE',
     neutralHighMedium: '#D5D5D5',
-    neutralHighDark: '#BBB',
+    neutralHighDark: '#BBBBBB',
 
     success: '#2EB042', // default
     successLight: '#D8EED9',
@@ -100,9 +102,14 @@ export const theme = {
 
     themeHighLight: '#f6f9fc',
 
-    disabled: '#DAE0E4',
-
     grayLight: '#EDF0F2',
+
+    disabled: 'rgba(20,33,89,0.1)',
+
+    outlinedAndTextHover: 'rgba(20, 33, 89, 0.05)',
+
+    tonalFilled: 'rgba(20,33,89,0.1)',
+    tonalFilledHover: 'rgba(20, 33, 89, 0.15)',
   }
 }
 

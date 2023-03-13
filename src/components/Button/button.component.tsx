@@ -17,7 +17,9 @@ export const Button: React.FC<iButton> = ({
   error,
   loading,
   icon,
-  iconSize = 'SM',
+  iconSize,
+  rightIcon,
+  rightIconSize,
   OnColor,
   ...props
 }) => {
@@ -33,15 +35,28 @@ export const Button: React.FC<iButton> = ({
     >
       {icon && (
         <IconStyled
-          size={iconSize}
+          {...(iconSize && { iconSize: iconSize })}
           iconId={icon}
           hierarchy={hierarchy}
           OnColor={OnColor}
           loading={loading}
-          sizeProps={size}
+          propsSize={size}
         />
       )}
+
       <ContentContainer loading={loading}>{children}</ContentContainer>
+
+      {rightIcon && (
+        <IconStyled
+          {...(rightIconSize && { rightIconSize: rightIconSize })}
+          iconId={rightIcon}
+          hierarchy={hierarchy}
+          OnColor={OnColor}
+          loading={loading}
+          propsSize={size}
+        />
+      )}
+
       {loading && (
         <ButtonSpinnerContainer>
           <Spinner size="100%" onColor={OnColor} />
