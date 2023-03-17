@@ -107,6 +107,7 @@ export interface iIcon {
   size?: iIconSizes;
   fill?: keyof typeof theme.colors & string;
   stroke?: keyof typeof theme.colors; // Main
+  strokeWidth?: number;
   fluid?: boolean;
   width?: string;
   height?: string;

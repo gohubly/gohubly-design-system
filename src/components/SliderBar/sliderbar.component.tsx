@@ -1,5 +1,4 @@
 import React from "react";
-
 import { ISliderBar } from ".";
 import { SliderBar as StyledSliderBar } from "./sliderbar.style";
 
