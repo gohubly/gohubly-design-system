@@ -10,7 +10,6 @@ export const IconWrapper = styled.div<iIcon>`
   justify-content: center;
   align-items: center;
 
-  // height: ${({ height }) => height === '12px' ? '14px' : height};
   height: ${({ height }) => height};
   box-sizing: border-box;
 
@@ -46,10 +45,12 @@ export const IconWrapper = styled.div<iIcon>`
     stroke: ${({ OnColor, stroke }) =>
       stroke ? theme.colors[stroke] : theme.colors[OnColor ? "white" : ""]};
 
+    stroke-width: ${({ strokeWidth }) => strokeWidth ?? 2};
+
     ${({ gray }) =>
       gray &&
       css`
-        stroke: ${theme.colors.neutralLowMedium}; 
+        stroke: ${theme.colors.neutralLowMedium};
         stroke-width: 2;
         fill: transparent;
       `}

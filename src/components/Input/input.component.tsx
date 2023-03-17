@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import { Flex } from "rebass";
 import { useClickOutside } from "../../hooks";
+import { Tag, iTagHierarchy } from "../Tag";
 import { iInput } from "./input.interface";
 import {
   Label,
@@ -14,6 +16,7 @@ import {
   DropdownWrapper,
   DropdownItem,
   PlaceholderStyled,
+  LinkText,
 } from "./input.style";
 
 export const Input: React.FC<iInput> = ({
@@ -22,8 +25,10 @@ export const Input: React.FC<iInput> = ({
   fontSizeLabel: propsFontSizeLabel,
   ...props
 }) => {
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLInputElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const suffixRef = useRef<HTMLDivElement>(null);
+  const prefixRef = useRef<HTMLDivElement>(null);
   const [isPlaceholderVisible, setIsPlaceholderVisible] = useState(false);
   const [dropdownOpened, setDropdownOpened] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
@@ -126,27 +131,79 @@ export const Input: React.FC<iInput> = ({
 
   useEffect(() => {
     if (inputRef?.current) {
-      if (props.suffix) {
-        const suffix = inputRef?.current?.nextSibling;
-        const values = window.getComputedStyle(suffix as HTMLElement);
+      if (props.prefix) {
+        const prefix = inputRef?.current?.previousSibling as HTMLElement;
+        const { width, padding } = window.getComputedStyle(prefix);
 
-        const width = values.getPropertyValue("width");
-        const padding = values.getPropertyValue("padding")?.replace("0px ", "");
+        inputRef.current.style.setProperty("--prefix-width", width);
+        inputRef.current.style.setProperty(
+          "--prefix-padding",
+          padding.replace("0px ", "")
+        );
 
-        inputRef.current.style.paddingRight = `calc(${width} + ${padding} + ${padding})`;
+        inputRef.current.classList.add("input-with-prefix");
       }
 
-      if (props.prefix) {
-        const prefix = inputRef?.current?.previousSibling;
-        const values = window.getComputedStyle(prefix as HTMLElement);
+      if (props.suffix) {
+        const suffix = inputRef?.current?.nextSibling as HTMLElement;
+        const { width, padding } = window.getComputedStyle(suffix);
 
-        const width = values.getPropertyValue("width");
-        const padding = values.getPropertyValue("padding")?.replace("0px ", "");
+        inputRef.current.style.setProperty("--suffix-width", width);
+        inputRef.current.style.setProperty(
+          "--suffix-padding",
+          padding.replace("0px ", "")
+        );
 
-        inputRef.current.style.paddingLeft = `calc(${width} + ${padding} + ${padding})`;
+        inputRef.current.classList.add("input-with-suffix");
       }
     }
-  }, [inputRef]);
+  }, [inputRef, props.prefix, props.suffix]);
+
+  useEffect(() => {
+    // When there is prefix and icon and/or suffix and icon
+    if (prefixRef?.current) {
+      if (props.iconLeft && props.prefix) {
+        const prefix = prefixRef?.current as HTMLElement;
+
+        const { width, padding } = window.getComputedStyle(prefix);
+
+        const divIconPrefix = prefixRef?.current
+          ?.previousSibling as HTMLElement; // select left icon element
+
+        divIconPrefix.style.setProperty("--prefixIcon-width", width); // assign the prefix width value to the --prefixIcon-width
+        divIconPrefix.style.setProperty(
+          "--prefixIcon-padding",
+          padding.replace("0px ", "")
+        ); // assign the prefix padding value to the --prefixIcon-padding variable
+
+        divIconPrefix.classList.add("icon-with-prefix"); // add a class to the left icon element to apply the --prefixIcon-width and --prefixIcon-padding variables and calculate their position dynamically
+      }
+    }
+
+    if (suffixRef?.current) {
+      if (props.iconRight && props.suffix) {
+        const suffix = suffixRef?.current as HTMLElement;
+
+        const { width, padding } = window.getComputedStyle(suffix);
+
+        const divIconSuffix = suffixRef?.current
+          ?.nextElementSibling as HTMLElement; // select right icon element
+        divIconSuffix.style.setProperty("--suffixIcon-width", width); // assign the suffix width value to the --suffixIcon-padding variable
+        divIconSuffix.style.setProperty(
+          "--suffixIcon-padding",
+          padding.replace("0px ", "")
+        ); // assign the suffix padding value to the --suffixIcon-padding variable
+        divIconSuffix.classList.add("icon-with-suffix"); // add a class to the icon element to apply the --suffixIcon-width and --suffixIcon-padding variables and calculate their position dynamically
+      }
+    }
+  }, [
+    prefixRef,
+    suffixRef,
+    props.iconLeft,
+    props.iconRight,
+    props.prefix,
+    props.suffix,
+  ]);
 
   return (
     <Label
@@ -157,35 +214,58 @@ export const Input: React.FC<iInput> = ({
     >
       {/* Label */}
       {props?.label && (
-        <LabelText fontSizeLabel={propsFontSizeLabel} OnColor={props.OnColor}>
-          {props.label}
-        </LabelText>
+        <Flex justifyContent="space-between" alignItems="center">
+          <LabelText
+            fontSizeLabel={propsFontSizeLabel}
+            OnColor={props.OnColor}
+            disabled={props.disabled}
+          >
+            {props.label}
+          </LabelText>
+
+          {props?.link && (
+            <LinkText
+              onClick={props.linkOnClick}
+              data-has-error={props?.error}
+              OnColor={props.OnColor}
+              Size={propsSize}
+              disabled={props.disabled}
+            >
+              {props.link}
+            </LinkText>
+          )}
+        </Flex>
       )}
 
-      <RelativeContainer disabled={props.disabled}>
-        {/* Icone Esquerda */}
+      <RelativeContainer disabled={props.disabled} data-has-error={!!props?.error}>
+        {/* Left icon */}
         {props.iconLeft && (
           <LeftIcon
+            fill="transparent"
+            stroke="neutralLow"
+            strokeWidth={1.5}
             opened={dropdownOpened}
             disabled={props.disabled}
             onClick={props.iconLeftOnClick}
-            iconGray={props.iconGray}
+            error={props.error}
             iconId={props.iconLeft}
             iconLeftSize={props.iconLeftSize}
             iconLeftWidth={props.iconLeftWidth}
             iconLeftHeight={props.iconLeftHeight}
             iconLeftPadding={props.iconLeftPadding}
+            hasPrefix={!!props.prefix}
+            className={props.suffix ? "icon-with-prefix" : ""}
           />
         )}
 
-        {/* Prefixo */}
+        {/* Prefix */}
         {props.prefix && (
           <PrefixText
             data-has-error={props?.error}
             onClick={props.iconLeftOnClick}
-            fontSize={propsFontSize}
-            size={propsSize}
             style={{ cursor: props.iconLeftOnClick ? "pointer" : "initial" }}
+            ref={prefixRef}
+            disabled={props.disabled}
           >
             {props.prefix}
           </PrefixText>
@@ -217,14 +297,44 @@ export const Input: React.FC<iInput> = ({
           onChange={onInputChange}
           onFocus={onFocusInput}
           autoComplete={props.autoComplete || (props.dropdown && "off")}
-          contentLeft={!!props.iconLeft || !!props.prefix}
-          contentRight={!!props.iconRight || !!props.suffix}
+          hasPrefix={!!props.prefix}
+          hasSuffix={!!props.suffix}
+          hasLeftIcon={!!props.iconLeft}
+          hasRightIcon={!!props.iconRight}
+          hasPrefixAndIcon={!!props.iconLeft && !!props.prefix}
+          hasSuffixAndIcon={!!props.iconRight && !!props.suffix}
+          iconLeftSize={props.iconLeftSize}
+          iconLeftWidth={props.iconLeftWidth}
+          iconRightSize={props.iconRightSize}
+          iconRightWidth={props.iconRightWidth}
           ref={inputRef || dropdownRef}
+          className={
+            props.prefix || props.suffix || props.iconLeft || props.iconRight
+              ? "input-with-prefix input-with-suffix input-with-icon-and-prefix input-with-icon-and-suffix"
+              : ""
+          }
         />
 
-        {/* Icone Direita */}
+        {/* Suffix */}
+        {props.suffix && (
+          <SuffixText
+            data-has-error={!!props?.error}
+            className="sufixo"
+            onClick={props.iconRightOnClick}
+            disabled={props.disabled}
+            style={{ cursor: props.iconRightOnClick ? "pointer" : "initial" }}
+            ref={suffixRef}
+          >
+            {props.suffix}
+          </SuffixText>
+        )}
+
+        {/* Rigth icon */}
         {props.iconRight && (
           <RightIcon
+            fill="transparent"
+            stroke="neutralLow"
+            strokeWidth={1.5}
             error={props.error}
             opened={dropdownOpened}
             disabled={props.disabled}
@@ -234,51 +344,53 @@ export const Input: React.FC<iInput> = ({
                 : props.iconRightOnClick
             }
             iconId={props.iconRight}
-            iconGray={props.iconGray}
+            data-has-error={!!props?.error}
             iconRigthSize={props.iconRightSize}
             iconRightWidth={props.iconRightWidth}
             iconRightHeight={props.iconRightHeight}
             iconRightPadding={props.iconRightPadding}
+            hasSuffix={!!props.suffix}
+            className={props.suffix ? "icon-with-suffix" : ""}
           />
         )}
 
-        {/* Sufixo */}
-        {props.suffix && (
-          <SuffixText
-            data-has-error={!!props?.error}
-            className="sufixo"
-            onClick={props.iconRightOnClick}
-            fontSize={propsFontSize}
-            size={propsSize}
-            style={{ cursor: props.iconRightOnClick ? "pointer" : "initial" }}
-          >
-            {props.suffix}
-          </SuffixText>
-        )}
-
+        {/* Dropdown */}
         {!!props.dropdown?.length && dropdownOpened && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
-            {dropdownItems.map((dropdownItem, index) => (
-              <DropdownItem
-                fontSize={propsFontSize}
-                onClick={() =>
-                  onClickDropdownItem(dropdownItem.value, dropdownItem.label)
-                }
-                key={`input-dropdown-item-${dropdownItem.value}-${index}`}
-                active={
-                  !!isDropdownItemActive(
-                    dropdownItem.value.toLowerCase(),
-                    dropdownItem.label?.toLowerCase()
-                  )
-                }
-                itemSelect={
-                  inputValue !== undefined &&
-                  inputValue === (dropdownItem?.label || dropdownItem?.value)
-                }
-              >
-                {dropdownItem.label || dropdownItem.value}
-              </DropdownItem>
-            ))}
+            {dropdownItems.map((dropdownItem, index) => {
+              console.log("dropdownItem", dropdownItem);
+              return (
+                <DropdownItem
+                  fontSize={propsFontSize}
+                  onClick={() =>
+                    onClickDropdownItem(dropdownItem.value, dropdownItem.label)
+                  }
+                  key={`input-dropdown-item-${dropdownItem.value}-${index}`}
+                  active={
+                    !!isDropdownItemActive(
+                      dropdownItem.value.toLowerCase(),
+                      dropdownItem.label?.toLowerCase()
+                    )
+                  }
+                  itemSelect={
+                    inputValue !== undefined &&
+                    inputValue === (dropdownItem?.label || dropdownItem?.value)
+                  }
+                >
+                  {dropdownItem.label || dropdownItem.value}
+
+                  {dropdownItem.tag && (
+                    <Tag
+                      hierarchy={
+                        `${dropdownItem.tag.background}` as iTagHierarchy
+                      }
+                    >
+                      {dropdownItem.tag.label}
+                    </Tag>
+                  )}
+                </DropdownItem>
+              );
+            })}
           </DropdownWrapper>
         )}
       </RelativeContainer>
@@ -290,6 +402,7 @@ export const Input: React.FC<iInput> = ({
           data-has-error={props?.error}
           OnColor={props.OnColor}
           Size={propsSize}
+          disabled={props.disabled}
         >
           {props.helperText}
         </HelperText>

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Theme, themeWithouthInterface as theme } from "../..";
 import { defaultCss } from "../../theme/defaultCss";
-import { ISliderBar } from "./sliderbar.interface";
+import { IScrollBar } from "./scrollbar.interface";
 
-export const SliderBar = styled.div<ISliderBar>`
+export const ScrollBar = styled.div<IScrollBar>`
   ${defaultCss};
 
   overflow-x: auto;
@@ -15,22 +15,27 @@ export const SliderBar = styled.div<ISliderBar>`
   transition: all 0.1s linear;
 
   &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 16px;
+    height: 16px;
     background: white;
   }
   
   &::-webkit-scrollbar-track {
-    background-color: ${({ theme }): string => theme.colors.neutralHighLight};
-    border-radius: 5px;
+    background-color: ${({ theme }): string => theme.colors.white};
+    margin: 4px;
   }
-
+  
   &::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }): string => theme.colors.neutralLowLight};
-    border-radius: 5px;
+    background-color: #C7D1D7;
+    border-radius: 20px;
+    border: 4px solid ${({ theme }): string => theme.colors.white};
   }
 
   &::-webkit-scrollbar-corner {
-    background: white;
+    background: ${({ theme }): string => theme.colors.white};
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
   }
 `;

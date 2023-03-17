@@ -15,7 +15,7 @@ const fontFamilyBasedOnWeight: Record<
 
 export const Wrapper = styled.div`
   ${defaultCss};
-  width: max-content;
+  width: 100%;
   display: flex;
   background: #fff;
   flex-direction: row;
@@ -109,5 +109,4 @@ export const StepWrapper = styled.div<{
 export const StyledIcon = styled.div`
   position: absolute;
   right: -14px;
-  top: 23px;
 `;
