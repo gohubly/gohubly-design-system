@@ -4,7 +4,7 @@ import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
 
 export type iInputSizes = "XXS" | "XS" | "SM" | "MD";
-export type iIconPaddings = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL";
+export type iIconPaddings = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL" | "XXL";
 
 type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
 
@@ -26,6 +26,10 @@ export interface iInput extends iInputHTML {
     | React.ReactChildren
     | Element
     | Element[];
+
+  link?: string;  
+  linkOnClick?: () => void;
+  
   helperText?: string;
   helperTextOnClick?: () => void;
   error?: boolean;

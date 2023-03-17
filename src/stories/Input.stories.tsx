@@ -13,13 +13,13 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   name: "input-name",
-  type: 'password',
+  type: "password",
   label: "Label",
   placeholder: "placeholder...",
   helperText: "Clique em mim",
-  textAlign: 'initial',
+  textAlign: "initial",
   helperTextOnClick() {
-    console.log("Clicou")
+    console.log("Clicou");
   },
 };
 
@@ -45,7 +45,7 @@ WithError.args = {
   label: "Label",
   placeholder: "placeholder...",
   error: true,
-  helperText: "Teste"
+  helperText: "Teste",
 };
 
 export const OnColor = Template.bind({});
@@ -91,10 +91,22 @@ WithPrefix.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
-  prefix: "https://",
-  iconLeftWidth: '90px',
+  prefix: "Exemplo",
   iconLeftOnClick() {
-    console.log("Clicou")
+    console.log("Clicou");
+  },
+};
+
+export const WithPrefixAndIcon = Template.bind({});
+
+WithPrefixAndIcon.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  prefix: "R$",
+  iconLeft: "camera",
+  iconLeftOnClick() {
+    console.log("Clicou");
   },
 };
 
@@ -106,7 +118,35 @@ WithSuffix.args = {
   placeholder: "placeholder...",
   suffix: "kg",
   iconRightOnClick() {
-    console.log("Clicou")
+    console.log("Clicou");
+  },
+};
+
+export const WithSuffixAndIcon = Template.bind({});
+
+WithSuffixAndIcon.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  suffix: "kg",
+  iconRight: "bag",
+  iconRightOnClick() {
+    console.log("Clicou");
+  },
+};
+
+export const WithPrefixAndSuffixAndIcons = Template.bind({});
+
+WithPrefixAndSuffixAndIcons.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  prefix: "https://",
+  iconLeft: "camera",
+  suffix: "kg",
+  iconRight: "bag",
+  iconRightOnClick() {
+    console.log("Clicou");
   },
 };
 
@@ -117,13 +157,14 @@ WithDropdown.args = {
   placeholder: "placeholder...",
   size: "MD",
   type: "text",
+  iconRight: "chevronDown",
   onClickDropdownItem(itemValue, itemLabel) {
     console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
   },
   dropdown: [
     {
       value: "value-label-1",
-      label: "valor 1 valor 1 valor 1 valor 1 valor 1",
+      label: "valor 1 valor 1 valor",
     },
     {
       value: "value-label-2",
@@ -136,24 +177,6 @@ WithDropdown.args = {
     {
       value: "value-label-4",
       label: "valor 4",
-    },
-    {
-      value: "value-label-5",
-    },
-    {
-      value: "value-label-6",
-    },
-    {
-      value: "value-label-7",
-    },
-    {
-      value: "value-label-8",
-    },
-    {
-      value: "value-label-9",
-    },
-    {
-      value: "value-label-10",
     },
     {
       label: "Valor com tag",
@@ -250,4 +273,16 @@ WithDropdownEndPlaceholderStyled.args = {
       value: "name5",
     },
   ],
+};
+
+export const WidthLink = Template.bind({});
+WidthLink.args = {
+  name: "input-name",
+  type: "password",
+  label: "Label",
+  placeholder: "placeholder...",
+  link: "Action link",
+  linkOnClick() {
+    console.log("Clicou");
+  },
 };
