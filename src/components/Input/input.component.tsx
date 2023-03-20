@@ -358,7 +358,6 @@ export const Input: React.FC<iInput> = ({
         {!!props.dropdown?.length && dropdownOpened && (
           <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
             {dropdownItems.map((dropdownItem, index) => {
-              console.log("dropdownItem", dropdownItem);
               return (
                 <DropdownItem
                   fontSize={propsFontSize}

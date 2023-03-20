@@ -239,9 +239,6 @@ export const Input = styled.input<iStyledCommonProps>`
   color: rgba(0, 0, 0, 0.6);
   cursor: ${({ opened }) => (opened ? "text" : "pointer")};
 
-  padding-left: ${({ size }) => PADDING_BASED_ON_SIZE[size || "MD"]};
-  padding-right: ${({ size }) => PADDING_BASED_ON_SIZE[size || "MD"]};
-
   ${({
     hasPrefix,
     hasSuffix,
@@ -256,9 +253,10 @@ export const Input = styled.input<iStyledCommonProps>`
     iconRightWidth,
   }) => {
     if (hasPrefix && hasSuffix && !hasLeftIcon && !hasRightIcon) {
-      return css`
-        padding-left: calc(var(--prefix-width) + 3 * var(--prefix-padding));
-        padding-right: calc(var(--suffix-width) + 3 * var(--suffix-padding));
+      // 1x var(--prefix-padding) pois no projeto ele conta o width já com o padding
+      return css` 
+        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 2px);
+        padding-right: calc(var(--suffix-width) + var(--suffix-padding) + 2px);
       `;
     } else if (hasPrefix && !hasLeftIcon && !hasRightIcon) {
       return css`
@@ -281,28 +279,40 @@ export const Input = styled.input<iStyledCommonProps>`
       return css`
         padding-right: 48px;
       `;
+    } else if (hasPrefix && hasRightIcon && !hasSuffix && !hasLeftIcon) {
+      return css`
+        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 2px);
+        padding-right: 48px;
+      `;
+    } else if (hasSuffix && hasLeftIcon && !hasPrefix && !hasRightIcon) {
+      return css`
+        padding-right: calc(var(--suffix-width) + var(--suffix-padding) + 2px);
+
+        padding-left: 50px;
+      `;
     } else if (hasPrefixAndIcon && hasSuffixAndIcon) {
+      // 2x var(--prefix-padding) pois no projeto ele conta o width já com o padding
       return css`
         padding-left: calc(
-          var(--prefix-width) + 4 * var(--prefix-padding) +
+          var(--prefix-width) + 2 * var(--prefix-padding) + 2px +
             ${iconLeftWidth ?? ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]}
         );
         padding-right: calc(
-          var(--suffix-width) + 4 * var(--suffix-padding) +
+          var(--suffix-width) + 2 * var(--suffix-padding) + 2px +
             ${iconRightWidth ?? ICON_SIZE_BY_SIZE[iconRightSize || "MD"]}
         );
       `;
     } else if (hasPrefixAndIcon) {
       return css`
         padding-left: calc(
-          var(--prefix-width) + 4 * var(--prefix-padding) +
+          var(--prefix-width) + 2 * var(--prefix-padding) + 2px +
             ${iconLeftWidth ?? ICON_SIZE_BY_SIZE[iconLeftSize || "MD"]}
         );
       `;
     } else if (hasSuffixAndIcon) {
       return css`
         padding-right: calc(
-          var(--suffix-width) + 4 * var(--suffix-padding) +
+          var(--suffix-width) + 2 * var(--suffix-padding) + 2px +
             ${iconRightWidth ?? ICON_SIZE_BY_SIZE[iconRightSize || "MD"]}
         );
       `;
@@ -610,7 +620,7 @@ export const LeftIcon = styled(Icon)<iIconLeft>`
 
   left: ${({ hasPrefix, iconLeftPadding }): string =>
     hasPrefix
-      ? `calc(var(--prefixIcon-width) + 3 * var(--prefixIcon-padding))`
+      ? `calc(var(--prefixIcon-width) + var(--prefixIcon-padding) + 2px)`
       : ICON_PADDING_LEFT_OR_RIGHT[iconLeftPadding || "LG"]}};  
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
@@ -648,7 +658,7 @@ export const RightIcon = styled(Icon)<iIconRight>`
 
   right: ${({ hasSuffix, iconRightPadding }): string =>
     hasSuffix
-      ? "calc(var(--suffixIcon-width) + 3*var(--suffixIcon-padding))"
+      ? "calc(var(--suffixIcon-width) + var(--suffixIcon-padding) + 2px)"
       : ICON_PADDING_LEFT_OR_RIGHT[iconRightPadding || "LG"]}};  
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
