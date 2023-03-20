@@ -97,9 +97,22 @@ WithPrefix.args = {
   },
 };
 
-export const WithPrefixAndIcon = Template.bind({});
+export const WithPrefixAndIconRight = Template.bind({});
 
-WithPrefixAndIcon.args = {
+WithPrefixAndIconRight.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  prefix: "R$",
+  iconRight: "camera",
+  iconLeftOnClick() {
+    console.log("Clicou");
+  },
+};
+
+export const WithPrefixAndIconLeft = Template.bind({});
+
+WithPrefixAndIconLeft.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
@@ -122,9 +135,22 @@ WithSuffix.args = {
   },
 };
 
-export const WithSuffixAndIcon = Template.bind({});
+export const WithSuffixAndIconLeft = Template.bind({});
 
-WithSuffixAndIcon.args = {
+WithSuffixAndIconLeft.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  suffix: "kg",
+  iconLeft: "bag",
+  iconRightOnClick() {
+    console.log("Clicou");
+  },
+};
+
+export const WithSuffixAndIconRight = Template.bind({});
+
+WithSuffixAndIconRight.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
