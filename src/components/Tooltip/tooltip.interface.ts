@@ -11,7 +11,7 @@ export interface iTooltip {
   pointerPosition?: iTooltipPointerPosition
   pointerOrientation: iTooltipPointerOrientation
   shadow?: boolean
-  maxWidth?: string;
+  width?: string;
   padding?: string;
 }
 

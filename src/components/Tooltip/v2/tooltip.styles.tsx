@@ -1,34 +1,15 @@
 import styled from "styled-components";
-import { iTooltip, iTooltipSizes } from "../tooltip.interface";
 
-const PADDING_BY_SIZE: Record<iTooltipSizes, string> = {
-  SM: "6px 12px",
-  LG: "8px 16px",
-};
-
-const FONT_SIZE_BY_SIZE: Record<iTooltipSizes, string> = {
-  SM: "11px",
-  LG: "12px",
-};
-
-export const Container = styled.div<iTooltip>`
+export const Container = styled.div<{ width?: string }>`
   .react-tooltip {
-    box-sizing: border-box;
-
     border-radius: 4px !important;
-
-    font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size as iTooltipSizes]};
-
-    padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
 
     background: ${({ theme }) => theme.colors.neutralLowDark} !important;
 
     color: ${({ theme }) => theme.colors.neutralHigh};
 
-    width: max-content;
+    font-size: 12px;
 
-    max-width: ${({ maxWidth }) => maxWidth ?? '100%'};
-
-    z-indez: 3;
+    width: ${({ width }) => width ?? '100%'};
   }
 `;
