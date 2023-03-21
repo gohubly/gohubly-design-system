@@ -4,7 +4,7 @@ export type iTooltipPointerPosition = 'left' | 'center' | 'right'
 
 export interface iTooltip {
   id?: string
-  children: any
+  children: JSX.Element | React.ReactChild | any;
   text: string
   size?: iTooltipSizes
   position?: iTooltipPointerOrientation
