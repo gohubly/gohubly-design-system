@@ -11,7 +11,7 @@ export const Tooltip: React.FC<iTooltip> = ({
   position = 'down',
   text,
   shadow,
-  maxWidth,
+  width,
   padding
 }) => {
   const props = {
@@ -21,7 +21,7 @@ export const Tooltip: React.FC<iTooltip> = ({
     size,
     shadow,
     text,
-    maxWidth,
+    width,
     padding
   };
   return (

@@ -123,7 +123,7 @@ CheckedBoxStyled.args = {
     <div style={{ display: "flex", gap: "5px" }}>
       <TooltipV2
         size="LG"
-        maxWidth="200px"
+        width="200px"
         id="sig"
         text="Total de comissões aprovadas desde a primeira assinatura paga utilizando o seu cupom"
         position="right"
