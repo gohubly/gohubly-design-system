@@ -25,7 +25,6 @@ export const Tooltip: React.FC<iTooltip> = ({
     padding
   };
 
-  console.log('children 1', children)
   return (
     <Container padding={padding}>
       <ContainerInfo>{children}</ContainerInfo>
