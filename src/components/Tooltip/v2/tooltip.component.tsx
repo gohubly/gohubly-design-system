@@ -1,5 +1,5 @@
 import React from "react";
-import { PlacesType, Tooltip as ReactTooltip } from 'react-tooltip'
+import { PlacesType, Tooltip as ReactTooltip } from "react-tooltip";
 
 import { iTooltip, iTooltipPointerOrientation } from "../tooltip.interface";
 import * as css from "./tooltip.styles";
@@ -7,13 +7,13 @@ import * as css from "./tooltip.styles";
 export const TooltipV2: React.FC<iTooltip> = ({
   id,
   children,
-  pointerOrientation = 'up',
+  pointerOrientation = "up",
   pointerPosition = "center",
-  size = "SM",
-  position = 'down',
+  size = "LG",
+  position = "down",
   text,
   shadow,
-  maxWidth
+  maxWidth,
 }) => {
   const props = {
     id,
@@ -23,20 +23,22 @@ export const TooltipV2: React.FC<iTooltip> = ({
     size,
     shadow,
     text,
-    maxWidth
+    maxWidth,
   };
 
   const adaptedPosition: Record<iTooltipPointerOrientation, PlacesType> = {
     up: "top",
     down: "bottom",
     left: "left",
-    right: "right"
-  }
+    right: "right",
+  };
 
   return (
-    <css.Container {...props}>
+    <css.Container maxWidth={maxWidth} size={size}>
       <ReactTooltip anchorId={id} place={adaptedPosition[position]} />
-      <span id={id} data-tooltip-content={text}>{ children }</span>
+      <span id={id} data-tooltip-content={text} style={{ cursor: "pointer" }}>
+        {children}
+      </span>
     </css.Container>
   );
 };

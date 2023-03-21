@@ -24,6 +24,7 @@ export const Tooltip: React.FC<iTooltip> = ({
     maxWidth,
     padding
   };
+
   return (
     <Container padding={padding}>
       <ContainerInfo>{children}</ContainerInfo>
