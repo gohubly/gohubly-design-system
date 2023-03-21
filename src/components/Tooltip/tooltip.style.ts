@@ -30,19 +30,19 @@ const WRAPPER_POSITION_BY_POSITION: Record<
 > = {
   up: {
     SM: "bottom: 100%; left: 0px;",
-    LG: "bottom: 100%; left: 0px;"
+    LG: "bottom: 100%; left: 0px;",
   },
   down: {
     SM: "top: 100%; left: 0px;",
-    LG: "top: 100%; left: 0px;"
+    LG: "top: 100%; left: 0px;",
   },
   left: {
     SM: "left: 100%; top: 0px;",
-    LG: "left: 100%; top: 0px;"
+    LG: "left: 100%; top: 0px;",
   },
   right: {
     SM: "right: 100%; top: 0px;",
-    LG: "right: 100%; top: 0px;"
+    LG: "right: 100%; top: 0px;",
   },
 };
 
@@ -103,18 +103,18 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_LG: Record<
   },
 };
 
-export const Container = styled.div`
+export const Container = styled.div<{ padding?: string }>`
   ${defaultCss};
   position: relative;
-  padding: 10px;
+  padding: ${({ padding }) => (padding ?? "10px")};
 
   &:hover > div + div {
-    {
-     display: block;
-     user-select: all;
-     z-index: 2;
-   }
- }
+     {
+      display: block;
+      user-select: all;
+      z-index: 2;
+    }
+  }
 `;
 
 export const ContainerInfo = styled.div`
@@ -135,13 +135,15 @@ export const ContainerInfo = styled.div`
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
   
-  max-width: ${({ width }) => (width ?? "max-content")};
+  max-width: ${({ width }) => width ?? "max-content"};
   width: max-content;
 
   box-sizing: border-box;
 
   ${({ position, size }) =>
-    WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation][size as iTooltipSizes]}
+    WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation][
+      size as iTooltipSizes
+    ]}
 
   background: ${() => theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};

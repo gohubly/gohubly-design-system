@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { defaultCss } from "../../theme/defaultCss";
 import theme from "../../theme/theme";
 
@@ -14,10 +14,14 @@ export const Label = styled.label<ILabelCheckBox>`
   display: flex;
   align-items: center;
   position: relative;
-  padding-left: 24px;
+  padding-left: 28px;
   line-height: 16px;
   font-size: 14px;
-  height: 20px;
+  height: 100%;
+
+  p {
+    margin: 0px;
+  }
 
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   user-select: none;
@@ -30,21 +34,30 @@ export const Label = styled.label<ILabelCheckBox>`
       onColor ? theme.colors.white : theme.colors.neutralLowDark};
   }
 
-  &:hover span,
-  input:checked ~ span {
-    background-color: ${({ onColor }) =>
-      onColor ? theme.colors.white : theme.colors.primaryMedium};
+  &:hover .mark {
+    background-color: ${() => theme.colors.primaryLightest};
     border: 1px solid
-      ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.primaryMedium)};
+      ${({ onColor }) =>
+        onColor ? theme.colors.white : theme.colors.neutralLow};
   }
 
-  &:hover {
-    span {
-      background-color: ${() => theme.colors.primaryLightest};
-      border: 1px solid
-        ${({ onColor }) =>
-          onColor ? theme.colors.white : theme.colors.neutralLow};
-    }
+  &:hover .mark,
+  input:checked ~ span {
+    ${({ onColor, checked, theme }) => {
+      if (onColor) {
+        return css`
+          background-color: ${theme.colors.white};
+          border: 1px solid ${theme.colors.white};
+        `;
+      }
+
+      if (checked) {
+        return css`
+          background-color: ${theme.colors.primaryMedium};
+          border: 1px solid ${theme.colors.primaryMedium};
+        `;
+      }
+    }};
   }
 
   &.disabled {
@@ -95,8 +108,8 @@ export const Box = styled.input.attrs({
 export const Mark = styled.span<IMarkCheckBox>`
   div > svg {
     position: absolute;
-    top: 50%;  
-    left: 50%; 
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
   }
 

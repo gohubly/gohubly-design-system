@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { CheckBox, Link, Typography } from "..";
+import { CheckBox, Link, Tooltip, TooltipV2, Typography } from "..";
 
 export default {
   title: "Components/CheckBox",
@@ -121,15 +121,26 @@ CheckedBoxStyled.args = {
   name: "checked",
   label: (
     <div style={{ display: "flex", gap: "5px" }}>
-      <Typography
-        color="neutralLowMedium"
-        size="XS"
-        lineHeight="MD"
-        fontWeight={400}
+      <TooltipV2
+        size="LG"
+        width="200px"
+        id="sig"
+        text="Total de comissões aprovadas desde a primeira assinatura paga utilizando o seu cupom"
+        position="right"
+        pointerOrientation="up"
+        pointerPosition="center"
       >
-        Concordo com os
-      </Typography>
-      <Link>Termos de Uso</Link>
+        <Typography
+          color="neutralLowMedium"
+          size="XS"
+          lineHeight="MD"
+          fontWeight={400}
+          as='p'
+        >
+          Concordo com os
+        </Typography>
+        <Link>Termos de Uso</Link>
+      </TooltipV2>
     </div>
   ),
   checked: true,

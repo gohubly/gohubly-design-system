@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ width?: string }>`
   .react-tooltip {
     border-radius: 4px !important;
 
@@ -9,5 +9,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors.neutralHigh};
 
     font-size: 12px;
+
+    width: ${({ width }) => width ?? '100%'};
   }
-`
+`;

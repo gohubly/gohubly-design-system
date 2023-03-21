@@ -34,7 +34,7 @@ export const TooltipV2: React.FC<iTooltip> = ({
   }
 
   return (
-    <css.Container>
+    <css.Container width={width}>
       <ReactTooltip anchorId={id} place={adaptedPosition[position]} />
       <span id={id} data-tooltip-content={text}>{ children }</span>
     </css.Container>
