@@ -12,6 +12,7 @@ export interface iCheckBox {
   export interface ILabelCheckBox {
     disabled?: boolean;
     onColor?: boolean;
+    checked?: boolean;
   }
 
   export interface IBoxCheckBox {

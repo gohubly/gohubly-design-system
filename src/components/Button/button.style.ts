@@ -359,8 +359,7 @@ export const Button = styled.button<iButton>`
 
     svg,
     path {
-      fill: ${({ OnColor }) =>
-      OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
+      fill: transparent;
       stroke: ${({ OnColor }) =>
         OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
     }
