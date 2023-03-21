@@ -13,7 +13,7 @@ export const TooltipV2: React.FC<iTooltip> = ({
   position = 'down',
   text,
   shadow,
-  width
+  maxWidth
 }) => {
   const props = {
     id,
@@ -23,7 +23,7 @@ export const TooltipV2: React.FC<iTooltip> = ({
     size,
     shadow,
     text,
-    width
+    maxWidth
   };
 
   const adaptedPosition: Record<iTooltipPointerOrientation, PlacesType> = {
@@ -34,7 +34,7 @@ export const TooltipV2: React.FC<iTooltip> = ({
   }
 
   return (
-    <css.Container width={width}>
+    <css.Container {...props}>
       <ReactTooltip anchorId={id} place={adaptedPosition[position]} />
       <span id={id} data-tooltip-content={text}>{ children }</span>
     </css.Container>
