@@ -18,5 +18,5 @@ Default.args = {
   text: 'Olá, sou um tooltip',
   pointerOrientation: 'right',
   position: 'left',
-  width: '300px'
+  maxWidth: '300px'
 };

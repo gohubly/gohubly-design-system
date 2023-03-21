@@ -30,7 +30,7 @@ const tableCommonArgs = {
             pointerOrientation="up"
             pointerPosition="left"
             position="down"
-            width="300px"
+            maxWidth="300px"
           >
             <Icon iconId="helpCircle" size="XS" gray />
           </Tooltip>
