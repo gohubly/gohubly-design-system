@@ -99,7 +99,21 @@ import Ticket2 from "./icons/ticket2";
 import Users from "./icons/users";
 import ArrowRigth from "./icons/arrowRigth";
 import FaceCash from "./icons/faceCash";
-
+import Alert from "./icons/alert";
+import BarChart from "./icons/barChart";
+import ClockCheck from "./icons/clockCheck";
+import ClockRewind from "./icons/clockRewind";
+import ClockWaiting from "./icons/clockWaiting";
+import CoinsHand from "./icons/coinsHand"
+import Copy from "./icons/copy";
+import CreditCardDownload from "./icons/creditCardDownload";
+import Hand from "./icons/hand";
+import Hourglass from "./icons/hourglass";
+import Settings2 from "./icons/settings2";
+import ShoppingCart from "./icons/shoppingCart";
+import Stars from "./icons/stars";
+import Wallet from "./icons/wallet";
+import ZapCircle from "./icons/zapCircle";
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: "12px",
@@ -112,11 +126,13 @@ const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
 };
 
 const SVG_COMPONENT: Record<iIconTypes, any> = {
+  alert: Alert,
   amex: Amex,
   app: AppIcon,
   arrowRigth: ArrowRigth,
   bag: Bag,
   bankSlip: BankSlip,
+  barChart: BarChart,
   bell: Bell,
   block: Block,
   brench1: Brench1,
@@ -135,11 +151,17 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   clipboard: Clipboard,
   clipboardText: ClipboardText,
   clock: Clock,
+  clockCheck: ClockCheck,
+  clockRewind: ClockRewind,
+  clockWaiting: ClockWaiting,
   close: Close,
   close2: Close2,
   coins2: Coins2,
+  coinsHand: CoinsHand,
   commission: Commission,
+  copy: Copy,
   creditCard: CreditCard,
+  creditCardDownload: CreditCardDownload,
   defaut: Defaut,
   diners: Diners,
   discover: Discover,
@@ -159,10 +181,12 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   globe: Globe,
   grid: Grid,
   hamburguer: Hamburguer,
+  hand: Hand,
   heart: Heart,
   helpCircle: HelpCircle,
   hipercard: Hipercard,
   home: Home,
+  hourglass: Hourglass,
   image: Image,
   information: Information,
   informationTriangle: InformationTriangle,
@@ -189,11 +213,14 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   receiptCheck: ReceiptCheck,
   search: Search,
   settings: Settings,
+  settings2: Settings2,
   share: Share,
   shareOutline: ShareOutline,
   shield: Shield,
+  shoppingCart: ShoppingCart,
   starEmpty: StarEmpty,
   starFilled: StarFilled,
+  stars: Stars,
   tag: Tag,
   target4: Target4,
   ticket2: Ticket2,
@@ -205,10 +232,13 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   user2: User2,
   users: Users,
   visa: Visa,
+  wallet: Wallet,
   whatsapp: WhatsApp,
   youtube: Youtube,
+  zapCircle: ZapCircle,
   zapFast: ZapFast,
-};
+};    
+
 
 export const Icon: React.FC<iIcon> = ({
   iconId,
