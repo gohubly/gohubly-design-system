@@ -86,7 +86,6 @@ WithIconRight.args = {
 };
 
 export const WithPrefix = Template.bind({});
-
 WithPrefix.args = {
   name: "input-name",
   label: "Label",
@@ -98,7 +97,6 @@ WithPrefix.args = {
 };
 
 export const WithPrefixAndIconRight = Template.bind({});
-
 WithPrefixAndIconRight.args = {
   name: "input-name",
   label: "Label",
@@ -111,7 +109,6 @@ WithPrefixAndIconRight.args = {
 };
 
 export const WithPrefixAndIconLeft = Template.bind({});
-
 WithPrefixAndIconLeft.args = {
   name: "input-name",
   label: "Label",
@@ -124,7 +121,6 @@ WithPrefixAndIconLeft.args = {
 };
 
 export const WithSuffix = Template.bind({});
-
 WithSuffix.args = {
   name: "input-name",
   label: "Label",
@@ -136,7 +132,6 @@ WithSuffix.args = {
 };
 
 export const WithSuffixAndIconLeft = Template.bind({});
-
 WithSuffixAndIconLeft.args = {
   name: "input-name",
   label: "Label",
@@ -149,7 +144,6 @@ WithSuffixAndIconLeft.args = {
 };
 
 export const WithSuffixAndIconRight = Template.bind({});
-
 WithSuffixAndIconRight.args = {
   name: "input-name",
   label: "Label",
@@ -162,7 +156,6 @@ WithSuffixAndIconRight.args = {
 };
 
 export const WithPrefixAndSuffixAndIcons = Template.bind({});
-
 WithPrefixAndSuffixAndIcons.args = {
   name: "input-name",
   label: "Label",

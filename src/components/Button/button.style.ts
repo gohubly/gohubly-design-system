@@ -177,6 +177,9 @@ export const IconStyled = styled(Icon)<
     rightIconSize?: iIconSizes;
   }
 >`
+  height: ${({ propsSize }) => propsSize && LINE_HEIGHT_BY_SIZE[propsSize]}!important;
+  width: ${({ propsSize }) => propsSize && LINE_HEIGHT_BY_SIZE[propsSize]}!important;;
+
   ${({ propsSize, iconSize, rightIconSize }) => {
     if (iconSize) {
       return css`
@@ -375,5 +378,8 @@ export const ButtonSpinnerContainer = styled.span`
   position: absolute;
   height: 50%;
 
- 
+  svg,
+  path {
+    fill: ${() => theme.colors.neutralLowLight}!important;
+  }
 `;

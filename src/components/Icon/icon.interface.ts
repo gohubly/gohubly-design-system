@@ -96,6 +96,21 @@ export type iIconTypes =
   | "visa"
   | "whatsapp"
   | "youtube"
+  | "alert"
+  | "barChart"
+  | "clockCheck"
+  | "clockRewind"
+  | "clockWaiting"
+  | "coinsHand"
+  | "copy"
+  | "creditCardDownload"
+  | "hand"
+  | "hourglass"
+  | "settings2"
+  | "shoppingCart"
+  | "stars"
+  | "wallet"
+  | "zapCircle"
   | "zapFast";
 
 export type iIconSizes = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL";

@@ -258,7 +258,7 @@ export const Input = styled.input<iStyledCommonProps>`
     if (hasPrefix && hasSuffix && !hasLeftIcon && !hasRightIcon) {
       // 1x var(--prefix-padding) pois no projeto ele conta o width já com o padding
       return css`
-        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 2px);
+        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 6px);
         padding-right: calc(var(--suffix-width) + var(--suffix-padding) + 2px);
       `;
     } else if (hasPrefix && !hasLeftIcon && !hasRightIcon) {
@@ -284,13 +284,12 @@ export const Input = styled.input<iStyledCommonProps>`
       `;
     } else if (hasPrefix && hasRightIcon && !hasSuffix && !hasLeftIcon) {
       return css`
-        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 2px);
+        padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 6px);
         padding-right: 48px;
       `;
     } else if (hasSuffix && hasLeftIcon && !hasPrefix && !hasRightIcon) {
       return css`
         padding-right: calc(var(--suffix-width) + var(--suffix-padding) + 2px);
-
         padding-left: 50px;
       `;
     } else if (hasPrefixAndIcon && hasSuffixAndIcon) {
