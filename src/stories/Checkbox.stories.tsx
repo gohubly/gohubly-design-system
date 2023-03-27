@@ -121,14 +121,15 @@ CheckedBoxStyled.args = {
   name: "checked",
   label: (
     <div style={{ display: "flex", gap: "5px" }}>
-      <TooltipV2
+      <Tooltip
         size="LG"
         maxWidth="200px"
         id="sig"
         text="Total de comissões aprovadas desde a primeira assinatura paga utilizando o seu cupom"
-        position="right"
+        position="down"
         pointerOrientation="up"
         pointerPosition="center"
+        padding="0"
       >
         <Typography
           color="neutralLowMedium"
@@ -140,7 +141,7 @@ CheckedBoxStyled.args = {
           Concordo com os
         </Typography>
         <Link>Termos de Uso</Link>
-      </TooltipV2>
+      </Tooltip>
     </div>
   ),
   checked: true,

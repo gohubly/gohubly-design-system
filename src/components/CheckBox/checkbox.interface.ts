@@ -7,8 +7,6 @@ export interface iCheckBox {
     onChange?: (value: any) => void;
     disabled?: boolean;
     onColor?: boolean;
-    tooltip?: boolean;
-    ellipsiCount?: number;
   }
   
   export interface ILabelCheckBox {
