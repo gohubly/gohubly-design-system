@@ -16,10 +16,6 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
     if (props.onChange) props.onChange(evt.target.value);
   };
 
-  console.log("props.tooltip", props.tooltip);
-  console.log("type", typeof props.label);
-  console.log("props.ellipsiCount", props.ellipsiCount);
-
   return (
     <Label
       {...props}
