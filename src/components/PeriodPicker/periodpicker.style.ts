@@ -112,7 +112,6 @@ export const MonthApresentation = styled.div`
   text-align: center;
   text-transform: capitalize;
   font-family: ${fontFamilyBasedOnWeight["600"]}!important;
-  user-select: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
   width: 100%;
   padding-bottom: 24px;
@@ -137,6 +136,7 @@ const DayDefault = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
 `;
 
 export const DayName = styled(DayDefault)`
@@ -202,20 +202,19 @@ export const DayNumber = styled(DayDefault)<{
 
 export const Footer = styled.div<{ onlyOne?: boolean }>`
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   gap: 24px;
   padding: 16px;
-  flex-direction: ${({ onlyOne }) => onlyOne ? 'column' : 'row'};
+  flex-direction: ${({ onlyOne }) => (onlyOne ? "column" : "row")};
   border-top: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
 `;
 
 export const HelperContainer = styled.div`
-  margin-right: auto;
+  width: 100%;
+  justify-content: flex-start;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  user-select: none;
 `;
 
 export const PeriodCallout = styled.div`
@@ -227,10 +226,8 @@ export const PeriodCallout = styled.div`
 
 export const ButtonContainer = styled.div`
   width: 100%;
-  justify-content: center;
+  justify-content: flex-end;
   display: flex;
   gap: 16px;
   user-select: none;
 `;
-
-
