@@ -1,5 +1,8 @@
 import React, { useRef, useState } from "react";
+import ellipsiText from "../../helpers/ellipsiText";
 import { Icon } from "../Icon";
+import { TooltipV2 } from "../Tooltip";
+import { Typography } from "../Typography";
 import { iCheckBox } from "./checkbox.interface";
 import { Box, Label, Mark } from "./checkbox.style";
 
@@ -13,6 +16,10 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
     if (props.onChange) props.onChange(evt.target.value);
   };
 
+  console.log("props.tooltip", props.tooltip);
+  console.log("type", typeof props.label);
+  console.log("props.ellipsiCount", props.ellipsiCount);
+
   return (
     <Label
       {...props}
@@ -23,7 +30,30 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
       checked={checkedValue}
       onChange={onChange}
     >
-      {props.label}
+      {props.tooltip && typeof props.label === "string" && props.ellipsiCount && (
+        <TooltipV2
+          id={props.label}
+          text={props.label}
+          position="down"
+          pointerOrientation="up"
+          pointerPosition="center"
+          maxWidth="250px"
+          size="LG"
+        >
+          <Typography
+            size="XXS"
+            lineHeight="LG"
+            color="neutralLowDark"
+            fontWeight={500}
+            as="p"
+          >
+            {ellipsiText(props.label, props.ellipsiCount)}
+          </Typography>
+        </TooltipV2>
+      )}
+
+      {!props.tooltip && typeof props.label !== "string" && props.label}
+
       <Box
         id={props.name}
         ref={ref}
