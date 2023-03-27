@@ -10,13 +10,13 @@ import {
 } from "./tooltip.interface";
 
 const PADDING_BY_SIZE: Record<iTooltipSizes, string> = {
-  SM: "4px 8px",
-  LG: "8px 12px",
+  SM: "6px 12px",
+  LG: "8px 16px",
 };
 
 const FONT_SIZE_BY_SIZE: Record<iTooltipSizes, string> = {
-  SM: "12px",
-  LG: "14px",
+  SM: "11px",
+  LG: "12px",
 };
 
 const LINE_HEIGHT_BY_SIZE: Record<iTooltipSizes, string> = {
@@ -29,26 +29,26 @@ const WRAPPER_POSITION_BY_POSITION: Record<
   Record<iTooltipSizes, string>
 > = {
   up: {
-    SM: "bottom: 100%; left: 0px;",
-    LG: "bottom: 100%; left: 0px;",
+    SM: "bottom: 102%; left: 0px;",
+    LG: "bottom: 102%; left: 0px;",
   },
   down: {
-    SM: "top: 100%; left: 0px;",
-    LG: "top: 100%; left: 0px;",
+    SM: "top: 102%; left: 0px;",
+    LG: "top: 102%; left: 0px;",
   },
   left: {
-    SM: "left: 100%; top: 0px;",
-    LG: "left: 100%; top: 0px;",
+    SM: "right: 102%; top: 15%;",
+    LG: "right: 102%; top: 15%;",
   },
   right: {
-    SM: "right: 100%; top: 0px;",
-    LG: "right: 100%; top: 0px;",
+    SM: "left: 102%; top: 15%;",
+    LG: "left: 102%; top: 15%;",
   },
 };
 
 const POINTER_SIZE_BY_SIZE = {
-  SM: "8px",
-  LG: "10px",
+  SM: "6px",
+  LG: "8px",
 };
 
 const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_SM: Record<
@@ -56,24 +56,24 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_SM: Record<
   Record<iTooltipPointerPosition, string>
 > = {
   up: {
-    left: `top: -7px; left: 5px; transform: rotate(45deg)`,
-    center: `top: -7px; left: 50%; transform: translateX(-50%) rotate(45deg)`,
-    right: `top: -7px; right: 8px; transform: rotate(45deg)`,
-  },
-  down: {
-    left: `bottom: -8px; left: 4px; transform: rotate(45deg)`,
-    center: `bottom: -10px; left: 50%; transform: rotate(45deg) translateX(-50%);`,
-    right: `bottom: -8px; right: 4px; transform: rotate(45deg)`,
-  },
-  left: {
-    left: `right: -10px; top: 8px; transform: rotate(45deg)`,
-    center: `right: -8px; top: 40%; transform: rotate(45deg) translateY(-50%);`,
-    right: `right: -10px; bottom: 8px; transform: rotate(45deg)`,
+    left: `top: -9px; left: 5px; transform: rotate(45deg)`,
+    center: `top: -9px; left: 50%; transform: translateX(-50%) rotate(45deg)`,
+    right: `top: -9px; right: 8px; transform: rotate(45deg)`,
   },
   right: {
-    left: `left: -10.5px; top: 8px; transform: rotate(45deg)`,
-    center: `left: -14.5px; top: 40%; transform: rotate(45deg) translateY(-50%);`,
-    right: `left: -10.5px; bottom: 8px; transform: rotate(45deg)`,
+    left: `right: -15px; top: 8px; transform: rotate(45deg)`,
+    center: `right: -13px; top: 45%; transform: rotate(45deg) translateY(-50%);`,
+    right: `right: -15px; bottom: 8px; transform: rotate(45deg)`,
+  },
+  down: {
+    left: `bottom: -9px; left: 4px; transform: rotate(45deg)`,
+    center: `bottom: -11px; left: 50%; transform: rotate(45deg) translateX(-50%);`,
+    right: `bottom: -9px; right: 4px; transform: rotate(45deg)`,
+  },
+  left: {
+    left: `left: -15px; top: 8px; transform: rotate(45deg)`,
+    center: `left: -17.5px; top: 45%; transform: rotate(45deg) translateY(-50%);`,
+    right: `left: -15px; bottom: 8px; transform: rotate(45deg)`,
   },
 };
 
@@ -86,33 +86,33 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_LG: Record<
     center: `top: -12px; left: 50%; transform: translateX(-50%) rotate(45deg)`,
     right: `top: -12px; right: 4px; transform: rotate(45deg)`,
   },
+  right: {
+    left: `right: -20px; top: 1px; transform: rotate(45deg)`,
+    center: `right: -17px; top: 45%; transform: rotate(45deg) translateY(-50%);`,
+    right: `right: -20px; bottom: 1px; transform: rotate(45deg)`,
+  },
   down: {
     left: `bottom: -12px; transform: rotate(45deg)`,
-    center: `bottom: -16px; left: 50%; transform: rotate(45deg) translateX(-50%);`,
+    center: `bottom: -15px; left: 50%; transform: rotate(45deg) translateX(-50%);`,
     right: `bottom: -12px; right: 4px; transform: rotate(45deg)`,
   },
   left: {
-    left: `right: -16px; top: 4px; transform: rotate(45deg)`,
-    center: `right: -13px; top: 40%; transform: rotate(45deg) translateY(-50%);`,
-    right: `right: -16px; bottom: 4px; transform: rotate(45deg)`,
-  },
-  right: {
-    left: `left: -17.5px; top: 4px; transform: rotate(45deg)`,
-    center: `left: -20.5px; top: 40%; transform: rotate(45deg) translateY(-50%);`,
-    right: `left: -17.5px; bottom: 4px; transform: rotate(45deg)`,
+    left: `left: -20px; top: 1px; transform: rotate(45deg)`,
+    center: `left: -23px; top: 45%; transform: rotate(45deg) translateY(-50%);`,
+    right: `left: -20px; bottom: 1px; transform: rotate(45deg)`,
   },
 };
 
 export const Container = styled.div<{ padding?: string }>`
   ${defaultCss};
   position: relative;
-  padding: ${({ padding }) => (padding ?? "10px")};
+  padding: ${({ padding }) => padding ?? "10px"};
 
   &:hover > div + div {
      {
       display: block;
       user-select: all;
-      z-index: 2;
+      z-index: 3;
     }
   }
 `;
@@ -151,7 +151,7 @@ export const Wrapper = styled.div<iTooltip>`
   display: none;
   user-select: none;
 
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: ${({ shadow }) => (shadow ? theme.shadow.Level2 : "")};
 
   span {

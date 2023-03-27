@@ -7,7 +7,7 @@ export const Tooltip: React.FC<iTooltip> = ({
   children,
   pointerOrientation = 'up',
   pointerPosition = "center",
-  size = "SM",
+  size = "LG",
   position = 'down',
   text,
   shadow,

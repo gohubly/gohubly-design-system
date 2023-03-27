@@ -1,6 +1,5 @@
 import React from "react";
 import { PlacesType, Tooltip as ReactTooltip } from "react-tooltip";
-
 import { iTooltip, iTooltipPointerOrientation } from "../tooltip.interface";
 import * as css from "./tooltip.styles";
 
