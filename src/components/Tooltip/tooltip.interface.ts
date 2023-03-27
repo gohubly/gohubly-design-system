@@ -12,7 +12,7 @@ export interface iTooltip {
   pointerOrientation: iTooltipPointerOrientation;
   shadow?: boolean;
   maxWidth?: string;
-  padding?: string;
+  noPadding?: boolean;
 }
 
 export type iTooltipWithoutChildren = Omit<iTooltip, "children">;
