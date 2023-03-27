@@ -129,7 +129,7 @@ CheckedBoxStyled.args = {
         position="down"
         pointerOrientation="up"
         pointerPosition="center"
-        padding="0"
+        noPadding
       >
         <Typography
           color="neutralLowMedium"

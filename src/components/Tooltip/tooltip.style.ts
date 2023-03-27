@@ -24,6 +24,11 @@ const LINE_HEIGHT_BY_SIZE: Record<iTooltipSizes, string> = {
   LG: "20px",
 };
 
+const POINTER_SIZE_BY_SIZE = {
+  SM: "6px",
+  LG: "8px",
+};
+
 const WRAPPER_POSITION_BY_POSITION: Record<
   iTooltipPointerOrientation,
   Record<iTooltipSizes, string>
@@ -46,9 +51,26 @@ const WRAPPER_POSITION_BY_POSITION: Record<
   },
 };
 
-const POINTER_SIZE_BY_SIZE = {
-  SM: "6px",
-  LG: "8px",
+const WRAPPER_POSITION_BY_POSITION_WIDTHOU_PADDING: Record<
+  iTooltipPointerOrientation,
+  Record<iTooltipSizes, string>
+> = {
+  up: {
+    SM: "bottom: calc(100% + 12px); left: 0px;",
+    LG: "bottom: calc(100% + 12px); left: 0px;",
+  },
+  down: {
+    SM: "top: calc(100% + 12px); left: 0px;",
+    LG: "top: calc(100% + 12px); left: 0px;",
+  },
+  left: {
+    SM: "right: calc(100% + 12px); top: 15%;",
+    LG: "right: calc(100% + 12px); top: 15%;",
+  },
+  right: {
+    SM: "left: calc(100% + 12px); top: 15%;",
+    LG: "left: calc(100% + 12px); top: 15%;",
+  },
 };
 
 const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_SM: Record<
@@ -103,10 +125,10 @@ const POINTER_ABSOLUTE_POSITION_BY_ORIENTATION_POSITION_SIZE_LG: Record<
   },
 };
 
-export const Container = styled.div<{ padding?: string }>`
+export const Container = styled.div<{ noPadding?: boolean }>`
   ${defaultCss};
   position: relative;
-  padding: ${({ padding }) => padding ?? "10px"};
+  padding: ${({ noPadding }) => noPadding ? "0px" : "10px"};
 
   &:hover > div + div {
      {
@@ -127,7 +149,7 @@ export const ContainerInfo = styled.div`
      {
       display: block;
       user-select: all;
-      z-index: 2;
+      z-index: 3;
     }
   }
 `;
@@ -140,10 +162,16 @@ export const Wrapper = styled.div<iTooltip>`
 
   box-sizing: border-box;
 
-  ${({ position, size }) =>
-    WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation][
-      size as iTooltipSizes
-    ]}
+  ${({ position, size, noPadding }) =>
+    !noPadding
+      ? WRAPPER_POSITION_BY_POSITION[position as iTooltipPointerOrientation][
+          size as iTooltipSizes
+        ]
+      : WRAPPER_POSITION_BY_POSITION_WIDTHOU_PADDING[
+          position as iTooltipPointerOrientation
+        ][size as iTooltipSizes]}
+
+    
 
   background: ${() => theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};

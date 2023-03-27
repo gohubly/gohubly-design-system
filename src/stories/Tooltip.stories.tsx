@@ -15,7 +15,8 @@ Default.args = {
   children: 'Passe o mouse por cima!',
   text: 'Olá, sou um tooltip',
   pointerOrientation: 'right',
-  maxWidth: '300px'
+  maxWidth: '300px',
+  noPadding: true
 };
 
 export const WithIcon = Template.bind({});
@@ -25,5 +26,5 @@ WithIcon.args = {
   pointerOrientation: 'up',
   pointerPosition: 'left',
   position: 'down',
-  maxWidth: '200px'
+  maxWidth: '200px',
 };
