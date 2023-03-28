@@ -62,6 +62,7 @@ import Shield from "./icons/shield";
 import StarEmpty from "./icons/starEmpty";
 import StarFilled from "./icons/starFilled";
 import Tag from "./icons/tag";
+import Tag2 from "./icons/tag2";
 import TikTok from "./icons/loading";
 import Trash from "./icons/trash";
 import Truck from "./icons/truck";
@@ -114,6 +115,7 @@ import ShoppingCart from "./icons/shoppingCart";
 import Stars from "./icons/stars";
 import Wallet from "./icons/wallet";
 import ZapCircle from "./icons/zapCircle";
+import VerticalSwitch from "./icons/verticalSwitch";
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: "12px",
@@ -222,6 +224,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   starFilled: StarFilled,
   stars: Stars,
   tag: Tag,
+  tag2: Tag2,
   target4: Target4,
   ticket2: Ticket2,
   tiktok: TikTok,
@@ -231,6 +234,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   user1: User1,
   user2: User2,
   users: Users,
+  verticalSwitch: VerticalSwitch,
   visa: Visa,
   wallet: Wallet,
   whatsapp: WhatsApp,
