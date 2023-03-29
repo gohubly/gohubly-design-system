@@ -415,20 +415,10 @@ export const Label = styled.label<iStyledCommonProps>`
   gap: ${({ size }) => GAP_LABEL_BASED_ON_SIZE[size || "MD"]};
 
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
-
 `;
 
 export const RelativeContainer = styled.div<{ disabled?: boolean }>`
   position: relative;
-
-  &:hover div:nth-child(1) {
-    background: linear-gradient(
-      0deg,
-      rgba(20, 33, 89, 0.05),
-      rgba(20, 33, 89, 0.05)
-    ),
-    #ffffff;
-  }
 
   &:hover > input {
     background: linear-gradient(
@@ -717,7 +707,7 @@ export const PlaceholderStyled = styled.div<{
   z-index: 1;
   cursor: pointer;
   background: ${({ disabled, theme }) =>
-    disabled ? theme.colors.neutralHighLight : theme.colors.white};
+    disabled ? theme.colors.neutralHighLight : "transparent"};
 
   top: ${({ size }) => TOP_PLACEHOLDER_STYLED_BASED_ON_SIZE[size || "MD"]};
 

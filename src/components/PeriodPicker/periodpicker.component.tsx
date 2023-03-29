@@ -32,6 +32,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
   containerRef,
   count = 3,
   limit,
+  isMobile = false,
   ...props
 }) => {
   const [centralDate, setCentralDate] = useState(moment());
@@ -166,13 +167,14 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
             <Month
               key={month.toDate().getTime()}
               hasNext={index < exibitionMonths.length - 1}
+              mobile={isMobile}
             >
               <MonthApresentation>
                 {month.format("MMMM YYYY")}
               </MonthApresentation>
 
               <MonthWeeks>
-                <Week>
+                <Week mobile={isMobile}>
                   {moment.weekdays().map((item) => (
                     <DayName>
                       {item[0].toUpperCase() + item.slice(1, 3)}
@@ -180,7 +182,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
                   ))}
                 </Week>
                 {getCalendarByMomentDate(month).map((week) => (
-                  <Week>
+                  <Week mobile={isMobile}>
                     {week.days.map((day) => {
                       if (!day.isSame(month, "month"))
                         return (
@@ -218,48 +220,49 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
       </MonthsContainer>
 
       <Footer onlyOne={count === 1}>
-        <HelperContainer>
-          {(initialDate || finalDate) && (
+        {(initialDate || finalDate) && (
+          <HelperContainer>
             <PeriodCallout>Você selecionou</PeriodCallout>
-          )}
-          <Flex style={{ gap: "5px" }}>
-            {initialDate && (
-              <Typography
-                color="neutralLow"
-                size="XXXS"
-                lineHeight="MD"
-                fontWeight={600}
-              >
-                {initialDate.format("DD/MM/YYYY")}
-              </Typography>
-            )}
 
-            {finalDate && (
-              <Flex style={{ gap: "5px" }} alignItems="center">
-                <Icon
-                  iconId="arrowRigth"
-                  size="XXXS"
-                  stroke="neutralLow"
-                  strokeWidth={2.25}
-                />
+            <Flex style={{ gap: "5px" }}>
+              {initialDate && (
                 <Typography
                   color="neutralLow"
                   size="XXXS"
                   lineHeight="MD"
                   fontWeight={600}
                 >
-                  {finalDate.format("DD/MM/YYYY")}
+                  {initialDate.format("DD/MM/YYYY")}
                 </Typography>
-              </Flex>
-            )}
-          </Flex>
-        </HelperContainer>
+              )}
+
+              {finalDate && (
+                <Flex style={{ gap: "5px" }} alignItems="center">
+                  <Icon
+                    iconId="arrowRigth"
+                    size="XXXS"
+                    stroke="neutralLow"
+                    strokeWidth={2.25}
+                  />
+                  <Typography
+                    color="neutralLow"
+                    size="XXXS"
+                    lineHeight="MD"
+                    fontWeight={600}
+                  >
+                    {finalDate.format("DD/MM/YYYY")}
+                  </Typography>
+                </Flex>
+              )}
+            </Flex>
+          </HelperContainer>
+        )}
 
         <ButtonContainer>
           <Button
             disabled={!initialDate || !finalDate}
             hierarchy="secondary"
-            size="MD"
+            size={isMobile ? "SM" : "MD"}
             onClick={handleClickReset}
             fluid={count === 1}
           >
@@ -267,10 +270,9 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
           </Button>
           <Button
             disabled={!initialDate || !finalDate}
-            size="MD"
+            size={isMobile ? "SM" : "MD"}
             onClick={handleClickSubmit}
             fluid={count === 1}
-
           >
             Aplicar
           </Button>
