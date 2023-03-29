@@ -24,4 +24,5 @@ export interface iPeriodPicker {
   onChange: (newPeriod: iPeriod) => void
   containerRef?: React.Ref<HTMLDivElement>
   onReset?: () => void
+  isMobile?: boolean;
 }

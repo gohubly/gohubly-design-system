@@ -91,7 +91,7 @@ export const MonthsContainer = styled.div<{
   flex: 1;
 `;
 
-export const Month = styled.div<{ hasNext?: boolean }>`
+export const Month = styled.div<{ hasNext?: boolean; mobile?: boolean }>`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -102,6 +102,12 @@ export const Month = styled.div<{ hasNext?: boolean }>`
     hasNext &&
     css`
       border-right: 1px solid ${theme.colors.neutralHighLight};
+    `}
+
+  ${({ mobile }) =>
+    mobile &&
+    css`
+      padding: 24px 10px;
     `}
 `;
 
@@ -123,10 +129,16 @@ export const MonthWeeks = styled.div`
   gap: 4px;
 `;
 
-export const Week = styled.div`
+export const Week = styled.div<{ mobile?: boolean }>`
   display: grid;
   grid-template-columns: repeat(7, 44px);
   justify-content: center;
+
+  ${({ mobile }) =>
+    mobile &&
+    css`
+      grid-template-columns: repeat(7, 40px);
+    `}
 `;
 
 const DayDefault = styled.div`
