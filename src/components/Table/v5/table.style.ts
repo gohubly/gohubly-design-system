@@ -76,7 +76,7 @@ export const TableBodyTd = styled.td<iTableTd>`
 
   border-bottom: ${({ theme }) => `1px solid #E5E5E5`};
 
-  padding: 15px 12px 16px 12px;
+  padding: 12px 15px 12px 16px;
 
   p {
     font-size: 14px;
