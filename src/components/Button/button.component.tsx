@@ -26,7 +26,7 @@ export const Button: React.FC<iButton> = ({
 
   return (
     <StyledButton
-      className={hierarchy === 'primary' ? 'ds-button-primary' : undefined}
+      className={`ds-button-${hierarchy}`}
       disabled={disabled || loading}
       loading={loading}
       hierarchy={hierarchy}
