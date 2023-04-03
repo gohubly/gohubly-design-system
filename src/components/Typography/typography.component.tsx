@@ -5,6 +5,7 @@ import { Paragraph, Span } from './typography.style'
 
 export const Typography: React.FC<iTypography> = ({
   as = 'span',
+  className,
   size,
   fontWeight,
   lineHeight,
@@ -28,6 +29,6 @@ export const Typography: React.FC<iTypography> = ({
     case 'p':
       return <Paragraph {...props}>{children}</Paragraph>
     case 'span':
-      return <Span {...props}>{children}</Span>
+      return <Span className={className} {...props}>{children}</Span>
   }
 }

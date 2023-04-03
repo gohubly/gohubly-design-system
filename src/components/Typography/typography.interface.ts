@@ -12,6 +12,7 @@ export interface iTypography {
   color?: keyof typeof theme.colors
   textAlign?: string
   colorOpacity?: number
+  className?: string
 }
 
 export interface iParagraph extends iTypography {
