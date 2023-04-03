@@ -12,7 +12,7 @@ export const Tabs: React.FC<iTabs> = ({ items, onSelect, selected, direction = '
           <TabItem
             key={index}
             selected={isTabSelected}
-            className='ds-tab-item'
+            className={`ds-tab-item ${isTabSelected ? 'ds-tab-item--selected' : ''}`}
             onClick={() => {
               onSelect(index);
             }}
