@@ -145,13 +145,14 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
 
   return (
     <Container fluid={props.fluid}>
-      <ButtonPrevNext onClick={previousPage} disabled={disabledPrev}>
+      <ButtonPrevNext className="ds-pagination-button" onClick={previousPage} disabled={disabledPrev}>
         <Icon iconId={"chevronLeft"} size="XS" />
       </ButtonPrevNext>
 
       {showCollapsedFew && (
         <>
           <Itens
+            className="ds-pagination-item"
             key={0}
             currentPage={currentPage}
             index={0}
@@ -175,6 +176,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
             <Fragment key={index}>
               {
                 <Itens
+                  className="ds-pagination-item"
                   currentPage={currentPage}
                   index={page}
                   onClick={
@@ -200,6 +202,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
       {showCollapsedMore && (
         <>
           <Itens
+            className="ds-pagination-item"
             key={props.length - 1}
             currentPage={currentPage}
             index={props.length - 1}
@@ -210,7 +213,7 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
         </>
       )}
 
-      <ButtonPrevNext onClick={nextPage} disabled={disabledNext}>
+      <ButtonPrevNext className="ds-pagination-button" onClick={nextPage} disabled={disabledNext}>
         <Icon iconId={"chevronRight"} size="XS" />
       </ButtonPrevNext>
     </Container>

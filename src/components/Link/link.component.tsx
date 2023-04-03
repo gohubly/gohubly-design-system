@@ -27,7 +27,7 @@ export const Link: React.FC<iLink> = ({
       data-disabled={disabled}
       underline={underline}
     >
-      <StyledLink>{children}</StyledLink>
+      <StyledLink className="ds-link">{children}</StyledLink>
 
       <Icon size={iconSize} iconId={icon} OnColor={OnColor} />
     </Wrapper>
