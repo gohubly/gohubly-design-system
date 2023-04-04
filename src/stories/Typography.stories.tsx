@@ -14,7 +14,8 @@ export const Default = Template.bind({});
 Default.args = {
   children: 'Padrão de texto',
   color: 'primaryDark',
-  textAlign: 'center'
+  textAlign: 'center',
+  size: '11'
 };
 
 export const WithOpacity = Template.bind({});
