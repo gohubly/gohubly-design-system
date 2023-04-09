@@ -10,10 +10,23 @@ export default {
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
+export const TextArea = Template.bind({});
+TextArea.args = {
+  name: "input-name",
+  type: "text",
+  placeholder: "Precisa inserir algum tipo de informação sobre a sua nota? Insira aqui.",
+  label: "Observações",
+  textAlign: "initial",
+  textArea: true,
+  textAreaHeight: '100px',
+  maxCharacters: 100,
+  maxCharactersPosition: 'right'
+};
+
 export const Default = Template.bind({});
 Default.args = {
   name: "input-name",
-  type: "password",
+  type: "text",
   label: "Label",
   placeholder: "placeholder...",
   helperText: "Clique em mim",

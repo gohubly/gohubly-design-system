@@ -17,6 +17,9 @@ import {
   DropdownItem,
   PlaceholderStyled,
   LinkText,
+  StyledTextarea,
+  CharCount,
+  ContainerTextArea,
 } from "./input.style";
 
 export const Input: React.FC<iInput> = ({
@@ -125,6 +128,23 @@ export const Input: React.FC<iInput> = ({
     }
   }, [hasPlaceholderStyled, inputValue]);
 
+  const handleChangeTextArea = (event: any) => {
+    const newValue = event.target.value;
+
+    if (props.maxCharacters) {
+      if (newValue.length <= props.maxCharacters) {
+        setInputValue(newValue);
+      } else {
+        event.preventDefault();
+      }
+    } else setInputValue(newValue);
+  };
+
+  const hasError =
+    typeof inputValue === "string" && props.maxCharacters
+      ? inputValue.length === props.maxCharacters
+      : false;
+
   useEffect(() => {
     setInputValue(props.value ?? "");
   }, [props.value]);
@@ -217,6 +237,7 @@ export const Input: React.FC<iInput> = ({
         <Flex justifyContent="space-between" alignItems="center">
           <LabelText
             fontSizeLabel={propsFontSizeLabel}
+            fontWeightLabel={props.fontWeightLabel}
             OnColor={props.OnColor}
             disabled={props.disabled}
           >
@@ -237,162 +258,203 @@ export const Input: React.FC<iInput> = ({
         </Flex>
       )}
 
-      <RelativeContainer disabled={props.disabled} data-has-error={!!props?.error}>
-        {/* Left icon */}
-        {props.iconLeft && (
-          <LeftIcon
-            fill="transparent"
-            stroke="neutralLow"
-            strokeWidth={1.5}
+      {/* Input Text Area */}
+      {props.textArea && (
+        <ContainerTextArea>
+          <StyledTextarea
+            id="message"
+            name="message"
+            value={inputValue}
+            onChange={handleChangeTextArea}
+            rows={props.rows}
+            fluid={props.fluid}
+            fontSize={propsFontSize}
+            textAreaHeight={props.textAreaHeight}
+            placeholder={props.placeholder ?? ""}
+            fontWeight={props.fontWeight}
+          ></StyledTextarea>
+
+          {props.maxCharacters && typeof inputValue === "string" && (
+            <CharCount
+              hasError={hasError}
+              Size={propsSize}
+              position={props.maxCharactersPosition}
+            >
+              {inputValue.length}/{props.maxCharacters} caracteres
+            </CharCount>
+          )}
+        </ContainerTextArea>
+      )}
+
+      {!props.textArea && (
+        <RelativeContainer
+          disabled={props.disabled}
+          data-has-error={!!props?.error}
+        >
+          {/* Left icon */}
+          {props.iconLeft && (
+            <LeftIcon
+              fill="transparent"
+              stroke="neutralLow"
+              strokeWidth={1.5}
+              opened={dropdownOpened}
+              disabled={props.disabled}
+              onClick={props.iconLeftOnClick}
+              error={props.error}
+              iconId={props.iconLeft}
+              iconLeftSize={props.iconLeftSize}
+              iconLeftWidth={props.iconLeftWidth}
+              iconLeftHeight={props.iconLeftHeight}
+              iconLeftPadding={props.iconLeftPadding}
+              hasPrefix={!!props.prefix}
+              className={props.suffix ? "icon-with-prefix" : ""}
+            />
+          )}
+
+          {/* Prefix */}
+          {props.prefix && (
+            <PrefixText
+              data-has-error={props?.error}
+              onClick={props.iconLeftOnClick}
+              style={{
+                cursor: props.iconLeftOnClick ? "pointer" : "initial",
+              }}
+              ref={prefixRef}
+              disabled={props.disabled}
+            >
+              {props.prefix}
+            </PrefixText>
+          )}
+
+          {hasPlaceholderStyled && inputValue === "" && (
+            <PlaceholderStyled
+              isSelected={isSelected}
+              onClick={!props.disabled ? clickPlaceholder : () => null}
+              size={propsSize}
+              disabled={props.disabled}
+              hasIconLeft={!!props.iconLeft}
+              sizeIconLeft={props.iconLeftSize}
+              opened={dropdownOpened}
+            >
+              {props.placeholderStyled}
+            </PlaceholderStyled>
+          )}
+
+          {/* Input */}
+          <StyledInput
+            {...props}
             opened={dropdownOpened}
-            disabled={props.disabled}
-            onClick={props.iconLeftOnClick}
-            error={props.error}
-            iconId={props.iconLeft}
+            Size={propsSize}
+            fontSize={propsFontSize}
+            value={inputValue}
+            data-has-error={!!props?.error}
+            placeholder={props.placeholder ?? ""}
+            onChange={onInputChange}
+            onFocus={onFocusInput}
+            autoComplete={props.autoComplete || (props.dropdown && "off")}
+            hasPrefix={!!props.prefix}
+            hasSuffix={!!props.suffix}
+            hasLeftIcon={!!props.iconLeft}
+            hasRightIcon={!!props.iconRight}
+            hasPrefixAndIcon={!!props.iconLeft && !!props.prefix}
+            hasSuffixAndIcon={!!props.iconRight && !!props.suffix}
             iconLeftSize={props.iconLeftSize}
             iconLeftWidth={props.iconLeftWidth}
-            iconLeftHeight={props.iconLeftHeight}
-            iconLeftPadding={props.iconLeftPadding}
-            hasPrefix={!!props.prefix}
-            className={props.suffix ? "icon-with-prefix" : ""}
-          />
-        )}
-
-        {/* Prefix */}
-        {props.prefix && (
-          <PrefixText
-            data-has-error={props?.error}
-            onClick={props.iconLeftOnClick}
-            style={{ cursor: props.iconLeftOnClick ? "pointer" : "initial" }}
-            ref={prefixRef}
-            disabled={props.disabled}
-          >
-            {props.prefix}
-          </PrefixText>
-        )}
-
-        {hasPlaceholderStyled && inputValue === "" && (
-          <PlaceholderStyled
-            isSelected={isSelected}
-            onClick={!props.disabled ? clickPlaceholder : () => null}
-            size={propsSize}
-            disabled={props.disabled}
-            hasIconLeft={!!props.iconLeft}
-            sizeIconLeft={props.iconLeftSize}
-            opened={dropdownOpened}
-          >
-            {props.placeholderStyled}
-          </PlaceholderStyled>
-        )}
-
-        {/* Input */}
-        <StyledInput
-          {...props}
-          opened={dropdownOpened}
-          Size={propsSize}
-          fontSize={propsFontSize}
-          value={inputValue}
-          data-has-error={!!props?.error}
-          placeholder={props.placeholder ?? ""}
-          onChange={onInputChange}
-          onFocus={onFocusInput}
-          autoComplete={props.autoComplete || (props.dropdown && "off")}
-          hasPrefix={!!props.prefix}
-          hasSuffix={!!props.suffix}
-          hasLeftIcon={!!props.iconLeft}
-          hasRightIcon={!!props.iconRight}
-          hasPrefixAndIcon={!!props.iconLeft && !!props.prefix}
-          hasSuffixAndIcon={!!props.iconRight && !!props.suffix}
-          iconLeftSize={props.iconLeftSize}
-          iconLeftWidth={props.iconLeftWidth}
-          iconRightSize={props.iconRightSize}
-          iconRightWidth={props.iconRightWidth}
-          ref={inputRef || dropdownRef}
-          className={
-            props.prefix || props.suffix || props.iconLeft || props.iconRight
-              ? "input-with-prefix input-with-suffix input-with-icon-and-prefix input-with-icon-and-suffix"
-              : ""
-          }
-        />
-
-        {/* Suffix */}
-        {props.suffix && (
-          <SuffixText
-            data-has-error={!!props?.error}
-            className="sufixo"
-            onClick={props.iconRightOnClick}
-            disabled={props.disabled}
-            style={{ cursor: props.iconRightOnClick ? "pointer" : "initial" }}
-            ref={suffixRef}
-          >
-            {props.suffix}
-          </SuffixText>
-        )}
-
-        {/* Rigth icon */}
-        {props.iconRight && (
-          <RightIcon
-            fill="transparent"
-            stroke="neutralLow"
-            strokeWidth={1.5}
-            error={props.error}
-            opened={dropdownOpened}
-            disabled={props.disabled}
-            onClick={
-              props?.dropdown && !props.disabled
-                ? clickIconDropdown
-                : props.iconRightOnClick
-            }
-            iconId={props.iconRight}
-            data-has-error={!!props?.error}
-            iconRigthSize={props.iconRightSize}
+            iconRightSize={props.iconRightSize}
             iconRightWidth={props.iconRightWidth}
-            iconRightHeight={props.iconRightHeight}
-            iconRightPadding={props.iconRightPadding}
-            hasSuffix={!!props.suffix}
-            className={props.suffix ? "icon-with-suffix" : ""}
+            ref={inputRef || dropdownRef}
+            className={
+              props.prefix || props.suffix || props.iconLeft || props.iconRight
+                ? "input-with-prefix input-with-suffix input-with-icon-and-prefix input-with-icon-and-suffix"
+                : ""
+            }
           />
-        )}
 
-        {/* Dropdown */}
-        {!!props.dropdown?.length && dropdownOpened && (
-          <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
-            {dropdownItems.map((dropdownItem, index) => {
-              return (
-                <DropdownItem
-                  fontSize={propsFontSize}
-                  onClick={() =>
-                    onClickDropdownItem(dropdownItem.value, dropdownItem.label)
-                  }
-                  key={`input-dropdown-item-${dropdownItem.value}-${index}`}
-                  active={
-                    !!isDropdownItemActive(
-                      dropdownItem.value.toLowerCase(),
-                      dropdownItem.label?.toLowerCase()
-                    )
-                  }
-                  itemSelect={
-                    inputValue !== undefined &&
-                    inputValue === (dropdownItem?.label || dropdownItem?.value)
-                  }
-                >
-                  {dropdownItem.label || dropdownItem.value}
+          {/* Suffix */}
+          {props.suffix && (
+            <SuffixText
+              data-has-error={!!props?.error}
+              className="sufixo"
+              onClick={props.iconRightOnClick}
+              disabled={props.disabled}
+              style={{
+                cursor: props.iconRightOnClick ? "pointer" : "initial",
+              }}
+              ref={suffixRef}
+            >
+              {props.suffix}
+            </SuffixText>
+          )}
 
-                  {dropdownItem.tag && (
-                    <Tag
-                      hierarchy={
-                        `${dropdownItem.tag.background}` as iTagHierarchy
-                      }
-                    >
-                      {dropdownItem.tag.label}
-                    </Tag>
-                  )}
-                </DropdownItem>
-              );
-            })}
-          </DropdownWrapper>
-        )}
-      </RelativeContainer>
+          {/* Rigth icon */}
+          {props.iconRight && (
+            <RightIcon
+              fill="transparent"
+              stroke="neutralLow"
+              strokeWidth={1.5}
+              error={props.error}
+              opened={dropdownOpened}
+              disabled={props.disabled}
+              onClick={
+                props?.dropdown && !props.disabled
+                  ? clickIconDropdown
+                  : props.iconRightOnClick
+              }
+              iconId={props.iconRight}
+              data-has-error={!!props?.error}
+              iconRigthSize={props.iconRightSize}
+              iconRightWidth={props.iconRightWidth}
+              iconRightHeight={props.iconRightHeight}
+              iconRightPadding={props.iconRightPadding}
+              hasSuffix={!!props.suffix}
+              className={props.suffix ? "icon-with-suffix" : ""}
+            />
+          )}
+
+          {/* Dropdown */}
+          {!!props.dropdown?.length && dropdownOpened && (
+            <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
+              {dropdownItems.map((dropdownItem, index) => {
+                return (
+                  <DropdownItem
+                    fontSize={propsFontSize}
+                    onClick={() =>
+                      onClickDropdownItem(
+                        dropdownItem.value,
+                        dropdownItem.label
+                      )
+                    }
+                    key={`input-dropdown-item-${dropdownItem.value}-${index}`}
+                    active={
+                      !!isDropdownItemActive(
+                        dropdownItem.value.toLowerCase(),
+                        dropdownItem.label?.toLowerCase()
+                      )
+                    }
+                    itemSelect={
+                      inputValue !== undefined &&
+                      inputValue ===
+                        (dropdownItem?.label || dropdownItem?.value)
+                    }
+                  >
+                    {dropdownItem.label || dropdownItem.value}
+
+                    {dropdownItem.tag && (
+                      <Tag
+                        hierarchy={
+                          `${dropdownItem.tag.background}` as iTagHierarchy
+                        }
+                      >
+                        {dropdownItem.tag.label}
+                      </Tag>
+                    )}
+                  </DropdownItem>
+                );
+              })}
+            </DropdownWrapper>
+          )}
+        </RelativeContainer>
+      )}
 
       {/* Helper text */}
       {props?.helperText && (
