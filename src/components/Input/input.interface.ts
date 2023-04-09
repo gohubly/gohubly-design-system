@@ -4,9 +4,18 @@ import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
 
 export type iInputSizes = "XXS" | "XS" | "SM" | "MD";
-export type iIconPaddings = "XXXS" | "XXS" | "XS" | "SM" | "MD" | "LG" | "XL" | "XXL";
+export type iIconPaddings =
+  | "XXXS"
+  | "XXS"
+  | "XS"
+  | "SM"
+  | "MD"
+  | "LG"
+  | "XL"
+  | "XXL";
 
 type iInputHTML = Omit<InputHTMLAttributes<HTMLInputElement>, "size">;
+export type IMaxCharactersPosition = "right" | "left";
 
 export interface iInput extends iInputHTML {
   OnColor?: boolean;
@@ -14,10 +23,12 @@ export interface iInput extends iInputHTML {
   size?: iInputSizes;
   disabled?: boolean;
 
-  textAlign?: CSSProperties['textAlign']
+  textAlign?: CSSProperties["textAlign"];
 
   label?: string;
   fontSizeLabel?: keyof typeof theme.fontSize;
+  fontWeightLabel?: keyof typeof theme.fontWeight;
+
   placeholderStyled?:
     | string
     | number
@@ -27,14 +38,14 @@ export interface iInput extends iInputHTML {
     | Element
     | Element[];
 
-  link?: string;  
+  link?: string;
   linkOnClick?: () => void;
-  
+
   helperText?: string;
   helperTextOnClick?: () => void;
   error?: boolean;
   fontSize?: keyof typeof theme.fontSize;
-  fontWeight?: keyof typeof theme.fontWeight
+  fontWeight?: keyof typeof theme.fontWeight;
 
   iconGray?: boolean;
 
@@ -52,8 +63,8 @@ export interface iInput extends iInputHTML {
   iconRightPadding?: iIconPaddings;
   iconRightOnClick?: () => void;
 
-  prefix?: string
-  suffix?: string
+  prefix?: string;
+  suffix?: string;
 
   hasAllItems?: boolean;
 
@@ -66,4 +77,10 @@ export interface iInput extends iInputHTML {
       label: string;
     };
   }[];
+
+  textArea?: boolean;
+  rows?: number;
+  textAreaHeight?: string;
+  maxCharacters?: number;
+  maxCharactersPosition?: IMaxCharactersPosition;
 }

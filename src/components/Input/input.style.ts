@@ -3,7 +3,11 @@ import { iInput } from ".";
 import { Icon, iIcon, iIconSizes } from "../Icon";
 import { themeWithouthInterface as theme } from "../..";
 import { defaultCss } from "../../theme/defaultCss";
-import { iIconPaddings, iInputSizes } from "./input.interface";
+import {
+  iIconPaddings,
+  iInputSizes,
+  IMaxCharactersPosition,
+} from "./input.interface";
 
 interface iInputDropdownWrapper {
   opened: boolean;
@@ -159,8 +163,8 @@ const fontFamilyBasedOnWeight: Record<
 export const LabelText = styled.span<iStyledCommonProps>`
   ${defaultCss};
   letter-spacing: -0.005em;
-  font-family: ${({ fontWeight }) =>
-    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
+  font-family: ${({ fontWeightLabel }) =>
+    fontFamilyBasedOnWeight[fontWeightLabel || "400"]} !important;
 
   font-size: ${({ fontSizeLabel, theme }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
@@ -771,4 +775,79 @@ export const LinkText = styled.span<iStyledCommonProps>`
   text-decoration: none;
 
   cursor: ${({ onClick }) => (onClick ? "pointer" : "auto")};
+`;
+
+export const ContainerTextArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const StyledTextarea = styled.textarea<{
+  fluid?: boolean;
+  fontSize?: string;
+  fontWeight?: number;
+  textAreaHeight?: string;
+}>`
+  width: ${({ fluid }) => (fluid ? "100%" : "auto")};
+  height: ${({ textAreaHeight }) => textAreaHeight ?? "auto"};
+  padding: 10px 16px;
+  border: 1px solid rgba(20, 33, 89, 0.3);
+  border-radius: 4px;
+  box-sizing: border-box;
+
+  color: ${() => theme.colors.neutralLowLight};
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  line-height: ${({ fontSize, theme }) =>
+    LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+  font-family: ${({ fontWeight }) =>
+    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
+
+  background: ${() => theme.colors.neutralHigh};
+
+  &::placeholder {
+    color: ${() => theme.colors.neutralLowLight};
+    font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+    line-height: ${({ fontSize, theme }) =>
+      LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+    font-family: ${({ fontWeight }) =>
+      fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
+  }
+
+  &:focus {
+    border: 1.5px solid ${() => theme.colors.primaryMedium};
+    cursor: text;
+  }
+
+  &:focus-visible {
+    outline-width: inherit;
+  }
+`;
+
+export const CharCount = styled.span<{
+  hasError?: boolean;
+  Size?: iInputSizes;
+  fontWeight?: number;
+  position?: IMaxCharactersPosition;
+}>`
+  display: flex;
+  font-size: 11px;
+
+  color: ${({ hasError, theme }) =>
+    hasError ? theme.colors.helper : theme.colors.neutralLowMedium};
+
+  font-family: ${({ fontWeight }) =>
+    fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
+
+  ${({ position }) => {
+    if (position) {
+      return css`
+        justify-content: ${position === "right" ? "flex-end" : "flex-start"};
+      `;
+    } else {
+      return css`
+        justify-content: flex-start;
+      `;
+    }
+  }};
 `;
