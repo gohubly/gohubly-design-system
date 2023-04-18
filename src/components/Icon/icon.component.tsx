@@ -89,6 +89,7 @@ import PlayRounded from "./icons/playRounded";
 import Download from "./icons/download";
 import Clipboard from "./icons/clipboard";
 import Close2 from "./icons/close2";
+import Close3 from "./icons/close3";
 import ZapFast from "./icons/zapFast";
 import CashCircle from "./icons/cashCircle";
 import Coins2 from "./icons/coins2";
@@ -158,6 +159,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   clockWaiting: ClockWaiting,
   close: Close,
   close2: Close2,
+  close3: Close3,
   coins2: Coins2,
   coinsHand: CoinsHand,
   commission: Commission,

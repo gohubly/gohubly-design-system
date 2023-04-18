@@ -7,12 +7,23 @@ interface ContainerProps {
   left?: string;
 }
 
+interface WrapperProps {
+  width?: string;
+  left?: string;
+  minHeight?: string;
+  scrollable?: boolean;
+  isDesktop?: boolean;
+  position?: string;
+  show: boolean;
+}
+
 const HEADER_PADDING: Record<HeaderSpacing, string> = {
   XS: "16px",
   SM: "20px 24px",
   MD: "24px",
-  LG: "34px 48px"
-}
+  LG: "34px 48px",
+  Desktop: '32px',
+};
 
 export const Container = styled.div<ContainerProps>`
   pointer-events: ${({ show }): string => (show ? "all" : "none")};
@@ -30,16 +41,6 @@ export const Container = styled.div<ContainerProps>`
   transition: all 0.2s linear;
 `;
 
-interface WrapperProps {
-  width?: string;
-  left?: string;
-  minHeight?: string;
-  scrollable?: boolean;
-  isDesktop?: boolean;
-  position?: string;
-  show: boolean;
-}
-
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }): string => width || "80%"};
   height: max-content;
@@ -51,10 +52,9 @@ export const Wrapper = styled.div<WrapperProps>`
   `}
   background: #fff;
   outline: 8px solid rgba(0, 0, 0, 0.05);
-  overflow-y: ${({ scrollable }): string =>
-    scrollable ? "auto" : "initial"};
+  overflow-y: ${({ scrollable }): string => (scrollable ? "auto" : "initial")};
 
-  ${({ position}) => {
+  ${({ position }) => {
     if (position === "top") {
       return css`
         position: absolute;
@@ -89,17 +89,27 @@ export const Wrapper = styled.div<WrapperProps>`
   }};
 `;
 
-export const Header = styled.div<{ isDesktop?: boolean, padding?: HeaderSpacing }>`
+export const Header = styled.div<{
+  isDesktop?: boolean;
+  padding?: HeaderSpacing;
+  lineTitle?: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ isDesktop, padding = 'LG' }): string => (isDesktop ? HEADER_PADDING[padding] : "20px 24px")};
-  border-bottom: 1px solid
-    ${({ theme }): string => theme.colors.neutralHighLight};
+  padding: ${({ isDesktop, padding = "LG" }): string =>
+    isDesktop ? HEADER_PADDING[padding] : "20px 24px"};
+
+  ${({ lineTitle, theme }) => {
+    if (!lineTitle) {
+      return css`
+        border-bottom: none;
+      `;
+    } else {
+      return css`
+        border-bottom: 1px solid ${theme.colors.neutralHighLight};
+      `;
+    }
+  }};
 `;
 
-export const Hr = styled.hr`
-  border: 1px solid #e8e7ef;
-  margin: 15px 0px;
-  width: 100%;
-`;
