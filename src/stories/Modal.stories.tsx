@@ -15,11 +15,19 @@ Default.args = {
   title: "Modal",
   show: true,
   showCloseIcon: true,
-  // width: ""
+  titleColor: 'neutralLow',
+  lineTitle: false,
   children: (
-    <Typography color="neutralLowMedium" size="XS" lineHeight="XL" fontWeight={400}>
-      Texto exemplo para o Modal!
-    </Typography>
+    <div style={{ padding: "0 32px 32px 32px" }}>
+      <Typography
+        color="neutralLowMedium"
+        size="XS"
+        lineHeight="XL"
+        fontWeight={400}
+      >
+        Texto exemplo para o Modal!
+      </Typography>
+    </div>
   ),
 };
 
@@ -29,8 +37,5 @@ WithComplexLayout.args = {
   title: "Cupom de desconto",
   show: true,
   showCloseIcon: true,
-  // width: ""
-  children: (
-    <CouponCard />
-  ),
+  children: <CouponCard />,
 };

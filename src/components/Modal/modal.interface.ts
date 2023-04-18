@@ -1,13 +1,18 @@
 import { theme } from "../../theme";
 export type IModalPositions = "top" | "right" | "bottom" | "left";
 
-export type HeaderSpacing = "XS" | "SM" | "MD" | "LG"
+export type HeaderSpacing = "XS" | "SM" | "MD" | "LG" | 'Desktop';
+
+export type ITitlePositions = "left" | "center" | "right";
 
 export interface IModal {
   show: boolean;
   toggleModal: any;
   title?: string;
   fontSizeTitle?: keyof typeof theme.fontSize;
+  lineHeightTitle?: keyof typeof theme.lineHeight;
+  positionTitle?: ITitlePositions;
+  lineTitle?: boolean;
   titleColor?: keyof typeof theme.colors;
   padding?: HeaderSpacing
   showCloseIcon?: boolean;

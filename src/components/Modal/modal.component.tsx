@@ -20,7 +20,10 @@ export const Modal: React.FC<IModal> = ({
   scrollable,
   isDesktop = true,
   position,
-  fontSizeTitle
+  fontSizeTitle,
+  lineHeightTitle,
+  positionTitle,
+  lineTitle = true,
 }) => {
   return (
     <Container
@@ -37,19 +40,22 @@ export const Modal: React.FC<IModal> = ({
         position={position}
         show={show}
       >
-        <Header padding={padding} isDesktop={isDesktop}>
-          <Typography
-            color={titleColor}
-            size={fontSizeTitle ?? "SM"}
-            lineHeight="MD"
-            fontWeight={600}
-          >
-            {title || ""}
-          </Typography>
+        <Header padding={padding} isDesktop={isDesktop} lineTitle={lineTitle}>
+          <Flex width="calc(100% - 40px)" justifyContent={positionTitle ?? "start"}>
+            <Typography
+              color={titleColor}
+              size={fontSizeTitle ?? "20"}
+              lineHeight={lineHeightTitle ?? "28"}
+              fontWeight={600}
+              textAlign={positionTitle ?? "initial"}
+            >
+              {title || ""}
+            </Typography>
+          </Flex>
 
           {showCloseIcon && (
             <Box
-              padding="5px"
+              padding="3px"
               alignContent="center"
               style={{
                 cursor: "pointer",
@@ -57,16 +63,17 @@ export const Modal: React.FC<IModal> = ({
                 borderRadius: "4px",
               }}
             >
-              <Icon iconId="close" size="XXXS" onClick={toggleModal} />
+              <Icon
+                iconId="close3"
+                size="XS"
+                onClick={toggleModal}
+                strokeWidth={1.5}
+              />
             </Box>
           )}
         </Header>
-        <Box
-        // paddingX={isDesktop ? "32px" : "20px"}
-        // mt={isDesktop ? "24px" : "20px"}
-        >
-          {children}
-        </Box>
+
+        <Box>{children}</Box>
       </Wrapper>
     </Container>
   );

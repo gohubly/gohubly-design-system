@@ -26,6 +26,7 @@ export type iIconTypes =
   | "clock"
   | "close"
   | "close2"
+  | "close3"
   | "coins2"
   | "commission"
   | "creditCard"
