@@ -31,7 +31,7 @@ export const TooltipV3: React.FC<iTooltip> = ({
       <ContainerInfo>{children}</ContainerInfo>
       <Wrapper {...props}>
         <div style={{ position: 'relative'}}>
-          <span>{text}</span>
+          <p>{text}</p>
         <Pointer {...props} />
         </div>
         

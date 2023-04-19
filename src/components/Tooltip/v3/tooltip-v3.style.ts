@@ -156,7 +156,7 @@ export const ContainerInfo = styled.div`
 
 export const Wrapper = styled.div<iTooltip>`
   position: absolute;
-  
+
   max-width: ${({ maxWidth }) => maxWidth ?? "max-content"};
   width: max-content;
 
@@ -171,8 +171,6 @@ export const Wrapper = styled.div<iTooltip>`
           position as iTooltipPointerOrientation
         ][size as iTooltipSizes]}
 
-    
-
   background: ${({ color }) =>
     color ? theme.colors[color] : theme.colors.neutralLowDark};
   padding: ${({ size }) => PADDING_BY_SIZE[size as iTooltipSizes]};
@@ -183,15 +181,13 @@ export const Wrapper = styled.div<iTooltip>`
   border-radius: 5px;
   box-shadow: ${({ shadow }) => (shadow ? theme.shadow.Level1 : "")};
 
-  span {
-    font-weight: 500;
+  p {
+    margin: 0;
     font-size: ${({ size }) => FONT_SIZE_BY_SIZE[size as iTooltipSizes]};
     line-height: ${({ size }) => LINE_HEIGHT_BY_SIZE[size as iTooltipSizes]};
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
     color: ${() => theme.colors.neutralHigh};
   }
 
