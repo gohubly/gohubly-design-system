@@ -17,6 +17,7 @@ Default.args = {
   showCloseIcon: true,
   titleColor: 'neutralLow',
   lineTitle: false,
+  positionTitle: 'center',
   children: (
     <div style={{ padding: "0 32px 32px 32px" }}>
       <Typography
