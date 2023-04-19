@@ -13,20 +13,32 @@ const Template: ComponentStory<typeof TooltipV3> = (args) => (
   <TooltipV3 {...args} />
 );
 
+export const Defaut = Template.bind({});
+Defaut.args = {
+  children: "Passe o mouse por cima!",
+  text: "ola",
+  maxWidth: "300px",
+  noPadding: true,
+};
+
 export const Up = Template.bind({});
 Up.args = {
   children: "Passe o mouse por cima!",
   text: (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Typography color="neutralLow">Olá, sou um tooltip.</Typography>
-      <Typography color="neutralLow">Olá, sou um tooltip.</Typography>
+      <Typography color="neutralLow" size="14" fontWeight={400}>
+        <Typography size="14" color="neutralLow" fontWeight={900}>
+          Data limite para solicitação:{" "}
+        </Typography>{" "}
+        {`Até dia 12 do mês`}
+      </Typography>
     </div>
   ),
   pointerOrientation: "down",
   position: "up",
   maxWidth: "300px",
   noPadding: true,
-  color: 'neutralHighLight'
+  color: "neutralHighLight",
 };
 
 export const Right = Template.bind({});
@@ -34,15 +46,19 @@ Right.args = {
   children: "Passe o mouse por cima!",
   text: (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Typography color="neutralLow">Olá, sou um tooltip.</Typography>
-      <Typography color="neutralLow">Olá, sou um tooltip.</Typography>
+      <Typography color="neutralLow" size="14" fontWeight={400}>
+        <Typography size="14" color="neutralLow" fontWeight={900}>
+          Data limite para solicitação:{" "}
+        </Typography>{" "}
+        {`Até dia 12 do mês`}
+      </Typography>
     </div>
   ),
   pointerOrientation: "right",
   position: "right",
   maxWidth: "300px",
   noPadding: true,
-  color: 'neutralHighLight'
+  color: "neutralHighLight",
 };
 
 export const Bottom = Template.bind({});
@@ -58,7 +74,7 @@ Bottom.args = {
   position: "down",
   maxWidth: "300px",
   noPadding: true,
-  color: 'neutralHighLight'
+  color: "neutralHighLight",
 };
 
 export const Left = Template.bind({});
@@ -74,7 +90,7 @@ Left.args = {
   position: "left",
   maxWidth: "300px",
   noPadding: true,
-  color: 'neutralHighLight'
+  color: "neutralHighLight",
 };
 
 export const WithIcon = Template.bind({});

@@ -189,8 +189,6 @@ export const Wrapper = styled.div<iTooltip>`
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
     color: ${() => theme.colors.neutralHigh};
   }
 
