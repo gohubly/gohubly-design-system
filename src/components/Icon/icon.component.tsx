@@ -264,7 +264,7 @@ export const Icon: React.FC<iIcon> = ({
   const Svg = SVG_COMPONENT[iconId];
 
   return (
-    <IconWrapper className="ds-icon" {..._props}>
+    <IconWrapper className={`ds-icon ds-${iconId}`} {..._props}>
       <Svg {..._props} />
     </IconWrapper>
   );
