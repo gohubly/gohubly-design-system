@@ -2,6 +2,7 @@ import React from "react";
 import { PlacesType, Tooltip as ReactTooltip } from "react-tooltip";
 import { iTooltip, iTooltipPointerOrientation } from "../tooltip.interface";
 import * as css from "./tooltip.styles";
+import "react-tooltip/dist/react-tooltip.css";
 
 export const TooltipV2: React.FC<iTooltip> = ({
   id,
@@ -34,7 +35,7 @@ export const TooltipV2: React.FC<iTooltip> = ({
 
   return (
     <css.Container maxWidth={maxWidth} size={size}>
-      <ReactTooltip anchorId={id} place={adaptedPosition[position]} />
+      <ReactTooltip data-tooltip-id={id} place={adaptedPosition[position]} />
       <span id={id} data-tooltip-content={text} style={{ cursor: "pointer" }}>
         {children}
       </span>
