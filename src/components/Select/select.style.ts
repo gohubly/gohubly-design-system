@@ -127,11 +127,13 @@ export const SelectStyled = styled.div<{
 `;
 
 export const Placeholder = styled.span<{ fontSize?: string }>`
+  display: flex;
   flex: 1;
+  height: 100%;
+  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  }
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
