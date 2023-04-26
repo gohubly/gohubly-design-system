@@ -19,6 +19,12 @@ module.exports = {
       loader: 'url-loader?limit=100000'
     })
 
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: 'javascript/auto',
+    });
+
     return config;
   },
 }
