@@ -4,46 +4,18 @@ export default function Svg(props: any) {
   return (
     <svg
       {...props}
-      viewBox="0 0 24 24"
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M3.75 6.6001H5.58333H20.25" fill="#CDD2EB" />
       <path
-        d="M3.75 6.6001H5.58333H20.25"
-        stroke="#CDD2EB"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M8.33374 6.6V4.8C8.33374 4.32261 8.52689 3.86477 8.87071 3.52721C9.21453 3.18964 9.68084 3 10.1671 3H13.8337C14.32 3 14.7863 3.18964 15.1301 3.52721C15.4739 3.86477 15.6671 4.32261 15.6671 4.8V6.6"
-        stroke="#425DC7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M18.4171 6.59998V19.2C18.4171 19.6774 18.2239 20.1352 17.8801 20.4728C17.5363 20.8103 17.07 21 16.5837 21H7.41707C6.93084 21 6.46453 20.8103 6.12071 20.4728C5.77689 20.1352 5.58374 19.6774 5.58374 19.2V6.59998H18.4171Z"
-        fill="#CDD2EB"
-        stroke="#CDD2EB"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.167 11.1001V16.5001"
-        stroke="#425DC7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M13.8335 11.1001V16.5001"
-        stroke="#425DC7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M5.25 1.75H8.75M1.75 3.5H12.25M11.0833 3.5L10.6742 9.63625C10.6129 10.5569 10.5822 11.0172 10.3833 11.3663C10.2083 11.6735 9.94422 11.9206 9.62597 12.0748C9.26448 12.25 8.80314 12.25 7.88045 12.25H6.11955C5.19686 12.25 4.73552 12.25 4.37403 12.0748C4.05577 11.9206 3.79172 11.6735 3.61666 11.3663C3.41781 11.0172 3.38713 10.5569 3.32575 9.63625L2.91667 3.5M5.83333 6.125V9.04167M8.16667 6.125V9.04167"
+        stroke="#26282F"
+        stroke-width="1.25"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );
