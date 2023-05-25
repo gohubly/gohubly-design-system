@@ -115,10 +115,10 @@ export const SelectStyled = styled.div<{
   ${({ disabled, theme }) =>
     disabled &&
     css`
-      background: ${theme.colors.neutralHighLight};
-      color: ${theme.colors.neutralLowMedium};
-      border-color: ${theme.colors.neutralLowLight};
-      cursor: not-allowed;
+      // background: ${theme.colors.neutralHighLight};
+      // color: ${theme.colors.neutralLowMedium};
+      // border-color: ${theme.colors.neutralLowLight};
+      // cursor: not-allowed;
 
       &:hover {
         border-color: ${theme.colors.neutralLowLight};
@@ -132,6 +132,17 @@ export const SelectStyled = styled.div<{
         }
       }
 
+      border: 1px solid rgba(20, 33, 89, 0.15);
+      background: ${() => theme.colors.neutralHighLight};
+      cursor: not-allowed !important;
+
+      background: linear-gradient(
+          0deg,
+          rgba(20, 33, 89, 0.05),
+          rgba(20, 33, 89, 0.05)
+        ),
+        #ffffff;
+
       svg,
       path {
         stroke: ${theme.colors.neutralLowMedium};
@@ -143,11 +154,12 @@ export const SelectStyled = styled.div<{
 export const Placeholder = styled.span<{ fontSize?: string }>`
   display: flex;
   flex: 1;
-  height: 100%;
+  height: max-content;
   align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XXS"]};
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`

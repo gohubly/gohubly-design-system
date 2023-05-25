@@ -11,7 +11,7 @@ export default function Svg(props: any) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M10.5 8.75L7 5.25L3.5 8.75"
+        d="M9.91732 4.08334L4.08398 9.91667M4.08398 4.08334L9.91732 9.91667"
         stroke="#26282F"
         stroke-width="1.25"
         stroke-linecap="round"

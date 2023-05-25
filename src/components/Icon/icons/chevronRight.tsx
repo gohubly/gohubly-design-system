@@ -4,16 +4,18 @@ export default function Svg(props: any) {
   return (
     <svg
       {...props}
-      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M10.4998 16.5L14.9998 12L10.4998 7.49999"
-        stroke="#425DC7"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M6 12L10 8L6 4"
+        stroke="#26282F"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </svg>
   );

@@ -13,6 +13,40 @@ const Template: ComponentStory<typeof SelectV2> = (args) => (
   <SelectV2 {...args} />
 );
 
+export const Defaut = Template.bind({});
+Defaut.args = {
+  placeholder: 'Select',
+  onSelect: (item: any) => console.log(item),
+  error: false,
+  disabled: false,
+  items: [
+    {
+      value: "item1",
+      label: "Item 1 Item 1 Item 1 Item 1",
+    },
+    {
+      value: "item2",
+      label: "Item 2",
+    },
+    {
+      value: "item3",
+      label: "Item 3",
+    },
+    {
+      value: "item4",
+      label: "Item 4",
+    },
+    {
+      value: "item5",
+      label: "Item 5",
+    },
+    {
+      value: "item6",
+      label: "Item 6",
+    },
+  ],
+};
+
 const templateTextDefaultArgs = {
   placeholder: (
     <div style={{ display: "flex", gap: "5px" }}>

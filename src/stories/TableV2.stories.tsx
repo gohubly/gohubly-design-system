@@ -86,6 +86,7 @@ const tableCommonArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...tableCommonArgs,
+  responsive: true,
 };
 
 export const Indexed = Template.bind({});

@@ -45,7 +45,7 @@ export const IconWrapper = styled.div<iIcon>`
     stroke: ${({ OnColor, stroke }) =>
       stroke ? theme.colors[stroke] : theme.colors[OnColor ? "white" : ""]};
 
-    stroke-width: ${({ strokeWidth }) => strokeWidth ?? 2};
+    stroke-width: ${({ strokeWidth }) => strokeWidth ?? 1.5};
 
     ${({ gray }) =>
       gray &&

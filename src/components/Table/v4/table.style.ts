@@ -12,6 +12,31 @@ export const TableContainer = styled.div<{
   width: ${({ fluid }): string => (fluid ? "100%" : "initial")};
   border: ${({ theme }) => `1px solid ${theme.colors.neutralHighLight}`};
   border-radius: 8px;
+
+  &::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    background: white;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background-color: ${({ theme }): string => theme.colors.white};
+    margin: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: #C7D1D7;
+    border-radius: 20px;
+    border: 4px solid ${({ theme }): string => theme.colors.white};
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: ${({ theme }): string => theme.colors.white};
+  }
+
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
 `;
 
 export const Table = styled.table<{ fluid?: boolean }>`

@@ -1,8 +1,6 @@
 import React from "react";
-
 import { iIcon, iIconSizes, iIconTypes } from ".";
 import { IconWrapper } from "./icon.style";
-
 import AppIcon from "./icons/appIcon";
 import Bag from "./icons/bag";
 import Bell from "./icons/bell";
@@ -50,6 +48,7 @@ import Minus from "./icons/minus";
 import MoreHorizontal from "./icons/moreHorizontal";
 import MoreVertical from "./icons/moreVertical";
 import Pen from "./icons/pen";
+import Pencil from "./icons/pencil";
 import Percent from "./icons/percent";
 import Phone from "./icons/phone";
 import PinLocation from "./icons/pinLocation";
@@ -106,7 +105,7 @@ import BarChart from "./icons/barChart";
 import ClockCheck from "./icons/clockCheck";
 import ClockRewind from "./icons/clockRewind";
 import ClockWaiting from "./icons/clockWaiting";
-import CoinsHand from "./icons/coinsHand"
+import CoinsHand from "./icons/coinsHand";
 import Copy from "./icons/copy";
 import CreditCardDownload from "./icons/creditCardDownload";
 import Hand from "./icons/hand";
@@ -117,6 +116,15 @@ import Stars from "./icons/stars";
 import Wallet from "./icons/wallet";
 import ZapCircle from "./icons/zapCircle";
 import VerticalSwitch from "./icons/verticalSwitch";
+
+import CellPhone from "./icons/cellPhone";
+import Close4 from "./icons/close4";
+import Collumns from "./icons/collumns";
+import Edit from "./icons/edit";
+import FileCheck from "./icons/fileCheck";
+import ImagePlus from "./icons/imagePlus";
+import Monitor from "./icons/monitor";
+import Save from "./icons/save";
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: "12px",
@@ -146,6 +154,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   cashCircle: CashCircle,
   cashSign: CashSign,
   cashSign2: CashSign2,
+  cellPhone: CellPhone,
   check: Check,
   chevronDown: ChevronDown,
   chevronLeft: ChevronLeft,
@@ -160,8 +169,10 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   close: Close,
   close2: Close2,
   close3: Close3,
+  close4: Close4,
   coins2: Coins2,
   coinsHand: CoinsHand,
+  collumns: Collumns,
   commission: Commission,
   copy: Copy,
   creditCard: CreditCard,
@@ -171,6 +182,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   discover: Discover,
   download: Download,
   drag: Drag,
+  edit: Edit,
   elo: Elo,
   envelope: Envelope,
   eye: Eye,
@@ -180,6 +192,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   file: File,
   file1: File1,
   file2: File2,
+  fileCheck: FileCheck,
   fileQuestion: FileQuestion,
   filePlus: FilePlus,
   globe: Globe,
@@ -192,6 +205,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   home: Home,
   hourglass: Hourglass,
   image: Image,
+  imagePlus: ImagePlus,
   information: Information,
   informationTriangle: InformationTriangle,
   instagram: Instagram,
@@ -205,9 +219,11 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   mastercard: Mastercard,
   messenger: Messenger,
   minus: Minus,
+  monitor: Monitor,
   moreHorizontal: MoreHorizontal,
   moreVertical: MoreVertical,
   pen: Pen,
+  pencil: Pencil,
   percent: Percent,
   phone: Phone,
   pinLocation: PinLocation,
@@ -215,6 +231,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   playRounded: PlayRounded,
   plus: Plus,
   receiptCheck: ReceiptCheck,
+  save: Save,
   search: Search,
   settings: Settings,
   settings2: Settings2,
@@ -243,8 +260,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   youtube: Youtube,
   zapCircle: ZapCircle,
   zapFast: ZapFast,
-};    
-
+};
 
 export const Icon: React.FC<iIcon> = ({
   iconId,
