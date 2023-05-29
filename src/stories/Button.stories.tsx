@@ -14,6 +14,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   children: 'Default',
   hierarchy: 'primary',
+  onClick: () => {console.log("Clicou")}
 };
 
 export const Secondary = Template.bind({});
@@ -46,10 +47,25 @@ WithError.args = {
   children: 'Error'
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
+export const WithLeftIcon = Template.bind({});
+WithLeftIcon.args = {
   icon: 'information',
-  children: 'With icon'
+  children: 'With left icon'
+};
+
+export const WithRightIcon = Template.bind({});
+WithRightIcon.args = {
+  rightIcon: 'information',
+  children: 'With right icon'
+};
+
+export const WithLeftAndRightIcon = Template.bind({});
+WithLeftAndRightIcon.args = {
+  rightIcon: 'information',
+  rightIconStrokeWidth: 1,
+  icon: 'information',
+  iconStrokeWidth: 2,
+  children: 'With right icon'
 };
 
 export const PrimaryOnColor = Template.bind({});

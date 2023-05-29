@@ -20,7 +20,7 @@ export const Drawer: React.FC<iDrawerProps> = ({
 
  return (
     <css.Overlay show={show} zIndex={zIndex} ref={overlayRef}>
-      <css.Content {...props} zIndex={zIndex} ref={drawerRef}>
+      <css.Content {...props} show={show} zIndex={zIndex} ref={drawerRef}>
         { children }
       </css.Content>
     </css.Overlay>
