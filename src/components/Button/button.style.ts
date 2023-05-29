@@ -13,7 +13,7 @@ const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 };
 
 const HOVER_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
-  primary: "primary",
+  primary: "brandHovered",
   secondary: "outlinedAndTextHover",
   ghost: "primaryLightest",
   tonalFilled: "tonalFilledHover",
@@ -21,9 +21,9 @@ const HOVER_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 
 const COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "white",
-  secondary: "neutralLow",
-  ghost: "neutralLow",
-  tonalFilled: "neutralLow",
+  secondary: "textNeutralDefaut",
+  ghost: "textNeutralDefaut",
+  tonalFilled: "textNeutralDefaut",
 };
 
 const DISABLED_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> =
@@ -44,14 +44,14 @@ const BORDER_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 const HOVER_BORDER_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   ...BORDER_COLOR_BY_HIERARCHY,
   secondary: "neutralLow",
-  ghost: "neutralLow",
+  // ghost: "neutralLow",
 };
 
 const ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "white",
-  secondary: "neutralLow",
-  ghost: "neutralLow",
-  tonalFilled: "neutralLow",
+  secondary: "iconDefaut",
+  ghost: "iconDefaut",
+  tonalFilled: "iconDefaut",
 };
 
 const HOVER_ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
@@ -151,7 +151,7 @@ const ICON_BY_SIZE: Record<iButtonSizes, string> = {
 
 const GAP_BY_SIZE: Record<iButtonSizes, string> = {
   SM: "8px",
-  MD: "12px",
+  MD: "8px",
   LG: "12px",
   XL: "16px",
 };
@@ -175,6 +175,7 @@ export const IconStyled = styled(Icon)<
     propsSize?: iButtonSizes;
     iconSize?: iIconSizes;
     rightIconSize?: iIconSizes;
+    strokeWidth?: number;
   }
 >`
   height: ${({ propsSize }) => propsSize && LINE_HEIGHT_BY_SIZE[propsSize]}!important;
@@ -216,7 +217,7 @@ export const IconStyled = styled(Icon)<
   img,
   rect {
     fill: transparent;
-    stroke-width: 2;
+    stroke-width: ${({ strokeWidth }) => (strokeWidth ?? 2)};
     stroke: ${({ hierarchy, OnColor }) => {
       return OnColor
         ? theme.colors[ICON_ON_COLOR_BY_HIERARCHY[hierarchy]]
@@ -295,7 +296,6 @@ export const Button = styled.button<iButton>`
     img,
     rect {
       fill: transparent;
-      stroke-width: 2;
       stroke: ${({ hierarchy, OnColor }) =>
         hierarchy &&
         theme.colors[
@@ -330,13 +330,13 @@ export const Button = styled.button<iButton>`
   }
 
   &[data-has-error="true"] {
-    background-color: ${() => theme.colors.helper};
-    border-color: ${() => theme.colors.helper};
+    background-color: ${() => theme.colors.dangerDefaut};
+    border-color: ${() => theme.colors.dangerDefaut};
     color: ${() => theme.colors.white};
 
     &:hover:not(:disabled) {
-      background-color: ${() => theme.colors.helperMedium};
-      border-color: ${() => theme.colors.helperMedium};
+      background-color: ${() => theme.colors.dangerHovered};
+      border-color: ${() => theme.colors.dangerHovered};
     }
 
     & > ${IconStyled} {
@@ -358,13 +358,13 @@ export const Button = styled.button<iButton>`
       ]};
 
     color: ${({ OnColor }) =>
-      OnColor ? theme.colors.primaryLight : "rgba(0,0,0,0.5)"};
+      OnColor ? theme.colors.primaryLight : theme.colors.textDisabled};
 
     svg,
     path {
       fill: transparent;
       stroke: ${({ OnColor }) =>
-        OnColor ? theme.colors.primaryLight : theme.colors.neutralLowLight};
+        OnColor ? theme.colors.primaryLight : theme.colors.iconDisabled};
     }
   }
 `;

@@ -18,8 +18,10 @@ export const Button: React.FC<iButton> = ({
   loading,
   icon,
   iconSize,
+  iconStrokeWidth,
   rightIcon,
   rightIconSize,
+  rightIconStrokeWidth,
   OnColor,
   ...props
 }) => {
@@ -40,6 +42,7 @@ export const Button: React.FC<iButton> = ({
           {...(iconSize && { iconSize: iconSize })}
           iconId={icon}
           hierarchy={hierarchy}
+          strokeWidth={iconStrokeWidth}
           OnColor={OnColor}
           loading={loading}
           propsSize={size}
@@ -53,6 +56,7 @@ export const Button: React.FC<iButton> = ({
           {...(rightIconSize && { rightIconSize: rightIconSize })}
           iconId={rightIcon}
           hierarchy={hierarchy}
+          strokeWidth={rightIconStrokeWidth}
           OnColor={OnColor}
           loading={loading}
           propsSize={size}
