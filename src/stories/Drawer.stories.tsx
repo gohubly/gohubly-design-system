@@ -15,8 +15,8 @@ Default.args = {
   minWidth: '300px',
   show: false,
   children: (
-    <>
-      test
-    </>
+    <div style={{ padding: '24px'}}>
+      Conteúdo Drawer 
+    </div>
   )
 }
