@@ -17,7 +17,7 @@ export const Overlay = styled.div<Pick<iDrawerProps, "show" | "zIndex">>`
   z-index: ${({ zIndex }) => zIndex};
   opacity: ${({ show }) => (show ? "1" : "0")};
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
-
+  cursor: pointer;
   transition: opacity 0.5s, visibility 0.5s;
 `;
 
