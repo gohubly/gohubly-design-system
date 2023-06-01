@@ -114,7 +114,7 @@ export const theme = {
     neutralLowMedium: "#555555",
     neutralLowDark: "#000000",
 
-    neutralHigh: "#FFFFFF", // default
+    neutralHigh: "#EEEEEE", // default
     neutralHighLight: "#EEEEEE",
     neutralHighMedium: "#D5D5D5",
     neutralHighDark: "#BBBBBB",
@@ -143,23 +143,122 @@ export const theme = {
     grayLight: "#EDF0F2",
     disabled: "#F1F1F7",
 
-    // new colors
+    // new DS colors
 
-    brandHovered: '#5869B4',
+    textNeutralDefault: "#18191E",
+    textNeutralSubtle: "#26282F",
+    textNeutralSubtlest: "#4D505E",
+
+    textInverseDefault: '#FFFFFF',
+    textInverseSubtle: '#F1F1F7',
+    textInverseSubtlest: '#E0E2E8',
+
+    textDisabled: "#808391",
+
+    textBrand: '#2E44A1',
+
+    textDanger: '#EB0045',
+    textSuccess: '#167E32',
+    textWarning: '#66470A',
+    textWarningInverse: '#18191E',
+    textDiscovery: '#2E44A1',
+    textInformation: '#2E44A1',
+
+    linkDefault: '#2E44A1',
+    linkHovered: '#1C2961',
+    linkPressed: '#2E44A1',
+
+    bgBrandBoldDefault: '#2E44A1',
+    bgBrandBoldHovered: '#5869B4',
+    bgBrandBoldPressed: '#2E44A1',
+    bgBrandSubtleDefault: '#EAECF6',
+    bgBrandSubtleHovered: '#D5DAEC',
+    bgBrandSubtlePressed: '#EAECF6',
+
+    bgNeutralSubtlestDefault: '#FFFFFF',
+    bgNeutralSubtlestHovered: '#F1F1F7',
+    bgNeutralSubtlestPressed: '#FFFFFF',
+    bgNeutralSubtleDefault: '#F1F1F7',
+    bgNeutralSubtleHovered: '#E0E2E8',
+    bgNeutralSubtlePressed: '#F1F1F7',
+    bgNeutralBoldDefault: '#1C2961',
+
+    bgInputDefault: '#FFFFFF',
+    bgInputHovered: '#F6F6F9',
+    bgInputPressed: '#FFFFFF',
+
+    bgSelectedBoldDefault: '#2E44A1',
+    bgSelectedBoldHovered: '#5869B4',
+    bgSelectedBoldPressed:'#2E44A1',
+    bgSelectedSubtleDefault: '#F1F1F7',
+    bgSelectedSubtleHovered: '#E0E2E8',
+    bgSelectedSubtlePressed: '#F1F1F7',
+
+    bgDisabledDefault: '#F1F1F7',
+
+    bgDangerSubtleDefault: '#FEF2F6',
+    bgDangerSubtleHovered: '#FCD9E3',
+    bgDangerSubtlePressed: '#F8A6BE',
+    bgDangerBoldDefault: '#EB0045',
+    bgDangerBoldHovered: '#BC0037',
+    bgDangerBoldPressed: '',
+    
+    bgWarningSubtleDefault: '#FFFBF4',
+    bgWarningSubtleHovered: '#FFF3DD', 
+    bgWarningSubtlePressed: '#FFE4AE',
+    bgWarningBoldDefault: '#FFD075',
+    bgWarningBoldHovered: '#FFC452',
+    bgWarningBoldPressed: '#FFB119',
+
+    bgSuccessSubtleDefault: '#DDF0E2',
+    bgSuccessSubtleHovered: '#F4FAF5',
+    bgSuccessSubtlePressed: '#DDF0E2',
+    bgSuccessBoldDefault: "#167E32",
+    bgSuccessBoldHovered: '#105E26',
+    bgSuccessBoldPressed: '#0B3F19',
+
+    bgDiscoverySubtleDefault: '#EAECF6',
+    bgDiscoverySubtleHovered: '#D5DAEC',
+    bgDiscoverySubtlePressed: '#B6BEDE',
+    bgDiscoveryBoldDefault: '#2E44A1',
+    bgDiscoveryBoldPHovered: '#253681',
+    bgDiscoveryBoldPressed: '#1C2961',
+
+    borderDefault: '#E0E2E8',
+    borderBold: '#C8CCD5',
+    borderInverse: '#F1F1F7',
+    borderInput: '#C8CCD5',
+    borderDisabled: '#C8CCD5',
+    borderFocused: '#5869B4',
+    borderSelected: '#2E44A1',
+    borderBrand: '#2E44A1',
+
+    borderDanger: '#EB0045',
+    borderSuccess: '#167E32',
+    borderWarning: '#66470A',
+    borderDiscovery: '#2E44A1',
+    borderInformation: '#253681',
+
+    iconDefault: '#26282F',
+    iconSubtle: '#4D505E',
+    iconSubtlest: '#616473',
+    iconInverse: '#FFFFFF',
+    iconDisabled: '#A4A8B5',
+    iconSelected: '#2E44A1',
+    iconBrand: '#2E44A1',
+
+    iconDanger: '#EB0045',
+    iconSuccess: '#167E32',
+    iconWarning: '#66470A',
+    iconDiscovery: '#2E44A1',
+    iconInformation: '#253681',
 
     outlinedAndTextHover: "#F1F1F7",
 
     tonalFilled: "#EAECF6",
     tonalFilledHover: "#D5DAEC",
-
-    iconDefaut: "#26282F",
-    iconDisabled: "#A4A8B5",
-
-    textNeutralDefaut: "#18191E",
-    textDisabled: "#808391",
-
-    dangerDefaut: "#EB0045",
-    dangerHovered: "#BC0037",
+    
+    textNeutralLowDark: "#101010",
   },
 };
 

@@ -62,12 +62,6 @@ const options2 = [
   },
 ];
 
-{
-  /* <Flex flexDirection="column" pl="8px">
-                      
-                    </Flex> */
-}
-
 export const RadioButtonGroup = Template.bind({});
 RadioButtonGroup.args = {
   name: "RadioButtonGroup",

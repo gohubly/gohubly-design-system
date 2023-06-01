@@ -13,7 +13,7 @@ const BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 };
 
 const HOVER_BACKGROUND_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
-  primary: "brandHovered",
+  primary: "bgBrandBoldHovered",
   secondary: "outlinedAndTextHover",
   ghost: "primaryLightest",
   tonalFilled: "tonalFilledHover",
@@ -330,13 +330,13 @@ export const Button = styled.button<iButton>`
   }
 
   &[data-has-error="true"] {
-    background-color: ${() => theme.colors.dangerDefaut};
-    border-color: ${() => theme.colors.dangerDefaut};
+    background-color: ${() => theme.colors.bgDangerBoldDefault};
+    border-color: ${() => theme.colors.bgDangerBoldDefault};
     color: ${() => theme.colors.white};
 
     &:hover:not(:disabled) {
-      background-color: ${() => theme.colors.dangerHovered};
-      border-color: ${() => theme.colors.dangerHovered};
+      background-color: ${() => theme.colors.bgDangerBoldHovered};
+      border-color: ${() => theme.colors.bgDangerBoldHovered};
     }
 
     & > ${IconStyled} {
