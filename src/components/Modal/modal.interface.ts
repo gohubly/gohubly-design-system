@@ -27,4 +27,5 @@ export interface IModal {
   isDesktop?: boolean;
   position?: IModalPositions;
   children: JSX.Element | React.ReactChild | any;
+  modalRef?: React.Ref<HTMLDivElement>,
 }
