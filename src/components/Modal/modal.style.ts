@@ -39,6 +39,7 @@ export const Container = styled.div<ContainerProps>`
   background: rgba(0, 0, 0, 0.3);
   z-index: 99999999;
   transition: all 0.2s linear;
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -53,6 +54,8 @@ export const Wrapper = styled.div<WrapperProps>`
   background: #fff;
   outline: 8px solid rgba(0, 0, 0, 0.05);
   overflow-y: ${({ scrollable }): string => (scrollable ? "auto" : "initial")};
+  cursor: auto;
+
 
   ${({ position }) => {
     if (position === "top") {

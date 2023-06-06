@@ -1,6 +1,6 @@
 export type IGapOptions = "10" | "12" | "16" | "18" | "20";
 
-export interface IRadioImage {
+export interface IStyledRadio {
   label?: string;
   name: string;
   value: any;
@@ -8,7 +8,7 @@ export interface IRadioImage {
   onChange?: (value: any) => void;
   disabled?: boolean;
   onColor?: boolean;
-  options?: IRadioImageOptions[];
+  options?: IStyledRadioOptions[];
   gapOptions?: IGapOptions;
   positionLeft?: string;
   positionRight?: string;
@@ -16,26 +16,28 @@ export interface IRadioImage {
   positionBottom?: string;
   transformX?: string;
   transformY?: string;
+  lengthRadio?: string;
+  lengthMark?: string;
 }
 
-export interface IRadioImageOptions {
+export interface IStyledRadioOptions {
   title?: string;
   value: string;
   child?: JSX.Element | React.ReactChild | any;
 }
 
-export interface ILabelRadioImage {
+export interface ILabelStyledRadio {
   disabled?: boolean;
   onColor?: boolean;
-  options?: IRadioImageOptions[];
+  options?: IStyledRadioOptions[];
   gapOptions?: IGapOptions;
 }
 
-export interface IBoxRadioImage {
+export interface IBoxStyledRadio {
   ref: any;
 }
 
-export interface IMarkRadioImage {
+export interface IMarkStyledRadio {
   disabled?: boolean;
   onColor?: boolean;
   positionLeft?: string;
@@ -44,4 +46,6 @@ export interface IMarkRadioImage {
   positionBottom?: string;
   transformX?: string;
   transformY?: string;
+  lengthRadio?: string;
+  lengthMark?: string;
 }

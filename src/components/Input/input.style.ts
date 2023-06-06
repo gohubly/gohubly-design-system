@@ -225,7 +225,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   height: ${({ Size }) => INPUT_HEIGHT_BASED_ON_SIZE[Size || "MD"]};
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
-  background: ${() => theme.colors.neutralHigh};
+  background: ${() => theme.colors.white};
 
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
   line-height: ${({ fontSize }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
@@ -341,12 +341,7 @@ export const Input = styled.input<iStyledCommonProps>`
     `}
 
   &:hover {
-    background: linear-gradient(
-        0deg,
-        rgba(20, 33, 89, 0.05),
-        rgba(20, 33, 89, 0.05)
-      ),
-      #ffffff;
+    background: ${() => theme.colors.bgInputHovered};
   }
 
   &:focus {
@@ -369,7 +364,7 @@ export const Input = styled.input<iStyledCommonProps>`
 
   &:disabled {
     border: 1px solid rgba(20, 33, 89, 0.15);
-    background: ${() => theme.colors.neutralHighLight};
+    background: ${() => theme.colors.bgDisabledDefault};
     cursor: not-allowed !important;
 
     background: linear-gradient(
