@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { defaultCss } from "../../theme/defaultCss";
 import theme from "../../theme/theme";
 import {
-  IBoxRadioImage,
-  ILabelRadioImage,
-  IMarkRadioImage,
+  IBoxStyledRadio,
+  ILabelStyledRadio,
+  IMarkStyledRadio,
 } from "./styled-radio-button.interface";
 
 export const Container = styled.div`
@@ -16,7 +16,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Label = styled.label<ILabelRadioImage>`
+export const Label = styled.label<ILabelStyledRadio>`
   ${defaultCss};
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ export const Label = styled.label<ILabelRadioImage>`
 
 export const Box = styled.input.attrs({
   type: "radio",
-})<IBoxRadioImage>`
+})<IBoxStyledRadio>`
   cursor: pointer;
   position: absolute;
   opacity: 0;
@@ -92,7 +92,7 @@ export const Box = styled.input.attrs({
   }
 `;
 
-export const Mark = styled.span<IMarkRadioImage>`
+export const Mark = styled.span<IMarkStyledRadio>`
   position: absolute;
   box-sizing: border-box;
 
@@ -117,8 +117,9 @@ export const Mark = styled.span<IMarkRadioImage>`
     }
   }};
 
-  height: 16px;
-  width: 16px;
+  height: ${({ lengthRadio }) => lengthRadio ?? '16px'};
+  width: ${({ lengthRadio }) => lengthRadio ?? '16px'};
+
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 50%;
 
@@ -141,8 +142,8 @@ export const Mark = styled.span<IMarkRadioImage>`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 6px;
-    height: 6px;
+    height: ${({ lengthMark }) => lengthMark ?? '6px'};
+    width: ${({ lengthMark }) => lengthMark ?? '6px'};
     border-radius: 100%;
     background: ${({ onColor }) =>
       onColor ? theme.colors.bgBrandBoldHovered : theme.colors.white};

@@ -1,7 +1,7 @@
 import { theme } from "../../theme";
 export type IModalPositions = "top" | "right" | "bottom" | "left";
 
-export type HeaderSpacing = "XS" | "SM" | "MD" | "LG" | 'Desktop';
+export type HeaderSpacing = "XS" | "SM" | "MD" | "LG" | "Desktop";
 
 export type ITitlePositions = "left" | "center" | "right";
 
@@ -10,11 +10,12 @@ export interface IModal {
   toggleModal: any;
   title?: string;
   fontSizeTitle?: keyof typeof theme.fontSize;
+  fontWeightTitle?: keyof typeof theme.fontWeight;
   lineHeightTitle?: keyof typeof theme.lineHeight;
   positionTitle?: ITitlePositions;
   lineTitle?: boolean;
   titleColor?: keyof typeof theme.colors;
-  padding?: HeaderSpacing
+  padding?: HeaderSpacing;
   showCloseIcon?: boolean;
   scrollable?: boolean;
   width?: string;

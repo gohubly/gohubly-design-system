@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Box, Flex } from "rebass";
 import { theme } from "../../theme";
 import { Icon } from "../Icon";
 import { Typography } from "../Typography";
 import { IModal } from "./modal.interface";
 import { Container, Header, Wrapper } from "./modal.style";
+import { useClickOutside } from "../../hooks";
 
 export const Modal: React.FC<IModal> = ({
   title,
@@ -21,10 +22,17 @@ export const Modal: React.FC<IModal> = ({
   isDesktop = true,
   position,
   fontSizeTitle,
+  fontWeightTitle,
   lineHeightTitle,
   positionTitle,
   lineTitle = true,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useClickOutside(() => {
+    toggleModal()
+  }, [ref]);
+  
   return (
     <Container
       show={show}
@@ -39,6 +47,7 @@ export const Modal: React.FC<IModal> = ({
         isDesktop={isDesktop}
         position={position}
         show={show}
+        ref={ref}
       >
         <Header padding={padding} isDesktop={isDesktop} lineTitle={lineTitle}>
           <Flex width="calc(100% - 40px)" justifyContent={positionTitle ?? "start"}>
@@ -46,7 +55,7 @@ export const Modal: React.FC<IModal> = ({
               color={titleColor}
               size={fontSizeTitle ?? "20"}
               lineHeight={lineHeightTitle ?? "28"}
-              fontWeight={600}
+              fontWeight={fontWeightTitle ?? 600}
               textAlign={positionTitle ?? "initial"}
             >
               {title || ""}
@@ -64,8 +73,8 @@ export const Modal: React.FC<IModal> = ({
               }}
             >
               <Icon
-                iconId="close3"
-                size="XS"
+                iconId="close4"
+                size="XXS"
                 onClick={toggleModal}
                 strokeWidth={1.5}
               />
