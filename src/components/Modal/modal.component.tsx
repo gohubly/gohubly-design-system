@@ -1,11 +1,10 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Box, Flex } from "rebass";
 import { theme } from "../../theme";
 import { Icon } from "../Icon";
 import { Typography } from "../Typography";
 import { IModal } from "./modal.interface";
 import { Container, Header, Wrapper } from "./modal.style";
-import { useClickOutside } from "../../hooks";
 
 export const Modal: React.FC<IModal> = ({
   title,
@@ -26,13 +25,8 @@ export const Modal: React.FC<IModal> = ({
   lineHeightTitle,
   positionTitle,
   lineTitle = true,
+  modalRef
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useClickOutside(() => {
-    toggleModal()
-  }, [ref]);
-  
   return (
     <Container
       show={show}
@@ -47,10 +41,13 @@ export const Modal: React.FC<IModal> = ({
         isDesktop={isDesktop}
         position={position}
         show={show}
-        ref={ref}
+        ref={modalRef}
       >
         <Header padding={padding} isDesktop={isDesktop} lineTitle={lineTitle}>
-          <Flex width="calc(100% - 40px)" justifyContent={positionTitle ?? "start"}>
+          <Flex
+            width="calc(100% - 40px)"
+            justifyContent={positionTitle ?? "start"}
+          >
             <Typography
               color={titleColor}
               size={fontSizeTitle ?? "20"}
