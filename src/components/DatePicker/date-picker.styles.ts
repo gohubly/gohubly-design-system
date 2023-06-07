@@ -23,6 +23,7 @@ export const PickerContainer = styled.div<{ show?: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
   border-radius: 8px;
 
+
   user-select: ${({ show }): string => (show ? 'auto ' : 'none')};
   pointer-events: ${({ show }): string => (show ? 'all ' : 'none')};
 
