@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import { defaultCss } from "../../theme/defaultCss";
+import { IPositionButtons, IShapeSelected } from "./periodpicker.interface";
 
 const fontFamilyBasedOnWeight: Record<
   keyof typeof theme.fontWeight,
@@ -20,7 +21,7 @@ export const Container = styled.div<{ width?: string }>`
   display: flex;
   flex-direction: column;
   width: ${({ width }) => width ?? "100%"};
-  background-color: ${({ theme }) => theme.colors.neutralHigh};
+  background-color: ${({ theme }) => theme.colors.white};
 
   border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
   border-radius: 5px;
@@ -163,6 +164,7 @@ export const DayNumber = styled(DayDefault)<{
   isInitialDate?: boolean;
   isTotalSelected?: boolean;
   disabled?: boolean;
+  shapeSelected?: IShapeSelected;
 }>`
   color: ${({ theme, disabled }) =>
     disabled ? theme.colors.neutralHighMedium : theme.colors.neutralLow};
@@ -182,7 +184,8 @@ export const DayNumber = styled(DayDefault)<{
     height: 32px;
     width: 32px;
     position: absolute;
-    border-radius: 4px;
+    border-radius: ${({ shapeSelected }) =>
+      shapeSelected === "round" ? "100%" : "4px"};
   }
 
   ${({ disabled }) =>
@@ -212,11 +215,14 @@ export const DayNumber = styled(DayDefault)<{
     `}
 `;
 
-export const Footer = styled.div<{ onlyOne?: boolean }>`
+export const Footer = styled.div<{
+  onlyOne?: boolean;
+  paddingButtonContainer?: string;
+}>`
   display: flex;
   align-items: center;
   gap: 24px;
-  padding: 16px;
+  padding: ${({ paddingButtonContainer }) => paddingButtonContainer ?? "16px"};
   flex-direction: ${({ onlyOne }) => (onlyOne ? "column" : "row")};
   border-top: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
 `;
@@ -236,10 +242,12 @@ export const PeriodCallout = styled.div`
   color: ${({ theme }) => theme.colors.neutralLowLight};
 `;
 
-export const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div<{
+  positionButtons?: IPositionButtons;
+}>`
   width: 100%;
-  justify-content: flex-end;
   display: flex;
   gap: 16px;
   user-select: none;
+  justify-content: ${({ positionButtons }) => positionButtons ?? "flex-end"};
 `;

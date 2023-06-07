@@ -27,7 +27,7 @@ export const Label = styled.label<ILabelCheckBox>`
   user-select: none;
 
   color: ${({ onColor }) =>
-    onColor ? theme.colors.neutralHigh : theme.colors.neutralLow};
+    onColor ? theme.colors.neutralHigh : theme.colors.textNeutralDefault};
 
   &:hover {
     color: ${({ onColor }) =>
@@ -36,7 +36,7 @@ export const Label = styled.label<ILabelCheckBox>`
 
   &:hover .mark {
     background-color: ${() => theme.colors.primaryLightest};
-    border: 1px solid
+    border: 1.5px solid
       ${({ onColor }) =>
         onColor ? theme.colors.white : theme.colors.neutralLow};
   }
@@ -47,14 +47,14 @@ export const Label = styled.label<ILabelCheckBox>`
       if (onColor) {
         return css`
           background-color: ${theme.colors.white};
-          border: 1px solid ${theme.colors.white};
+          border: 1.5px solid ${theme.colors.white};
         `;
       }
 
       if (checked) {
         return css`
           background-color: ${theme.colors.primaryMedium};
-          border: 1px solid ${theme.colors.primaryMedium};
+          border: 1.5px solid ${theme.colors.primaryMedium};
         `;
       }
     }};
@@ -62,22 +62,24 @@ export const Label = styled.label<ILabelCheckBox>`
 
   &.disabled {
     color: ${({ onColor }) =>
-      onColor ? theme.colors.primaryLight : "rgba(0, 0, 0, 0.6)"};
+      onColor ? theme.colors.primaryLight : theme.colors.textDisabled};
 
+    
     path {
       stroke: ${({ onColor }) =>
         onColor
           ? theme.colors.primaryLight
-          : theme.colors.neutralLowMedium}!important;
+          : theme.colors.borderInput}!important;
     }
+    
 
     &:hover span,
     input:checked ~ span {
       background-color: ${({ onColor }) =>
-        onColor ? "transparent" : theme.colors.neutralHighMedium};
-      border: 1px solid
+        onColor ? "transparent" : theme.colors.bgDisabledDefault};
+      border: 1.5px solid
         ${({ onColor }) =>
-          onColor ? theme.colors.primaryLight : theme.colors.neutralLowMedium};
+          onColor ? theme.colors.primaryLight : theme.colors.borderDisabled};
       cursor: not-allowed;
     }
   }
@@ -126,14 +128,15 @@ export const Mark = styled.span<IMarkCheckBox>`
   width: 16px;
   background-color: transparent;
   border-radius: 2px;
-  border: 1px solid
-    ${({ onColor }) => (onColor ? theme.colors.white : theme.colors.neutralLow)};
+  border: 1.5px solid
+    ${({ onColor }) =>
+      onColor ? theme.colors.white : theme.colors.borderInput};
   transition: 180ms ease-in-out;
 
   &.disabled {
-    background-color: ${theme.colors.neutralHighMedium};
-    border: 1px solid
+    background-color: ${theme.colors.bgDisabledDefault};
+    border: 1.5px solid
       ${({ onColor }) =>
-        onColor ? theme.colors.primaryLight : theme.colors.neutralHighDark};
+        onColor ? theme.colors.primaryLight : theme.colors.borderDisabled};
   }
 `;

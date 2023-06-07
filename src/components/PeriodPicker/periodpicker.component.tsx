@@ -1,7 +1,5 @@
 import React, { useMemo, useState } from "react";
 import moment, { Moment } from "moment";
-
-import { iPeriodPicker } from "./periodpicker.interface";
 import {
   Container,
   Month,
@@ -20,12 +18,13 @@ import {
 } from "./periodpicker.style";
 import { iCalendar } from ".";
 import { Button, Icon, Typography } from "..";
+import { IPeriodPicker } from "./periodpicker.interface";
 
 import "moment/locale/pt-br";
 import { Flex } from "rebass";
 moment.locale("pt-br");
 
-export const PeriodPicker: React.FC<iPeriodPicker> = ({
+export const PeriodPicker: React.FC<IPeriodPicker> = ({
   width,
   onChange,
   onReset,
@@ -33,6 +32,12 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
   count = 3,
   limit,
   isMobile = false,
+  oneDateOnly,
+  paddingButtonContainer,
+  sizeButtons,
+  positionButtons,
+  fluidButton = true,
+  shapeSelected,
   ...props
 }) => {
   const [centralDate, setCentralDate] = useState(moment());
@@ -99,6 +104,13 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
   }, [limit, centralDate]);
 
   const handleClickDay = (day: Moment) => {
+    if (oneDateOnly) {
+      setInitialDate(day);
+      setFinalDate(day);
+      setSelectIsInitialDate(false);
+      return;
+    }
+
     if (!finalDate) {
       if (!initialDate) {
         setInitialDate(day);
@@ -206,6 +218,7 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
                           isSelected={isSelected}
                           isInitialDate={isInitialDate}
                           isTotalSelected={isTotalSelectedAndDatesAreDifferents}
+                          shapeSelected={shapeSelected}
                         >
                           <span>{day.format("D")}</span>
                         </DayNumber>
@@ -219,8 +232,11 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
         })}
       </MonthsContainer>
 
-      <Footer onlyOne={count === 1}>
-        {(initialDate || finalDate) && (
+      <Footer
+        onlyOne={count === 1}
+        paddingButtonContainer={paddingButtonContainer}
+      >
+        {(initialDate || finalDate) && !oneDateOnly && (
           <HelperContainer>
             <PeriodCallout>Você selecionou</PeriodCallout>
 
@@ -258,21 +274,21 @@ export const PeriodPicker: React.FC<iPeriodPicker> = ({
           </HelperContainer>
         )}
 
-        <ButtonContainer>
+        <ButtonContainer positionButtons={positionButtons}>
           <Button
             disabled={!initialDate || !finalDate}
             hierarchy="secondary"
-            size={isMobile ? "SM" : "MD"}
             onClick={handleClickReset}
-            fluid={count === 1}
+            fluid={fluidButton}
+            size={sizeButtons ? sizeButtons : isMobile ? "SM" : "MD"}
           >
             Redefinir
           </Button>
           <Button
             disabled={!initialDate || !finalDate}
-            size={isMobile ? "SM" : "MD"}
             onClick={handleClickSubmit}
-            fluid={count === 1}
+            fluid={fluidButton}
+            size={sizeButtons ? sizeButtons : isMobile ? "SM" : "MD"}
           >
             Aplicar
           </Button>
