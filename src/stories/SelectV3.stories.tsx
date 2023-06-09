@@ -48,6 +48,7 @@ Defaut.args = {
 };
 
 const templateTextDefaultArgs = {
+  styledLabel: (<>Exibir 8 produtos</>),
   placeholder: (
     <div style={{ display: "flex", gap: "5px" }}>
       <Typography
@@ -71,6 +72,7 @@ const templateTextDefaultArgs = {
   onSelect: (item: any) => console.log(item),
   error: false,
   disabled: false,
+  height: '32px',
   items: [
     {
       value: "item1",
