@@ -63,7 +63,7 @@ export const SelectV3: React.FC<ISelect> = ({
   };
 
   return (
-    <Wrapper {...props} ref={selectRef}>
+    <Wrapper {...props} ref={selectRef} width={width}>
       <SelectStyled
         disabled={disabled}
         error={error}
