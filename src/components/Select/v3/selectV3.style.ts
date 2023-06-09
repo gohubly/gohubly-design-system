@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { Icon } from "../..";
-import { iSelectTypes } from ".";
+import { ISelectV3Types } from "./selectV3.interface";
+import { theme } from "../../../theme";
 
 const fadeInDown = keyframes`
   from {
@@ -17,28 +18,28 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-const PADDING_BY_TYPE: Record<iSelectTypes, string> = {
-  text: "12px 14px 12px 16px",
+const PADDING_BY_TYPE: Record<ISelectV3Types, string> = {
+  text: "12px",
   number: "4px 4px 4px 10px",
 };
 
-const GAP_BY_SIZE: Record<iSelectTypes, string> = {
+const GAP_BY_SIZE: Record<ISelectV3Types, string> = {
   text: "16px",
   number: "2px",
 };
 
-const MIN_WIDTH_BY_SIZE: Record<iSelectTypes, string> = {
+const MIN_WIDTH_BY_SIZE: Record<ISelectV3Types, string> = {
   text: "150px",
   number: "64px",
 };
 
-const MIN_HEIGHT_BY_SIZE: Record<iSelectTypes, string> = {
+const MIN_HEIGHT_BY_SIZE: Record<ISelectV3Types, string> = {
   text: "32px",
   number: "32px",
 };
 
-const PADDING_OPTIONS_BY_SIZE: Record<iSelectTypes, string> = {
-  text: "12px 16px",
+const PADDING_OPTIONS_BY_SIZE: Record<ISelectV3Types, string> = {
+  text: "12px 12px",
   number: "10px 8px",
 };
 
@@ -55,11 +56,11 @@ export const SelectStyled = styled.div<{
   justify-content: center;
 
   width: ${({ width }) => width ?? "256px"};
-  min-width: ${({ type }) => MIN_WIDTH_BY_SIZE[type as iSelectTypes]};
+  min-width: ${({ type }) => MIN_WIDTH_BY_SIZE[type as ISelectV3Types]};
   height: ${({ height }) => height ?? "48px"};
-  min-height: ${({ type }) => MIN_HEIGHT_BY_SIZE[type as iSelectTypes]};
-  gap: ${({ type }) => GAP_BY_SIZE[type as iSelectTypes]};
-  padding: ${({ type }) => PADDING_BY_TYPE[type as iSelectTypes]};
+  min-height: ${({ type }) => MIN_HEIGHT_BY_SIZE[type as ISelectV3Types]};
+  gap: ${({ type }) => GAP_BY_SIZE[type as ISelectV3Types]};
+  padding: ${({ type }) => PADDING_BY_TYPE[type as ISelectV3Types]};
   background: ${({ theme }) => theme.colors.white};
   border: ${({ opened, theme }) =>
     opened
@@ -73,12 +74,7 @@ export const SelectStyled = styled.div<{
 
   &:hover {
     // border: 1px solid ${({ theme }) => theme.colors.primaryMedium};
-    background: linear-gradient(
-        0deg,
-        rgba(20, 33, 89, 0.05),
-        rgba(20, 33, 89, 0.05)
-      ),
-      #ffffff;
+    background: ${theme.colors.bgInputHovered};
     outline: none;
 
     svg,
@@ -100,7 +96,7 @@ export const SelectStyled = styled.div<{
   }
 
   &:focus-visible {
-    outline-width: inherit;
+    outline-width: none;
   }
 
   ${({ error, theme }) => {
@@ -114,11 +110,6 @@ export const SelectStyled = styled.div<{
   ${({ disabled, theme }) =>
     disabled &&
     css`
-      // background: ${theme.colors.neutralHighLight};
-      // color: ${theme.colors.neutralLowMedium};
-      // border-color: ${theme.colors.neutralLowLight};
-      // cursor: not-allowed;
-
       &:hover {
         border-color: ${theme.colors.neutralLowLight};
         outline: none;
@@ -132,15 +123,9 @@ export const SelectStyled = styled.div<{
       }
 
       border: 1px solid rgba(20, 33, 89, 0.15);
-      background: ${() => theme.colors.neutralHighLight};
       cursor: not-allowed !important;
 
-      background: linear-gradient(
-          0deg,
-          rgba(20, 33, 89, 0.05),
-          rgba(20, 33, 89, 0.05)
-        ),
-        #ffffff;
+      background: ${theme.colors.bgDisabledDefault};
 
       svg,
       path {
@@ -188,24 +173,24 @@ export const Options = styled.div`
   position: absolute;
   z-index: 2;
   width: 100%;
-  padding: 8px;
   display: flex;
   flex-direction: column;
   max-height: 280px;
   overflow-y: auto;
 
-  background: ${({ theme }) => theme.colors.neutralHigh};
-  border: 1px solid rgba(20, 33, 89, 0.3);
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${theme.colors.borderDefault};
   box-sizing: border-box;
   border-radius: 5px;
-  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
 
   animation: ${fadeInDown} 120ms ease-out forwards;
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
     border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
     &::-webkit-scrollbar {
@@ -227,48 +212,27 @@ export const Option = styled.div<{
   itemSelect: boolean;
   height?: string;
 }>`
-  // line-height: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  height: ${({ height }) => height ?? "48px"};
   display: flex;
   align-items: center;
-  padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
+  padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as ISelectV3Types]};
   word-break: break-word;
   box-sizing: border-box;
-
-  margin-bottom: 1px;
-
-  border-radius: 4px;
-
-  height: 48px;
-
-  span {
-    background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "#fff")};
-  }
-
-  color: ${({ theme, itemSelect }) =>
-    itemSelect ? theme.colors.neutralLowDark : theme.colors.neutralLowMedium};
-
-  background: ${({ itemSelect }) =>
-    itemSelect ? "rgba(20, 33, 89, 0.05)" : "#fff"};
+  border-bottom: 1px solid ${theme.colors.borderDefault};
 
   &:focus-visible {
-    outline-width: inherit;
+    outline-width: none;
   }
 
-  :hover,
-  :focus-visible {
+  &:hover,
+  &:focus-visible {
     span {
-      background: #f1f2f9;
-      color: ${({ theme }) => theme.colors.neutralLow};
+      background: ${theme.colors.bgInputHovered};
       outline: none;
+      border: none;
     }
 
-    background: linear-gradient(
-        0deg,
-        rgba(20, 33, 89, 0.05),
-        rgba(20, 33, 89, 0.05)
-      ),
-      #ffffff;
-    color: ${({ theme }) => theme.colors.neutralLow};
+    background: ${theme.colors.bgInputHovered};
     outline: none;
   }
 `;

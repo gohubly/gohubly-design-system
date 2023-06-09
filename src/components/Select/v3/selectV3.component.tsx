@@ -1,5 +1,5 @@
 import React, { KeyboardEvent, useRef, useState } from "react";
-import { iSelect, iSelectOption } from ".";
+import { ISelect, ISelectOption } from ".";
 import { Icon, Typography } from "../..";
 import { useClickOutside } from "../../..";
 import {
@@ -10,9 +10,10 @@ import {
   Option,
   OpenIcon,
   HelperText,
-} from "./select.style";
+} from "./selectV3.style";
+import { Flex } from "rebass";
 
-export const SelectV2: React.FC<iSelect> = ({
+export const SelectV3: React.FC<ISelect> = ({
   placeholder,
   items,
   disabled,
@@ -27,6 +28,7 @@ export const SelectV2: React.FC<iSelect> = ({
   iconRight,
   iconLeft,
   iconSizeLeft,
+  iconSizeRight,
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
@@ -41,7 +43,7 @@ export const SelectV2: React.FC<iSelect> = ({
     setOpened(!disabled && !opened);
   };
 
-  const handleSelectOption = (selectedOption: iSelectOption) => {
+  const handleSelectOption = (selectedOption: ISelectOption) => {
     setSelectedItem(selectedOption);
     onSelect && onSelect(selectedOption);
     setOpened(false);
@@ -53,7 +55,7 @@ export const SelectV2: React.FC<iSelect> = ({
 
   const handleKeyPressOnOption = (
     { key }: KeyboardEvent,
-    selectedOption: iSelectOption
+    selectedOption: ISelectOption
   ) => {
     if (key === "Enter") handleSelectOption(selectedOption);
   };
@@ -86,13 +88,13 @@ export const SelectV2: React.FC<iSelect> = ({
           iconId={opened ? "chevronUp" : iconRight ?? "chevronDown"}
           opened={!disabled && opened}
           disabled={disabled}
-          size="XS"
+          size={iconSizeRight ?? "XS"}
         />
       </SelectStyled>
 
       {!disabled && opened && items && (
         <Options>
-          {items.map((option: iSelectOption) => (
+          {items.map((option: ISelectOption) => (
             <Option
               key={option.value}
               height={height}
@@ -108,13 +110,34 @@ export const SelectV2: React.FC<iSelect> = ({
                 selectedItem.value === option?.value
               }
             >
-              <Typography
-                size={fontSize}
-                color="textNeutralDefault"
-                fontWeight={300}
+              <Flex
+                width={"100%"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
               >
-                {option.label || option.value}
-              </Typography>
+                <Typography
+                  size={fontSize}
+                  color={
+                    selectedItem !== undefined &&
+                    selectedItem.value === option?.value
+                      ? "textNeutralDefault"
+                      : "textNeutralSubtlest"
+                  }
+                  fontWeight={300}
+                >
+                  {option.label || option.value}
+                </Typography>
+
+                {selectedItem !== undefined &&
+                  selectedItem.value === option?.value && (
+                    <Icon
+                      iconId="check"
+                      stroke="iconDefault"
+                      size="XS"
+                      strokeWidth={2.3}
+                    />
+                  )}
+              </Flex>
             </Option>
           ))}
         </Options>
