@@ -33,4 +33,13 @@ export interface ISelect {
   width?: string;
   height?: string;
   type?: ISelectV3Types;
+  heightOptions?: string;
+  styledLabel?:
+    | string
+    | number
+    | JSX.Element
+    | React.ReactChild
+    | React.ReactChildren
+    | Element
+    | Element[];
 }

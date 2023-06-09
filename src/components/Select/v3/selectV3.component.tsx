@@ -29,6 +29,8 @@ export const SelectV3: React.FC<ISelect> = ({
   iconLeft,
   iconSizeLeft,
   iconSizeRight,
+  heightOptions,
+  styledLabel,
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
@@ -75,13 +77,23 @@ export const SelectV3: React.FC<ISelect> = ({
       >
         {iconLeft && <Icon iconId={iconLeft} size={iconSizeLeft} />}
         <Placeholder fontSize={fontSize}>
-          <Typography
-            size={fontSize}
-            color="textNeutralDefault"
-            fontWeight={300}
-          >
-            {selectedItem?.label || selected?.value || placeholder}
-          </Typography>
+          {styledLabel ? (
+            <Typography
+              size={fontSize}
+              color="textNeutralDefault"
+              fontWeight={300}
+            >
+              {styledLabel}
+            </Typography>
+          ) : (
+            <Typography
+              size={fontSize}
+              color="textNeutralDefault"
+              fontWeight={300}
+            >
+              {selectedItem?.label || selected?.value || placeholder}
+            </Typography>
+          )}
         </Placeholder>
 
         <OpenIcon
@@ -97,7 +109,7 @@ export const SelectV3: React.FC<ISelect> = ({
           {items.map((option: ISelectOption) => (
             <Option
               key={option.value}
-              height={height}
+              heightOptions={heightOptions}
               type={type}
               fontSize={fontSize}
               tabIndex={0}

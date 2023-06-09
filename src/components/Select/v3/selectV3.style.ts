@@ -210,9 +210,9 @@ export const Option = styled.div<{
   fontSize?: string;
   type: string;
   itemSelect: boolean;
-  height?: string;
+  heightOptions?: string;
 }>`
-  height: ${({ height }) => height ?? "48px"};
+  height: ${({ heightOptions }) => heightOptions ?? "48px"};
   display: flex;
   align-items: center;
   padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as ISelectV3Types]};
