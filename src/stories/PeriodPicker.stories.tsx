@@ -37,3 +37,17 @@ WithBlockedMonths.args = {
     endDate: moment().utc().endOf("month").toDate(),
   },
 };
+
+export const WithBlockedAfterMonths = Template.bind({});
+
+WithBlockedAfterMonths.args = {
+  count: 1,
+  onChange: console.log,
+  limit: {
+    initialDate: moment().utc().toDate(),
+  },
+  period: {
+    initialDate: moment().utc(),
+    finalDate: moment().utc().endOf("month"),
+  },
+};

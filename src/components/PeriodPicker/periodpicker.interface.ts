@@ -4,6 +4,7 @@ import { iButtonSizes } from "../Button";
 
 export interface IPeriodPicker {
   width?: string;
+  containerBorderRadius?: string;
   period: iPeriod;
   count?: 1 | 2 | 3;
   limit?: DateLimit;
@@ -39,4 +40,5 @@ export type BlockType = "after";
 
 export type DateLimit = {
   endDate?: Date;
+  initialDate?: Date;
 };

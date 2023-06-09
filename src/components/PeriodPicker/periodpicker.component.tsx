@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import moment, { Moment } from "moment";
 import {
   Container,
@@ -38,13 +38,23 @@ export const PeriodPicker: React.FC<IPeriodPicker> = ({
   positionButtons,
   fluidButton = true,
   shapeSelected,
+  containerBorderRadius,
+  period,
   ...props
 }) => {
   const [centralDate, setCentralDate] = useState(moment());
+
   const [initialDate, setInitialDate] = useState<Moment | null>(null);
   const [finalDate, setFinalDate] = useState<Moment | null>(null);
 
   const [isSelectInitialDate, setSelectIsInitialDate] = useState(true);
+
+  useEffect(() => {
+    if (period && period.finalDate && period.initialDate) {
+      setInitialDate(period?.initialDate);
+      setFinalDate(period?.finalDate);
+    }
+  }, [period]);
 
   const exibitionMonths = useMemo(() => {
     const months = [
@@ -89,7 +99,7 @@ export const PeriodPicker: React.FC<IPeriodPicker> = ({
     setCentralDate((preValue) => preValue.clone().subtract(1, "months"));
   };
 
-  const isBlocked = useMemo(() => {
+  const isBlockedEndDate = useMemo(() => {
     if (limit) {
       const { endDate } = limit;
 
@@ -97,6 +107,20 @@ export const PeriodPicker: React.FC<IPeriodPicker> = ({
         return !moment(centralDate)
           .utc()
           .isBefore(moment(endDate).utc(), "month");
+      }
+    }
+
+    return false;
+  }, [limit, centralDate]);
+
+  const isBlockedInitialDate = useMemo(() => {
+    if (limit) {
+      const { initialDate } = limit;
+
+      if (initialDate) {
+        return moment(centralDate)
+          .utc()
+          .isSame(moment(initialDate).utc(), "day");
       }
     }
 
@@ -162,13 +186,21 @@ export const PeriodPicker: React.FC<IPeriodPicker> = ({
   };
 
   return (
-    <Container ref={containerRef} style={{ ...(width && { width }) }}>
-      <PreviousButtonContainer onClick={handleClickPreviousMonth}>
+    <Container
+      ref={containerRef}
+      style={{ ...(width && { width }) }}
+      containerBorderRadius={containerBorderRadius}
+    >
+      <PreviousButtonContainer
+        onClick={isBlockedInitialDate ? () => {} : handleClickPreviousMonth}
+        disabled={isBlockedInitialDate}
+      >
         <Icon iconId={"chevronLeft"} size="MD" />
       </PreviousButtonContainer>
+
       <NextButtonContainer
-        onClick={isBlocked ? () => {} : handleClickNextMonth}
-        disabled={isBlocked}
+        onClick={isBlockedEndDate ? () => {} : handleClickNextMonth}
+        disabled={isBlockedEndDate}
       >
         <Icon iconId={"chevronRight"} size="MD" />
       </NextButtonContainer>
@@ -193,23 +225,42 @@ export const PeriodPicker: React.FC<IPeriodPicker> = ({
                     </DayName>
                   ))}
                 </Week>
+
                 {getCalendarByMomentDate(month).map((week) => (
                   <Week mobile={isMobile}>
                     {week.days.map((day) => {
-                      if (!day.isSame(month, "month"))
-                        return (
-                          <DayNumber onClick={() => {}} disabled>
-                            <span>{day.format("D")}</span>
-                          </DayNumber>
-                        );
+                      if (limit?.initialDate) {
+                        if (
+                          !day.isSame(month, "month") ||
+                          day.isBefore(limit?.initialDate, "day")
+                        )
+                          return (
+                            <DayNumber onClick={() => {}} disabled>
+                              <span>{day.format("D")}</span>
+                            </DayNumber>
+                          );
+                      } else {
+                        if (!day.isSame(month, "month"))
+                          return (
+                            <DayNumber onClick={() => {}} disabled>
+                              <span>{day.format("D")}</span>
+                            </DayNumber>
+                          );
+                      }
 
-                      const isBetween = day.isBetween(initialDate, finalDate);
-                      const isInitialDate = day.isSame(initialDate);
+                      const isBetween = day.isBetween(
+                        initialDate,
+                        finalDate,
+                        "day"
+                      );
+                      const isInitialDate = day.isSame(initialDate, "day");
                       const isSelected =
-                        day.isSame(initialDate) || day.isSame(finalDate);
+                        day.isSame(initialDate, "day") ||
+                        day.isSame(finalDate, "day");
                       const isTotalSelected = !!(initialDate && finalDate);
                       const isTotalSelectedAndDatesAreDifferents =
-                        isTotalSelected && !initialDate.isSame(finalDate);
+                        isTotalSelected &&
+                        !initialDate.isSame(finalDate, "day");
 
                       return (
                         <DayNumber
