@@ -14,7 +14,10 @@ const fontFamilyBasedOnWeight: Record<
   900: "InterBold",
 };
 
-export const Container = styled.div<{ width?: string }>`
+export const Container = styled.div<{
+  width?: string;
+  containerBorderRadius?: string;
+}>`
   ${defaultCss};
 
   height: 100%;
@@ -24,7 +27,8 @@ export const Container = styled.div<{ width?: string }>`
   background-color: ${({ theme }) => theme.colors.white};
 
   border: 1px solid ${({ theme }) => theme.colors.neutralHighLight};
-  border-radius: 5px;
+  border-radius: ${({ containerBorderRadius }) =>
+    containerBorderRadius ?? "5px"};
 
   position: relative;
 `;
@@ -37,7 +41,9 @@ const ControlMonthButtonDefault = styled.div`
   cursor: pointer;
 `;
 
-export const PreviousButtonContainer = styled(ControlMonthButtonDefault)`
+export const PreviousButtonContainer = styled(ControlMonthButtonDefault)<{
+  disabled?: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,9 +57,16 @@ export const PreviousButtonContainer = styled(ControlMonthButtonDefault)`
 
   svg {
     path {
-      stroke: ${({ theme }) => theme.colors.neutralLow};
+      stroke: ${({ theme, disabled }) =>
+        disabled ? theme.colors.neutralHighMedium : theme.colors.neutralLow};
     }
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+    `}
 `;
 
 export const NextButtonContainer = styled(ControlMonthButtonDefault)<{
@@ -72,7 +85,8 @@ export const NextButtonContainer = styled(ControlMonthButtonDefault)<{
 
   svg {
     path {
-      stroke: ${({ theme }) => theme.colors.neutralLow};
+      stroke: ${({ theme, disabled }) =>
+        disabled ? theme.colors.neutralHighMedium : theme.colors.neutralLow};
     }
   }
 
@@ -197,14 +211,14 @@ export const DayNumber = styled(DayDefault)<{
   ${({ isSelected, theme, isInitialDate, isTotalSelected }) =>
     isSelected &&
     css`
-      color: ${({ theme }) => theme.colors.neutralHigh};
+      color: ${theme.colors.white};
       background: ${isTotalSelected &&
       `linear-gradient(${
         isInitialDate ? "90deg" : "270deg"
       }, transparent 0%, transparent 50%, rgba(20, 33, 89, 0.05) 20%)`};
 
       ::before {
-        background: ${({ theme }) => theme.colors.primaryMedium};
+        background: ${theme.colors.primaryMedium};
       }
     `}
 
