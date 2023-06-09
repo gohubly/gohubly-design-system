@@ -14,10 +14,6 @@ const fadeInDown = keyframes`
 	}
 `;
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
-
 const PADDING_BY_TYPE: Record<ISelectV3Types, string> = {
   text: "12px",
   number: "4px 4px 4px 10px",
@@ -42,6 +38,11 @@ const PADDING_OPTIONS_BY_SIZE: Record<ISelectV3Types, string> = {
   text: "12px 12px",
   number: "10px 8px",
 };
+
+export const Wrapper = styled.div<{ width?: string }>`
+  position: relative;
+  width: ${({ width }) => width ?? "256px"};
+`;
 
 export const SelectStyled = styled.div<{
   disabled?: boolean;
