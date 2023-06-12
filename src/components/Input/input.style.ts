@@ -26,6 +26,8 @@ interface iStyledCommonProps extends Partial<iInput> {
   hasRightIcon?: boolean;
   hasPrefixAndIcon?: boolean;
   hasSuffixAndIcon?: boolean;
+  paddingRight?: string;
+  paddingLeft?: string;
 }
 interface iIconRight extends Partial<iIcon> {
   opened?: boolean;
@@ -258,6 +260,8 @@ export const Input = styled.input<iStyledCommonProps>`
     iconLeftSize,
     iconRightSize,
     iconRightWidth,
+    paddingRight,
+    paddingLeft,
   }) => {
     if (hasPrefix && hasSuffix && !hasLeftIcon && !hasRightIcon) {
       // 1x var(--prefix-padding) pois no projeto ele conta o width já com o padding
@@ -275,26 +279,26 @@ export const Input = styled.input<iStyledCommonProps>`
       `;
     } else if (hasLeftIcon && hasRightIcon && !hasPrefix && !hasSuffix) {
       return css`
-        padding-left: 50px;
-        padding-right: 48px;
+        padding-left: ${paddingLeft ?? "50px"};
+        padding-right: ${paddingRight ?? "48px"};
       `;
     } else if (hasLeftIcon && !hasPrefix && !hasSuffix) {
       return css`
-        padding-left: 50px;
+        padding-left: ${paddingLeft ?? "50px"};
       `;
     } else if (hasRightIcon && !hasPrefix && !hasSuffix) {
       return css`
-        padding-right: 48px;
+        padding-right: ${paddingRight ?? "48px"};
       `;
     } else if (hasPrefix && hasRightIcon && !hasSuffix && !hasLeftIcon) {
       return css`
         padding-left: calc(var(--prefix-width) + var(--prefix-padding) + 6px);
-        padding-right: 48px;
+        padding-right: ${paddingRight ?? "48px"};
       `;
     } else if (hasSuffix && hasLeftIcon && !hasPrefix && !hasRightIcon) {
       return css`
         padding-right: calc(var(--suffix-width) + var(--suffix-padding) + 2px);
-        padding-left: 50px;
+        padding-left: ${paddingLeft ?? "50px"};
       `;
     } else if (hasPrefixAndIcon && hasSuffixAndIcon) {
       // 2x var(--prefix-padding) pois no projeto ele conta o width já com o padding

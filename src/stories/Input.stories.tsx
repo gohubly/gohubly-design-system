@@ -87,7 +87,10 @@ WithIconLeft.args = {
   name: "input-name",
   label: "Label",
   placeholder: "placeholder...",
-  iconLeft: "heart",
+  iconLeft: "link",
+  paddingLeft: '32px',
+  iconLeftSize: 'XS',
+  size: 'SM'
 };
 
 export const WithIconRight = Template.bind({});

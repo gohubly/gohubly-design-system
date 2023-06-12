@@ -29,6 +29,9 @@ export interface iInput extends iInputHTML {
   fontSizeLabel?: keyof typeof theme.fontSize;
   fontWeightLabel?: keyof typeof theme.fontWeight;
 
+  paddingRight?: string;
+  paddingLeft?: string;
+
   placeholderStyled?:
     | string
     | number

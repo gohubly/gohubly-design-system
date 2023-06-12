@@ -370,6 +370,8 @@ export const Input: React.FC<iInput> = ({
             iconLeftWidth={props.iconLeftWidth}
             iconRightSize={props.iconRightSize}
             iconRightWidth={props.iconRightWidth}
+            paddingRight={props.paddingRight}
+            paddingLeft={props.paddingLeft}
             ref={inputRef || dropdownRef}
             className={
               props.prefix || props.suffix || props.iconLeft || props.iconRight
