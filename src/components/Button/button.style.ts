@@ -49,9 +49,9 @@ const HOVER_BORDER_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
 
 const ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {
   primary: "white",
-  secondary: "iconDefaut",
-  ghost: "iconDefaut",
-  tonalFilled: "iconDefaut",
+  secondary: "iconDefault",
+  ghost: "iconDefault",
+  tonalFilled: "iconDefault",
 };
 
 const HOVER_ICON_COLOR_BY_HIERARCHY: Record<iButtonHierarchy, string> = {

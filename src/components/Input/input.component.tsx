@@ -233,6 +233,18 @@ export const Input: React.FC<iInput> = ({
     props.suffix,
   ]);
 
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    textareaRef.current?.addEventListener("blur", function () {
+      // Code to be executed when the user exits the textarea
+      if (props.texteAreaOnBlur) {
+        props.texteAreaOnBlur();
+      }
+      // console.log("The textarea lost focus.");
+    });
+  }, []);
+
   return (
     <Label
       htmlFor={props?.name}
@@ -270,6 +282,7 @@ export const Input: React.FC<iInput> = ({
       {props.textArea && (
         <ContainerTextArea>
           <StyledTextarea
+            ref={textareaRef}
             id="message"
             name="message"
             value={inputValue}
@@ -280,6 +293,7 @@ export const Input: React.FC<iInput> = ({
             textAreaHeight={props.textAreaHeight}
             placeholder={props.placeholder ?? ""}
             fontWeight={props.fontWeight}
+            backgroundTextArea={props.backgroundTextArea}
           ></StyledTextarea>
 
           {props.maxCharacters && typeof inputValue === "string" && (
