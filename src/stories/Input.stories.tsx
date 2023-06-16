@@ -20,7 +20,10 @@ TextArea.args = {
   textArea: true,
   textAreaHeight: '100px',
   maxCharacters: 100,
-  maxCharactersPosition: 'right'
+  maxCharactersPosition: 'right',
+  texteAreaOnBlur() {
+    console.log('entrou aqui')
+  },
 };
 
 export const Default = Template.bind({});
@@ -34,6 +37,7 @@ Default.args = {
   helperTextOnClick() {
     console.log("Clicou");
   },
+  onBlur: () => { console.log('deu')}
 };
 
 export const DefaultWithPlaceholderStyled = Template.bind({});

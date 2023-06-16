@@ -13,8 +13,8 @@ const Template: ComponentStory<typeof SelectV2> = (args) => (
   <SelectV2 {...args} />
 );
 
-export const Defaut = Template.bind({});
-Defaut.args = {
+export const Default = Template.bind({});
+Default.args = {
   placeholder: 'Select',
   onSelect: (item: any) => console.log(item),
   error: false,

@@ -13,8 +13,8 @@ const Template: ComponentStory<typeof TooltipV3> = (args) => (
   <TooltipV3 {...args} />
 );
 
-export const Defaut = Template.bind({});
-Defaut.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: "Passe o mouse por cima!",
   text: "ola",
   maxWidth: "300px",

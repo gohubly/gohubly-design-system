@@ -787,6 +787,7 @@ export const StyledTextarea = styled.textarea<{
   fontSize?: string;
   fontWeight?: number;
   textAreaHeight?: string;
+  backgroundTextArea?: string;
 }>`
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
   height: ${({ textAreaHeight }) => textAreaHeight ?? "auto"};
@@ -802,7 +803,8 @@ export const StyledTextarea = styled.textarea<{
   font-family: ${({ fontWeight }) =>
     fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
 
-  background: ${() => theme.colors.neutralHigh};
+  background-color: ${({ backgroundTextArea, theme }) =>
+    backgroundTextArea ? theme.colors[backgroundTextArea] : theme.colors.white};
 
   &::placeholder {
     color: ${() => theme.colors.neutralLowLight};
