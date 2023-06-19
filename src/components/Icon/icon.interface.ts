@@ -121,6 +121,7 @@ export type iIconTypes =
   | "visa"
   | "wallet"
   | "whatsapp"
+  | "whatsapp2"
   | "youtube"
   | "zapCircle"
   | "zapFast";

@@ -62,7 +62,7 @@ import StarEmpty from "./icons/starEmpty";
 import StarFilled from "./icons/starFilled";
 import Tag from "./icons/tag";
 import Tag2 from "./icons/tag2";
-import TikTok from "./icons/loading";
+import TikTok from "./icons/tiktok";
 import Trash from "./icons/trash";
 import Truck from "./icons/truck";
 import Twitter from "./icons/twitter";
@@ -70,6 +70,7 @@ import User1 from "./icons/user1";
 import User2 from "./icons/user2";
 import Youtube from "./icons/youtube";
 import WhatsApp from "./icons/whatsapp";
+import WhatsApp2 from "./icons/whatsapp-2";
 import Messenger from "./icons/messenger";
 import InstagramColor from "./icons/instagramColor";
 import ShareOutline from "./icons/shareOutline";
@@ -116,7 +117,6 @@ import Stars from "./icons/stars";
 import Wallet from "./icons/wallet";
 import ZapCircle from "./icons/zapCircle";
 import VerticalSwitch from "./icons/verticalSwitch";
-
 import CellPhone from "./icons/cellPhone";
 import Close4 from "./icons/close4";
 import Collumns from "./icons/collumns";
@@ -257,6 +257,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   visa: Visa,
   wallet: Wallet,
   whatsapp: WhatsApp,
+  whatsapp2: WhatsApp2,
   youtube: Youtube,
   zapCircle: ZapCircle,
   zapFast: ZapFast,
