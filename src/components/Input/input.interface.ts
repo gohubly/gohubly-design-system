@@ -87,5 +87,5 @@ export interface iInput extends iInputHTML {
   maxCharacters?: number;
   maxCharactersPosition?: IMaxCharactersPosition;
   backgroundTextArea?: keyof typeof theme.colors;
-  texteAreaOnBlur?: () => void;
+  textAreaOnBlur?: () => void;
 }

@@ -238,8 +238,8 @@ export const Input: React.FC<iInput> = ({
   useEffect(() => {
     textareaRef.current?.addEventListener("blur", function () {
       // Code to be executed when the user exits the textarea
-      if (props.texteAreaOnBlur) {
-        props.texteAreaOnBlur();
+      if (props.textAreaOnBlur) {
+        props.textAreaOnBlur();
       }
       // console.log("The textarea lost focus.");
     });
