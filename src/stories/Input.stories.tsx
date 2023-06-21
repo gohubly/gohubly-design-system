@@ -21,7 +21,7 @@ TextArea.args = {
   textAreaHeight: '100px',
   maxCharacters: 100,
   maxCharactersPosition: 'right',
-  texteAreaOnBlur() {
+  textAreaOnBlur() {
     console.log('entrou aqui')
   },
 };

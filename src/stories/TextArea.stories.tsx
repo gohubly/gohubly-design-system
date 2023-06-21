@@ -21,10 +21,10 @@ Default.args = {
   textAreaHeight: "100px",
   maxCharacters: 100,
   maxCharactersPosition: "right",
-  texteAreaOnBlur(e) {
+  textAreaOnBlur(e) {
     console.log("entrou onBlur", e);
   },
-  texteAreaOnChange(e) {
+  textAreaOnChange(e) {
     console.log("entrou onChange", e);
   },
 };
