@@ -95,6 +95,7 @@ export type iIconTypes =
   | "playRounded"
   | "plus"
   | "receiptCheck"
+  | "refresh"
   | "save"
   | "search"
   | "settings"
