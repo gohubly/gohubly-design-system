@@ -37,6 +37,6 @@ export interface ITextArea extends iInputHTML {
   maxCharacters?: number;
   maxCharactersPosition?: IMaxCharactersPositionTA;
   backgroundTextArea?: keyof typeof theme.colors;
-  texteAreaOnBlur?: (value?: any) => void;
-  texteAreaOnChange?: (value?: any) => void;
+  textAreaOnBlur?: (value?: any) => void;
+  textAreaOnChange?: (value?: any) => void;
 }

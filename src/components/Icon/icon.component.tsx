@@ -125,6 +125,7 @@ import FileCheck from "./icons/fileCheck";
 import ImagePlus from "./icons/imagePlus";
 import Monitor from "./icons/monitor";
 import Save from "./icons/save";
+import Refresh from "./icons/refresh";
 
 const ICON_SIZE_BY_SIZE: Record<iIconSizes, string> = {
   XXXS: "12px",
@@ -231,6 +232,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   playRounded: PlayRounded,
   plus: Plus,
   receiptCheck: ReceiptCheck,
+  refresh: Refresh,
   save: Save,
   search: Search,
   settings: Settings,

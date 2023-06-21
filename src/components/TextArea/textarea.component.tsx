@@ -49,8 +49,8 @@ export const TextArea: React.FC<ITextArea> = ({ ...props }) => {
     const handleBlur = (event: any) => {
       const newValue = event.target.value;
 
-      if (props.texteAreaOnBlur) {
-        props.texteAreaOnBlur(newValue);
+      if (props.textAreaOnBlur) {
+        props.textAreaOnBlur(newValue);
       }
     };
 

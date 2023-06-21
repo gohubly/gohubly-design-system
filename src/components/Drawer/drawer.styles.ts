@@ -44,4 +44,5 @@ export const Content = styled.div<
       : "translateX(100%)"};
 
   transition: transform 0.5s;
+  cursor: auto;
 `;
