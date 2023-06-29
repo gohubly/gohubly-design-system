@@ -53,6 +53,7 @@ export interface iInput extends iInputHTML {
   iconGray?: boolean;
 
   iconLeft?: iIconTypes;
+  iconLeftStrokeWidth?: number;
   iconLeftSize?: iIconSizes;
   iconLeftWidth?: string;
   iconLeftHeight?: string;
@@ -60,6 +61,7 @@ export interface iInput extends iInputHTML {
   iconLeftOnClick?: () => void;
 
   iconRight?: iIconTypes;
+  iconRightStrokeWidth?: number;
   iconRightSize?: iIconSizes;
   iconRightWidth?: string;
   iconRightHeight?: string;

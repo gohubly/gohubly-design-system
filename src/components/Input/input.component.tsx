@@ -237,11 +237,9 @@ export const Input: React.FC<iInput> = ({
 
   useEffect(() => {
     textareaRef.current?.addEventListener("blur", function () {
-      // Code to be executed when the user exits the textarea
       if (props.textAreaOnBlur) {
         props.textAreaOnBlur();
       }
-      // console.log("The textarea lost focus.");
     });
   }, []);
 
@@ -318,7 +316,7 @@ export const Input: React.FC<iInput> = ({
             <LeftIcon
               fill="transparent"
               stroke="neutralLow"
-              strokeWidth={1.5}
+              strokeWidth={props.iconLeftStrokeWidth ?? 1.5}
               opened={dropdownOpened}
               disabled={props.disabled}
               onClick={props.iconLeftOnClick}
@@ -415,7 +413,7 @@ export const Input: React.FC<iInput> = ({
             <RightIcon
               fill="transparent"
               stroke="neutralLow"
-              strokeWidth={1.5}
+              strokeWidth={props.iconRightStrokeWidth ?? 1.5}
               error={props.error}
               opened={dropdownOpened}
               disabled={props.disabled}
