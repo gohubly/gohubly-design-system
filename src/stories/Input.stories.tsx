@@ -197,13 +197,14 @@ WithDropdown.args = {
   size: "MD",
   type: "text",
   iconRight: "chevronDown",
+  iconRightSize: 'XXS',
   onClickDropdownItem(itemValue, itemLabel) {
     console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
   },
   dropdown: [
     {
       value: "value-label-1",
-      label: "valor 1 valor 1 valor",
+      label: "valor 1 valor 1 valor valor 1 valor 1 valor",
     },
     {
       value: "value-label-2",

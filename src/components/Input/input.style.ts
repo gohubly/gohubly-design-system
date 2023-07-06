@@ -168,7 +168,7 @@ export const LabelText = styled.span<iStyledCommonProps>`
   font-family: ${({ fontWeightLabel }) =>
     fontFamilyBasedOnWeight[fontWeightLabel || "400"]} !important;
 
-  font-size: ${({ fontSizeLabel, theme }) =>
+  font-size: ${({ fontSizeLabel }) =>
     theme.fontSize[fontSizeLabel || "XXS"]};
 
   color: ${({ OnColor }) =>
@@ -229,7 +229,7 @@ export const Input = styled.input<iStyledCommonProps>`
   width: ${({ fluid }) => (fluid ? "100%" : "auto")};
   background: ${() => theme.colors.white};
 
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XS"]};
   line-height: ${({ fontSize }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   text-align: ${({ textAlign }) => textAlign};
 
@@ -359,8 +359,8 @@ export const Input = styled.input<iStyledCommonProps>`
 
   &::placeholder {
     color: ${() => theme.colors.neutralLowLight};
-    font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
-    line-height: ${({ fontSize, theme }) =>
+    font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XS"]};
+    line-height: ${({ fontSize }) =>
       LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
     font-family: ${({ fontWeight }) =>
       fontFamilyBasedOnWeight[fontWeight || "400"]} !important;
@@ -463,7 +463,7 @@ const PrefixAndSuffixCommons = css<iStyledCommonProps>`
 
   border-radius: 5px;
 
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XS"]};
   line-height: ${({ fontSize }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
 
   font-family: ${fontFamilyBasedOnWeight["400"]} !important;
@@ -530,18 +530,16 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   display: flex;
   flex-direction: column;
 
-  background: ${({ theme }) => theme.colors.neutralHigh};
-  border: 1px solid rgba(20, 33, 89, 0.3);
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${theme.colors.borderDefault};
   box-sizing: border-box;
   border-radius: 5px;
-  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
 
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
-    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
-    border-color: ${({ theme }) => theme.colors.neutralHighLight};
-
     &::-webkit-scrollbar {
       -webkit-appearance: none;
       width: 12px;
@@ -555,13 +553,16 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   }
 `;
 
-export const DropdownItem = styled.div<iInputDropdownItem>`
+export const DropdownItem = styled.div<{
+  active: boolean;
+  fontSize?: keyof typeof theme.fontSize;
+  itemSelect?: boolean;
+}>`
   ${defaultCss};
-  padding: 12px 16px;
+  padding: 12px 10px;
   margin: 1px 0;
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XXS"]};
-  line-height: ${({ fontSize, theme }) =>
-    LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
+  font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XXS"]};
+  line-height: ${({ fontSize }) => LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   display: flex;
   align-items: center;
   word-break: break-word;
@@ -569,7 +570,7 @@ export const DropdownItem = styled.div<iInputDropdownItem>`
   color: ${({ theme, itemSelect }) =>
     itemSelect ? theme.colors.neutralLowDark : theme.colors.neutralLowMedium};
   background: ${({ itemSelect }) =>
-    itemSelect ? "rgba(20, 33, 89, 0.05)" : "inherit"};
+    itemSelect ? "rgba(20, 33, 89, 0.05)" : "#fff"};
   cursor: pointer;
 
   &:hover,
@@ -797,7 +798,7 @@ export const StyledTextarea = styled.textarea<{
   box-sizing: border-box;
 
   color: ${() => theme.colors.neutralLowLight};
-  font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+  font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XS"]};
   line-height: ${({ fontSize, theme }) =>
     LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
   font-family: ${({ fontWeight }) =>
@@ -808,7 +809,7 @@ export const StyledTextarea = styled.textarea<{
 
   &::placeholder {
     color: ${() => theme.colors.neutralLowLight};
-    font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+    font-size: ${({ fontSize }) => theme.fontSize[fontSize || "XS"]};
     line-height: ${({ fontSize, theme }) =>
       LINE_HEIGHT_BASED_ON_SIZE[fontSize || "XS"]};
     font-family: ${({ fontWeight }) =>
