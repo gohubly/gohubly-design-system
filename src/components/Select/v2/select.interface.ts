@@ -29,6 +29,7 @@ export interface iSelect {
   selected?: iSelectOption;
   onSelect?: (newSelectedOption: iSelectOption) => void;
   fontSize?: keyof typeof theme.fontSize;
+  lineHeight?: keyof typeof theme.lineHeight
   width?: string;
   height?: string;
   type?: iSelectTypes;

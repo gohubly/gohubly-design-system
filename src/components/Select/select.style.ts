@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { Icon } from "..";
 import { iSelectTypes } from ".";
+import { theme } from "../../theme";
 
 const fadeInDown = keyframes`
   from {
@@ -81,10 +82,10 @@ export const SelectStyled = styled.div<{
   }
 
   svg,
-    path {
-      stroke: ${({ theme }) => theme.colors.primaryMedium};
-      fill: transparent;
-    }
+  path {
+    stroke: ${({ theme }) => theme.colors.primaryMedium};
+    fill: transparent;
+  }
 
   &:focus-visible {
     border: 1px solid ${({ theme }) => theme.colors.primaryMedium};
@@ -134,11 +135,18 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
   svg path {
-    stroke: ${({ theme, opened }) => opened? theme.colors.primaryMedium : theme.colors.neutralLowMedium};
+    stroke: ${({ theme, opened }) =>
+      opened ? theme.colors.primaryMedium : theme.colors.neutralLowMedium};
 
     ${({ disabled, theme }) => {
       if (disabled) {
@@ -166,19 +174,21 @@ export const Options = styled.div`
   max-height: 280px;
   overflow-y: auto;
 
-  background: ${({ theme }) => theme.colors.neutralHigh};
-  border: 1px solid ${({ theme }) => theme.colors.neutralLowLight};
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${theme.colors.borderDefault};
+
   box-sizing: border-box;
   border-radius: 5px;
-  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
 
   animation: ${fadeInDown} 120ms ease-out forwards;
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
-    border-color: ${({ theme }) => theme.colors.neutralHighLight};
+    // box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
+    // border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -237,5 +247,6 @@ export const HelperText = styled.div<{ hasError?: boolean }>`
   margin-top: 8px;
   font-size: ${({ theme }) => theme.fontSize.XXXS};
   line-height: 16px;
-  color: ${({ theme, hasError }) => hasError ? theme.colors.helper : theme.colors.neutralLow};
+  color: ${({ theme, hasError }) =>
+    hasError ? theme.colors.helper : theme.colors.neutralLow};
 `;

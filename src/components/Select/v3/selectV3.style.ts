@@ -145,6 +145,12 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XXS"]};
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
@@ -192,7 +198,7 @@ export const Options = styled.div`
 
   &:hover {
     cursor: pointer;
-    border-color: ${({ theme }) => theme.colors.neutralHighLight};
+    // border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
