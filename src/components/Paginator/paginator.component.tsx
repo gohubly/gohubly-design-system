@@ -18,8 +18,6 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
   const [showCollapsedFew, setShowCollapsedFew] = useState<boolean>(false);
   const [showCollapsedMore, setShowCollapsedMore] = useState<boolean>(false);
 
-  console.log("currentPage", currentPage);
-
   const groupAt = !props.groupAt || props.groupAt === 0 ? 3 : props.groupAt;
 
   const goToPage = (page: number) => {
