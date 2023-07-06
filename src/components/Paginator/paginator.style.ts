@@ -15,33 +15,6 @@ export const Container = styled.div<{ fluid?: boolean }>`
       width: 100%;
     `}
 `;
-export const ContainerIcon = styled.div<iContainerIcon>`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  align-items: center;
-  height: 24px;
-  width: 24px;
-  background-color: #f1f2f9;
-  cursor: pointer;
-
-  path {
-    stroke-width: 2;
-  }
-
-  &:hover {
-    cursor: ${({ disabledNext }) => (disabledNext ? "not-allowed" : "pointer")};
-    cursor: ${({ disabledPrev }) => (disabledPrev ? "not-allowed" : "pointer")};
-    background-color: ${theme.colors.primaryMedium};
-    path {
-      stroke: #fff;
-      stroke-width: 2;
-    }
-  }
-
-  transition: all 0.2s linear;
-`;
 
 export const Itens = styled.div<iItens>`
   display: flex;
@@ -59,7 +32,9 @@ export const Itens = styled.div<iItens>`
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   &:hover {
     background-color: ${({ currentPage, index }) =>
-      currentPage === index ? theme.colors.primaryMedium : theme.colors.primaryLightest};
+      currentPage === index
+        ? theme.colors.primaryMedium
+        : theme.colors.primaryLightest};
   }
 `;
 
@@ -77,7 +52,6 @@ export const ButtonPrevNext = styled(Button)<iButtonNext>`
   width: 24px;
 
   path {
-    stroke-width: 2;
     stroke: ${theme.colors.neutralLowMedium};
   }
 
@@ -87,7 +61,6 @@ export const ButtonPrevNext = styled(Button)<iButtonNext>`
 
     path {
       stroke: ${theme.colors.white};
-      stroke-width: 2;
     }
   }
 
@@ -97,7 +70,6 @@ export const ButtonPrevNext = styled(Button)<iButtonNext>`
 
     path {
       stroke: ${theme.colors.white};
-      stroke-width: 2;
     }
   }
 
