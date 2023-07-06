@@ -77,10 +77,12 @@ export const Select: React.FC<iSelect> = ({
             {selectedItem?.label || selected?.value || placeholder}
           </Typography>
         </Placeholder>
+
         <OpenIcon
           iconId={opened ? "chevronUp" : iconRight ?? "chevronDown"}
           opened={!disabled && opened}
           disabled={disabled}
+          size="XS"
         />
       </SelectStyled>
 

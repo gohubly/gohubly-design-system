@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { Icon } from "../..";
 import { iSelectTypes } from ".";
+import { theme } from "../../../theme";
 
 const fadeInDown = keyframes`
   from {
@@ -155,10 +156,18 @@ export const Placeholder = styled.span<{ fontSize?: string }>`
   flex: 1;
   height: max-content;
   align-items: center;
+
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XXS"]};
+  
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XXS"]};
+  }
 `;
 
 export const OpenIcon = styled(Icon)<{ opened: boolean; disabled?: boolean }>`
@@ -191,22 +200,24 @@ export const Options = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: column;
-  max-height: 280px;
+  max-height: 200px;
   overflow-y: auto;
 
-  background: ${({ theme }) => theme.colors.neutralHigh};
-  border: 1px solid rgba(20, 33, 89, 0.3);
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${theme.colors.borderDefault};
+
   box-sizing: border-box;
   border-radius: 5px;
-  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05))
+    drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
 
   animation: ${fadeInDown} 120ms ease-out forwards;
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
-    border-color: ${({ theme }) => theme.colors.neutralHighLight};
+    // box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
+    // border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
@@ -227,7 +238,7 @@ export const Option = styled.div<{
   itemSelect: boolean;
   height?: string;
 }>`
-  // line-height: ${({ fontSize, theme }) => theme.fontSize[fontSize || "XS"]};
+
   display: flex;
   align-items: center;
   padding: ${({ type }) => PADDING_OPTIONS_BY_SIZE[type as iSelectTypes]};
@@ -238,7 +249,7 @@ export const Option = styled.div<{
 
   border-radius: 4px;
 
-  height: 48px;
+  height: 100%;
 
   span {
     background: ${({ itemSelect }) => (itemSelect ? "#F1F2F9" : "#fff")};

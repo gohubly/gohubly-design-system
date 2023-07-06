@@ -23,6 +23,7 @@ export const SelectV2: React.FC<iSelect> = ({
   width,
   height,
   fontSize = "XS",
+  lineHeight,
   type = "text",
   iconRight,
   iconLeft,
@@ -75,6 +76,7 @@ export const SelectV2: React.FC<iSelect> = ({
         <Placeholder fontSize={fontSize}>
           <Typography
             size={fontSize}
+            lineHeight={lineHeight}
             color="textNeutralDefault"
             fontWeight={300}
           >
@@ -110,6 +112,7 @@ export const SelectV2: React.FC<iSelect> = ({
             >
               <Typography
                 size={fontSize}
+                lineHeight={lineHeight}
                 color="textNeutralDefault"
                 fontWeight={300}
               >
