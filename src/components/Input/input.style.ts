@@ -531,13 +531,14 @@ export const DropdownWrapper = styled.div<iInputDropdownWrapper>`
   flex-direction: column;
 
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${theme.colors.borderDefault};
   box-sizing: border-box;
   border-radius: 5px;
   filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.05))
-    drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
-
+  drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.05));
+  
   transition: box-shadow 120ms ease-out, border-color 120ms ease-out;
+  
+  border: 1px solid #E0E2E8;
 
   &:hover {
     &::-webkit-scrollbar {

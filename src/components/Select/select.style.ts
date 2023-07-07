@@ -175,7 +175,7 @@ export const Options = styled.div`
   overflow-y: auto;
 
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${theme.colors.borderDefault};
+  border: 1px solid #E0E2E8;
 
   box-sizing: border-box;
   border-radius: 5px;
@@ -187,8 +187,6 @@ export const Options = styled.div`
 
   &:hover {
     cursor: pointer;
-    // box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24);
-    // border-color: ${({ theme }) => theme.colors.neutralHighLight};
 
     &::-webkit-scrollbar {
       -webkit-appearance: none;
