@@ -77,8 +77,7 @@ export const Input: React.FC<iInput> = ({
     const stringInputValue = inputValue.toString().toLowerCase();
     const foundItems = props.dropdown?.filter(({ value, label }) => {
       return (
-        value.toLowerCase().includes(stringInputValue) ||
-        label?.toLowerCase()?.includes(stringInputValue)
+        label?.toLowerCase()?.includes(stringInputValue) || value.toLowerCase().includes(stringInputValue)
       );
     });
 
