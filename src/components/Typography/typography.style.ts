@@ -25,7 +25,7 @@ const TextStyled = css<iTypography>`
   text-align: ${({ textAlign }) => textAlign ?? 'initial'};
 `
 
-export const Paragraph = styled.p<iParagraph>`
+export const Paragraph = styled.p<Omit<iParagraph, 'as'>>`
   ${TextStyled}
 
   ${({ noMargin }) => noMargin && css`
