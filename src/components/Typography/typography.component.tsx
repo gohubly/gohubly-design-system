@@ -28,7 +28,7 @@ export const Typography: React.FC<iTypography> = ({
   switch (as || size) {
     case 'p':
       return <Paragraph {...props}>{children}</Paragraph>
-    case 'span':
+    default:
       return <Span className={className} {...props}>{children}</Span>
   }
 }

@@ -1,11 +1,8 @@
 import { theme } from "../../theme"
 
-export type iTypographyTypesAs = 'p' | 'span'
-// export type iTypographyTypestextAlign = 'center' | 'left' | 'right'
-
 export interface iTypography {
   children: any
-  as?: iTypographyTypesAs
+  as?: any
   size?: keyof typeof theme.fontSize
   lineHeight?: keyof typeof theme.lineHeight
   fontWeight?: keyof typeof theme.fontWeight
