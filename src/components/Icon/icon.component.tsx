@@ -38,6 +38,7 @@ import Image from "./icons/image";
 import Information from "./icons/information";
 import InformationTriangle from "./icons/informationTriangle";
 import Instagram from "./icons/instagram";
+import Lightning from "./icons/lightning";
 import Link from "./icons/link";
 import Linkedin from "./icons/linkedin";
 import List from "./icons/list";
@@ -211,6 +212,7 @@ const SVG_COMPONENT: Record<iIconTypes, any> = {
   informationTriangle: InformationTriangle,
   instagram: Instagram,
   instagramColor: InstagramColor,
+  lightning: Lightning,
   link: Link,
   linkedin: Linkedin,
   list: List,

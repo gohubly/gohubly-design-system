@@ -74,6 +74,7 @@ export type iIconTypes =
   | "informationTriangle"
   | "instagram"
   | "instagramColor"
+  | "lightning"
   | "link"
   | "linkedin"
   | "list"
