@@ -1,6 +1,6 @@
 {
   "name": "@gohubly/design-system",
-  "version": "3.7.51",
+  "version": "3.7.52",
   "private": false,
   "main": "dist/lib/index.js",
   "types": "dist/types/index.d.ts",
