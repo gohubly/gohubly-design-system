@@ -1,16 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Icon } from "../Icon";
-import { iCheckBox } from "./checkbox.interface";
+import { ICheckBox } from "./checkbox.interface";
 import { Box, Label, Mark } from "./checkbox.style";
 
-export const CheckBox: React.FC<iCheckBox> = (props) => {
+export const CheckBox: React.FC<ICheckBox> = (props) => {
   const [checkedValue, setCheckedValue] = useState(props.checked);
 
-  const ref = useRef();
-
-  const onChange = (evt: any) => {
-    setCheckedValue(!checkedValue);
-    if (props.onChange) props.onChange(evt.target.value);
+  const onChange = (evt: React.FormEvent<HTMLLabelElement>) => {
+    const newCheckedValue = !checkedValue;
+    setCheckedValue(newCheckedValue);
+    props.onChange?.(newCheckedValue);
+    props.onValueChange?.(evt);
   };
 
   useEffect(() => {
@@ -30,8 +30,8 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
       {props.label}
 
       <Box
+        type="checkbox"
         id={props.name}
-        ref={ref}
         checked={checkedValue}
         disabled={props.disabled}
       />
@@ -43,9 +43,9 @@ export const CheckBox: React.FC<iCheckBox> = (props) => {
       >
         {checkedValue &&
           (!props.disabled ? (
-            <Icon size="XXXS" OnColor={!props.onColor} iconId={`check`} />
+            <Icon size="XXXS" OnColor={!props.onColor} iconId={"check"} />
           ) : (
-            <Icon size="XXXS" OnColor={!props.checked} iconId={`check`} />
+            <Icon size="XXXS" OnColor={!props.checked} iconId={"check"} />
           ))}
       </Mark>
     </Label>
