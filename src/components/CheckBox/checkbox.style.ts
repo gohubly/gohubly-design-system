@@ -2,11 +2,7 @@ import styled, { css } from "styled-components";
 import { defaultCss } from "../../theme/defaultCss";
 import theme from "../../theme/theme";
 
-import {
-  ILabelCheckBox,
-  IBoxCheckBox,
-  IMarkCheckBox,
-} from "./checkbox.interface";
+import { ILabelCheckBox, IMarkCheckBox } from "./checkbox.interface";
 
 export const Label = styled.label<ILabelCheckBox>`
   ${defaultCss};
@@ -92,9 +88,7 @@ export const Label = styled.label<ILabelCheckBox>`
   }
 `;
 
-export const Box = styled.input.attrs({
-  type: "checkbox",
-})<IBoxCheckBox>`
+export const Box = styled.input`
   box-sizing: border-box;
   cursor: pointer;
   position: absolute;
