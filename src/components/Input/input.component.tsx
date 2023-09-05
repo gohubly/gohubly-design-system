@@ -45,16 +45,8 @@ export const Input: React.FC<iInput> = ({
   }, [dropdownRef, dropdownOpened]);
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    if (props.onChange) {
-      props.onChange(evt);
-    } else setInputValue(evt.target.value);
-
-    const inputEl = inputRef.current;
-
-    if (inputEl) {
-      const cursorPosition = inputEl.selectionStart;
-      inputEl.setSelectionRange(cursorPosition, cursorPosition);
-    }
+    setInputValue(evt.target.value);
+    props.onChange?.(evt);
   };
 
   const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
