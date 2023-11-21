@@ -1,3 +1,4 @@
+import { CSSProperties } from "react"
 import { theme } from "../../theme"
 
 export interface iTypography {
@@ -8,6 +9,7 @@ export interface iTypography {
   fontWeight?: keyof typeof theme.fontWeight
   color?: keyof typeof theme.colors
   textAlign?: string
+  textDecoration?: CSSProperties['textDecoration']
   colorOpacity?: number
   className?: string
 }

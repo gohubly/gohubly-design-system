@@ -12,6 +12,7 @@ export const Typography: React.FC<iTypography> = ({
   children,
   color,
   textAlign,
+  textDecoration = 'none',
   colorOpacity
 }) => {
   const props = {
@@ -22,6 +23,7 @@ export const Typography: React.FC<iTypography> = ({
     lineHeight,
     color,
     textAlign,
+    textDecoration,
     colorOpacity
   }
 

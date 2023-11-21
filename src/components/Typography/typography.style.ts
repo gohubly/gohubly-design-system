@@ -23,6 +23,7 @@ const TextStyled = css<iTypography>`
   color: ${({ color, colorOpacity }) => colorOpacity ? hexToRgb(theme.colors[color || 'white'], { asCSS: true, alpha: colorOpacity }) : theme.colors[color || 'white']};
 
   text-align: ${({ textAlign }) => textAlign ?? 'initial'};
+  text-decoration: ${({ textDecoration }) => textDecoration};
 `
 
 export const Paragraph = styled.p<Omit<iParagraph, 'as'>>`
