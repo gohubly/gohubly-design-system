@@ -10,6 +10,7 @@ import { Typography } from '../Typography';
 import LinkSuccessCopy from './components/link-success-copy';
 import { Box, Flex } from 'rebass';
 import { Avatar } from '../Avatar';
+import sharei18n from './share.i18n';
 
 export const Share: React.FC<iShare> = ({
 	link,
@@ -25,6 +26,7 @@ export const Share: React.FC<iShare> = ({
 	fluid,
 	apiKeys,
 	custom,
+	language = 'pt'
 }): JSX.Element => {
 	const [selectedMedia, setSelectedMedia] = useState<EShareMedia>(EShareMedia.email);
 	const medias = Object.keys(EShareMedia).filter(key => isNaN(+key));
@@ -77,11 +79,11 @@ export const Share: React.FC<iShare> = ({
 		}
 
 		if (!emailRegex.test(value)) {
-			return setError('E-mail inválido');
+			return setError(sharei18n[language].input.errors.invalidEmail);
 		}
 
 		if (canAddMultipleEmails && emails.includes(value)) {
-			return setError('Este e-mail já foi adicionado');
+			return setError(sharei18n[language].input.errors.emailAreadyUsed);
 		}
 
 		setError(undefined);
@@ -115,7 +117,7 @@ export const Share: React.FC<iShare> = ({
 
 			<css.Spacer marginTop="16px" marginBottom="24px">
 				<Typography size="XS" color="neutralLowMedium" fontWeight={600}>
-          ou, escolha uma opção
+          {sharei18n[language].pickOption}
 				</Typography>
 			</css.Spacer>
 
@@ -134,9 +136,9 @@ export const Share: React.FC<iShare> = ({
 			{selectedMedia === EShareMedia.email && (
 				<css.Spacer marginTop="32px">
 					<Typography size="XS" color="neutralLowLight">
-            Compartilhar por {''}
+					{sharei18n[language].shareBy} {''}
 						<Typography size="XS" fontWeight={600} color="neutralLow">
-              e-mail
+						{sharei18n[language].email}
 						</Typography>
 					</Typography>
 
@@ -147,8 +149,8 @@ export const Share: React.FC<iShare> = ({
 
 					{!success && (
 						<Input
-							label="Digite um e-mail"
-							placeholder="exemplo@email.com"
+							label={sharei18n[language].input.label}
+							placeholder={sharei18n[language].input.placeholder}
 							value={value}
 							onChange={handleEmailChange}
 							helperText={error !== 'initial' ? error : ''}
@@ -172,7 +174,7 @@ export const Share: React.FC<iShare> = ({
 			{ canAddMultipleEmails && !success && selectedMedia === EShareMedia.email && (
 				<Box marginY="15px">
 					<Button hierarchy="ghost" onClick={handleAddEmail} disabled={(error?.length ?? 0) > 0 || !value} fluid>
-						Adicionar e-mail
+					{sharei18n[language].addEmail}
 					</Button>
 				</Box>
 			)}
@@ -201,7 +203,7 @@ export const Share: React.FC<iShare> = ({
 					<Box marginTop="24px" />
 
 					<Typography size="XS" fontWeight={400} color="neutralLow" lineHeight="LG" textAlign="center">
-            Compartilhe o link para<br /> a sua rede de contatos no <br />
+					{sharei18n[language].shareContact}
 						<Typography size="XS" fontWeight={400} color="primary" lineHeight="LG" textAlign="center">
 							{`${EShareMedia[selectedMedia].toString().substring(0, 1).toUpperCase()}${EShareMedia[selectedMedia].toString().substring(1)}`}
 						</Typography>
@@ -218,7 +220,7 @@ export const Share: React.FC<iShare> = ({
 					<Box marginTop="16px" />
 
 					<Typography size="SM" color="neutralLow" lineHeight="LG" textAlign="center">
-          Link compartilhado <br /> com sucesso!
+          {sharei18n[language].success}
 					</Typography>
 				</Flex>
 			)}
@@ -229,7 +231,7 @@ export const Share: React.FC<iShare> = ({
 				loading={loading}
 				disabled={((canAddMultipleEmails && !emails.length) || !!error) && selectedMedia === EShareMedia.email}
 			>
-				{ custom?.shareButton ?? 'Compartilhar' }
+				{ custom?.shareButton ?? sharei18n[language].share }
 			</Button>
 		</css.Container>
 	);
