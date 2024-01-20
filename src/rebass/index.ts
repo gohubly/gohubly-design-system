@@ -1,0 +1,6 @@
+export * from './components/flex'
+export * from './components/box'
+export * from './components/text'
+export * from './components/heading'
+export * from './components/image'
+export * from './components/types'

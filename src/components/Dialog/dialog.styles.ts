@@ -1,13 +1,13 @@
-import { Flex, FlexProps } from "rebass/styled-components";
-import styled, { StyledComponent } from "styled-components";
+import styled from "styled-components";
+import { Flex } from "rebass";
 
-export const DialogBody: StyledComponent<React.FunctionComponent<FlexProps>, any, FlexProps, never> = styled(Flex)`
+export const DialogBody = styled(Flex)`
   width: 100%;
 
   padding: 16px;
 `
 
-export const DialogFooter: StyledComponent<React.FunctionComponent<FlexProps>, any, FlexProps, never> = styled(Flex)`
+export const DialogFooter= styled(Flex)`
   align-items: center;
   justify-content: flex-end;
   gap: 8px;

@@ -1,6 +1,6 @@
 {
   "name": "@gohubly/design-system",
-  "version": "3.8.4",
+  "version": "3.10.0",
   "private": false,
   "main": "dist/lib/index.js",
   "types": "dist/types/index.d.ts",
@@ -18,23 +18,17 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^27.0.3",
-    "@types/node": "^16.11.10",
-    "@types/react": "^17.0.37",
-    "@types/react-dom": "^17.0.11",
-    "@types/rebass": "^4.0.10",
     "clipboard-copy": "^4.0.1",
     "moment": "^2.26.0",
     "react-scripts": "4.0.3",
     "react-tooltip": "^5.7.2",
-    "rebass": "^4.0.7",
-    "styled-components": "^5.3.6",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^4.5.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "start-storybook -p 6006",
-    "build:lib": "yarn cache clean && yarn tsc -p .",
+    "build:lib": "yarn tsc -p .",
     "build:storybook": "mkdir public & yarn build-storybook",
     "deploy:storybook": "gh-pages -d storybook-static",
     "pub": "npm run build:lib && npm publish"
@@ -76,20 +70,26 @@
     "@storybook/node-logger": "^6.4.9",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.9",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
     "@types/styled-components": "^5.1.26",
     "babel-loader": "8.1.0",
     "gh-pages": "^3.2.3",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0",
     "react-docgen-typescript": "^2.1.1",
+    "react-dom": "^16.13.0",
     "storybook-addon-styled-component-theme": "^2.0.0",
     "storybook-dark-mode": "^1.0.8",
+    "styled-components": "5.3.6",
     "ts-loader": "^8.2.0",
     "url-loader": "^4.1.1",
     "vsts-npm-auth": "^0.41.0"
   },
   "peerDependencies": {
     "react": ">=16.13.0",
-    "react-dom": ">=16.13.0"
- }
+    "react-dom": ">=16.13.0",
+    "styled-components": ">=5.1.0"
+  }
 }
