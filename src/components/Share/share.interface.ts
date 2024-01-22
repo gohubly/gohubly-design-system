@@ -24,7 +24,7 @@ export interface iShare {
     facebookMessenger: string
   }
   canAddMultipleEmails?: boolean
-  language: 'en' | 'pt'
+  language?: 'en' | 'pt'
 };
 
 export enum EShareMedia {
