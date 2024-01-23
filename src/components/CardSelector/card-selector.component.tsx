@@ -15,9 +15,6 @@ export const CardSelector: React.FC<iCardSelector> = ({
   spaced = true,
   highlighted,
 }) => {
-  const splitted = title.split(" ");
-  const lastSentence = splitted[splitted.length - 1]
-
   return (
     <css.Container selected={selected} color={color} onClick={onClick} responsive={responsive} bordered={bordered} spaced={spaced}>
       <css.IconContainer selected={selected} color={color}>
@@ -26,14 +23,8 @@ export const CardSelector: React.FC<iCardSelector> = ({
 
       <css.TitleContainer>
         <Typography size='XS' color={selected || highlighted ? 'neutralLow' : 'neutralLowMedium'} fontWeight={highlighted ? 600 : 500} lineHeight='SM' {...responsive && { textAlign: 'center' }}>
-          { splitted.slice(0, splitted.length - 1).join(' ') }
+          { title }
         </Typography>
-
-        {lastSentence && (
-          <Typography color={selected || responsive || highlighted ? color : 'neutralLow'} size="XS" fontWeight={600} {...responsive && { textAlign: 'center' }}>
-            { lastSentence }
-          </Typography>
-        )}
       </css.TitleContainer>
     </css.Container>
   )

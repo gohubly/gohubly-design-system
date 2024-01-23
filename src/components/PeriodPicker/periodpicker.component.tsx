@@ -20,9 +20,7 @@ import { iCalendar } from ".";
 import { Button, Icon, Typography } from "..";
 import { IPeriodPicker } from "./periodpicker.interface";
 
-import "moment/locale/pt-br";
 import { Flex } from "rebass";
-moment.locale("pt-br");
 
 export const PeriodPicker: React.FC<IPeriodPicker> = ({
   width,
