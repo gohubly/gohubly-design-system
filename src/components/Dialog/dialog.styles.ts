@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { Flex } from "rebass";
 
-export const DialogBody = styled(Flex)`
+export const DialogBody: any = styled(Flex)`
   width: 100%;
 
   padding: 16px;
-`
+`;
 
-export const DialogFooter= styled(Flex)`
+export const DialogFooter: any = styled(Flex)`
   align-items: center;
   justify-content: flex-end;
   gap: 8px;
@@ -15,4 +15,4 @@ export const DialogFooter= styled(Flex)`
   width: 100%;
 
   padding: 16px;
-`
+`;
