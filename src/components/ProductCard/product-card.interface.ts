@@ -6,7 +6,9 @@ export interface iProductCard {
   hideButton?: boolean
   showPrice?: boolean
   hideDiscountFlag?: boolean
-  buttonProps: iButton
+  buttonProps: iButton,
+  locale?: string;
+  currency?: string;
 }
 
 export interface iIntegrationProduct {
