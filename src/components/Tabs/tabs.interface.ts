@@ -4,4 +4,6 @@ export interface iTabs {
   selected: number;
   direction: "horizontal" | "vertical";
   isDesktop?: boolean;
+  className?: string;
+  isActiveClassName?: string;
 }
