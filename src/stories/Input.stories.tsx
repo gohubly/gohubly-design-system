@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Input, Typography } from "..";
+import { Input, Link, Typography } from "..";
 
 export default {
   title: "Components/Input",
@@ -200,6 +200,56 @@ WithDropdown.args = {
   iconRightSize: 'XXS',
   onClickDropdownItem(itemValue, itemLabel) {
     console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
+  },
+  dropdown: [
+    {
+      value: "value-label-1",
+      label: "valor 1 valor 1 valor valor 1 valor 1 valor",
+    },
+    {
+      value: "value-label-2",
+      label: "valor 2",
+    },
+    {
+      value: "value-label-3",
+      label: "valor 3",
+    },
+    {
+      value: "value-label-4",
+      label: "valor 4",
+    },
+    {
+      label: "Valor com tag",
+      value: "value-valor-com-tag",
+      tag: {
+        background: "warning",
+        label: "Tag",
+      },
+    },
+  ],
+};
+
+export const WithDropdownAndLoadMoreButton = Template.bind({});
+
+WithDropdownAndLoadMoreButton.args = {
+  name: "input-name",
+  label: "Label",
+  placeholder: "placeholder...",
+  size: "MD",
+  type: "text",
+  iconRight: "chevronDown",
+  iconRightSize: 'XXS',
+  onClickDropdownItem(itemValue, itemLabel) {
+    console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
+  },
+  dropdownOptions: {
+    loadMoreButton: () => {
+      return (
+        <Link>
+          Carregar mais
+        </Link>
+      )
+    }
   },
   dropdown: [
     {

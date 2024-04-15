@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from "react";
 import { CSSProperties } from "styled-components";
 import { theme } from "../../theme";
 import { iIconSizes, iIconTypes } from "../Icon";
@@ -82,6 +82,9 @@ export interface iInput extends iInputHTML {
       label: string;
     };
   }[];
+  dropdownOptions?: {
+    loadMoreButton: JSX.Element | (() => JSX.Element),
+  }
 
   textArea?: boolean;
   rows?: number;

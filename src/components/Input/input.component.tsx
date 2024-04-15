@@ -28,6 +28,7 @@ export const Input: React.FC<iInput> = React.forwardRef(
       size: propsSize,
       fontSize: propsFontSize,
       fontSizeLabel: propsFontSizeLabel,
+      dropdownOptions,
       ...props
     },
     ref
@@ -145,6 +146,16 @@ export const Input: React.FC<iInput> = React.forwardRef(
         }
       } else setInputValue(newValue);
     };
+
+    const loadMoreButton = () => {
+      const { loadMoreButton } = dropdownOptions || {}
+
+      if (typeof loadMoreButton === 'function') {
+        return loadMoreButton()
+      }
+
+      return loadMoreButton
+    }
 
     const hasError =
       typeof inputValue === "string" && props.maxCharacters
@@ -474,6 +485,8 @@ export const Input: React.FC<iInput> = React.forwardRef(
                     </DropdownItem>
                   );
                 })}
+
+                {dropdownOptions?.loadMoreButton && loadMoreButton()}
               </DropdownWrapper>
             )}
           </RelativeContainer>
