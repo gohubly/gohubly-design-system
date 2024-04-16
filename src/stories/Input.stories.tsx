@@ -14,15 +14,16 @@ export const TextArea = Template.bind({});
 TextArea.args = {
   name: "input-name",
   type: "text",
-  placeholder: "Precisa inserir algum tipo de informação sobre a sua nota? Insira aqui.",
+  placeholder:
+    "Precisa inserir algum tipo de informação sobre a sua nota? Insira aqui.",
   label: "Observações",
   textAlign: "initial",
   textArea: true,
-  textAreaHeight: '100px',
+  textAreaHeight: "100px",
   maxCharacters: 100,
-  maxCharactersPosition: 'right',
+  maxCharactersPosition: "right",
   textAreaOnBlur() {
-    console.log('entrou aqui')
+    console.log("entrou aqui");
   },
 };
 
@@ -37,7 +38,9 @@ Default.args = {
   helperTextOnClick() {
     console.log("Clicou");
   },
-  onBlur: () => { console.log('deu')}
+  onBlur: () => {
+    console.log("deu");
+  },
 };
 
 export const DefaultWithPlaceholderStyled = Template.bind({});
@@ -92,9 +95,9 @@ WithIconLeft.args = {
   label: "Label",
   placeholder: "placeholder...",
   iconLeft: "link",
-  paddingLeft: '32px',
-  iconLeftSize: 'XS',
-  size: 'SM'
+  paddingLeft: "32px",
+  iconLeftSize: "XS",
+  size: "SM",
 };
 
 export const WithIconRight = Template.bind({});
@@ -197,34 +200,26 @@ WithDropdown.args = {
   size: "MD",
   type: "text",
   iconRight: "chevronDown",
-  iconRightSize: 'XXS',
+  iconRightSize: "XXS",
   onClickDropdownItem(itemValue, itemLabel) {
     console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
   },
   dropdown: [
     {
-      value: "value-label-1",
-      label: "valor 1 valor 1 valor valor 1 valor 1 valor",
+      value: "27c58874-ceac-403c-aaea-4605ccf8c186",
+      label: "Banco do Brasil S.A.",
     },
     {
-      value: "value-label-2",
-      label: "valor 2",
+      value: "2a647488-5eb3-4270-a37c-8c3006d9494f",
+      label: "Banco da Amazônia S.A.",
     },
     {
-      value: "value-label-3",
-      label: "valor 3",
+      value: "f268056a-90a4-434f-9ab0-1780531dd426",
+      label: "Banco do Nordeste do Brasil S.A.",
     },
     {
-      value: "value-label-4",
-      label: "valor 4",
-    },
-    {
-      label: "Valor com tag",
-      value: "value-valor-com-tag",
-      tag: {
-        background: "warning",
-        label: "Tag",
-      },
+      value: "b40d9caa-23ac-4d1f-a849-22463aa15a58",
+      label: "Nu Pagamentos S.A.",
     },
   ],
 };
@@ -238,18 +233,14 @@ WithDropdownAndLoadMoreButton.args = {
   size: "MD",
   type: "text",
   iconRight: "chevronDown",
-  iconRightSize: 'XXS',
+  iconRightSize: "XXS",
   onClickDropdownItem(itemValue, itemLabel) {
     console.log(`value: ${itemValue}, label: ${itemLabel ?? "Não há"}`);
   },
   dropdownOptions: {
     loadMoreButton: () => {
-      return (
-        <Link>
-          Carregar mais
-        </Link>
-      )
-    }
+      return <Link>Carregar mais</Link>;
+    },
   },
   dropdown: [
     {

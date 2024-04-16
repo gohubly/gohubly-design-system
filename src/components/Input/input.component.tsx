@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo, useImperativeHandle } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useImperativeHandle,
+} from "react";
 import { Flex } from "rebass";
 import { useClickOutside } from "../../hooks";
 import { Tag, iTagHierarchy } from "../Tag";
@@ -45,7 +51,7 @@ export const Input: React.FC<iInput> = React.forwardRef(
     );
     const hasPlaceholderStyled = props.placeholderStyled ? true : false;
 
-    useImperativeHandle(ref, () => innerRef.current)
+    useImperativeHandle(ref, () => innerRef.current);
 
     useClickOutside(() => {
       if (dropdownOpened) setDropdownOpened(false);
@@ -54,6 +60,10 @@ export const Input: React.FC<iInput> = React.forwardRef(
     const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
       props.onChange?.(evt);
       setInputValue(evt.target.value);
+
+      if (!!props.dropdown?.length) {
+        setDropdownOpened(true);
+      }
     };
 
     const onClickDropdownItem = (itemValue: string, itemLabel?: string) => {
@@ -74,32 +84,43 @@ export const Input: React.FC<iInput> = React.forwardRef(
       if (!props.dropdown?.length) return [];
 
       const stringInputValue = inputValue.toString().toLowerCase();
-      const foundItems = props.dropdown?.filter(({ value, label }) => {
-        return (
-          label?.toLowerCase()?.includes(stringInputValue) ||
-          value.toLowerCase().includes(stringInputValue)
-        );
-      });
 
-      if (foundItems) {
-        const filtered = props.dropdown.filter(({ value }) => {
-          return !foundItems.find((item) => value === item.value);
+      if (props.filterOptions) {
+        const filteredItems = props.dropdown?.filter(({ value, label }) => {
+          return (
+            label?.toLowerCase()?.includes(stringInputValue) ||
+            value.toLowerCase().includes(stringInputValue)
+          );
+        });
+        return filteredItems ?? [props.dropdown];
+      } else {
+        const foundItems = props.dropdown?.filter(({ value, label }) => {
+          return (
+            label?.toLowerCase()?.includes(stringInputValue) ||
+            value.toLowerCase().includes(stringInputValue)
+          );
         });
 
-        let items = [...foundItems, ...filtered];
+        if (foundItems) {
+          const filtered = props.dropdown.filter(({ value }) => {
+            return !foundItems.find((item) => value === item.value);
+          });
 
-        if (
-          props.hasAllItems &&
-          props.dropdown?.indexOf({ label: "Todos", value: "" }) === -1
-        ) {
-          items?.unshift({ label: "Todos", value: "" });
+          let items = [...foundItems, ...filtered];
+
+          if (
+            props.hasAllItems &&
+            props.dropdown?.indexOf({ label: "Todos", value: "" }) === -1
+          ) {
+            items?.unshift({ label: "Todos", value: "" });
+          }
+
+          return items;
         }
 
-        return items;
+        return props.dropdown;
       }
-
-      return props.dropdown;
-    }, [inputValue, props.dropdown, props.hasAllItems]);
+    }, [inputValue, props.dropdown, props.hasAllItems, props.filterOptions]);
 
     const isDropdownItemActive = (
       dropdownValue: string,
@@ -148,14 +169,14 @@ export const Input: React.FC<iInput> = React.forwardRef(
     };
 
     const loadMoreButton = () => {
-      const { loadMoreButton } = dropdownOptions || {}
+      const { loadMoreButton } = dropdownOptions || {};
 
-      if (typeof loadMoreButton === 'function') {
-        return loadMoreButton()
+      if (typeof loadMoreButton === "function") {
+        return loadMoreButton();
       }
 
-      return loadMoreButton
-    }
+      return loadMoreButton;
+    };
 
     const hasError =
       typeof inputValue === "string" && props.maxCharacters
@@ -372,6 +393,9 @@ export const Input: React.FC<iInput> = React.forwardRef(
             {/* Input */}
             <StyledInput
               {...props}
+              onClick={() => {
+                !!props.dropdown?.length && setDropdownOpened(true);
+              }}
               opened={dropdownOpened}
               Size={propsSize}
               fontSize={propsFontSize}
@@ -446,49 +470,51 @@ export const Input: React.FC<iInput> = React.forwardRef(
             )}
 
             {/* Dropdown */}
-            {!!props.dropdown?.length && dropdownOpened && (
-              <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
-                {dropdownItems.map((dropdownItem, index) => {
-                  return (
-                    <DropdownItem
-                      fontSize={propsFontSize}
-                      onClick={() =>
-                        onClickDropdownItem(
-                          dropdownItem.value,
-                          dropdownItem.label
-                        )
-                      }
-                      key={`input-dropdown-item-${dropdownItem.value}-${index}`}
-                      active={
-                        !!isDropdownItemActive(
-                          dropdownItem.value.toLowerCase(),
-                          dropdownItem.label?.toLowerCase()
-                        )
-                      }
-                      itemSelect={
-                        inputValue !== undefined &&
-                        inputValue ===
-                          (dropdownItem?.label || dropdownItem?.value)
-                      }
-                    >
-                      {dropdownItem.label || dropdownItem.value}
+            {!!props.dropdown?.length &&
+              dropdownOpened &&
+              dropdownItems.length > 0 && (
+                <DropdownWrapper opened={dropdownOpened} ref={dropdownRef}>
+                  {dropdownItems.map((dropdownItem, index) => {
+                    return (
+                      <DropdownItem
+                        fontSize={propsFontSize}
+                        onClick={() =>
+                          onClickDropdownItem(
+                            dropdownItem.value,
+                            dropdownItem.label
+                          )
+                        }
+                        key={`input-dropdown-item-${dropdownItem.value}-${index}`}
+                        active={
+                          !!isDropdownItemActive(
+                            dropdownItem.value.toLowerCase(),
+                            dropdownItem.label?.toLowerCase()
+                          )
+                        }
+                        itemSelect={
+                          inputValue !== undefined &&
+                          inputValue ===
+                            (dropdownItem?.label || dropdownItem?.value)
+                        }
+                      >
+                        {dropdownItem.label || dropdownItem.value}
 
-                      {dropdownItem.tag && (
-                        <Tag
-                          hierarchy={
-                            `${dropdownItem.tag.background}` as iTagHierarchy
-                          }
-                        >
-                          {dropdownItem.tag.label}
-                        </Tag>
-                      )}
-                    </DropdownItem>
-                  );
-                })}
+                        {dropdownItem.tag && (
+                          <Tag
+                            hierarchy={
+                              `${dropdownItem.tag.background}` as iTagHierarchy
+                            }
+                          >
+                            {dropdownItem.tag.label}
+                          </Tag>
+                        )}
+                      </DropdownItem>
+                    );
+                  })}
 
-                {dropdownOptions?.loadMoreButton && loadMoreButton()}
-              </DropdownWrapper>
-            )}
+                  {dropdownOptions?.loadMoreButton && loadMoreButton()}
+                </DropdownWrapper>
+              )}
           </RelativeContainer>
         )}
 

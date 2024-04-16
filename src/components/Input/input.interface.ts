@@ -74,6 +74,7 @@ export interface iInput extends iInputHTML {
   hasAllItems?: boolean;
 
   onClickDropdownItem?: (itemValue: string, itemLabel?: string) => void;
+  filterOptions?: boolean;
   dropdown?: {
     value: string;
     label?: string;
@@ -82,9 +83,10 @@ export interface iInput extends iInputHTML {
       label: string;
     };
   }[];
+
   dropdownOptions?: {
-    loadMoreButton: JSX.Element | (() => JSX.Element),
-  }
+    loadMoreButton: JSX.Element | (() => JSX.Element);
+  };
 
   textArea?: boolean;
   rows?: number;
@@ -93,5 +95,5 @@ export interface iInput extends iInputHTML {
   maxCharactersPosition?: IMaxCharactersPosition;
   backgroundTextArea?: keyof typeof theme.colors;
   textAreaOnBlur?: () => void;
-  ref?: any
+  ref?: any;
 }
