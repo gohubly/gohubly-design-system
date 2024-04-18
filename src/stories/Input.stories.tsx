@@ -207,19 +207,19 @@ WithDropdown.args = {
   dropdown: [
     {
       value: "27c58874-ceac-403c-aaea-4605ccf8c186",
-      label: "Banco do Brasil S.A.",
+      label: "001 - Banco do Brasil S.A.",
     },
     {
       value: "2a647488-5eb3-4270-a37c-8c3006d9494f",
-      label: "Banco da Amazônia S.A.",
+      label: "034 - Banco da Amazônia S.A.",
     },
     {
       value: "f268056a-90a4-434f-9ab0-1780531dd426",
-      label: "Banco do Nordeste do Brasil S.A.",
+      label: "680 - Banco do Nordeste do Brasil S.A.",
     },
     {
       value: "b40d9caa-23ac-4d1f-a849-22463aa15a58",
-      label: "Nu Pagamentos S.A.",
+      label: "849 - Nu Pagamentos S.A.",
     },
   ],
 };

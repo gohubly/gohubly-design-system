@@ -87,10 +87,7 @@ export const Input: React.FC<iInput> = React.forwardRef(
 
       if (props.filterOptions) {
         const filteredItems = props.dropdown?.filter(({ value, label }) => {
-          return (
-            label?.toLowerCase()?.includes(stringInputValue) ||
-            value.toLowerCase().includes(stringInputValue)
-          );
+          return label?.toLowerCase()?.includes(stringInputValue);
         });
         return filteredItems ?? [props.dropdown];
       } else {
