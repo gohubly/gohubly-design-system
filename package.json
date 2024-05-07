@@ -1,6 +1,6 @@
 {
   "name": "@gohubly/design-system",
-  "version": "3.10.14",
+  "version": "3.10.15",
   "private": false,
   "main": "dist/lib/index.js",
   "types": "dist/types/index.d.ts",
@@ -19,7 +19,6 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "clipboard-copy": "^4.0.1",
-    "moment": "^2.26.0",
     "react-scripts": "4.0.3",
     "react-tooltip": "^5.7.2",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
@@ -85,11 +84,13 @@
     "styled-components": "5.3.6",
     "ts-loader": "^8.2.0",
     "url-loader": "^4.1.1",
-    "vsts-npm-auth": "^0.41.0"
+    "vsts-npm-auth": "^0.41.0",
+    "moment": "^2.26.0"
   },
   "peerDependencies": {
     "react": ">=16.13.0",
     "react-dom": ">=16.13.0",
-    "styled-components": ">=5.1.0"
+    "styled-components": ">=5.1.0",
+    "moment": ">=2.26.0"
   }
 }
