@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Paginator> = (args) => (
 
 export const Page = Template.bind({});
 Page.args = {
-  length: 10,
+  length: 1000,
   goToPage: (selectedPage: number) => {
     console.log(selectedPage);
   },

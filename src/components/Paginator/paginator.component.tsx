@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
-import { Icon } from "..";
+import { Icon, TooltipV3 } from "..";
 import { iPaginator } from "./paginator.interface";
 import {
   ButtonPrevNext,
@@ -167,21 +167,50 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
           >
             <Number>{1}</Number>
           </Itens>
-        </>
-      )}
 
-      {showCollapsedFew && (
-        <More>
-          <Icon iconId="moreHorizontal" size="XS" />
-        </More>
+          <More>
+            <Icon iconId="moreHorizontal" size="XS" />
+          </More>
+        </>
       )}
 
       {visibleNumbers &&
         visibleNumbers.map((page: number, index: number) => {
-          // console.log({ currentPage, index })
-          return (
-            <Fragment key={index}>
-              {
+          const numberStr = page.toString();
+          const firstDigits = numberStr.slice(0, 2);
+
+          if (numberStr.length > 2) {
+            return (
+              <TooltipV3
+                noPadding
+                size="SM"
+                id="sig"
+                text={`${page + 1}`}
+                position="up"
+                pointerOrientation="down"
+              >
+                <Fragment key={index}>
+                  <Itens
+                    className={`ds-pagination-item${
+                      currentPage === page ? "-active" : ""
+                    }`}
+                    currentPage={currentPage}
+                    index={page}
+                    onClick={
+                      page > 0 && props.disableNextPage
+                        ? undefined
+                        : () => goToPage(page)
+                    }
+                    disabled={page > 0 && props.disableNextPage}
+                  >
+                    <Number>{`${firstDigits}...`}</Number>
+                  </Itens>
+                </Fragment>
+              </TooltipV3>
+            );
+          } else {
+            return (
+              <Fragment key={index}>
                 <Itens
                   className={`ds-pagination-item${
                     currentPage === page ? "-active" : ""
@@ -197,30 +226,54 @@ export const Paginator: React.FC<iPaginator> = (props: iPaginator) => {
                 >
                   <Number>{page + 1}</Number>
                 </Itens>
-              }
-            </Fragment>
-          );
+              </Fragment>
+            );
+          }
         })}
 
       {showCollapsedMore && (
-        <More>
-          <Icon iconId="moreHorizontal" size="XS" />
-        </More>
-      )}
-
-      {showCollapsedMore && (
         <>
-          <Itens
-            className={`ds-pagination-item${
-              currentPage === props.length - 1 ? "-active" : ""
-            }`}
-            key={props.length - 1}
-            currentPage={currentPage}
-            index={props.length - 1}
-            onClick={() => goToPage(props.length - 1)}
-          >
-            <Number>{props.length}</Number>
-          </Itens>
+          <More>
+            <Icon iconId="moreHorizontal" size="XS" />
+          </More>
+
+          {props.length > 100 ? (
+            <TooltipV3
+              noPadding
+              size="SM"
+              id="sig"
+              text={new Intl.NumberFormat("pt-BR", {
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0,
+              }).format((props.length as number) ?? 0)}
+              position="up"
+              pointerOrientation="down"
+            >
+              <Itens
+                className={`ds-pagination-item${
+                  currentPage === props.length - 1 ? "-active" : ""
+                }`}
+                key={props.length - 1}
+                currentPage={currentPage}
+                index={props.length - 1}
+                onClick={() => goToPage(props.length - 1)}
+              >
+                <Number>{"100+"}</Number>
+              </Itens>
+            </TooltipV3>
+          ) : (
+            <Itens
+              className={`ds-pagination-item${
+                currentPage === props.length - 1 ? "-active" : ""
+              }`}
+              key={props.length - 1}
+              currentPage={currentPage}
+              index={props.length - 1}
+              onClick={() => goToPage(props.length - 1)}
+            >
+              <Number>{props.length}</Number>
+            </Itens>
+          )}
         </>
       )}
 

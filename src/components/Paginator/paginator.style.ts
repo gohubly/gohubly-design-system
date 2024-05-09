@@ -23,8 +23,8 @@ export const Itens = styled.div<iItens>`
   text-align: center;
   cursor: pointer;
   border-radius: 100%;
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
   color: ${({ currentPage, index }) =>
     currentPage === index ? theme.colors.white : theme.colors.neutralLow};
   background-color: ${({ currentPage, index }) =>
@@ -48,8 +48,8 @@ export const ButtonPrevNext = styled(Button)<iButtonNext>`
   border-color: ${theme.colors.neutralLowMedium};
   padding: 0px 0px;
   border-radius: 100%;
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
 
   path {
     stroke: ${theme.colors.neutralLowMedium};
@@ -75,10 +75,11 @@ export const ButtonPrevNext = styled(Button)<iButtonNext>`
 
   &:disabled {
     cursor: not-allowed;
-    background-color: ${theme.colors.white}!important;
-    border-color: ${theme.colors.neutralLowMedium};
+    background-color: #eeeeed!important;
+    border-color: #c8ccd5;
+
     path {
-      stroke: ${theme.colors.neutralLowMedium};
+      stroke: #c8ccd5;
     }
   }
 
