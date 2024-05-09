@@ -56,8 +56,8 @@ const WRAPPER_POSITION_BY_POSITION_WIDTHOU_PADDING: Record<
   Record<iTooltipSizes, string>
 > = {
   up: {
-    SM: "transform: translateX(-50%); bottom: 170%; left: 50%;",
-    LG: "transform: translateX(-50%); bottom: 170%; left: 50%;",
+    SM: "transform: translateX(-50%); bottom: 135%; left: 50%;",
+    LG: "transform: translateX(-50%); bottom: 135%; left: 50%;",
   },
   down: {
     SM: "transform: translateX(-50%); top: 170%; left: 50%;",
@@ -131,11 +131,9 @@ export const Container = styled.div<{ noPadding?: boolean }>`
   padding: ${({ noPadding }) => (noPadding ? "0px" : "10px")};
 
   &:hover > div + div {
-     {
-      display: block;
-      user-select: all;
-      z-index: 3;
-    }
+    display: block;
+    user-select: all;
+    z-index: 3;
   }
 `;
 
@@ -146,11 +144,9 @@ export const ContainerInfo = styled.div`
   cursor: pointer;
 
   &:hover + div {
-     {
-      display: block;
-      user-select: all;
-      z-index: 3;
-    }
+    display: block;
+    user-select: all;
+    z-index: 3;
   }
 `;
 
