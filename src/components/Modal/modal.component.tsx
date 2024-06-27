@@ -10,6 +10,7 @@ export const Modal: React.FC<IModal> = ({
   title,
   showCloseIcon,
   width,
+  height,
   show,
   minHeight,
   padding,
@@ -34,6 +35,7 @@ export const Modal: React.FC<IModal> = ({
       left={backdropPosition?.left}
     >
       <Wrapper
+        height={height}
         minHeight={minHeight}
         width={width || "auto"}
         className="modal-wrapper"

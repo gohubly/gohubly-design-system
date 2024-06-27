@@ -9,6 +9,7 @@ export interface IModal {
   show: boolean;
   toggleModal: any;
   title?: string;
+  height?: string
   fontSizeTitle?: keyof typeof theme.fontSize;
   fontWeightTitle?: keyof typeof theme.fontWeight;
   lineHeightTitle?: keyof typeof theme.lineHeight;

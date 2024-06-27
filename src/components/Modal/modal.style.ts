@@ -9,6 +9,7 @@ interface ContainerProps {
 
 interface WrapperProps {
   width?: string;
+  height?: string;
   left?: string;
   minHeight?: string;
   scrollable?: boolean;
@@ -44,7 +45,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Wrapper = styled.div<WrapperProps>`
   width: ${({ width }): string => width || "80%"};
-  height: max-content;
+  height: ${({ height = 'max-content' }) => height};
   margin: auto;
   margin-left: ${({ left }): string => left ?? "auto"};
   border-radius: 5px;

@@ -7,6 +7,7 @@ export * from './dialog.styles';
 
 export const Dialog: FC<iDialogProps> = ({
   width,
+  height = '600px',
   title,
   children,
   isOpen = false,
@@ -15,11 +16,13 @@ export const Dialog: FC<iDialogProps> = ({
   return (
     <Modal
       width={width}
+      height={height}
       show={isOpen}
       toggleModal={onClose}
       showCloseIcon
       title={title}
       padding="XS"
+      scrollable
     >
       { children }
     </Modal>
