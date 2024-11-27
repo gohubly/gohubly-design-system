@@ -31,10 +31,11 @@ export const SelectV3: React.FC<ISelect> = ({
   iconSizeRight,
   heightOptions,
   styledLabel,
+  isMultiSelect = false,
   ...props
 }) => {
   const [opened, setOpened] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<any>(selected);
+  const [selectedItem, setSelectedItem] = useState<ISelectOption[]>(selected ? [selected] : []);
   const selectRef = useRef(null);
 
   useClickOutside(() => {
@@ -46,9 +47,19 @@ export const SelectV3: React.FC<ISelect> = ({
   };
 
   const handleSelectOption = (selectedOption: ISelectOption) => {
-    setSelectedItem(selectedOption);
-    onSelect && onSelect(selectedOption);
-    setOpened(false);
+    if (isMultiSelect) {
+      const isSelected = selectedItem.some(item => item.value === selectedOption.value);
+      const newSelectedItems = isSelected
+        ? selectedItem.filter(item => item.value !== selectedOption.value)
+        : [...selectedItem, selectedOption];
+
+      setSelectedItem(newSelectedItems);
+      onSelect && onSelect(newSelectedItems);
+    } else {
+      setSelectedItem([selectedOption]);
+      onSelect && onSelect(selectedOption);
+      setOpened(false);
+    }
   };
 
   const handleKeyPressOnSelect = ({ key }: KeyboardEvent) => {
@@ -91,7 +102,9 @@ export const SelectV3: React.FC<ISelect> = ({
               color="textNeutralDefault"
               fontWeight={300}
             >
-              {selectedItem?.label || selected?.value || placeholder}
+              {selectedItem.length > 0
+                ? selectedItem.map(item => item.label || item.value).join(', ')
+                : placeholder}
             </Typography>
           )}
         </Placeholder>
@@ -117,10 +130,7 @@ export const SelectV3: React.FC<ISelect> = ({
               onKeyPress={(event: KeyboardEvent) =>
                 handleKeyPressOnOption(event, option)
               }
-              itemSelect={
-                selectedItem !== undefined &&
-                selectedItem.value === option?.value
-              }
+              itemSelect={selectedItem.some(item => item.value === option.value)}
             >
               <Flex
                 width={"100%"}
@@ -130,8 +140,7 @@ export const SelectV3: React.FC<ISelect> = ({
                 <Typography
                   size={fontSize}
                   color={
-                    selectedItem !== undefined &&
-                    selectedItem.value === option?.value
+                    selectedItem.some(item => item.value === option.value)
                       ? "textNeutralDefault"
                       : "textNeutralSubtlest"
                   }
@@ -140,15 +149,14 @@ export const SelectV3: React.FC<ISelect> = ({
                   {option.label || option.value}
                 </Typography>
 
-                {selectedItem !== undefined &&
-                  selectedItem.value === option?.value && (
-                    <Icon
-                      iconId="check"
-                      stroke="iconDefault"
-                      size="XS"
-                      strokeWidth={2.3}
-                    />
-                  )}
+                {selectedItem.some(item => item.value === option.value) && (
+                  <Icon
+                    iconId="check"
+                    stroke="iconDefault"
+                    size="XS"
+                    strokeWidth={2.3}
+                  />
+                )}
               </Flex>
             </Option>
           ))}
