@@ -28,7 +28,7 @@ export interface ISelect {
   error?: boolean;
   helperText?: string;
   selected?: ISelectOption;
-  onSelect?: (newSelectedOption: ISelectOption) => void;
+  onSelect?: (newSelectedOption: ISelectOption | ISelectOption[]) => void;
   fontSize?: keyof typeof theme.fontSize;
   width?: string;
   height?: string;
@@ -42,4 +42,5 @@ export interface ISelect {
     | React.ReactChildren
     | Element
     | Element[];
+  isMultiSelect?: boolean;
 }
