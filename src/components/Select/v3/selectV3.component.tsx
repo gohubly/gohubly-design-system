@@ -34,8 +34,10 @@ export const SelectV3: React.FC<ISelect> = ({
   isMultiSelect = false,
   ...props
 }) => {
+  const selectedItemProp = selected ? Array.isArray(selected) ? [...selected] : [selected] : []
+
   const [opened, setOpened] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<ISelectOption[]>(selected ? [selected] : []);
+  const [selectedItem, setSelectedItem] = useState<ISelectOption[]>(selectedItemProp);
   const selectRef = useRef(null);
 
   useClickOutside(() => {
@@ -74,7 +76,7 @@ export const SelectV3: React.FC<ISelect> = ({
   };
 
   return (
-    <Wrapper {...props} ref={selectRef} width={width}>
+    <Wrapper {...props} ref={selectRef} width={width} title={selectedItemProp?.map(item => item?.label)?.join(', ')}>
       <SelectStyled
         disabled={disabled}
         error={error}

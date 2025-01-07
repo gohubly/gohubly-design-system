@@ -27,7 +27,7 @@ export interface ISelect {
   disabled?: boolean;
   error?: boolean;
   helperText?: string;
-  selected?: ISelectOption;
+  selected?: ISelectOption | ISelectOption[];
   onSelect?: (newSelectedOption: ISelectOption | ISelectOption[]) => void;
   fontSize?: keyof typeof theme.fontSize;
   width?: string;

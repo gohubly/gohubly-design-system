@@ -302,6 +302,7 @@ OrderSelect.args = {
 export const MultiSelect = Template.bind({});
 MultiSelect.args = {
   placeholder: "Select multiple options",
+  selected: [{ value: 'option1', label: 'Option 1' }, { value: "option2", label: "Option 2" }],
   items: [
     { value: "option1", label: "Option 1" },
     { value: "option2", label: "Option 2" },
